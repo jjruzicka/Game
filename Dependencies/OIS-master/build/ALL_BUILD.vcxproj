@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6C7F5144-4147-3D5B-A398-E8301EA1C040}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\hlocal\game\Game\Dependencies\OIS-master\includes;C:\hlocal\game\Game\Dependencies\OIS-master\includes\linux;C:\hlocal\game\Game\Dependencies\OIS-master\includes\SDL;C:\hlocal\game\Game\Dependencies\OIS-master\includes\iphone;C:\hlocal\game\Game\Dependencies\OIS-master\includes\mac;C:\hlocal\game\Game\Dependencies\OIS-master\includes\win32;C:\software\programacion\MSDirectXjun2010\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\hlocal\game\Game\Dependencies\OIS-master\includes;C:\hlocal\game\Game\Dependencies\OIS-master\includes\linux;C:\hlocal\game\Game\Dependencies\OIS-master\includes\SDL;C:\hlocal\game\Game\Dependencies\OIS-master\includes\iphone;C:\hlocal\game\Game\Dependencies\OIS-master\includes\mac;C:\hlocal\game\Game\Dependencies\OIS-master\includes\win32;C:\software\programacion\MSDirectXjun2010\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\hlocal\game\Game\Dependencies\OIS-master\includes;C:\hlocal\game\Game\Dependencies\OIS-master\includes\linux;C:\hlocal\game\Game\Dependencies\OIS-master\includes\SDL;C:\hlocal\game\Game\Dependencies\OIS-master\includes\iphone;C:\hlocal\game\Game\Dependencies\OIS-master\includes\mac;C:\hlocal\game\Game\Dependencies\OIS-master\includes\win32;C:\software\programacion\MSDirectXjun2010\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\hlocal\game\Game\Dependencies\OIS-master\includes;C:\hlocal\game\Game\Dependencies\OIS-master\includes\linux;C:\hlocal\game\Game\Dependencies\OIS-master\includes\SDL;C:\hlocal\game\Game\Dependencies\OIS-master\includes\iphone;C:\hlocal\game\Game\Dependencies\OIS-master\includes\mac;C:\hlocal\game\Game\Dependencies\OIS-master\includes\win32;C:\software\programacion\MSDirectXjun2010\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\hlocal\game\Game\Dependencies\OIS-master\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule C:/hlocal/game/Game/Dependencies/OIS-master/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+C:\hlocal\cmake-3.11.0-rc4-win64-x64\bin\cmake.exe -HC:/hlocal/game/Game/Dependencies/OIS-master -BC:/hlocal/game/Game/Dependencies/OIS-master/build --check-stamp-file C:/hlocal/game/Game/Dependencies/OIS-master/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:/hlocal/game/Game/Dependencies/OIS-master/CMakeLists.txt;C:\hlocal\game\Game\Dependencies\OIS-master\CMakeLists.txt;C:\hlocal\game\Game\Dependencies\OIS-master\build\CMakeFiles\3.11.0-rc4\CMakeSystem.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeSystemSpecificInitialize.cmake;C:\hlocal\game\Game\Dependencies\OIS-master\build\CMakeFiles\3.11.0-rc4\CMakeCCompiler.cmake;C:\hlocal\game\Game\Dependencies\OIS-master\build\CMakeFiles\3.11.0-rc4\CMakeCXXCompiler.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeSystemSpecificInformation.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeGenericSystem.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeInitializeConfigs.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\Platform\Windows.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\Platform\WindowsPaths.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeCInformation.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeLanguageInformation.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\Platform\Windows-MSVC-C.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\Platform\Windows-MSVC.cmake;C:\hlocal\game\Game\Dependencies\OIS-master\build\CMakeFiles\3.11.0-rc4\CMakeRCCompiler.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeRCInformation.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeCommonLanguageInclude.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeCXXInformation.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeLanguageInformation.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\Compiler\MSVC-CXX.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\Platform\Windows-MSVC-CXX.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\Platform\Windows-MSVC.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeCommonLanguageInclude.cmake;C:\hlocal\game\Game\Dependencies\OIS-master\includes\OISPrereqs.h.in;C:\hlocal\game\Game\Dependencies\OIS-master\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\hlocal\game\Game\Dependencies\OIS-master\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule C:/hlocal/game/Game/Dependencies/OIS-master/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+C:\hlocal\cmake-3.11.0-rc4-win64-x64\bin\cmake.exe -HC:/hlocal/game/Game/Dependencies/OIS-master -BC:/hlocal/game/Game/Dependencies/OIS-master/build --check-stamp-file C:/hlocal/game/Game/Dependencies/OIS-master/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:/hlocal/game/Game/Dependencies/OIS-master/CMakeLists.txt;C:\hlocal\game\Game\Dependencies\OIS-master\CMakeLists.txt;C:\hlocal\game\Game\Dependencies\OIS-master\build\CMakeFiles\3.11.0-rc4\CMakeSystem.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeSystemSpecificInitialize.cmake;C:\hlocal\game\Game\Dependencies\OIS-master\build\CMakeFiles\3.11.0-rc4\CMakeCCompiler.cmake;C:\hlocal\game\Game\Dependencies\OIS-master\build\CMakeFiles\3.11.0-rc4\CMakeCXXCompiler.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeSystemSpecificInformation.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeGenericSystem.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeInitializeConfigs.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\Platform\Windows.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\Platform\WindowsPaths.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeCInformation.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeLanguageInformation.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\Platform\Windows-MSVC-C.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\Platform\Windows-MSVC.cmake;C:\hlocal\game\Game\Dependencies\OIS-master\build\CMakeFiles\3.11.0-rc4\CMakeRCCompiler.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeRCInformation.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeCommonLanguageInclude.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeCXXInformation.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeLanguageInformation.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\Compiler\MSVC-CXX.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\Platform\Windows-MSVC-CXX.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\Platform\Windows-MSVC.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeCommonLanguageInclude.cmake;C:\hlocal\game\Game\Dependencies\OIS-master\includes\OISPrereqs.h.in;C:\hlocal\game\Game\Dependencies\OIS-master\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\hlocal\game\Game\Dependencies\OIS-master\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule C:/hlocal/game/Game/Dependencies/OIS-master/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+C:\hlocal\cmake-3.11.0-rc4-win64-x64\bin\cmake.exe -HC:/hlocal/game/Game/Dependencies/OIS-master -BC:/hlocal/game/Game/Dependencies/OIS-master/build --check-stamp-file C:/hlocal/game/Game/Dependencies/OIS-master/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:/hlocal/game/Game/Dependencies/OIS-master/CMakeLists.txt;C:\hlocal\game\Game\Dependencies\OIS-master\CMakeLists.txt;C:\hlocal\game\Game\Dependencies\OIS-master\build\CMakeFiles\3.11.0-rc4\CMakeSystem.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeSystemSpecificInitialize.cmake;C:\hlocal\game\Game\Dependencies\OIS-master\build\CMakeFiles\3.11.0-rc4\CMakeCCompiler.cmake;C:\hlocal\game\Game\Dependencies\OIS-master\build\CMakeFiles\3.11.0-rc4\CMakeCXXCompiler.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeSystemSpecificInformation.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeGenericSystem.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeInitializeConfigs.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\Platform\Windows.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\Platform\WindowsPaths.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeCInformation.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeLanguageInformation.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\Platform\Windows-MSVC-C.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\Platform\Windows-MSVC.cmake;C:\hlocal\game\Game\Dependencies\OIS-master\build\CMakeFiles\3.11.0-rc4\CMakeRCCompiler.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeRCInformation.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeCommonLanguageInclude.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeCXXInformation.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeLanguageInformation.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\Compiler\MSVC-CXX.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\Platform\Windows-MSVC-CXX.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\Platform\Windows-MSVC.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeCommonLanguageInclude.cmake;C:\hlocal\game\Game\Dependencies\OIS-master\includes\OISPrereqs.h.in;C:\hlocal\game\Game\Dependencies\OIS-master\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\hlocal\game\Game\Dependencies\OIS-master\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule C:/hlocal/game/Game/Dependencies/OIS-master/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+C:\hlocal\cmake-3.11.0-rc4-win64-x64\bin\cmake.exe -HC:/hlocal/game/Game/Dependencies/OIS-master -BC:/hlocal/game/Game/Dependencies/OIS-master/build --check-stamp-file C:/hlocal/game/Game/Dependencies/OIS-master/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:/hlocal/game/Game/Dependencies/OIS-master/CMakeLists.txt;C:\hlocal\game\Game\Dependencies\OIS-master\CMakeLists.txt;C:\hlocal\game\Game\Dependencies\OIS-master\build\CMakeFiles\3.11.0-rc4\CMakeSystem.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeSystemSpecificInitialize.cmake;C:\hlocal\game\Game\Dependencies\OIS-master\build\CMakeFiles\3.11.0-rc4\CMakeCCompiler.cmake;C:\hlocal\game\Game\Dependencies\OIS-master\build\CMakeFiles\3.11.0-rc4\CMakeCXXCompiler.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeSystemSpecificInformation.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeGenericSystem.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeInitializeConfigs.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\Platform\Windows.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\Platform\WindowsPaths.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeCInformation.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeLanguageInformation.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\Platform\Windows-MSVC-C.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\Platform\Windows-MSVC.cmake;C:\hlocal\game\Game\Dependencies\OIS-master\build\CMakeFiles\3.11.0-rc4\CMakeRCCompiler.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeRCInformation.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeCommonLanguageInclude.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeCXXInformation.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeLanguageInformation.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\Compiler\MSVC-CXX.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\Platform\Windows-MSVC-CXX.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\Platform\Windows-MSVC.cmake;C:\hlocal\cmake-3.11.0-rc4-win64-x64\share\cmake-3.11\Modules\CMakeCommonLanguageInclude.cmake;C:\hlocal\game\Game\Dependencies\OIS-master\includes\OISPrereqs.h.in;C:\hlocal\game\Game\Dependencies\OIS-master\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\hlocal\game\Game\Dependencies\OIS-master\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\hlocal\game\Game\Dependencies\OIS-master\build\ZERO_CHECK.vcxproj">
+      <Project>{17AF367E-C7F8-32DD-B3CD-12ACE3B39489}</Project>
+      <Name>ZERO_CHECK</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\hlocal\game\Game\Dependencies\OIS-master\build\OIS.vcxproj">
+      <Project>{14C4B0E3-277F-3368-BC3C-46BF1C14DF96}</Project>
+      <Name>OIS</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

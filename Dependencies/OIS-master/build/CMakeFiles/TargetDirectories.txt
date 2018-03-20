@@ -1,0 +1,4 @@
+C:/hlocal/game/Game/Dependencies/OIS-master/build/CMakeFiles/OIS.dir
+C:/hlocal/game/Game/Dependencies/OIS-master/build/CMakeFiles/INSTALL.dir
+C:/hlocal/game/Game/Dependencies/OIS-master/build/CMakeFiles/ALL_BUILD.dir
+C:/hlocal/game/Game/Dependencies/OIS-master/build/CMakeFiles/ZERO_CHECK.dir
