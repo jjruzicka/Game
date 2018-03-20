@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\HLMS\src\OgreHlmsDatablock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\HLMS\src\OgreHlmsManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\HLMS\src\OgreHlmsMaterialBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\HLMS\src\OgreHlmsPbsMaterial.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\HLMS\src\OgreHlmsPropertyHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\HLMS\src\OgreHlmsPropertyMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\HLMS\src\OgreHlmsShaderGenerator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\HLMS\src\OgreHlmsShaderManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\HLMS\src\OgreHlmsShaderPiecesManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\HLMS\src\OgreHlmsShaderTemplate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\HLMS\include\OgreHlmsDatablock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\HLMS\include\OgreHlmsManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\HLMS\include\OgreHlmsMaterialBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\HLMS\include\OgreHlmsPbsMaterial.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\HLMS\include\OgreHlmsPropertyHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\HLMS\include\OgreHlmsPropertyMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\HLMS\include\OgreHlmsShaderCommon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\HLMS\include\OgreHlmsShaderGenerator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\HLMS\include\OgreHlmsShaderManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\HLMS\include\OgreHlmsShaderPiecesManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\HLMS\include\OgreHlmsShaderTemplate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\include\OgreHlmsPrerequisites.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{B40E1F17-56E6-3941-A2FE-ABB1937239D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{08FB46D8-8A83-37AC-A793-28ADDDCB63C7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

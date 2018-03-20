@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\Property\src\OgreProperty.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\Property\include\OgreProperty.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\include\OgrePropertyPrerequisites.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{B40E1F17-56E6-3941-A2FE-ABB1937239D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{08FB46D8-8A83-37AC-A793-28ADDDCB63C7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

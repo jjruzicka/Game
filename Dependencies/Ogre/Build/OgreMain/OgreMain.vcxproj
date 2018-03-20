@@ -1,0 +1,757 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{90F3A272-0886-3B5D-B4D8-64AACF75A27C}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>OgreMain</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\bin\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">OgreMain.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">OgreMain_d</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\bin\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">OgreMain.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">OgreMain</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\bin\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">OgreMain.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">OgreMain</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\bin\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">OgreMain.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">OgreMain</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\Dependencies\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\Dependencies\include\freetype2;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\Threading;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\WIN32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zm256</AdditionalOptions>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4661;4251;4275</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>OgreStableHeaders.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_MT;_USRDLL;CMAKE_INTDIR="Debug";OgreMain_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_MT;_USRDLL;CMAKE_INTDIR=\"Debug\";OgreMain_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\Dependencies\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\Dependencies\include\freetype2;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\Threading;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\WIN32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\Dependencies\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\Dependencies\include\freetype2;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\Threading;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\WIN32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\Dependencies\lib\zzip.lib;..\Dependencies\lib\zlib.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/hlocal/P3/ProyectoBasico/Dependencies/Ogre/Build/lib/Debug/OgreMain_d.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/hlocal/P3/ProyectoBasico/Dependencies/Ogre/Build/bin/Debug/OgreMain_d.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\Dependencies\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\Dependencies\include\freetype2;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\Threading;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\WIN32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zm256</AdditionalOptions>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4661;4251;4275</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>OgreStableHeaders.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_MT;_USRDLL;CMAKE_INTDIR="Release";OgreMain_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_MT;_USRDLL;CMAKE_INTDIR=\"Release\";OgreMain_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\Dependencies\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\Dependencies\include\freetype2;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\Threading;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\WIN32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\Dependencies\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\Dependencies\include\freetype2;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\Threading;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\WIN32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\Dependencies\lib\zzip.lib;..\Dependencies\lib\zlib.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/hlocal/P3/ProyectoBasico/Dependencies/Ogre/Build/lib/Release/OgreMain.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/hlocal/P3/ProyectoBasico/Dependencies/Ogre/Build/bin/Release/OgreMain.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\Dependencies\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\Dependencies\include\freetype2;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\Threading;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\WIN32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zm256</AdditionalOptions>
+      <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4661;4251;4275</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>OgreStableHeaders.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_MT;_USRDLL;CMAKE_INTDIR="MinSizeRel";OgreMain_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_MT;_USRDLL;CMAKE_INTDIR=\"MinSizeRel\";OgreMain_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\Dependencies\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\Dependencies\include\freetype2;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\Threading;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\WIN32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\Dependencies\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\Dependencies\include\freetype2;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\Threading;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\WIN32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\Dependencies\lib\zzip.lib;..\Dependencies\lib\zlib.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/hlocal/P3/ProyectoBasico/Dependencies/Ogre/Build/lib/MinSizeRel/OgreMain.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/hlocal/P3/ProyectoBasico/Dependencies/Ogre/Build/bin/MinSizeRel/OgreMain.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\Dependencies\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\Dependencies\include\freetype2;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\Threading;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\WIN32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zm256</AdditionalOptions>
+      <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4661;4251;4275</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>OgreStableHeaders.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_MT;_USRDLL;CMAKE_INTDIR="RelWithDebInfo";OgreMain_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_MT;_USRDLL;CMAKE_INTDIR=\"RelWithDebInfo\";OgreMain_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\Dependencies\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\Dependencies\include\freetype2;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\Threading;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\WIN32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\Dependencies\include;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\Dependencies\include\freetype2;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\Threading;C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\WIN32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\Dependencies\lib\zzip.lib;..\Dependencies\lib\zlib.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/hlocal/P3/ProyectoBasico/Dependencies/Ogre/Build/lib/RelWithDebInfo/OgreMain.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/hlocal/P3/ProyectoBasico/Dependencies/Ogre/Build/bin/RelWithDebInfo/OgreMain.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\Ogre.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreASTCCodec.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreAlignedAllocator.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreAnimable.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreAnimation.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreAnimationState.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreAnimationTrack.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreAny.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreArchive.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreArchiveFactory.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreArchiveManager.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreAtomicObject.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreAtomicScalar.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreAutoParamDataSource.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreAxisAlignedBox.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreBillboard.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreBillboardChain.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreBillboardParticleRenderer.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreBillboardSet.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreBitwise.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreBlendMode.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreBone.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreCamera.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreCodec.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreColourValue.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreCommon.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreCompositionPass.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreCompositionTargetPass.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreCompositionTechnique.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreCompositor.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreCompositorChain.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreCompositorInstance.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreCompositorLogic.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreCompositorManager.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreConfig.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreConfigDialog.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreConfigFile.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreConfigOptionMap.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreController.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreControllerManager.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreConvexBody.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreCustomCompositionPass.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreDataStream.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreDefaultHardwareBufferManager.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreDeflate.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreDepthBuffer.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreDistanceLodStrategy.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreDualQuaternion.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreDynLib.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreDynLibManager.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreEdgeListBuilder.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreEntity.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreErrorDialog.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreException.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreExternalTextureSource.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreExternalTextureSourceManager.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreFactoryObj.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreFileSystem.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreFileSystemLayer.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreFrameListener.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreFrustum.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreGpuProgram.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreGpuProgramManager.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreGpuProgramParams.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreGpuProgramUsage.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreHardwareBuffer.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreHardwareBufferManager.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreHardwareCounterBuffer.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreHardwareIndexBuffer.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreHardwareOcclusionQuery.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreHardwarePixelBuffer.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreHardwareUniformBuffer.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreHardwareVertexBuffer.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreHeaderPrefix.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreHeaderSuffix.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreHighLevelGpuProgram.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreHighLevelGpuProgramManager.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreId.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreIdString.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreImage.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreImageCodec.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreInstanceBatch.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreInstanceBatchHW.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreInstanceBatchHW_VTF.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreInstanceBatchShader.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreInstanceBatchVTF.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreInstanceManager.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreInstancedEntity.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreInstancedGeometry.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreIteratorRange.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreIteratorWrapper.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreIteratorWrappers.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreKeyFrame.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreLight.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreLodListener.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreLodStrategy.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreLodStrategyManager.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreLog.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreLogManager.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreManualObject.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreMaterial.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreMaterialManager.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreMaterialSerializer.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreMath.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreMatrix3.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreMatrix4.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreMemoryAllocatedObject.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreMemoryAllocatorConfig.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreMemoryNedAlloc.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreMemoryNedPooling.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreMemorySTLAllocator.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreMemoryStdAlloc.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreMemoryTracker.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreMesh.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreMeshFileFormat.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreMeshManager.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreMeshSerializer.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreMeshSerializerImpl.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreMovableObject.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreMovablePlane.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreMurmurHash3.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreNameGenerator.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreNode.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreNumerics.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreOptimisedUtil.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreParticle.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreParticleAffector.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreParticleAffectorFactory.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreParticleEmitter.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreParticleEmitterCommands.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreParticleEmitterFactory.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreParticleIterator.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreParticleSystem.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreParticleSystemManager.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreParticleSystemRenderer.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgrePass.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgrePatchMesh.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgrePatchSurface.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgrePixelCountLodStrategy.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgrePixelFormat.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgrePlane.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgrePlaneBoundedVolume.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgrePlatform.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgrePlatformInformation.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgrePlugin.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgrePolygon.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgrePose.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgrePredefinedControllers.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgrePrefabFactory.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgrePrerequisites.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreProfiler.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreQuaternion.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreRadixSort.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreRay.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreRectangle2D.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreRenderObjectListener.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreRenderOperation.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreRenderQueue.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreRenderQueueInvocation.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreRenderQueueListener.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreRenderQueueSortingGrouping.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreRenderSystem.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreRenderSystemCapabilities.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreRenderSystemCapabilitiesManager.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreRenderSystemCapabilitiesSerializer.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreRenderTarget.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreRenderTargetListener.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreRenderTexture.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreRenderToVertexBuffer.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreRenderWindow.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreRenderable.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreResource.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreResourceBackgroundQueue.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreResourceGroupManager.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreResourceManager.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreRibbonTrail.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreRoot.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreRotationalSpline.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreSceneManager.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreSceneManagerEnumerator.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreSceneNode.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreSceneQuery.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreScriptCompiler.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreScriptLexer.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreScriptLoader.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreScriptParser.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreScriptTranslator.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreSearchOps.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreSerializer.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreShadowCameraSetup.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreShadowCameraSetupFocused.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreShadowCameraSetupLiSPSM.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreShadowCameraSetupPSSM.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreShadowCameraSetupPlaneOptimal.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreShadowCaster.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreShadowTextureManager.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreShadowVolumeExtrudeProgram.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreSharedPtr.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreSimpleRenderable.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreSimpleSpline.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreSingleton.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreSkeleton.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreSkeletonFileFormat.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreSkeletonInstance.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreSkeletonManager.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreSkeletonSerializer.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreSphere.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreSpotShadowFadePng.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreStableHeaders.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreStaticFaceGroup.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreStaticGeometry.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreStdHeaders.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreStreamSerialiser.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreString.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreStringConverter.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreStringInterface.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreStringVector.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreSubEntity.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreSubMesh.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreTagPoint.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreTangentSpaceCalc.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreTechnique.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreTexture.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreTextureManager.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreTextureUnitState.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreTimer.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreUTFString.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreUnifiedHighLevelGpuProgram.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreUserObjectBindings.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreVector2.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreVector3.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreVector4.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreVertexBoneAssignment.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreVertexIndexData.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreViewport.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreWindowEventUtilities.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreWireBoundingBox.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreWorkQueue.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\include\OgreBuildSettings.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\include\OgreExports.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreImageResampler.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgrePixelConversions.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreSIMDHelper.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\Threading\OgreThreads.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\Threading\OgreBarrier.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\Threading\OgreLightweightMutex.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\Threading\OgreDefaultWorkQueue.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\Threading\OgreDefaultWorkQueueStandard.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\Threading\OgreDefaultWorkQueueTBB.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\Threading\OgreThreadDefines.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\Threading\OgreThreadDefinesBoost.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\Threading\OgreThreadDefinesNone.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\Threading\OgreThreadDefinesPoco.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\Threading\OgreThreadDefinesSTD.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\Threading\OgreThreadDefinesTBB.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\Threading\OgreThreadHeaders.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\Threading\OgreThreadHeadersBoost.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\Threading\OgreThreadHeadersPoco.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\Threading\OgreThreadHeadersSTD.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\Threading\OgreThreadHeadersTBB.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreSTBICodec.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreDDSCodec.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreETCCodec.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\OgreZip.h" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreASTCCodec.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreAlignedAllocator.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreAnimable.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreAnimation.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreAnimationState.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreAnimationTrack.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreArchive.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreArchiveManager.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreAtomicScalar.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreAutoParamDataSource.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreAxisAlignedBox.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreBillboard.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreBillboardChain.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreBillboardParticleRenderer.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreBillboardSet.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreBone.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreCamera.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreCodec.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreColourValue.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreCommon.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreCompositionPass.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreCompositionTargetPass.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreCompositionTechnique.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreCompositor.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreCompositorChain.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreCompositorInstance.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreCompositorManager.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreConfigFile.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreControllerManager.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreConvexBody.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreDataStream.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreDefaultHardwareBufferManager.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreDefaultSceneQueries.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreDeflate.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreDepthBuffer.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreDistanceLodStrategy.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreDualQuaternion.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreDynLib.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreDynLibManager.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreEdgeListBuilder.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreEntity.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreException.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreExternalTextureSource.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreExternalTextureSourceManager.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreFileSystem.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreFrustum.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreGpuProgram.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreGpuProgramManager.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreGpuProgramParams.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreGpuProgramUsage.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreHardwareBufferManager.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreHardwareCounterBuffer.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreHardwareIndexBuffer.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreHardwareOcclusionQuery.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreHardwarePixelBuffer.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreHardwareUniformBuffer.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreHardwareVertexBuffer.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreHighLevelGpuProgram.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreHighLevelGpuProgramManager.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreImage.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreInstanceBatch.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreInstanceBatchHW.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreInstanceBatchHW_VTF.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreInstanceBatchShader.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreInstanceBatchVTF.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreInstanceManager.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreInstancedEntity.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreInstancedGeometry.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreKeyFrame.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreLight.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreLodStrategy.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreLodStrategyManager.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreLog.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreLogManager.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreManualObject.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreMaterial.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreMaterialManager.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreMaterialSerializer.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreMath.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreMatrix3.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreMatrix4.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreMemoryAllocatedObject.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreMemoryNedAlloc.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreMemoryNedPooling.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreMemoryTracker.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreMesh.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreMeshManager.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreMeshSerializer.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreMeshSerializerImpl.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreMovableObject.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreMovablePlane.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreMurmurHash3.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreNode.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreNumerics.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreOptimisedUtil.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreOptimisedUtilGeneral.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreOptimisedUtilSSE.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreParticle.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreParticleEmitter.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreParticleEmitterCommands.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreParticleIterator.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreParticleSystem.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreParticleSystemManager.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgrePass.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgrePatchMesh.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgrePatchSurface.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgrePixelCountLodStrategy.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgrePixelFormat.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgrePlane.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgrePlatformInformation.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgrePolygon.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgrePose.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgrePrecompiledHeaders.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">OgreStableHeaders.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">OgreStableHeaders.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">OgreStableHeaders.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">OgreStableHeaders.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgrePredefinedControllers.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgrePrefabFactory.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreProfiler.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreQuaternion.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreRectangle2D.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreRenderQueue.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreRenderQueueInvocation.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreRenderQueueSortingGrouping.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreRenderSystem.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreRenderSystemCapabilities.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreRenderSystemCapabilitiesManager.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreRenderSystemCapabilitiesSerializer.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreRenderTarget.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreRenderTexture.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreRenderToVertexBuffer.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreRenderWindow.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreResource.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreResourceBackgroundQueue.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreResourceGroupManager.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreResourceManager.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreRibbonTrail.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreRoot.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreRotationSpline.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreSceneManager.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreSceneManagerEnumerator.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreSceneNode.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreSceneQuery.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreScriptCompiler.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreScriptLexer.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreScriptParser.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreScriptTranslator.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreSerializer.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreShadowCameraSetup.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreShadowCameraSetupFocused.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreShadowCameraSetupLiSPSM.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreShadowCameraSetupPSSM.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreShadowCameraSetupPlaneOptimal.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreShadowCaster.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreShadowTextureManager.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreShadowVolumeExtrudeProgram.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreSimpleRenderable.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreSimpleSpline.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreSkeleton.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreSkeletonInstance.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreSkeletonManager.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreSkeletonSerializer.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreStaticGeometry.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreStreamSerialiser.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreString.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreStringConverter.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreStringInterface.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreSubEntity.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreSubMesh.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreTagPoint.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreTangentSpaceCalc.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreTechnique.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreTexture.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreTextureManager.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreTextureUnitState.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreUTFString.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreUnifiedHighLevelGpuProgram.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreUserObjectBindings.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreVector2.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreVector3.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreVector4.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreVertexIndexData.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreViewport.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreWindowEventUtilities.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreWireBoundingBox.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreWorkQueue.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\Threading\OgreBarrierWin.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\Threading\OgreThreadsWin.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\Threading\OgreLightweightMutexWin.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreSTBICodec.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreDDSCodec.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreETCCodec.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\OgreZip.cpp" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\WIN32\OgreErrorDialogImp.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\WIN32\OgreTimerImp.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\WIN32\OgreMinGWSupport.h" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\include\WIN32\OgreComPtr.h" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\WIN32\OgreOptimisedUtilDirectXMath.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\WIN32\OgreConfigDialog.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\WIN32\OgreErrorDialog.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\WIN32\OgreFileSystemLayer.cpp" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\WIN32\OgreTimer.cpp" />
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\WIN32\resource.h" />
+    <ResourceCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\WIN32\OgreWin32Resources.rc" />
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\OgreMain\src\Threading\OgreDefaultWorkQueueStandard.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

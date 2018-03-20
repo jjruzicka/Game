@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\PlugIns\BSPSceneManager\src\OgreBspLevel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\PlugIns\BSPSceneManager\src\OgreBspNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\PlugIns\BSPSceneManager\src\OgreBspResourceManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\PlugIns\BSPSceneManager\src\OgreBspSceneManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\PlugIns\BSPSceneManager\src\OgreBspSceneManagerDll.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\PlugIns\BSPSceneManager\src\OgreBspSceneManagerPlugin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\PlugIns\BSPSceneManager\src\OgreBspSceneNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\PlugIns\BSPSceneManager\src\OgreQuake3Level.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\PlugIns\BSPSceneManager\src\OgreQuake3Shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\PlugIns\BSPSceneManager\src\OgreQuake3ShaderManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\PlugIns\BSPSceneManager\include\OgreBspLevel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\PlugIns\BSPSceneManager\include\OgreBspNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\PlugIns\BSPSceneManager\include\OgreBspResourceManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\PlugIns\BSPSceneManager\include\OgreBspSceneManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\PlugIns\BSPSceneManager\include\OgreBspSceneManagerPlugin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\PlugIns\BSPSceneManager\include\OgreBspSceneNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\PlugIns\BSPSceneManager\include\OgreQuake3Level.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\PlugIns\BSPSceneManager\include\OgreQuake3Shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\PlugIns\BSPSceneManager\include\OgreQuake3ShaderManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\PlugIns\BSPSceneManager\include\OgreQuake3Types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Build\include\OgreBspPrerequisites.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{B40E1F17-56E6-3941-A2FE-ABB1937239D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{08FB46D8-8A83-37AC-A793-28ADDDCB63C7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

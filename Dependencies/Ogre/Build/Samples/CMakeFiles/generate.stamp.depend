@@ -1,0 +1,4 @@
+# CMake generation dependency list for this directory.
+C:/hlocal/P3/ProyectoBasico/Dependencies/Ogre/Samples/CMakeLists.txt
+C:/hlocal/P3/ProyectoBasico/Dependencies/Ogre/CMake/Packages/FindWix.cmake
+C:/hlocal/P3/ProyectoBasico/Dependencies/Ogre/CMake/Utils/FindPkgMacros.cmake

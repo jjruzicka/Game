@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\Terrain\src\OgreTerrain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\Terrain\src\OgreTerrainAutoUpdateLod.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\Terrain\src\OgreTerrainGroup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\Terrain\src\OgreTerrainLayerBlendMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\Terrain\src\OgreTerrainLodManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\Terrain\src\OgreTerrainMaterialGenerator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\Terrain\src\OgreTerrainMaterialGeneratorA.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\Terrain\src\OgreTerrainMaterialShaderHelperCg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\Terrain\src\OgreTerrainMaterialShaderHelperGLSL.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\Terrain\src\OgreTerrainMaterialShaderHelperHLSL.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\Terrain\src\OgreTerrainQuadTreeNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\Terrain\src\OgreTerrainPaging.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\Terrain\src\OgreTerrainPagedWorldSection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\Terrain\include\OgreTerrain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\Terrain\include\OgreTerrainAutoUpdateLod.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\Terrain\include\OgreTerrainGroup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\Terrain\include\OgreTerrainLayerBlendMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\Terrain\include\OgreTerrainLodManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\Terrain\include\OgreTerrainMaterialGenerator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\Terrain\include\OgreTerrainMaterialGeneratorA.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\Terrain\include\OgreTerrainPrerequisites.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\Terrain\include\OgreTerrainQuadTreeNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\Terrain\include\OgreTerrainPaging.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\hlocal\P3\ProyectoBasico\Dependencies\Ogre\Components\Terrain\include\OgreTerrainPagedWorldSection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{B40E1F17-56E6-3941-A2FE-ABB1937239D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{08FB46D8-8A83-37AC-A793-28ADDDCB63C7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
