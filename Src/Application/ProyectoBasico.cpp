@@ -114,9 +114,10 @@ int CALLBACK WinMain(
 
 
 
-	return true;
+	Escenas* escena = new Escenas();
 
 	system("PAUSE");
+	delete escena;
     return 0;
 
 }

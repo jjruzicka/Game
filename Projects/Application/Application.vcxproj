@@ -13,17 +13,21 @@
   <ItemGroup>
     <ClCompile Include="..\..\Src\Application\Component.cpp" />
     <ClCompile Include="..\..\Src\Application\Entidad.cpp" />
+    <ClCompile Include="..\..\Src\Application\Escenas.cpp" />
+    <ClCompile Include="..\..\Src\Application\GameManager_c.cpp" />
     <ClCompile Include="..\..\Src\Application\Hola_c.cpp" />
+    <ClCompile Include="..\..\Src\Application\Mision_c.cpp" />
     <ClCompile Include="..\..\Src\Application\Nice_c.cpp" />
     <ClCompile Include="..\..\Src\Application\ProyectoBasico.cpp" />
-    <ClCompile Include="Escenas.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Application\Component.h" />
     <ClInclude Include="..\..\Src\Application\Entidad.h" />
+    <ClInclude Include="..\..\Src\Application\Escenas.h" />
+    <ClInclude Include="..\..\Src\Application\GameManager_c.h" />
     <ClInclude Include="..\..\Src\Application\Hola_c.h" />
+    <ClInclude Include="..\..\Src\Application\Mision_c.h" />
     <ClInclude Include="..\..\Src\Application\Nice_c.h" />
-    <ClInclude Include="Escenas.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{E2595455-6AE6-4E56-AFDD-820B8F62CAC1}</ProjectGuid>
