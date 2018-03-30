@@ -9,6 +9,7 @@
 #include <OgreConfig.h>
 #include "OgreConfigFile.h"
 
+
 #include <OgreTextureManager.h>
 #include <OgreWindowEventUtilities.h>
 #include <OgreException.h>
@@ -33,6 +34,7 @@ int CALLBACK WinMain(
 	Ogre::RenderWindow* mWindow;
 	Ogre::SceneManager * scnMgr;
 	
+	
 
 #ifdef _DEBUG
 	plugins = "OgreD/plugins_d.cfg";
@@ -41,6 +43,7 @@ int CALLBACK WinMain(
 	plugins = "OgreD/plugins.cfg";
 	recursos = "OgreD/resources.cfg";
 #endif
+
 
 	//------------------------------------------------------------------------------------------------------
 	//Setting UP Resources 

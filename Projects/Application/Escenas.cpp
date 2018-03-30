@@ -3,6 +3,7 @@
 #include "Entidad.h"
 #include "Hola_c.h"
 #include "Nice_c.h"
+#include "PlayerController_c.h"
 
 Escenas::Escenas()
 {
@@ -12,10 +13,12 @@ Escenas::Escenas()
 
 	Component* vida = new Hola_c(ent);
 	Component* nice = new Nice_c(ent);
+	Component* controller = new PlayerController_c(ent);
 	
 
 	entidades[0]->AddComponent(nice);
 	entidades[0]->AddComponent(vida);
+	entidades[0]->AddComponent(controller);
 
 	Hola_c* a = new Hola_c(ent);
 	Hola_c* b;

@@ -17,6 +17,8 @@
     <ClCompile Include="..\..\Src\Application\Nice_c.cpp" />
     <ClCompile Include="..\..\Src\Application\ProyectoBasico.cpp" />
     <ClCompile Include="Escenas.cpp" />
+    <ClCompile Include="InputComponent.cpp" />
+    <ClCompile Include="PlayerController_c.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Application\Component.h" />
@@ -24,6 +26,8 @@
     <ClInclude Include="..\..\Src\Application\Hola_c.h" />
     <ClInclude Include="..\..\Src\Application\Nice_c.h" />
     <ClInclude Include="Escenas.h" />
+    <ClInclude Include="InputComponent.h" />
+    <ClInclude Include="PlayerController_c.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{E2595455-6AE6-4E56-AFDD-820B8F62CAC1}</ProjectGuid>
