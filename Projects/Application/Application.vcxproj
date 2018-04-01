@@ -15,6 +15,7 @@
     <ClCompile Include="..\..\Src\Application\Entidad.cpp" />
     <ClCompile Include="..\..\Src\Application\Hola_c.cpp" />
     <ClCompile Include="..\..\Src\Application\Nice_c.cpp" />
+    <ClCompile Include="..\..\Src\Application\PlayerController_c.cpp" />
     <ClCompile Include="..\..\Src\Application\ProyectoBasico.cpp" />
     <ClCompile Include="Escenas.cpp" />
   </ItemGroup>
@@ -23,6 +24,7 @@
     <ClInclude Include="..\..\Src\Application\Entidad.h" />
     <ClInclude Include="..\..\Src\Application\Hola_c.h" />
     <ClInclude Include="..\..\Src\Application\Nice_c.h" />
+    <ClInclude Include="..\..\Src\Application\PlayerController_c.h" />
     <ClInclude Include="Escenas.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -80,7 +82,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>OgreMain_d.lib;%(AdditionalDependencies);PhysX3_*.lib;PhysX3Common_*.lib;PxFoundation_*.lib;PhysX3_*.lib;PhysX3Common_*.lib;PxFoundation_*.lib</AdditionalDependencies>
+      <AdditionalDependencies>OgreMain_d.lib;%(AdditionalDependencies);PhysX3_*.lib;PhysX3Common_*.lib;PxFoundation_*.lib;OIS.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\OIS-master\build\lib\Debug;$(SolutionDir)Dependencies\OIS\build\lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
