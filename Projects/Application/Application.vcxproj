@@ -20,6 +20,8 @@
     <ClCompile Include="..\..\Src\Application\Move_c.cpp" />
     <ClCompile Include="..\..\Src\Application\Nice_c.cpp" />
     <ClCompile Include="..\..\Src\Application\ProyectoBasico.cpp" />
+    <ClCompile Include="Armadura.cpp" />
+    <ClCompile Include="Armas.cpp" />
     <ClCompile Include="Coger_c.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -31,6 +33,8 @@
     <ClInclude Include="..\..\Src\Application\Mata_c.h" />
     <ClInclude Include="..\..\Src\Application\Move_c.h" />
     <ClInclude Include="..\..\Src\Application\Nice_c.h" />
+    <ClInclude Include="Armadura.h" />
+    <ClInclude Include="Armas.h" />
     <ClInclude Include="Coger_c.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

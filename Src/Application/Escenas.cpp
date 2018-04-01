@@ -18,6 +18,8 @@ Escenas::Escenas()
 	Entidad * po = new Entidad("pkdsjsdon");
 	Entidad * po2 = new Entidad("pok<ejhfJHn");
 	Entidad * po3 = new Entidad("pkdsjsdon");
+	Entidad * po4 = new Entidad("pkdsjsdon");
+	Entidad * po5 = new Entidad("pok<ejhfJHn");
 
 
 	entidades.push_back(ent);
@@ -64,6 +66,8 @@ Escenas::Escenas()
 		aux3->addObject(po);
 		aux3->addObject(po2);
 		aux3->addObject(po3);
+		aux3->addObject(po4);
+		aux3->addObject(po5);
 	}
 
 
