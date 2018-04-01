@@ -3,6 +3,7 @@
 #include <vector>
 
 #include "Component.h"
+#include <iostream>
 
 struct Pos{
 	int x;
@@ -10,14 +11,27 @@ struct Pos{
 	int z;
 };
 
-
+//enum Objetos{NADA, ESPADA};
 class Entidad
 {
 public:
-	Entidad();
+	Entidad(std::string id);
 	~Entidad();
 	void Update();
 	void AddComponent(Component * component);
+	Pos getPos(){
+		return posicion;
+	}
+	void setPos(int x, int y, int z){
+		Pos newPosicion;
+		newPosicion.x = x;
+		newPosicion.y = y;
+		newPosicion.z = z;
+		posicion = newPosicion;
+	}
+	std::string getID(){
+		return identificador;
+	}
 
 	template <class T>
 	T*  GetComponent(T* a){
@@ -36,6 +50,7 @@ private:
 
 	Pos posicion;
 	Pos rotation;
+	std::string identificador;
 	
 };
 

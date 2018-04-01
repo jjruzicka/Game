@@ -30,7 +30,19 @@
     <ClCompile Include="..\..\Src\Application\Nice_c.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Escenas.cpp">
+    <ClCompile Include="..\..\Src\Application\Escenas.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\Mata_c.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\Move_c.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Coger_c.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\Inventario_c.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -47,7 +59,19 @@
     <ClInclude Include="..\..\Src\Application\Nice_c.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Escenas.h">
+    <ClInclude Include="..\..\Src\Application\Escenas.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\Mata_c.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\Move_c.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Coger_c.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\Inventario_c.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

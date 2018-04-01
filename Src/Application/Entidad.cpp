@@ -1,10 +1,11 @@
 #include "Entidad.h"
 #include <typeinfo>
 #include <string>
-Entidad::Entidad()
+Entidad::Entidad(std::string id)
 {
 	posicion = { 0, 0, 0 };
 	rotation = { 0, 0, 0 };
+	identificador = id;
 }
 
 

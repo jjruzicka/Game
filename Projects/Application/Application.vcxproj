@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -13,22 +13,31 @@
   <ItemGroup>
     <ClCompile Include="..\..\Src\Application\Component.cpp" />
     <ClCompile Include="..\..\Src\Application\Entidad.cpp" />
+    <ClCompile Include="..\..\Src\Application\Escenas.cpp" />
     <ClCompile Include="..\..\Src\Application\Hola_c.cpp" />
+    <ClCompile Include="..\..\Src\Application\Inventario_c.cpp" />
+    <ClCompile Include="..\..\Src\Application\Mata_c.cpp" />
+    <ClCompile Include="..\..\Src\Application\Move_c.cpp" />
     <ClCompile Include="..\..\Src\Application\Nice_c.cpp" />
     <ClCompile Include="..\..\Src\Application\ProyectoBasico.cpp" />
-    <ClCompile Include="Escenas.cpp" />
+    <ClCompile Include="Coger_c.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Application\Component.h" />
     <ClInclude Include="..\..\Src\Application\Entidad.h" />
+    <ClInclude Include="..\..\Src\Application\Escenas.h" />
     <ClInclude Include="..\..\Src\Application\Hola_c.h" />
+    <ClInclude Include="..\..\Src\Application\Inventario_c.h" />
+    <ClInclude Include="..\..\Src\Application\Mata_c.h" />
+    <ClInclude Include="..\..\Src\Application\Move_c.h" />
     <ClInclude Include="..\..\Src\Application\Nice_c.h" />
-    <ClInclude Include="Escenas.h" />
+    <ClInclude Include="Coger_c.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{E2595455-6AE6-4E56-AFDD-820B8F62CAC1}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Application</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -40,7 +49,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -59,14 +68,14 @@
     <OutDir>$(SolutionDir)Exes\</OutDir>
     <TargetName>$(SolutionName)D</TargetName>
     <IntDir>$(SolutionDir)Inter\$(ProjectName)\$(Configuration)\</IntDir>
-    <LibraryPath>$(SolutionDir)Dependencies\OIS-master\build\lib\$(Configuration);$(SolutionDir)Dependencies\Ogre\Build\lib\$(Configuration);$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)Dependencies\Ogre\Build\lib\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)Exes\</OutDir>
     <TargetName>$(SolutionName)</TargetName>
     <IntDir>$(SolutionDir)Inter\$(ProjectName)\$(Configuration)\</IntDir>
-    <LibraryPath>$(SolutionDir)Dependencies\OIS-master\build\lib\$(Configuration);$(SolutionDir)Dependencies\Ogre\Build\lib\$(Configuration);$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)Dependencies\Ogre\Build\lib\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -75,13 +84,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\OIS-master\includes;$(SolutionDir)Dependencies\Ogre\OgreMain\include;$(SolutionDir)Dependencies\Ogre\Build\include;$(SolutionDir)Dependencies\PhysX_3.4\Include;$(SolutionDir)Src\Application;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\Ogre\OgreMain\include;$(SolutionDir)Dependencies\Ogre\Build\include;$(SolutionDir)Dependencies\PhysX_3.4\Include;$(SolutionDir)Src\Application;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>OgreMain_d.lib;%(AdditionalDependencies);PhysX3_*.lib;PhysX3Common_*.lib;PxFoundation_*.lib;PhysX3_*.lib;PhysX3Common_*.lib;PxFoundation_*.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\OIS-master\build\lib\Debug;$(SolutionDir)Dependencies\OIS\build\lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -93,7 +101,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\OIS-master\includes;$(SolutionDir)Dependencies\Ogre\OgreMain\include;$(SolutionDir)Dependencies\Ogre\Build\include;$(SolutionDir)Dependencies\PhysX_3.4\Include;$(SolutionDir)Src\Application;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\Ogre\OgreMain\include;$(SolutionDir)Dependencies\Ogre\Build\include;$(SolutionDir)Dependencies\PhysX_3.4\Include;$(SolutionDir)Src\Application;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -101,7 +109,6 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>OgreMain.lib;%(AdditionalDependencies);PhysX3_*.lib;PhysX3Common_*.lib;PxFoundation_*.lib;PhysX3_*.lib;PhysX3Common_*.lib;PxFoundation_*.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\OIS-master\build\lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
