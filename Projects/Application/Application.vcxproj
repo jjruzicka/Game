@@ -80,7 +80,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>OgreMain_d.lib;%(AdditionalDependencies);PhysX3_*.lib;PhysX3Common_*.lib;PxFoundation_*.lib;PhysX3_*.lib;PhysX3Common_*.lib;PxFoundation_*.lib</AdditionalDependencies>
+      <AdditionalDependencies>OgreMain_d.lib;%(AdditionalDependencies);PhysX3_*.lib;PhysX3Common_*.lib;PxFoundation_*.lib;OIS.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\OIS-master\build\lib\Debug;$(SolutionDir)Dependencies\OIS\build\lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
