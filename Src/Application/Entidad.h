@@ -31,6 +31,26 @@ public:
 		return nullptr;
 	}
 
+	int getPox(){
+		return posicion.x;
+	}
+	int getPoy(){
+		return posicion.y;
+	}
+	int getPoz(){
+		return posicion.z;
+	}
+
+	int getRox(){
+		return rotation.x;
+	}
+	int getRoy(){
+		return rotation.y;
+	}
+	int getRoz(){
+		return rotation.z;
+	}
+
 private:
 	std::vector<Component*> componentes;
 

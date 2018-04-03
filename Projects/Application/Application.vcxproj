@@ -14,20 +14,34 @@
     <ClCompile Include="..\..\Src\Application\Component.cpp" />
     <ClCompile Include="..\..\Src\Application\Entidad.cpp" />
     <ClCompile Include="..\..\Src\Application\Escenas.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="..\..\Src\Application\GameManager_c.cpp" />
+=======
+>>>>>>> master
     <ClCompile Include="..\..\Src\Application\Hola_c.cpp" />
     <ClCompile Include="..\..\Src\Application\Mision_c.cpp" />
     <ClCompile Include="..\..\Src\Application\Nice_c.cpp" />
     <ClCompile Include="..\..\Src\Application\ProyectoBasico.cpp" />
+<<<<<<< HEAD
+=======
+    <ClCompile Include="..\..\Src\Application\Render_c.cpp" />
+>>>>>>> master
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Application\Component.h" />
     <ClInclude Include="..\..\Src\Application\Entidad.h" />
     <ClInclude Include="..\..\Src\Application\Escenas.h" />
+<<<<<<< HEAD
     <ClInclude Include="..\..\Src\Application\GameManager_c.h" />
+=======
+>>>>>>> master
     <ClInclude Include="..\..\Src\Application\Hola_c.h" />
     <ClInclude Include="..\..\Src\Application\Mision_c.h" />
     <ClInclude Include="..\..\Src\Application\Nice_c.h" />
+<<<<<<< HEAD
+=======
+    <ClInclude Include="..\..\Src\Application\Render_c.h" />
+>>>>>>> master
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{E2595455-6AE6-4E56-AFDD-820B8F62CAC1}</ProjectGuid>
@@ -84,7 +98,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>OgreMain_d.lib;%(AdditionalDependencies);PhysX3_*.lib;PhysX3Common_*.lib;PxFoundation_*.lib;PhysX3_*.lib;PhysX3Common_*.lib;PxFoundation_*.lib</AdditionalDependencies>
+      <AdditionalDependencies>OgreMain_d.lib;%(AdditionalDependencies);PhysX3_*.lib;PhysX3Common_*.lib;PxFoundation_*.lib;OIS.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\OIS-master\build\lib\Debug;$(SolutionDir)Dependencies\OIS\build\lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
