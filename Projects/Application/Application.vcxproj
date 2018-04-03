@@ -13,17 +13,19 @@
   <ItemGroup>
     <ClCompile Include="..\..\Src\Application\Component.cpp" />
     <ClCompile Include="..\..\Src\Application\Entidad.cpp" />
+    <ClCompile Include="..\..\Src\Application\Escenas.cpp" />
     <ClCompile Include="..\..\Src\Application\Hola_c.cpp" />
     <ClCompile Include="..\..\Src\Application\Nice_c.cpp" />
     <ClCompile Include="..\..\Src\Application\ProyectoBasico.cpp" />
-    <ClCompile Include="Escenas.cpp" />
+    <ClCompile Include="..\..\Src\Application\Render_c.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Application\Component.h" />
     <ClInclude Include="..\..\Src\Application\Entidad.h" />
+    <ClInclude Include="..\..\Src\Application\Escenas.h" />
     <ClInclude Include="..\..\Src\Application\Hola_c.h" />
     <ClInclude Include="..\..\Src\Application\Nice_c.h" />
-    <ClInclude Include="Escenas.h" />
+    <ClInclude Include="..\..\Src\Application\Render_c.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{E2595455-6AE6-4E56-AFDD-820B8F62CAC1}</ProjectGuid>
