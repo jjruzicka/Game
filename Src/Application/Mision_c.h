@@ -20,10 +20,12 @@ public:
 
 	int addCont(){
 		cont += 1;
+		return cont;
 	}
 
 	int addCont(int a){
 		cont += a;
+		return cont;
 	}
 
 	std::string getTarget(){
