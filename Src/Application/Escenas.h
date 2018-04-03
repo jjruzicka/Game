@@ -22,6 +22,7 @@ public:
 	~Escenas();
 	bool run();
 private:
+
 	bool initOgre();
 	bool initOIS();
 	std::vector<Entidad*> entidades;
@@ -56,5 +57,6 @@ private:
   Ogre::RaySceneQuery * rayScnQuery = nullptr;
   Ogre::Camera* cam = nullptr;
   */
+
 };
 

@@ -164,6 +164,7 @@ bool Escenas::run(){
 	return true;
 }
 
+
 Escenas::~Escenas()
 {
 	for (int i = 0; i < entidades.size();i++)

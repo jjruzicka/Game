@@ -14,8 +14,10 @@ int CALLBACK WinMain(
 	) {
 #endif
 
+
 	Escenas* escena = new Escenas();
 	escena->run();
+
 
 	return 0;
 }
