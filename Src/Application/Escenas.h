@@ -43,6 +43,7 @@ private:
 	SinbadMan* sinBadMgr = nullptr;
 	KnotFly* knotMgr = nullptr;
 	BombMan* bombMgr = nullptr;
+
 	ReflejoMan* planeMgr = nullptr;
 	std::vector<ObjectMan*> vecObjMan;
 	Ogre::SceneManager* scnMgr = nullptr;

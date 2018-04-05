@@ -27,7 +27,6 @@ bool Escenas::initOgre(){
 
 	//Parsing the config file into the system.
 	root = new Ogre::Root(plugins);
-
 	try{
 		cf.load(recursos);
 	}
@@ -145,6 +144,7 @@ bool Escenas::run(){
 
 		/*mInputMgr->capture();
 		if (cont == 2) {
+
 		handleInput();
 		cont = 0;
 		}
@@ -153,6 +153,8 @@ bool Escenas::run(){
 		//cont++;
 		for (int i = 0; entidades.size(); i++)
 			entidades[i]->Update();
+		
+		
 		//}
 		// render ogre
 		Ogre::WindowEventUtilities::messagePump();
@@ -171,3 +173,4 @@ Escenas::~Escenas()
 	for (int i = 0; i < entidades.size(); i++)
 		delete entidades[i];
 }
+
