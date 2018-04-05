@@ -28,11 +28,20 @@
     <ClCompile Include="..\..\Src\Application\ProyectoBasico.cpp">
       <Filter>Code</Filter>
     </ClCompile>
+
+    <ClCompile Include="..\..\Src\Application\InputComponent.cpp">
+      <Filter>Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\PlayerController_c.cpp">
+      <Filter>Code</Filter>
+    </ClCompile>
+
     <ClCompile Include="..\..\Src\Application\Inventario_c.cpp">
       <Filter>Code</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\Application\Objeto.cpp">
       <Filter>Code</Filter>
+
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -58,6 +67,12 @@
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\Render_c.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\InputComponent.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\PlayerController_c.h">
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\Inventario_c.h">

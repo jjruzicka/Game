@@ -27,7 +27,6 @@ bool Escenas::initOgre(){
 
 	//Parsing the config file into the system.
 	root = new Ogre::Root(plugins);
-	
 	try{
 		cf.load(recursos);
 	}
@@ -93,7 +92,7 @@ bool Escenas::initOgre(){
 	//we generate the default sceneManager. (more SceneManagers in Ogre::ST_....)
 	scnMgr = root->createSceneManager(Ogre::ST_GENERIC);
 
-	
+
 	return true;
 }
 
@@ -131,7 +130,7 @@ bool Escenas::run(){
 	camNode->attachObject(cam);
 	cam->setQueryFlags(MY_QUERY_IGNORE);
 
-	
+
 
 
 	// and tell it to render into the main window
@@ -139,20 +138,23 @@ bool Escenas::run(){
 	vp = mWindow->addViewport(cam);
 	vp->setBackgroundColour(Ogre::ColourValue(150, 150, 150));
 	//vp->setBackgroundColour(Ogre::ColourValue(1, 1, 1));
-	
+
 	while (true)
 	{
 
 		/*mInputMgr->capture();
 		if (cont == 2) {
-			handleInput();
-			cont = 0;
+
+		handleInput();
+		cont = 0;
 		}
 		*/
 		//else{
-			//cont++;
-			for (int i = 0; entidades.size();i++)
-				entidades[i]->Update();
+		//cont++;
+		for (int i = 0; entidades.size(); i++)
+			entidades[i]->Update();
+		
+		
 		//}
 		// render ogre
 		Ogre::WindowEventUtilities::messagePump();
@@ -168,6 +170,7 @@ bool Escenas::run(){
 
 Escenas::~Escenas()
 {
-	for (int i = 0; i < entidades.size();i++)
+	for (int i = 0; i < entidades.size(); i++)
 		delete entidades[i];
 }
+

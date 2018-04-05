@@ -39,24 +39,19 @@ private:
 	Ogre::Camera* cam = nullptr;
 	Ogre::SceneNode* camNode = nullptr;
 	/*  //Gestor de paneles
-
 	OgreBites::CameraMan* camMan = nullptr;
 	SinbadMan* sinBadMgr = nullptr;
 	KnotFly* knotMgr = nullptr;
 	BombMan* bombMgr = nullptr;
 
 	ReflejoMan* planeMgr = nullptr;
-
 	std::vector<ObjectMan*> vecObjMan;
-
 	Ogre::SceneManager* scnMgr = nullptr;
-
-  OgreBites::TrayManager* trayMgr = nullptr;
-  Ogre::SceneNode* lightNode = nullptr;
-  Ogre::SceneNode* camNode = nullptr;
-  Ogre::RaySceneQuery * rayScnQuery = nullptr;
-  Ogre::Camera* cam = nullptr;
-  */
+	OgreBites::TrayManager* trayMgr = nullptr;
+	Ogre::SceneNode* lightNode = nullptr;
+	Ogre::SceneNode* camNode = nullptr;
+	Ogre::RaySceneQuery * rayScnQuery = nullptr;
+	Ogre::Camera* cam = nullptr;
+	*/
 
 };
-

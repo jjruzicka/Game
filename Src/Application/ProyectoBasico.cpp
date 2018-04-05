@@ -1,5 +1,4 @@
 #include <stdio.h>
-
 #include "Escenas.h"
 
 #ifdef _DEBUG || !_WIN32
@@ -13,7 +12,6 @@ int CALLBACK WinMain(
 	_In_ int       nCmdShow
 	) {
 #endif
-
 
 	Escenas* escena = new Escenas();
 	escena->run();
