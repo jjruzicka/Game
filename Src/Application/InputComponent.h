@@ -13,7 +13,7 @@ class InputComponent :
 	public Component, public OIS::KeyListener, public OIS::MouseListener
 {
 public:
-	InputComponent(Entidad* ent);
+	InputComponent();
 	virtual void Update(){};
 	void initialise(Ogre::RenderWindow *renderWindow);
 	void capture(void);
@@ -44,7 +44,6 @@ public:
 	static InputComponent* getSingletonPtr(void);
 	 ~InputComponent();
 private:
-	InputComponent(void);
 	InputComponent(const InputComponent&) { }
 	InputComponent & operator = (const InputComponent& i);
 

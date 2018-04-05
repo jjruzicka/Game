@@ -15,6 +15,8 @@
 #include <OgreTextureManager.h>
 #include <OgreWindowEventUtilities.h>
 #include <OgreException.h>
+
+#include "InputComponent.h"
 class Escenas
 {
 public:
@@ -38,6 +40,8 @@ private:
 
 	Ogre::Camera* cam = nullptr;
 	Ogre::SceneNode* camNode = nullptr;
+
+	InputComponent* inputcomp_;
 	/*  //Gestor de paneles
 	OgreBites::CameraMan* camMan = nullptr;
 	SinbadMan* sinBadMgr = nullptr;

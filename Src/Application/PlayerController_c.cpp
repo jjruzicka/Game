@@ -1,10 +1,10 @@
 #include "PlayerController_c.h"
+#include <iostream>
 
-
-PlayerController_c::PlayerController_c(Entidad * ent) : InputComponent(ent)
+PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input)
 {
-	inputcomp_ = InputComponent::getSingletonPtr();
-	inputcomp_->initialise(renderWindow);
+	inputcomp_ = input;
+	entidad = ent;
 	inputcomp_->addKeyListener(this, "teclado");
 	inputcomp_->addMouseListener(this, "raton");
 }
@@ -31,7 +31,7 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 
 	case OIS::KC_UP:
 	case OIS::KC_W:
-		/*mDirection.z = -mMove;*/
+		entidad->setPox(1);
 		break;
 
 	case OIS::KC_DOWN:
@@ -73,7 +73,7 @@ bool PlayerController_c::keyReleased(const OIS::KeyEvent& keyP){
 	{
 	case OIS::KC_UP:
 	case OIS::KC_W:
-		/*mDirection.z = 0;*/
+		entidad->setPox(0);
 		break;
 
 	case OIS::KC_DOWN:
@@ -144,7 +144,6 @@ bool PlayerController_c::mouseReleased(const OIS::MouseEvent& me, OIS::MouseButt
 
 void PlayerController_c::Update(){
 	
-	inputcomp_->capture();
 	
 
 }

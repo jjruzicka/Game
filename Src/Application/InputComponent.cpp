@@ -2,11 +2,11 @@
 
 InputComponent *InputComponent::mInputComponent;
 
-InputComponent::InputComponent(Entidad* ent) :mMouse(0),
+InputComponent::InputComponent() :mMouse(0),
 mKeyboard(0),
 mInputSystem(0)
 {
-	entidad = ent;
+	
 }
 
 

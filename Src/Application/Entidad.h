@@ -51,6 +51,17 @@ public:
 		return rotation.z;
 	}
 
+
+	void setPox(int x){
+		posicion.x = x;
+	}
+	void setPoy(int y){
+		posicion.y=y;
+	}
+	void setPoz(int z){
+		 posicion.z=z;
+	}
+
 private:
 	std::vector<Component*> componentes;
 

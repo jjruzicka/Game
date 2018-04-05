@@ -1,5 +1,6 @@
 #include "Escenas.h"
 #include "Render_c.h"
+#include "PlayerController_c.h"
 
 using namespace Ogre;
 enum QueryFlags {
@@ -16,9 +17,19 @@ Escenas::Escenas()
 	recursos = "OgreD/resources.cfg";
 #endif
 	initOgre();
+	inputcomp_ = InputComponent::getSingletonPtr();
+	inputcomp_->initialise(mWindow);
+
+
 	Entidad* ent1 = new Entidad();
+	PlayerController_c * ois = new PlayerController_c(ent1,inputcomp_);
 	//parametros de createChildSceneNode(nombre del nodo,puntero a la entidad que contiene este nodo, nombre de la malla sin el .mesh)
 	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("cabeza"), ent1, "ogrehead");
+	ent1->AddComponent(render);
+	entidades.reserve(1);
+	entidades.push_back(ent1);
+
+
 }
 bool Escenas::initOgre(){
 
@@ -142,7 +153,8 @@ bool Escenas::run(){
 	while (true)
 	{
 
-		/*mInputMgr->capture();
+		inputcomp_->capture();
+		/*
 		if (cont == 2) {
 
 		handleInput();
@@ -151,7 +163,7 @@ bool Escenas::run(){
 		*/
 		//else{
 		//cont++;
-		for (int i = 0; entidades.size(); i++)
+		for (int i = 0; i<entidades.size(); i++)
 			entidades[i]->Update();
 		
 		

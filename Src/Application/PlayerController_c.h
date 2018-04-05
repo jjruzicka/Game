@@ -7,7 +7,7 @@ class PlayerController_c :
 	public InputComponent
 {
 public:
-	PlayerController_c(Entidad* ent);
+	PlayerController_c(Entidad* ent,InputComponent * input);
 	void Update();
 
 	~PlayerController_c();
@@ -18,7 +18,8 @@ private:
 	bool mousePressed(const OIS::MouseEvent& me, OIS::MouseButtonID id);
 	bool mouseReleased(const OIS::MouseEvent& me, OIS::MouseButtonID id);
 	InputComponent* inputcomp_;
-	Ogre::RenderWindow *renderWindow;
+	Entidad* entidad;
+	
 
 
 };

@@ -14,7 +14,7 @@ Render_c::Render_c(Ogre::SceneNode*src, Entidad* ent, std::string nombre)
 }
 
 void Render_c::Update(){
-
+	node->translate(ent->getPox(), ent->getPoy(), ent->getPoz());
 }
 Render_c::~Render_c()
 {
