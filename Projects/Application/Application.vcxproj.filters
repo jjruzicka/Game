@@ -30,13 +30,13 @@
     <ClCompile Include="..\..\Src\Application\Nice_c.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Escenas.cpp">
+    <ClCompile Include="..\..\Src\Application\InputComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="InputComponent.cpp">
+    <ClCompile Include="..\..\Src\Application\PlayerController_c.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerController_c.cpp">
+    <ClCompile Include="..\..\Src\Application\Escenas.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -53,13 +53,13 @@
     <ClInclude Include="..\..\Src\Application\Nice_c.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Escenas.h">
+    <ClInclude Include="..\..\Src\Application\InputComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="InputComponent.h">
+    <ClInclude Include="..\..\Src\Application\PlayerController_c.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerController_c.h">
+    <ClInclude Include="..\..\Src\Application\Escenas.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
