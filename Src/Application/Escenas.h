@@ -21,6 +21,7 @@ public:
 	Escenas();
 	~Escenas();
 	bool run();
+    Ogre::RenderWindow* getWindow(){ return mWindow; }
 private:
 
 	bool initOgre();

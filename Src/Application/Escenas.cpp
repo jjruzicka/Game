@@ -17,6 +17,7 @@ Escenas::Escenas()
 #endif
 	initOgre();
 	Entidad* ent1 = new Entidad();
+    camNode = scnMgr->getRootSceneNode()->createChildSceneNode("nCam");
 	//parametros de createChildSceneNode(nombre del nodo,puntero a la entidad que contiene este nodo, nombre de la malla sin el .mesh)
 	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("cabeza"), ent1, "ogrehead");
 }
