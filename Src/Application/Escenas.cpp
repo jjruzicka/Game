@@ -22,6 +22,7 @@ Escenas::Escenas()
 
 
 	Entidad* ent1 = new Entidad();
+	
 	PlayerController_c * ois = new PlayerController_c(ent1,inputcomp_);
 	//parametros de createChildSceneNode(nombre del nodo,puntero a la entidad que contiene este nodo, nombre de la malla sin el .mesh)
 	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("cabeza"), ent1, "ogrehead");
@@ -129,12 +130,36 @@ bool Escenas::run(){
 
 	// also need to tell where we are
 	camNode = scnMgr->getRootSceneNode()->createChildSceneNode();
-	camNode->setPosition(0, 0, 100);
-	camNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_WORLD);
+	/*camNode->setPosition(0, 0, 100);
+	camNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_WORLD); //esto lo que habia antes
+*/
+	// para la escena, pruebas
+	camNode->setPosition(Ogre::Vector3(1683, 50, 2116));
+	camNode->lookAt(Ogre::Vector3(1963, 50, 1660), Ogre::Node::TS_WORLD);
+	//camNode->setNearClipDistance(0.1);
+	/*bool infiniteClip =
+	mRoot->getRenderSystem()->getCapabilities()->hasCapability(
+	Ogre::RSC_INFINITE_FAR_PLANE);
+
+	if (infiniteClip)
+	camNode->setFarClipDistance(0);
+	else
+	camNode->setFarClipDistance(50000);*/
+
+	// Fog
+	/*Ogre::ColourValue fadeColour(.9, .9, .9);
+	mWindow->getViewport(0)->setBackgroundColour(fadeColour);
+
+	scnMgr->setFog(Ogre::FOG_EXP2, fadeColour, 0.002);*/
+
+	// Terrain
+	mapa = new Mapa(scnMgr, light);
+	mapa->createmap();
+	//------------------------------------------------------------------
 
 	// create the camera
 	cam = scnMgr->createCamera("Cam");
-	cam->setNearClipDistance(1);
+	cam->setNearClipDistance(0.1); //esto antes era 1
 	cam->setFarClipDistance(10000);
 	cam->setAutoAspectRatio(true);
 	//cam->setPolygonMode(Ogre::PM_WIREFRAME);  // en material
