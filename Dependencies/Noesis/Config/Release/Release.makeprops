@@ -1,0 +1,5 @@
+# icf=safe is only valid for google gold linker. Make sure /usr/bin/ld points to ld.gold
+
+CFLAGS_RELEASE = $(CFLAGS) -Ofast -DNDEBUG -ffunction-sections -fdata-sections -fomit-frame-pointer
+CPPFLAGS_RELEASE = $(CPPFLAGS) -Ofast -DNDEBUG -ffunction-sections -fdata-sections -fomit-frame-pointer
+LFLAGS_RELEASE = $(LFLAGS) -Wl,-O3,--gc-sections,--icf=safe

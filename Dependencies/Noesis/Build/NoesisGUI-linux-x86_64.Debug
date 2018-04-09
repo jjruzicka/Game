@@ -1,0 +1,25 @@
+####################################################################################################
+# DIST: NoesisGUI-linux-x86_64
+####################################################################################################
+
+PROJECTS = ../Src/Packages/NoesisApp/Projects/linux_x86_64 ../Src/Packages/Gui/XamlPlayer/Projects/linux_x86_64 ../Src/Packages/Samples/Integration/Projects/linux_x86_64 ../Src/Packages/Samples/IntegrationGLUT/Projects/linux_x86_64 ../Src/Packages/Samples/HelloWorld/Projects/linux_x86_64 ../Src/Packages/Samples/Buttons/Projects/linux_x86_64 ../Src/Packages/Samples/Login/Projects/linux_x86_64 ../Src/Packages/Samples/QuestLog/Projects/linux_x86_64 ../Src/Packages/Samples/Scoreboard/Projects/linux_x86_64 ../Src/Packages/Samples/DataBinding/Projects/linux_x86_64 ../Src/Packages/Samples/ApplicationTutorial/Projects/linux_x86_64 ../Src/Packages/Samples/Commands/Projects/linux_x86_64 ../Src/Packages/Samples/UserControl/Projects/linux_x86_64 ../Src/Packages/Samples/CustomControl/Projects/linux_x86_64 ../Src/Packages/Samples/BlendTutorial/Projects/linux_x86_64 ../Src/Packages/Samples/Menu3D/Projects/linux_x86_64 ../Src/Packages/Samples/Localization/Projects/linux_x86_64
+PREFIX = ../Src/Packages
+BINDIR = ../Bin/linux_x86_64
+LIBDIR = ../Lib/linux_x86_64
+
+include ../Config/Common.makeprops
+include ../Config/Debug/Debug.makeprops
+
+.SUFFIXES:
+
+all: build
+
+DEBUG_ADDITIONAL_DEPS :=
+DEBUG_COMPILE_TARGETS :=
+DEBUG_CLEAN_TARGETS :=
+
+include $(patsubst %, %/Debug.makeinc, $(PROJECTS))
+-include $(DEBUG_ADDITIONAL_DEPS)
+
+build: $(DEBUG_COMPILE_TARGETS)
+clean: $(DEBUG_CLEAN_TARGETS)

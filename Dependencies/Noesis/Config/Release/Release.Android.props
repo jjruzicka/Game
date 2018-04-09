@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_PropertySheetDisplayName>Noesis Release</_PropertySheetDisplayName>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <OptimizationLevel>Level3</OptimizationLevel>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <FastMath>true</FastMath>
+      <!-- <LinkTimeOptimization>true</LinkTimeOptimization> -->
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <InfoStripping>StripSymsAndDebug</InfoStripping>
+    </Link>
+    <Link>
+      <DataStripping>StripFuncsAndData</DataStripping>
+    </Link>
+    <Link>
+      <DuplicateStripping>true</DuplicateStripping>
+      <Relocation>true</Relocation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup />
+</Project>

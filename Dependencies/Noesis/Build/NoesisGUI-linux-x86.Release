@@ -1,0 +1,25 @@
+####################################################################################################
+# DIST: NoesisGUI-linux-x86
+####################################################################################################
+
+PROJECTS = ../Src/Packages/NoesisApp/Projects/linux_x86 ../Src/Packages/Gui/XamlPlayer/Projects/linux_x86 ../Src/Packages/Samples/Integration/Projects/linux_x86 ../Src/Packages/Samples/IntegrationGLUT/Projects/linux_x86 ../Src/Packages/Samples/HelloWorld/Projects/linux_x86 ../Src/Packages/Samples/Buttons/Projects/linux_x86 ../Src/Packages/Samples/Login/Projects/linux_x86 ../Src/Packages/Samples/QuestLog/Projects/linux_x86 ../Src/Packages/Samples/Scoreboard/Projects/linux_x86 ../Src/Packages/Samples/DataBinding/Projects/linux_x86 ../Src/Packages/Samples/ApplicationTutorial/Projects/linux_x86 ../Src/Packages/Samples/Commands/Projects/linux_x86 ../Src/Packages/Samples/UserControl/Projects/linux_x86 ../Src/Packages/Samples/CustomControl/Projects/linux_x86 ../Src/Packages/Samples/BlendTutorial/Projects/linux_x86 ../Src/Packages/Samples/Menu3D/Projects/linux_x86 ../Src/Packages/Samples/Localization/Projects/linux_x86
+PREFIX = ../Src/Packages
+BINDIR = ../Bin/linux_x86
+LIBDIR = ../Lib/linux_x86
+
+include ../Config/Common.makeprops
+include ../Config/Release/Release.makeprops
+
+.SUFFIXES:
+
+all: build
+
+RELEASE_ADDITIONAL_DEPS :=
+RELEASE_COMPILE_TARGETS :=
+RELEASE_CLEAN_TARGETS :=
+
+include $(patsubst %, %/Release.makeinc, $(PROJECTS))
+-include $(RELEASE_ADDITIONAL_DEPS)
+
+build: $(RELEASE_COMPILE_TARGETS)
+clean: $(RELEASE_CLEAN_TARGETS)

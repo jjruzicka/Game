@@ -1,0 +1,2 @@
+svn://svn.noesisengine.com/Noesis/NoesisSDK/trunk
+2.1.0f1 (r6972)

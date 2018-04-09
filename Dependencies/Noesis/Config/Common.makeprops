@@ -1,0 +1,5 @@
+# maybe-uninitialized is activated in gcc (not clang) by default and the analysis is imperfect.
+
+CFLAGS = -g -msse2 -mfpmath=sse -pipe -Wall -Wno-maybe-uninitialized -Werror -Wfatal-errors -Wtype-limits -D_FILE_OFFSET_BITS=64 -fvisibility=hidden
+CPPFLAGS = $(CFLAGS) -std=c++11 -Wno-invalid-offsetof -fno-exceptions -fvisibility-inlines-hidden -fno-threadsafe-statics
+LFLAGS = -g -Wall -Werror -Wextra

@@ -1,0 +1,5 @@
+#include "../Common.xcconfig"
+
+GCC_OPTIMIZATION_LEVEL = fast
+OTHER_CFLAGS[sdk=macosx*] = -fomit-frame-pointer
+GCC_PREPROCESSOR_DEFINITIONS = NDEBUG

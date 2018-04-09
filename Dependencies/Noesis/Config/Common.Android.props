@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.30501.0</_ProjectFileVersion>
+    <_PropertySheetDisplayName>Noesis Common</_PropertySheetDisplayName>
+    <IntDir>$(ProjectDir)build\$(Configuration)\</IntDir>
+    <UseMultiToolTask>true</UseMultiToolTask>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <WarningsAsErrors>true</WarningsAsErrors>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <WarningLevel>EnableAllWarnings</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <ExceptionHandling>Disabled</ExceptionHandling>
+      <CppLanguageStandard>c++11</CppLanguageStandard>
+      <DebugInformationFormat>FullDebug</DebugInformationFormat>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <Link>
+      <DebuggerSymbolInformation>true</DebuggerSymbolInformation>
+      <Relocation>false</Relocation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup />
+</Project>
