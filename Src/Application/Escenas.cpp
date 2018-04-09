@@ -1,7 +1,7 @@
 #include "Escenas.h"
 #include "Render_c.h"
 #include "PlayerController_c.h"
-
+#include "Objeto.h"
 using namespace Ogre;
 enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
@@ -17,6 +17,7 @@ Escenas::Escenas()
 	recursos = "OgreD/resources.cfg";
 #endif
 	initOgre();
+	initPhysx();
 	inputcomp_ = InputComponent::getSingletonPtr();
 	inputcomp_->initialise(mWindow);
 
@@ -28,7 +29,6 @@ Escenas::Escenas()
 	ent1->AddComponent(render);
 	entidades.reserve(1);
 	entidades.push_back(ent1);
-
 
 }
 bool Escenas::initOgre(){
@@ -104,6 +104,28 @@ bool Escenas::initOgre(){
 	scnMgr = root->createSceneManager(Ogre::ST_GENERIC);
 
 
+	return true;
+}
+bool Escenas::initPhysx(){
+	/*static	physx::PxDefaultErrorCallback gDefaultErrorCallback;
+	static physx::PxDefaultAllocator gDefaultAllocatorCallback;
+	
+	mFoundation = PxCreateFoundation(PX_FOUNDATION_VERSION, gDefaultAllocatorCallback, gDefaultErrorCallback);
+	if (!mFoundation)
+		return false;
+	
+	bool recordMemoryAllocations = true;
+
+	mPvd = physx::PxCreatePvd(*mFoundation);
+	physx::PxPvdTransport* transport = physx::PxDefaultPvdSocketTransportCreate("PVD_HOST", 5425, 10);
+	mPvd->connect(*transport, physx::PxPvdInstrumentationFlag::eALL);
+
+
+	mPhysics = PxCreatePhysics(PX_PHYSICS_VERSION, *mFoundation,
+		physx::PxTolerancesScale(), recordMemoryAllocations, mPvd);
+	if (!mPhysics)
+		return false;
+	*/
 	return true;
 }
 

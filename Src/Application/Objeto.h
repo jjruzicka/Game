@@ -1,7 +1,7 @@
 #ifndef OBJETO_H
 #define OBJETO_H
 #include "Entidad.h"
-class Objeto : Entidad
+class Objeto : public Entidad
 {
 public:
     Objeto(std::string id);

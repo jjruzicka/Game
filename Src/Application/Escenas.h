@@ -15,7 +15,9 @@
 #include <OgreTextureManager.h>
 #include <OgreWindowEventUtilities.h>
 #include <OgreException.h>
-
+#include <PxPhysics.h>
+#include <PxPhysicsAPI.h>
+#include <PxPhysXConfig.h>
 #include "InputComponent.h"
 class Escenas
 {
@@ -23,13 +25,15 @@ public:
 	Escenas();
 	~Escenas();
 	bool run();
+	bool initPhysx();
 private:
 
 	bool initOgre();
-	bool initOIS();
 	std::vector<Entidad*> entidades;
 
-
+	physx::PxFoundation* mFoundation;
+	physx::PxPhysics* mPhysics;
+	physx::PxPvd* mPvd;
 	std::string recursos, plugins;
 	Ogre::Root *root;
 	Ogre::ConfigFile cf;
@@ -42,20 +46,5 @@ private:
 	Ogre::SceneNode* camNode = nullptr;
 
 	InputComponent* inputcomp_;
-	/*  //Gestor de paneles
-	OgreBites::CameraMan* camMan = nullptr;
-	SinbadMan* sinBadMgr = nullptr;
-	KnotFly* knotMgr = nullptr;
-	BombMan* bombMgr = nullptr;
-
-	ReflejoMan* planeMgr = nullptr;
-	std::vector<ObjectMan*> vecObjMan;
-	Ogre::SceneManager* scnMgr = nullptr;
-	OgreBites::TrayManager* trayMgr = nullptr;
-	Ogre::SceneNode* lightNode = nullptr;
-	Ogre::SceneNode* camNode = nullptr;
-	Ogre::RaySceneQuery * rayScnQuery = nullptr;
-	Ogre::Camera* cam = nullptr;
-	*/
 
 };

@@ -20,9 +20,7 @@ void Inventario_c::Update(){
 
 }
 
-/*void Inventario_c::addObject(Component *c){
-	inventario2.insert({ e->getID(), c });
-}*/
+
 void Inventario_c::addObject(Objeto *e) {
 
 	if (inventario.count(e->getID()) == 0)
