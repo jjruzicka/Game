@@ -15,7 +15,7 @@
 #include <OgreTextureManager.h>
 #include <OgreWindowEventUtilities.h>
 #include <OgreException.h>
-
+#include "Mapa.h"
 #include "InputComponent.h"
 class Escenas
 {
@@ -29,7 +29,7 @@ private:
 	bool initOIS();
 	std::vector<Entidad*> entidades;
 
-
+	Mapa* mapa;
 	std::string recursos, plugins;
 	Ogre::Root *root;
 	Ogre::ConfigFile cf;
