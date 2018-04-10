@@ -41,14 +41,14 @@ void Mapa::createmap(){
 	mTerrainGroup->freeTemporaryResources();
 
 	// Sky Techniques
-	// mSceneMgr->setSkyBox(true, "Examples/SpaceSkyBox", 300, false);
+	 //scn->setSkyBox(true, "Examples/SpaceSkyBox", 300, false);
 	//scn->setSkyDome(true, "Examples/CloudySky", 5, 8);
-	 /*Ogre::Plane plane;
+	 Ogre::Plane plane;
 	 plane.d = 1000;
 	 plane.normal = Ogre::Vector3::NEGATIVE_UNIT_Y;
 
 	 scn->setSkyPlane(
-	   true, plane, "Examples/SpaceSkyPlane", 1500, 40, true, 1.5, 150, 150);*/
+	   true, plane, "Examples/SpaceSkyPlane", 1500, 40, true, 1.5, 150, 150);
 }
 
 void getTerrainImage(bool flipX, bool flipY, Ogre::Image& img)

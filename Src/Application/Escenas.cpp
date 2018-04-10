@@ -110,22 +110,33 @@ bool Escenas::initOgre(){
 
 bool Escenas::run(){
 	// without light we would just get a black screen    
-	Light* light = scnMgr->createLight("Light");
-	light->setDirection(Ogre::Vector3::NEGATIVE_UNIT_Z); // !!! opngl <-> dirección a la fuente de luz
-	lightNode = scnMgr->getRootSceneNode()->createChildSceneNode();
-	lightNode->setPosition(0, 0, 100);
-	lightNode->attachObject(light);
+	//Light* light = scnMgr->createLight("Light");
+	//light->setDirection(Ogre::Vector3::NEGATIVE_UNIT_Z); // !!! opngl <-> dirección a la fuente de luz
+	//lightNode = scnMgr->getRootSceneNode()->createChildSceneNode();
+	//lightNode->setPosition(0, 0, 100);
+	//lightNode->attachObject(light);
 
-	Light* spotLight = scnMgr->createLight("SpotLight");
-	spotLight->setDiffuseColour(0, 0, 1.0);
-	spotLight->setSpecularColour(0, 0, 1.0);
-	spotLight->setType(Light::LT_SPOTLIGHT);
-	spotLight->setDirection(Vector3::NEGATIVE_UNIT_Z);
-	SceneNode* spotLightNode = scnMgr->getRootSceneNode()->createChildSceneNode();
-	spotLightNode->attachObject(spotLight);
-	spotLightNode->setDirection(-1, -1, 0);
-	spotLightNode->setPosition(Vector3(200, 200, 0));
-	spotLight->setSpotlightRange(Degree(60), Degree(100));
+	//Light* spotLight = scnMgr->createLight("SpotLight");
+	//spotLight->setDiffuseColour(0, 0, 1.0);
+	//spotLight->setSpecularColour(0, 0, 1.0);
+	//spotLight->setType(Light::LT_SPOTLIGHT);
+	//spotLight->setDirection(Vector3::NEGATIVE_UNIT_Z);
+	//SceneNode* spotLightNode = scnMgr->getRootSceneNode()->createChildSceneNode();
+	//spotLightNode->attachObject(spotLight);
+	//spotLightNode->setDirection(-1, -1, 0);
+	//spotLightNode->setPosition(Vector3(200, 200, 0));
+	//spotLight->setSpotlightRange(Degree(60), Degree(100));
+
+	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
+	lightdir.normalise();
+
+	Ogre::Light* light = scnMgr->createLight("tstLight");
+	light->setType(Ogre::Light::LT_DIRECTIONAL);
+	light->setDirection(lightdir);
+	light->setDiffuseColour(Ogre::ColourValue::White);
+	light->setSpecularColour(Ogre::ColourValue(0.4, 0.4, 0.4));
+
+	scnMgr->setAmbientLight(Ogre::ColourValue(0.2, 0.2, 0.2));
 
 
 	// also need to tell where we are
