@@ -42,7 +42,7 @@ void Mapa::createmap(){
 
 	// Sky Techniques
 	// mSceneMgr->setSkyBox(true, "Examples/SpaceSkyBox", 300, false);
-	//scn->setSkyDome(true, "Examples/CloudySky", 5, 8);
+	scn->setSkyDome(true, "Examples/CloudySky", 5, 8);
 	 /*Ogre::Plane plane;
 	 plane.d = 1000;
 	 plane.normal = Ogre::Vector3::NEGATIVE_UNIT_Y;
