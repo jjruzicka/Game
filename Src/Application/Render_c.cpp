@@ -8,6 +8,7 @@ Render_c::Render_c(Ogre::SceneNode*src, Entidad* ent, std::string nombre)
 	std::string mesh = nombre + ".mesh";
 	entOgre = node->getCreator()->createEntity(nombre, mesh);
 	node->translate(ent->getPox(), ent->getPoy(), ent->getPoz());
+	//ent->setGpos(ent->getPox(), ent->getPoy(), ent->getPoz());
 	
 	node->attachObject(entOgre);
 	
@@ -15,6 +16,7 @@ Render_c::Render_c(Ogre::SceneNode*src, Entidad* ent, std::string nombre)
 
 void Render_c::Update(){
 	node->translate(ent->getPox(), ent->getPoy(), ent->getPoz());
+	ent->setGpos(ent->getPox(), ent->getPoy(), ent->getPoz());
 }
 Render_c::~Render_c()
 {
