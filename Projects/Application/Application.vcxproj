@@ -91,13 +91,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\OIS-master\includes;$(SolutionDir)Dependencies\Ogre\OgreMain\include;$(SolutionDir)Dependencies\Ogre\Build\include;$(SolutionDir)Dependencies\PhysX_3.4\Include;$(SolutionDir)Src\Application;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\OIS-master\includes;$(SolutionDir)Dependencies\Ogre\OgreMain\include;$(SolutionDir)Dependencies\Ogre\Build\include;$(SolutionDir)Src\Application;$(SolutionDir)Dependencies\Bullet3\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>OgreMain_d.lib;%(AdditionalDependencies);PhysX3_*.lib;PhysX3Common_*.lib;PxFoundation_*.lib;OIS.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\OIS-master\build\lib\Debug;$(SolutionDir)Dependencies\OIS\build\lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OgreMain_d.lib;OIS.lib;Bullet3Collision_Debug.lib;Bullet3Common_Debug.lib;Bullet3Dynamics_Debug.lib;Bullet3Geometry_Debug.lib;Bullet3OpenCL_clew_Debug.lib;BulletCollision_Debug.lib;BulletDynamics_Debug.lib;BulletInverseDynamics_Debug.lib;BulletSoftBody_Debug.lib;LinearMath_Debug.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\OIS-master\build\lib\Debug;$(SolutionDir)Dependencies\OIS\build\lib\Debug;$(SolutionDir)Dependencies\Bullet3\lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -109,15 +109,15 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\OIS-master\includes;$(SolutionDir)Dependencies\Ogre\OgreMain\include;$(SolutionDir)Dependencies\Ogre\Build\include;$(SolutionDir)Dependencies\PhysX_3.4\Include;$(SolutionDir)Src\Application;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\OIS-master\includes;$(SolutionDir)Dependencies\Ogre\OgreMain\include;$(SolutionDir)Dependencies\Ogre\Build\include;$(SolutionDir)Src\Application;$(SolutionDir)Dependencies\Bullet3\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>OgreMain.lib;%(AdditionalDependencies);PhysX3_*.lib;PhysX3Common_*.lib;PxFoundation_*.lib;PhysX3_*.lib;PhysX3Common_*.lib;PxFoundation_*.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\OIS-master\build\lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OgreMain.lib;Bullet3Geometry.lib;Bullet2FileLoader.lib;Bullet3Collision.lib;Bullet3Common.lib;Bullet3Dynamics.lib;Bullet3OpenCL_clew.lib;BulletCollision.lib;BulletDynamics.lib;BulletInverseDynamics.lib;BulletSoftBody.lib;LinearMath.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\OIS-master\build\lib\Release;$(SolutionDir)Dependencies\Bullet3\lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

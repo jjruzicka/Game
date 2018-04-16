@@ -3,8 +3,6 @@
 
 #include "Component.h"
 #include "Entidad.h"
-#include <PxPhysics.h>
-
 class RigidBody_c : public Component
 {
 public:
@@ -12,6 +10,7 @@ public:
 	~RigidBody_c();
 	void Update();
 private:
+
 	Entidad* ent;
 };
 

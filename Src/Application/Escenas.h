@@ -11,13 +11,11 @@
 #include "OgreSceneNode.h"
 #include <OgreConfig.h>
 #include "OgreConfigFile.h"
-
+#include <btBulletCollisionCommon.h>
+#include <btBulletDynamicsCommon.h>
 #include <OgreTextureManager.h>
 #include <OgreWindowEventUtilities.h>
 #include <OgreException.h>
-#include <PxPhysics.h>
-#include <PxPhysicsAPI.h>
-#include <PxPhysXConfig.h>
 #include "InputComponent.h"
 class Escenas
 {
@@ -25,15 +23,18 @@ public:
 	Escenas();
 	~Escenas();
 	bool run();
-	bool initPhysx();
+	bool initBullet();
 private:
 
 	bool initOgre();
 	std::vector<Entidad*> entidades;
 
-	physx::PxFoundation* mFoundation;
-	physx::PxPhysics* mPhysics;
-	physx::PxPvd* mPvd;
+	btDiscreteDynamicsWorld* world;
+	btDefaultCollisionConfiguration* collisionConfiguration;
+	btCollisionDispatcher* dispatcher;
+	btSequentialImpulseConstraintSolver* solver;
+	btBroadphaseInterface* broadPhase;
+
 	std::string recursos, plugins;
 	Ogre::Root *root;
 	Ogre::ConfigFile cf;

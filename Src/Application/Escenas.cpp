@@ -17,7 +17,7 @@ Escenas::Escenas()
 	recursos = "OgreD/resources.cfg";
 #endif
 	initOgre();
-	initPhysx();
+	initBullet();
 	inputcomp_ = InputComponent::getSingletonPtr();
 	inputcomp_->initialise(mWindow);
 
@@ -106,26 +106,20 @@ bool Escenas::initOgre(){
 
 	return true;
 }
-bool Escenas::initPhysx(){
-	/*static	physx::PxDefaultErrorCallback gDefaultErrorCallback;
-	static physx::PxDefaultAllocator gDefaultAllocatorCallback;
-	
-	mFoundation = PxCreateFoundation(PX_FOUNDATION_VERSION, gDefaultAllocatorCallback, gDefaultErrorCallback);
-	if (!mFoundation)
-		return false;
-	
-	bool recordMemoryAllocations = true;
+bool Escenas::initBullet(){
+	//build the broadPhase
+	broadPhase = new btDbvtBroadphase();
 
-	mPvd = physx::PxCreatePvd(*mFoundation);
-	physx::PxPvdTransport* transport = physx::PxDefaultPvdSocketTransportCreate("PVD_HOST", 5425, 10);
-	mPvd->connect(*transport, physx::PxPvdInstrumentationFlag::eALL);
+	//Set up the collision configuration and dispacher
+	collisionConfiguration = new btDefaultCollisionConfiguration();
+	dispatcher = new btCollisionDispatcher(collisionConfiguration);
 
+	//the actual physics solver
+	solver = new btSequentialImpulseConstraintSolver();
 
-	mPhysics = PxCreatePhysics(PX_PHYSICS_VERSION, *mFoundation,
-		physx::PxTolerancesScale(), recordMemoryAllocations, mPvd);
-	if (!mPhysics)
-		return false;
-	*/
+	//the world
+	world = new btDiscreteDynamicsWorld(dispatcher, broadPhase, solver, collisionConfiguration);
+	world->setGravity(btVector3(0, -10, 0));
 	return true;
 }
 
@@ -206,5 +200,11 @@ Escenas::~Escenas()
 {
 	for (int i = 0; i < entidades.size(); i++)
 		delete entidades[i];
+
+	delete world;
+	delete collisionConfiguration;
+	delete dispatcher;
+	delete solver;
+	delete broadPhase;
 }
 
