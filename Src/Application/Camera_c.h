@@ -17,11 +17,11 @@ public:
     Camera_c(Entidad* e, Ogre::SceneNode* camNode);
     ~Camera_c();
 
-	void Update();
+    void Update(){}
     void updateKey(float dt, const OIS::KeyEvent& keyP);
     void updateMouse(float dt, const OIS::MouseEvent& me);
 
-	void releaseKey(const OIS::KeyEvent& keyP);
+    void releaseMouse();
     /*void updateKey(float dt, const OIS::KeyEvent& keyP);
     void updateMouse(float dt, const OIS::MouseEvent& me);
 
@@ -36,7 +36,7 @@ private:
     //Ogre::Camera* cam;
     //Ogre::SceneNode* node;
     Ogre::SceneNode* cam_node;
-	bool teclaPulsada;
+	//bool teclaPulsada;
     //Ogre::SceneNode* pitch_node;
     //Ogre::RenderWindow* rndWindow;
     //InputComponent* input;

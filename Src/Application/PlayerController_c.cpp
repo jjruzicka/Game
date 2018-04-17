@@ -87,7 +87,7 @@ bool PlayerController_c::keyReleased(const OIS::KeyEvent& keyP){
 	case OIS::KC_UP:
 	case OIS::KC_W:
 		entidad->setPoz(0);
-		entidad->GetComponent(miguel)->releaseKey(keyP);
+		//entidad->GetComponent(miguel)->releaseKey(keyP);
 		
 		break;
 
@@ -161,6 +161,13 @@ bool PlayerController_c::mousePressed(const OIS::MouseEvent& me, OIS::MouseButto
 
 bool PlayerController_c::mouseReleased(const OIS::MouseEvent& me, OIS::MouseButtonID id)
 {
+    if (!me.state.buttonDown(OIS::MB_Right))
+    {
+        Camera_c * oscar = new Camera_c(entidad, camaraNode);
+        entidad->GetComponent(oscar)->releaseMouse();
+        /*mCamNode->yaw(Ogre::Degree(-mRotate * me.state.X.rel), Ogre::Node::TS_WORLD);
+        mCamNode->pitch(Ogre::Degree(-mRotate * me.state.Y.rel), Ogre::Node::TS_LOCAL);*/
+    }
 	return true;
 }
 

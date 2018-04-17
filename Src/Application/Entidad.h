@@ -64,6 +64,14 @@ public:
 		return rotation.z;
 	}
 
+    float getVRot(){
+        return velRotacion;
+    }
+
+    void setVRot(float v){
+        velRotacion=v;
+    }
+
 
 	void setPox(int x){
 		//posicion.xGlob += x;
@@ -77,6 +85,18 @@ public:
 		//posicion.zGlob += z;
 		 posicion.z=z;
 	}
+    void setRox(int x){
+        //posicion.xGlob += x;
+        rotation.x = x;
+    }
+    void setRoy(int y){
+        //posicion.yGlob += y;
+        rotation.y = y;
+    }
+    void setRoz(int z){
+        //posicion.zGlob += z;
+        rotation.z = z;
+    }
 
 	void setGpos(int xPos, int yPos, int zPos){
 		posicion.xGlob += xPos;
@@ -89,7 +109,7 @@ private:
 
 	Pos posicion;
 	Pos rotation;
-	
+    float velRotacion;
 };
 
 #endif

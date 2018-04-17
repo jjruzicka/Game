@@ -26,16 +26,26 @@ Escenas::Escenas()
 
 	//etittiiti////////
 	Entidad* ent2 = new Entidad();
-	Render_c* render2 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("cabeza2"), ent2, "robot");
+	Render_c* render2 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("cabeza2"), ent2, "robot","roboto");
 	ent2->AddComponent(render2);
 	entidades.reserve(1);
 	entidades.push_back(ent2);
+
+    /*Ogre::SceneNode* srobot = scnMgr->getRootSceneNode()->createChildSceneNode("cabeza3");
+    Entidad* ent3 = new Entidad();
+    Render_c* render3 = new Render_c(srobot, ent2, "robot", "roboto2");
+    srobot->translate(Ogre::Vector3(50, 0, 0));
+    ent3->AddComponent(render3);
+    entidades.reserve(1);
+    entidades.push_back(ent3);*/
 
 	Entidad* ent1 = new Entidad();
 	
 	PlayerController_c * ois = new PlayerController_c(ent1, inputcomp_, camNode);
 	//parametros de createChildSceneNode(nombre del nodo,puntero a la entidad que contiene este nodo, nombre de la malla sin el .mesh)
-	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("cabeza"), ent1, "ogrehead");
+    Ogre::SceneNode*src = scnMgr->getRootSceneNode()->createChildSceneNode("cabeza");
+	Render_c* render = new Render_c(src, ent1, "ogrehead","shrek1");
+    //src->rotate(Ogre::Vector3(0, 1, 0), Ogre::Degree(45));
 	ent1->AddComponent(render);
 	entidades.reserve(1);
 	entidades.push_back(ent1);
@@ -43,8 +53,8 @@ Escenas::Escenas()
 
 	// also need to tell where we are
 	camNode = scnMgr->getSceneNode("cabeza")->createChildSceneNode("camaritaDeGita");
-	camNode->setPosition(0, 0, 100);
-	camNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_WORLD);
+	camNode->setPosition(0, 0, -100);
+	camNode->lookAt(Ogre::Vector3(ent1->getGPox(), ent1->getGPoy(), ent1->getGPoz()), Ogre::Node::TS_WORLD);
 
 	// create the camera
 	cam = scnMgr->createCamera("Cam");
