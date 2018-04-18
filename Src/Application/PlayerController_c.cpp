@@ -1,7 +1,8 @@
 #include "PlayerController_c.h"
 #include <iostream>
+#include "Camera_c.h"
 
-PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input)
+PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input, Ogre::SceneNode * camNode)
 {
 	inputcomp_ = input;
 	entidad = ent;
@@ -11,6 +12,7 @@ PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input)
 
 bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 {
+	Camera_c * miguel = new Camera_c(entidad, camaraNode);
 	switch (keyP.key)
 	{
 	case OIS::KC_ESCAPE:
@@ -31,21 +33,29 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 
 	case OIS::KC_UP:
 	case OIS::KC_W:
-		entidad->setPox(1);
+		entidad->setPoz(1);
+		entidad->GetComponent(miguel)->updateKey(0.1, keyP);
+		
 		break;
 
 	case OIS::KC_DOWN:
 	case OIS::KC_S:
+		entidad->setPoz(-1);
+		entidad->GetComponent(miguel)->updateKey(0.1, keyP);
 		/*mDirection.z = mMove;*/
 		break;
 
 	case OIS::KC_LEFT:
 	case OIS::KC_A:
+		entidad->setPox(-1);
+		entidad->GetComponent(miguel)->updateKey(0.1, keyP);
 		/*mDirection.x = -mMove;*/
 		break;
 
 	case OIS::KC_RIGHT:
 	case OIS::KC_D:
+		entidad->setPox(1);
+		entidad->GetComponent(miguel)->updateKey(0.1, keyP);
 		/*mDirection.x = mMove;*/
 		break;
 
@@ -56,6 +66,8 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 
 	case OIS::KC_PGUP:
 	case OIS::KC_Q:
+		std::cout << entidad->getPox() << ", " << entidad->getPoy() << ", " << entidad->getPoz() << "\n";
+		std::cout << "Globales: " << entidad->getGPox() << ", " << entidad->getGPoy() << ", " << entidad->getGPoz() << "\n";
 		/*mDirection.y = mMove;*/
 		break;
 
@@ -69,25 +81,32 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 
 
 bool PlayerController_c::keyReleased(const OIS::KeyEvent& keyP){
+	Camera_c * miguel = new Camera_c(entidad, camaraNode);
 	switch (keyP.key)
 	{
 	case OIS::KC_UP:
 	case OIS::KC_W:
-		entidad->setPox(0);
+		entidad->setPoz(0);
+		//entidad->GetComponent(miguel)->releaseKey(keyP);
+		
 		break;
 
 	case OIS::KC_DOWN:
 	case OIS::KC_S:
+		entidad->setPoz(0);
 		/*mDirection.z = 0;*/
+
 		break;
 
 	case OIS::KC_LEFT:
 	case OIS::KC_A:
+		entidad->setPox(0);
 		/*mDirection.x = 0;*/
 		break;
 
 	case OIS::KC_RIGHT:
 	case OIS::KC_D:
+		entidad->setPox(0);
 		/*mDirection.x = 0;*/
 		break;
 
@@ -113,6 +132,8 @@ bool PlayerController_c::mouseMoved(const OIS::MouseEvent& me)
 {
 	if (me.state.buttonDown(OIS::MB_Right))
 	{
+		Camera_c * oscar = new Camera_c(entidad, camaraNode);
+		entidad->GetComponent(oscar)->updateMouse(0.1, me);
 		/*mCamNode->yaw(Ogre::Degree(-mRotate * me.state.X.rel), Ogre::Node::TS_WORLD);
 		mCamNode->pitch(Ogre::Degree(-mRotate * me.state.Y.rel), Ogre::Node::TS_LOCAL);*/
 	}
@@ -123,6 +144,8 @@ bool PlayerController_c::mouseMoved(const OIS::MouseEvent& me)
 bool PlayerController_c::mousePressed(const OIS::MouseEvent& me, OIS::MouseButtonID id)
 {
 	/*Ogre::Light* light = mSceneMgr->getLight("Light1");*/
+	/*cameraComp->updateMouse(1, me);
+	std::cout << "//////////////////////////////////////////////////////////////////////";*/
 
 	switch (id)
 	{
@@ -138,6 +161,13 @@ bool PlayerController_c::mousePressed(const OIS::MouseEvent& me, OIS::MouseButto
 
 bool PlayerController_c::mouseReleased(const OIS::MouseEvent& me, OIS::MouseButtonID id)
 {
+    if (!me.state.buttonDown(OIS::MB_Right))
+    {
+        Camera_c * oscar = new Camera_c(entidad, camaraNode);
+        entidad->GetComponent(oscar)->releaseMouse();
+        /*mCamNode->yaw(Ogre::Degree(-mRotate * me.state.X.rel), Ogre::Node::TS_WORLD);
+        mCamNode->pitch(Ogre::Degree(-mRotate * me.state.Y.rel), Ogre::Node::TS_LOCAL);*/
+    }
 	return true;
 }
 
