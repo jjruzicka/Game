@@ -3,7 +3,7 @@
 #include <string>
 Entidad::Entidad()
 {
-	posicion = { 0, 0, 0, 0, 0, 0 };
+	posicion = { 0, 0, 0 };
 	rotation = { 0, 0, 0 };
 }
 
