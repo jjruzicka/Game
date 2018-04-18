@@ -20,7 +20,7 @@ private:
 	InputComponent* inputcomp_;
 	Entidad* entidad;
 	
-
+	int auxX ,auxY, auxZ;
 
 };
 

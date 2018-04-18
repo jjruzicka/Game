@@ -7,10 +7,12 @@ PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input)
 	entidad = ent;
 	inputcomp_->addKeyListener(this, "teclado");
 	inputcomp_->addMouseListener(this, "raton");
+	auxX = auxY = auxZ = 0;
 }
 
 bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 {
+	
 	switch (keyP.key)
 	{
 	case OIS::KC_ESCAPE:
@@ -31,7 +33,9 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 
 	case OIS::KC_UP:
 	case OIS::KC_W:
-		entidad->setPox(1);
+		auxZ = entidad->getPoz();
+		auxZ += 1;
+		entidad->setPoz(auxZ);
 		break;
 
 	case OIS::KC_DOWN:
@@ -73,7 +77,7 @@ bool PlayerController_c::keyReleased(const OIS::KeyEvent& keyP){
 	{
 	case OIS::KC_UP:
 	case OIS::KC_W:
-		entidad->setPox(0);
+		auxZ = 0;
 		break;
 
 	case OIS::KC_DOWN:
@@ -143,8 +147,18 @@ bool PlayerController_c::mouseReleased(const OIS::MouseEvent& me, OIS::MouseButt
 
 
 void PlayerController_c::Update(){
-	
-	
+	if (auxX != 0){
+		auxX += 1;
+		entidad->setPox(auxX);
+	}
+	if (auxY != 0){
+		auxY += 1;
+		entidad->setPoy(auxY);
+	}
+	if (auxZ != 0){
+		auxZ += 1;
+		entidad->setPoz(auxZ);
+	}
 
 }
 

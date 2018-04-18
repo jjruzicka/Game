@@ -27,6 +27,7 @@ Escenas::Escenas()
 	//parametros de createChildSceneNode(nombre del nodo,puntero a la entidad que contiene este nodo, nombre de la malla sin el .mesh)
 	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("cabeza"), ent1, "ogrehead");
 	ent1->AddComponent(render);
+	ent1->AddComponent(ois);
 	entidades.reserve(1);
 	entidades.push_back(ent1);
 
@@ -143,8 +144,8 @@ bool Escenas::run(){
 	camNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_WORLD); //esto lo que habia antes
 */
 	// para la escena, pruebas
-	camNode->setPosition(Ogre::Vector3(1683, 50, 2116));
-	camNode->lookAt(Ogre::Vector3(1963, 50, 1660), Ogre::Node::TS_WORLD);
+	camNode->setPosition(Ogre::Vector3(0, 20, 100));
+	camNode->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TS_WORLD);
 	//camNode->setNearClipDistance(0.1);
 	/*bool infiniteClip =
 	mRoot->getRenderSystem()->getCapabilities()->hasCapability(

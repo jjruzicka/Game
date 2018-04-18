@@ -1,11 +1,12 @@
 #ifndef OBJETO_H
 #define OBJETO_H
 #include "Entidad.h"
-class Objeto : Entidad
+class Objeto : public Entidad
 {
 public:
     Objeto(std::string id);
     ~Objeto();
+	void Update();
     std::string getID(){ return identificador; }
 private:
     std::string identificador;
