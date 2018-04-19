@@ -61,13 +61,27 @@ public:
 	void setPoz(int z){
 		 posicion.z=z;
 	}
-
+	void setRox(int x){
+		rotation.x = x;
+	}
+	void setRoy(int y){
+		rotation.y = y;
+	}
+	void setRoz(int z){
+		rotation.z = z;
+	}
+	float getAngRot(){
+		return angRot;
+	}
+	void setAngRot(float z){
+		angRot = z;
+	}
 private:
 	std::vector<Component*> componentes;
 
 	Pos posicion;
 	Pos rotation;
-	
+	float angRot;
 };
 
 #endif

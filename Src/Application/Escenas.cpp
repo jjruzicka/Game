@@ -22,10 +22,8 @@ Escenas::Escenas()
 
 
 	Entidad* ent1 = new Entidad();
-	
-	PlayerController_c * ois = new PlayerController_c(ent1,inputcomp_);
-	//parametros de createChildSceneNode(nombre del nodo,puntero a la entidad que contiene este nodo, nombre de la malla sin el .mesh)
 	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("cabeza"), ent1, "ogrehead");
+	PlayerController_c * ois = new PlayerController_c(ent1,inputcomp_);
 	ent1->AddComponent(render);
 	ent1->AddComponent(ois);
 	entidades.reserve(1);

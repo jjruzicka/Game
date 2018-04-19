@@ -5,6 +5,7 @@ Entidad::Entidad()
 {
 	posicion = { 0, 0, 0 };
 	rotation = { 0, 0, 0 };
+	angRot = 0;
 }
 
 

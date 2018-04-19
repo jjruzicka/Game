@@ -45,12 +45,14 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 
 	case OIS::KC_LEFT:
 	case OIS::KC_A:
-		/*mDirection.x = -mMove;*/
+		entidad->setRoy(1);
+		entidad->setAngRot(-5);
 		break;
 
 	case OIS::KC_RIGHT:
 	case OIS::KC_D:
-		/*mDirection.x = mMove;*/
+		entidad->setRoy(1);
+		entidad->setAngRot(5);
 		break;
 
 	case OIS::KC_PGDOWN:
@@ -87,12 +89,12 @@ bool PlayerController_c::keyReleased(const OIS::KeyEvent& keyP){
 
 	case OIS::KC_LEFT:
 	case OIS::KC_A:
-		/*mDirection.x = 0;*/
+		entidad->setRoy(0);
 		break;
 
 	case OIS::KC_RIGHT:
 	case OIS::KC_D:
-		/*mDirection.x = 0;*/
+		entidad->setRoy(0);
 		break;
 
 	case OIS::KC_PGDOWN:
@@ -159,7 +161,6 @@ void PlayerController_c::Update(){
 		auxZ += 1;
 		entidad->setPoz(auxZ);
 	}
-
 }
 
 PlayerController_c::~PlayerController_c()
