@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{BDEEC085-4DD4-3530-83B7-79626665796F}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\maria\Desktop\EXTRACCIONES\bullet\bullet3\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule C:/Users/maria/Desktop/EXTRACCIONES/bullet/bullet3/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\bin\cmake.exe -HC:/Users/maria/Desktop/EXTRACCIONES/bullet/bullet3 -BC:/Users/maria/Desktop/EXTRACCIONES/Bullet2Ogre/Game/Dependencies/bullet3/build3 --check-stamp-file C:/Users/maria/Desktop/EXTRACCIONES/Bullet2Ogre/Game/Dependencies/bullet3/build3/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:/Users/maria/Desktop/EXTRACCIONES/bullet/bullet3/CMakeLists.txt;C:\Users\maria\Desktop\EXTRACCIONES\bullet\bullet3\CMakeLists.txt;C:\Users\maria\Desktop\EXTRACCIONES\Bullet2Ogre\Game\Dependencies\bullet3\build3\CMakeFiles\3.11.0-rc1\CMakeSystem.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeSystemSpecificInitialize.cmake;C:\Users\maria\Desktop\EXTRACCIONES\Bullet2Ogre\Game\Dependencies\bullet3\build3\CMakeFiles\3.11.0-rc1\CMakeCCompiler.cmake;C:\Users\maria\Desktop\EXTRACCIONES\Bullet2Ogre\Game\Dependencies\bullet3\build3\CMakeFiles\3.11.0-rc1\CMakeCXXCompiler.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeSystemSpecificInformation.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeGenericSystem.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeInitializeConfigs.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\Platform\Windows.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\Platform\WindowsPaths.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeCInformation.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeLanguageInformation.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\Platform\Windows-MSVC-C.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\Platform\Windows-MSVC.cmake;C:\Users\maria\Desktop\EXTRACCIONES\Bullet2Ogre\Game\Dependencies\bullet3\build3\CMakeFiles\3.11.0-rc1\CMakeRCCompiler.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeRCInformation.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeCommonLanguageInclude.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeCXXInformation.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeLanguageInformation.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\Compiler\MSVC-CXX.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\Platform\Windows-MSVC.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeCommonLanguageInclude.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\FindOpenGL.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\FindPackageHandleStandardArgs.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\FindPackageMessage.cmake;C:\Users\maria\Desktop\EXTRACCIONES\bullet\bullet3\BulletConfig.cmake.in;C:\Users\maria\Desktop\EXTRACCIONES\bullet\bullet3\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\maria\Desktop\EXTRACCIONES\Bullet2Ogre\Game\Dependencies\bullet3\build3\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule C:/Users/maria/Desktop/EXTRACCIONES/bullet/bullet3/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\bin\cmake.exe -HC:/Users/maria/Desktop/EXTRACCIONES/bullet/bullet3 -BC:/Users/maria/Desktop/EXTRACCIONES/Bullet2Ogre/Game/Dependencies/bullet3/build3 --check-stamp-file C:/Users/maria/Desktop/EXTRACCIONES/Bullet2Ogre/Game/Dependencies/bullet3/build3/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:/Users/maria/Desktop/EXTRACCIONES/bullet/bullet3/CMakeLists.txt;C:\Users\maria\Desktop\EXTRACCIONES\bullet\bullet3\CMakeLists.txt;C:\Users\maria\Desktop\EXTRACCIONES\Bullet2Ogre\Game\Dependencies\bullet3\build3\CMakeFiles\3.11.0-rc1\CMakeSystem.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeSystemSpecificInitialize.cmake;C:\Users\maria\Desktop\EXTRACCIONES\Bullet2Ogre\Game\Dependencies\bullet3\build3\CMakeFiles\3.11.0-rc1\CMakeCCompiler.cmake;C:\Users\maria\Desktop\EXTRACCIONES\Bullet2Ogre\Game\Dependencies\bullet3\build3\CMakeFiles\3.11.0-rc1\CMakeCXXCompiler.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeSystemSpecificInformation.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeGenericSystem.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeInitializeConfigs.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\Platform\Windows.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\Platform\WindowsPaths.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeCInformation.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeLanguageInformation.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\Platform\Windows-MSVC-C.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\Platform\Windows-MSVC.cmake;C:\Users\maria\Desktop\EXTRACCIONES\Bullet2Ogre\Game\Dependencies\bullet3\build3\CMakeFiles\3.11.0-rc1\CMakeRCCompiler.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeRCInformation.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeCommonLanguageInclude.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeCXXInformation.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeLanguageInformation.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\Compiler\MSVC-CXX.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\Platform\Windows-MSVC.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeCommonLanguageInclude.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\FindOpenGL.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\FindPackageHandleStandardArgs.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\FindPackageMessage.cmake;C:\Users\maria\Desktop\EXTRACCIONES\bullet\bullet3\BulletConfig.cmake.in;C:\Users\maria\Desktop\EXTRACCIONES\bullet\bullet3\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\maria\Desktop\EXTRACCIONES\Bullet2Ogre\Game\Dependencies\bullet3\build3\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule C:/Users/maria/Desktop/EXTRACCIONES/bullet/bullet3/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\bin\cmake.exe -HC:/Users/maria/Desktop/EXTRACCIONES/bullet/bullet3 -BC:/Users/maria/Desktop/EXTRACCIONES/Bullet2Ogre/Game/Dependencies/bullet3/build3 --check-stamp-file C:/Users/maria/Desktop/EXTRACCIONES/Bullet2Ogre/Game/Dependencies/bullet3/build3/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:/Users/maria/Desktop/EXTRACCIONES/bullet/bullet3/CMakeLists.txt;C:\Users\maria\Desktop\EXTRACCIONES\bullet\bullet3\CMakeLists.txt;C:\Users\maria\Desktop\EXTRACCIONES\Bullet2Ogre\Game\Dependencies\bullet3\build3\CMakeFiles\3.11.0-rc1\CMakeSystem.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeSystemSpecificInitialize.cmake;C:\Users\maria\Desktop\EXTRACCIONES\Bullet2Ogre\Game\Dependencies\bullet3\build3\CMakeFiles\3.11.0-rc1\CMakeCCompiler.cmake;C:\Users\maria\Desktop\EXTRACCIONES\Bullet2Ogre\Game\Dependencies\bullet3\build3\CMakeFiles\3.11.0-rc1\CMakeCXXCompiler.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeSystemSpecificInformation.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeGenericSystem.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeInitializeConfigs.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\Platform\Windows.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\Platform\WindowsPaths.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeCInformation.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeLanguageInformation.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\Platform\Windows-MSVC-C.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\Platform\Windows-MSVC.cmake;C:\Users\maria\Desktop\EXTRACCIONES\Bullet2Ogre\Game\Dependencies\bullet3\build3\CMakeFiles\3.11.0-rc1\CMakeRCCompiler.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeRCInformation.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeCommonLanguageInclude.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeCXXInformation.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeLanguageInformation.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\Compiler\MSVC-CXX.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\Platform\Windows-MSVC.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeCommonLanguageInclude.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\FindOpenGL.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\FindPackageHandleStandardArgs.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\FindPackageMessage.cmake;C:\Users\maria\Desktop\EXTRACCIONES\bullet\bullet3\BulletConfig.cmake.in;C:\Users\maria\Desktop\EXTRACCIONES\bullet\bullet3\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Users\maria\Desktop\EXTRACCIONES\Bullet2Ogre\Game\Dependencies\bullet3\build3\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule C:/Users/maria/Desktop/EXTRACCIONES/bullet/bullet3/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\bin\cmake.exe -HC:/Users/maria/Desktop/EXTRACCIONES/bullet/bullet3 -BC:/Users/maria/Desktop/EXTRACCIONES/Bullet2Ogre/Game/Dependencies/bullet3/build3 --check-stamp-file C:/Users/maria/Desktop/EXTRACCIONES/Bullet2Ogre/Game/Dependencies/bullet3/build3/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:/Users/maria/Desktop/EXTRACCIONES/bullet/bullet3/CMakeLists.txt;C:\Users\maria\Desktop\EXTRACCIONES\bullet\bullet3\CMakeLists.txt;C:\Users\maria\Desktop\EXTRACCIONES\Bullet2Ogre\Game\Dependencies\bullet3\build3\CMakeFiles\3.11.0-rc1\CMakeSystem.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeSystemSpecificInitialize.cmake;C:\Users\maria\Desktop\EXTRACCIONES\Bullet2Ogre\Game\Dependencies\bullet3\build3\CMakeFiles\3.11.0-rc1\CMakeCCompiler.cmake;C:\Users\maria\Desktop\EXTRACCIONES\Bullet2Ogre\Game\Dependencies\bullet3\build3\CMakeFiles\3.11.0-rc1\CMakeCXXCompiler.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeSystemSpecificInformation.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeGenericSystem.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeInitializeConfigs.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\Platform\Windows.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\Platform\WindowsPaths.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeCInformation.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeLanguageInformation.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\Platform\Windows-MSVC-C.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\Platform\Windows-MSVC.cmake;C:\Users\maria\Desktop\EXTRACCIONES\Bullet2Ogre\Game\Dependencies\bullet3\build3\CMakeFiles\3.11.0-rc1\CMakeRCCompiler.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeRCInformation.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeCommonLanguageInclude.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeCXXInformation.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeLanguageInformation.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\Compiler\MSVC-CXX.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\Platform\Windows-MSVC.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\CMakeCommonLanguageInclude.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\FindOpenGL.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\FindPackageHandleStandardArgs.cmake;C:\Users\maria\Desktop\cmake-3.11.0-rc1-win64-x64\share\cmake-3.11\Modules\FindPackageMessage.cmake;C:\Users\maria\Desktop\EXTRACCIONES\bullet\bullet3\BulletConfig.cmake.in;C:\Users\maria\Desktop\EXTRACCIONES\bullet\bullet3\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Users\maria\Desktop\EXTRACCIONES\Bullet2Ogre\Game\Dependencies\bullet3\build3\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\maria\Desktop\EXTRACCIONES\Bullet2Ogre\Game\Dependencies\bullet3\build3\ZERO_CHECK.vcxproj">
+      <Project>{C4D5000D-3A31-3F2F-8BAA-7765E469E674}</Project>
+      <Name>ZERO_CHECK</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\maria\Desktop\EXTRACCIONES\Bullet2Ogre\Game\Dependencies\bullet3\build3\src\Bullet3Serialize\Bullet2FileLoader\Bullet2FileLoader.vcxproj">
+      <Project>{07890ACE-BC15-3EBA-ABD7-284785CBA632}</Project>
+      <Name>Bullet2FileLoader</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\maria\Desktop\EXTRACCIONES\Bullet2Ogre\Game\Dependencies\bullet3\build3\src\Bullet3Collision\Bullet3Collision.vcxproj">
+      <Project>{68098610-C11C-3C9A-AE1A-07148E100013}</Project>
+      <Name>Bullet3Collision</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\maria\Desktop\EXTRACCIONES\Bullet2Ogre\Game\Dependencies\bullet3\build3\src\Bullet3Common\Bullet3Common.vcxproj">
+      <Project>{C33C7967-10B3-3E65-BFD0-1D727B3667BD}</Project>
+      <Name>Bullet3Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\maria\Desktop\EXTRACCIONES\Bullet2Ogre\Game\Dependencies\bullet3\build3\src\Bullet3Dynamics\Bullet3Dynamics.vcxproj">
+      <Project>{E1DB54E9-D91A-3B3F-9F07-E7CFF6AD89B5}</Project>
+      <Name>Bullet3Dynamics</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\maria\Desktop\EXTRACCIONES\Bullet2Ogre\Game\Dependencies\bullet3\build3\src\Bullet3Geometry\Bullet3Geometry.vcxproj">
+      <Project>{AE8E5BB0-A7A8-33CE-A360-540A1355E7F2}</Project>
+      <Name>Bullet3Geometry</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\maria\Desktop\EXTRACCIONES\Bullet2Ogre\Game\Dependencies\bullet3\build3\src\Bullet3OpenCL\Bullet3OpenCL_clew.vcxproj">
+      <Project>{C20BB383-A532-373D-BC37-3FC323A4C3B0}</Project>
+      <Name>Bullet3OpenCL_clew</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\maria\Desktop\EXTRACCIONES\Bullet2Ogre\Game\Dependencies\bullet3\build3\src\BulletCollision\BulletCollision.vcxproj">
+      <Project>{18B846BB-1818-341D-954C-402E97EC1BAF}</Project>
+      <Name>BulletCollision</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\maria\Desktop\EXTRACCIONES\Bullet2Ogre\Game\Dependencies\bullet3\build3\src\BulletDynamics\BulletDynamics.vcxproj">
+      <Project>{39BF89D1-030D-3E61-B87E-82F82337AF70}</Project>
+      <Name>BulletDynamics</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\maria\Desktop\EXTRACCIONES\Bullet2Ogre\Game\Dependencies\bullet3\build3\src\BulletInverseDynamics\BulletInverseDynamics.vcxproj">
+      <Project>{9F4A9FA0-CF24-36EE-ACDB-C8E643DCC734}</Project>
+      <Name>BulletInverseDynamics</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\maria\Desktop\EXTRACCIONES\Bullet2Ogre\Game\Dependencies\bullet3\build3\src\BulletSoftBody\BulletSoftBody.vcxproj">
+      <Project>{D2116E5F-FBAF-3F3A-8820-E344CAA4C808}</Project>
+      <Name>BulletSoftBody</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\maria\Desktop\EXTRACCIONES\Bullet2Ogre\Game\Dependencies\bullet3\build3\src\LinearMath\LinearMath.vcxproj">
+      <Project>{ABED4D2C-13F0-3952-A1FE-8621546B7799}</Project>
+      <Name>LinearMath</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
