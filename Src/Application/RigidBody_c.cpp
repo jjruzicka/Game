@@ -1,9 +1,10 @@
 #include "RigidBody_c.h"
 
 
-RigidBody_c::RigidBody_c(Entidad* ent)
+RigidBody_c::RigidBody_c(Entidad* ent, btRigidBody* rb)
 {
 	this->ent = ent;
+	this->rb = rb;
 }
 
 

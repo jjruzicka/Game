@@ -14,5 +14,6 @@ private:
 	Ogre::SceneNode* node;
 	Entidad* ent;
 	Ogre::Entity* entOgre;
+	Ogre::Quaternion anguloRot;
 };
 

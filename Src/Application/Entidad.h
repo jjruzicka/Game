@@ -56,10 +56,25 @@ public:
 		posicion.x = x;
 	}
 	void setPoy(int y){
-		posicion.y=y;
+		posicion.y = y;
 	}
 	void setPoz(int z){
-		 posicion.z=z;
+		posicion.z = z;
+	}
+	void setRox(int x){
+		rotation.x = x;
+	}
+	void setRoy(int y){
+		rotation.y = y;
+	}
+	void setRoz(int z){
+		rotation.z = z;
+	}
+	int getAngRot(){
+		return angRot;
+	}
+	void setAngRot(float z){
+		angRot = z;
 	}
 
 private:
@@ -67,7 +82,7 @@ private:
 
 	Pos posicion;
 	Pos rotation;
-	
+	int angRot;
 };
 
 #endif

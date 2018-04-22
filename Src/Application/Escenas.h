@@ -29,7 +29,7 @@ private:
 	bool initOgre();
 	std::vector<Entidad*> entidades;
 
-	btDiscreteDynamicsWorld* world;
+	btDiscreteDynamicsWorld* bulletWorld;
 	btDefaultCollisionConfiguration* collisionConfiguration;
 	btCollisionDispatcher* dispatcher;
 	btSequentialImpulseConstraintSolver* solver;

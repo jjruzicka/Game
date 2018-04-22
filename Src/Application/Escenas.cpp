@@ -1,7 +1,9 @@
 #include "Escenas.h"
 #include "Render_c.h"
 #include "PlayerController_c.h"
+#include "RigidBody_c.h"
 #include "Objeto.h"
+#include "Collider_c.h"
 using namespace Ogre;
 enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
@@ -20,16 +22,20 @@ Escenas::Escenas()
 	initBullet();
 	inputcomp_ = InputComponent::getSingletonPtr();
 	inputcomp_->initialise(mWindow);
-
-
 	Entidad* ent1 = new Entidad();
 	PlayerController_c * ois = new PlayerController_c(ent1,inputcomp_);
 	//parametros de createChildSceneNode(nombre del nodo,puntero a la entidad que contiene este nodo, nombre de la malla sin el .mesh)
 	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("cabeza"), ent1, "ogrehead");
+
+	btCollisionObject* objC = new btCollisionObject();
+	Collider_c* collider = new Collider_c(ent1, objC);
+
+	ent1->AddComponent(collider);
 	ent1->AddComponent(render);
 	entidades.reserve(1);
 	entidades.push_back(ent1);
 
+	bulletWorld->addCollisionObject(objC);
 }
 bool Escenas::initOgre(){
 
@@ -118,8 +124,8 @@ bool Escenas::initBullet(){
 	solver = new btSequentialImpulseConstraintSolver();
 
 	//the world
-	world = new btDiscreteDynamicsWorld(dispatcher, broadPhase, solver, collisionConfiguration);
-	world->setGravity(btVector3(0, -10, 0));
+	bulletWorld = new btDiscreteDynamicsWorld(dispatcher, broadPhase, solver, collisionConfiguration);
+	bulletWorld->setGravity(btVector3(0, -10, 0));
 	return true;
 }
 
@@ -165,32 +171,27 @@ bool Escenas::run(){
 	vp = mWindow->addViewport(cam);
 	vp->setBackgroundColour(Ogre::ColourValue(150, 150, 150));
 	//vp->setBackgroundColour(Ogre::ColourValue(1, 1, 1));
-
+	clock_t lastTicks = clock();
+	clock_t elapsedTicks = 0;
+	double deltaTime = 0;
 	while (true)
 	{
+		deltaTime = ((double)elapsedTicks) / 1000.f/*CLOCKS_PER_SEC*/;
+		lastTicks = clock();
 
 		inputcomp_->capture();
-		/*
-		if (cont == 2) {
 
-		handleInput();
-		cont = 0;
-		}
-		*/
-		//else{
-		//cont++;
 		for (int i = 0; i<entidades.size(); i++)
 			entidades[i]->Update();
-		
-		
-		//}
+
 		// render ogre
 		Ogre::WindowEventUtilities::messagePump();
-
-
+		bulletWorld->stepSimulation((float)deltaTime);
+		
 		//comprobar si la ventana está abierta
 		if (mWindow->isClosed())return false;
 		if (!root->renderOneFrame())return false;
+		elapsedTicks = clock() - lastTicks;
 	}
 	return true;
 }
@@ -201,7 +202,7 @@ Escenas::~Escenas()
 	for (int i = 0; i < entidades.size(); i++)
 		delete entidades[i];
 
-	delete world;
+	delete bulletWorld;
 	delete collisionConfiguration;
 	delete dispatcher;
 	delete solver;
