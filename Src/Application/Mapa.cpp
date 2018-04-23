@@ -131,8 +131,8 @@ void Mapa::configureTerrainDefaults(Ogre::Light* light)
 	mTerrainGlobals->setCompositeMapDiffuse(light->getDiffuseColour());
 
 	Ogre::Terrain::ImportData& importData = mTerrainGroup->getDefaultImportSettings();
-	importData.terrainSize = 513;
-	importData.worldSize = 12000.0;
+	importData.terrainSize = 100;
+	importData.worldSize = 100;
 	importData.inputScale = 600;
 	importData.minBatchSize = 33;
 	importData.maxBatchSize = 65;

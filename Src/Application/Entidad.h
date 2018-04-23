@@ -70,18 +70,44 @@ public:
 	void setRoz(int z){
 		rotation.z = z;
 	}
-	float getAngRot(){
+	int getAngRot(){
 		return angRot;
 	}
-	void setAngRot(float z){
+	void setAngRot(int z){
 		angRot = z;
+	}
+
+
+	int getOrientationX(){
+		return orientacion.x;
+	}
+
+	int getOrientationY(){
+		return orientacion.y;
+	}
+
+	int getOrientationZ(){
+		return orientacion.z;
+	}
+
+	void setOrientationX(int x){
+		orientacion.x = x;
+	}
+
+	void setOrientationY(int y){
+		orientacion.y = y;
+	}
+
+	void setOrientationZ(int z){
+		orientacion.z = z;
 	}
 private:
 	std::vector<Component*> componentes;
 
 	Pos posicion;
 	Pos rotation;
-	float angRot;
+	Pos orientacion;
+	int angRot;
 };
 
 #endif

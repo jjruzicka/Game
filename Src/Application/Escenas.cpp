@@ -22,11 +22,14 @@ Escenas::Escenas()
 
 
 	Entidad* ent1 = new Entidad();
-	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("cabeza"), ent1, "ogrehead");
+	//1683, 50, 2116
+	ent1->setPox(1700);// posicion 
+	ent1->setPoy(50);
+	ent1->setPoz(2000); //cuanto menor sea el numero, mas se aleja de la camara
+	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("ninja"), ent1, "Sinbad");
 	PlayerController_c * ois = new PlayerController_c(ent1,inputcomp_);
 	ent1->AddComponent(render);
 	ent1->AddComponent(ois);
-	entidades.reserve(1);
 	entidades.push_back(ent1);
 
 
@@ -142,8 +145,8 @@ bool Escenas::run(){
 	camNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_WORLD); //esto lo que habia antes
 */
 	// para la escena, pruebas
-	camNode->setPosition(Ogre::Vector3(0, 20, 100));
-	camNode->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TS_WORLD);
+	camNode->setPosition(Ogre::Vector3(1683, 50, 2116));
+	camNode->lookAt(Ogre::Vector3(1963, 50, 1660), Ogre::Node::TS_WORLD);
 	//camNode->setNearClipDistance(0.1);
 	/*bool infiniteClip =
 	mRoot->getRenderSystem()->getCapabilities()->hasCapability(

@@ -8,6 +8,7 @@ PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input)
 	inputcomp_->addKeyListener(this, "teclado");
 	inputcomp_->addMouseListener(this, "raton");
 	auxX = auxY = auxZ = 0;
+	mas = false;
 }
 
 bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
@@ -36,11 +37,15 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 		auxZ = entidad->getPoz();
 		auxZ += 1;
 		entidad->setPoz(auxZ);
+		mas = true;
 		break;
 
 	case OIS::KC_DOWN:
 	case OIS::KC_S:
-		/*mDirection.z = mMove;*/
+		auxZ = entidad->getPoz();
+		auxZ -= 1;
+		entidad->setPoz(auxZ);
+		mas = false;
 		break;
 
 	case OIS::KC_LEFT:
@@ -84,7 +89,7 @@ bool PlayerController_c::keyReleased(const OIS::KeyEvent& keyP){
 
 	case OIS::KC_DOWN:
 	case OIS::KC_S:
-		/*mDirection.z = 0;*/
+		auxZ = 0;
 		break;
 
 	case OIS::KC_LEFT:
@@ -149,6 +154,9 @@ bool PlayerController_c::mouseReleased(const OIS::MouseEvent& me, OIS::MouseButt
 
 
 void PlayerController_c::Update(){
+
+
+
 	if (auxX != 0){
 		auxX += 1;
 		entidad->setPox(auxX);
@@ -157,8 +165,12 @@ void PlayerController_c::Update(){
 		auxY += 1;
 		entidad->setPoy(auxY);
 	}
-	if (auxZ != 0){
+	if (auxZ != 0 && mas){
 		auxZ += 1;
+		entidad->setPoz(auxZ);
+	}
+	else if (auxZ != 0 && !mas){
+		auxZ -= 1;
 		entidad->setPoz(auxZ);
 	}
 }
