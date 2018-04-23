@@ -8,7 +8,7 @@ PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input)
 	inputcomp_->addKeyListener(this, "teclado");
 	inputcomp_->addMouseListener(this, "raton");
 	auxX = auxY = auxZ = 0;
-	mas = false;
+	mas = istimetoStop = false;
 }
 
 bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
@@ -35,17 +35,27 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 	case OIS::KC_UP:
 	case OIS::KC_W:
 		auxZ = entidad->getPoz();
-		auxZ += 1;
+		auxZ +=1* entidad->getOrientationZ();
 		entidad->setPoz(auxZ);
+
+		/*auxX = entidad->getPox();
+		auxX += entidad->getOrientationX();
+		entidad->setPox(auxX);*/
 		mas = true;
+		istimetoStop = true;
 		break;
 
 	case OIS::KC_DOWN:
 	case OIS::KC_S:
 		auxZ = entidad->getPoz();
-		auxZ -= 1;
+		auxZ -= entidad->getOrientationZ();
 		entidad->setPoz(auxZ);
+		/*
+		auxX = entidad->getPox();
+		auxX -= entidad->getOrientationX();
+		entidad->setPox(auxX);*/
 		mas = false;
+		istimetoStop = true;
 		break;
 
 	case OIS::KC_LEFT:
@@ -62,12 +72,20 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 
 	case OIS::KC_PGDOWN:
 	case OIS::KC_E:
-		/*mDirection.y = -mMove;*/
+		auxX = entidad->getPox();
+		auxX -= entidad->getOrientationX();
+		entidad->setPox(auxX);
+		mas = true;
+		istimetoStop = true;
 		break;
 
 	case OIS::KC_PGUP:
 	case OIS::KC_Q:
-		/*mDirection.y = mMove;*/
+		auxX = entidad->getPox();
+		auxX += 1 * entidad->getOrientationX();
+		entidad->setPox(auxX);
+		mas = false;
+		istimetoStop = true;
 		break;
 
 	default:
@@ -85,11 +103,13 @@ bool PlayerController_c::keyReleased(const OIS::KeyEvent& keyP){
 	case OIS::KC_UP:
 	case OIS::KC_W:
 		auxZ = 0;
+		istimetoStop = false;
 		break;
 
 	case OIS::KC_DOWN:
 	case OIS::KC_S:
 		auxZ = 0;
+		istimetoStop = false;
 		break;
 
 	case OIS::KC_LEFT:
@@ -104,12 +124,14 @@ bool PlayerController_c::keyReleased(const OIS::KeyEvent& keyP){
 
 	case OIS::KC_PGDOWN:
 	case OIS::KC_E:
-		/*mDirection.y = 0;*/
+		auxX = 0;
+		istimetoStop = false;
 		break;
 
 	case OIS::KC_PGUP:
 	case OIS::KC_Q:
-		/*mDirection.y = 0;*/
+		auxX = 0;
+		istimetoStop = false;
 		break;
 
 	default:
@@ -155,23 +177,31 @@ bool PlayerController_c::mouseReleased(const OIS::MouseEvent& me, OIS::MouseButt
 
 void PlayerController_c::Update(){
 
-
-
-	if (auxX != 0){
-		auxX += 1;
-		entidad->setPox(auxX);
-	}
-	if (auxY != 0){
-		auxY += 1;
-		entidad->setPoy(auxY);
-	}
-	if (auxZ != 0 && mas){
-		auxZ += 1;
-		entidad->setPoz(auxZ);
-	}
-	else if (auxZ != 0 && !mas){
-		auxZ -= 1;
-		entidad->setPoz(auxZ);
+	if (istimetoStop){
+		if (mas){
+			if (auxZ != 0){
+				auxZ = entidad->getPoz();
+				auxZ += entidad->getOrientationZ();
+				entidad->setPoz(auxZ);
+			}
+			else{
+				auxX = entidad->getPox();
+				auxX += entidad->getOrientationX();
+				entidad->setPox(auxX);
+			}
+		}
+		else if (!mas){
+			if (auxZ != 0){
+				auxZ = entidad->getPoz();
+				auxZ -= entidad->getOrientationZ();
+				entidad->setPoz(auxZ);
+			}
+			else{
+				auxX = entidad->getPox();
+				auxX -= entidad->getOrientationX();
+				entidad->setPox(auxX);
+			}
+		}
 	}
 }
 

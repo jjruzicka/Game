@@ -18,8 +18,8 @@ private:
 	bool mouseReleased(const OIS::MouseEvent& me, OIS::MouseButtonID id);
 	InputComponent* inputcomp_;
 	Entidad* entidad;
-	int auxX ,auxY, auxZ;
-	bool mas;
+	float auxX ,auxY, auxZ;
+	bool mas, istimetoStop;
 	
 };
 

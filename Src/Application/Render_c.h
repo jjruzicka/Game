@@ -20,5 +20,6 @@ private:
 	Entidad* ent;
 	Ogre::Entity* entOgre;
 	Ogre::Quaternion anguloRot;
+	int anguloRotent;
 };
 
