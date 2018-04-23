@@ -61,13 +61,13 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 	case OIS::KC_LEFT:
 	case OIS::KC_A:
 		entidad->setRoy(1);
-		entidad->setAngRot(-5);
+		entidad->setAngRot(1 );
 		break;
 
 	case OIS::KC_RIGHT:
 	case OIS::KC_D:
 		entidad->setRoy(1);
-		entidad->setAngRot(5);
+		entidad->setAngRot(-1);
 		break;
 
 	case OIS::KC_PGDOWN:

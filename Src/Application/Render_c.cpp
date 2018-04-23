@@ -12,6 +12,8 @@ Render_c::Render_c(Ogre::SceneNode*src, Entidad* ent, std::string nombre)
 	anguloRot = Ogre::Quaternion(Ogre::Degree(0),Ogre::Vector3::UNIT_Y);
 	anguloRot.z = 1;
 	anguloRotent = 0;
+	
+	
 }
 
 void Render_c::Update(){
