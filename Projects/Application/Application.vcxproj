@@ -18,10 +18,8 @@
     <ClCompile Include="..\..\Src\Application\InputComponent.cpp" />
     <ClCompile Include="..\..\Src\Application\PlayerController_c.cpp" />
     <ClCompile Include="..\..\Src\Application\GameManager_c.cpp" />
-    <ClCompile Include="..\..\Src\Application\Hola_c.cpp" />
     <ClCompile Include="..\..\Src\Application\Inventario_c.cpp" />
     <ClCompile Include="..\..\Src\Application\Mision_c.cpp" />
-    <ClCompile Include="..\..\Src\Application\Nice_c.cpp" />
     <ClCompile Include="..\..\Src\Application\Objeto.cpp" />
     <ClCompile Include="..\..\Src\Application\ProyectoBasico.cpp" />
     <ClCompile Include="..\..\Src\Application\Render_c.cpp" />
@@ -35,10 +33,8 @@
     <ClInclude Include="..\..\Src\Application\InputComponent.h" />
     <ClInclude Include="..\..\Src\Application\PlayerController_c.h" />
     <ClInclude Include="..\..\Src\Application\GameManager_c.h" />
-    <ClInclude Include="..\..\Src\Application\Hola_c.h" />
     <ClInclude Include="..\..\Src\Application\Inventario_c.h" />
     <ClInclude Include="..\..\Src\Application\Mision_c.h" />
-    <ClInclude Include="..\..\Src\Application\Nice_c.h" />
     <ClInclude Include="..\..\Src\Application\Objeto.h" />
     <ClInclude Include="..\..\Src\Application\Render_c.h" />
     <ClInclude Include="..\..\Src\Application\RigidBody_c.h" />
@@ -76,14 +72,14 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)Exes\</OutDir>
     <TargetName>$(SolutionName)D</TargetName>
-    <IntDir>$(SolutionDir)Inter\$(ProjectName)\$(Configuration)\</IntDir>
+    <IntDir>$(Platform)$(Configuration)\</IntDir>
     <LibraryPath>$(SolutionDir)Dependencies\bullet3\build3\lib\$(Configuration);$(SolutionDir)Dependencies\OIS-master\build\lib\$(Configuration);$(SolutionDir)Dependencies\Ogre\Build\lib\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)Exes\</OutDir>
     <TargetName>$(SolutionName)</TargetName>
-    <IntDir>$(SolutionDir)Inter\$(ProjectName)\$(Configuration)\</IntDir>
+    <IntDir>$(Platform)$(Configuration)\</IntDir>
     <LibraryPath>$(SolutionDir)Dependencies\bullet3\build3\lib\$(Configuration);$(SolutionDir)Dependencies\OIS-master\build\lib\$(Configuration);$(SolutionDir)Dependencies\Ogre\Build\lib\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -94,6 +90,8 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\OIS-master\includes;$(SolutionDir)Dependencies\Ogre\OgreMain\include;$(SolutionDir)Dependencies\Ogre\Build\include;$(SolutionDir)Src\Application;$(SolutionDir)Dependencies\bullet3\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>
+      </MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -112,6 +110,8 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\OIS-master\includes;$(SolutionDir)Dependencies\Ogre\OgreMain\include;$(SolutionDir)Dependencies\Ogre\Build\include;$(SolutionDir)Src\Application;$(SolutionDir)Dependencies\bullet3\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>
+      </MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

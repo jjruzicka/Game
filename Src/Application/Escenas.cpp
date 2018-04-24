@@ -27,15 +27,20 @@ Escenas::Escenas()
 	//parametros de createChildSceneNode(nombre del nodo,puntero a la entidad que contiene este nodo, nombre de la malla sin el .mesh)
 	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("cabeza"), ent1, "ogrehead");
 
-	btCollisionObject* objC = new btCollisionObject();
-	Collider_c* collider = new Collider_c(ent1, objC);
+	btCollisionShape* fallShape = new btSphereShape(1);
+	btDefaultMotionState* fallMotionState =	new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1), btVector3(0, 30, 0)));
+	btScalar mass = 1;
+	btVector3 fallInertia(0, 9.8f, 0);
+	fallShape->calculateLocalInertia(mass, fallInertia);
+	btRigidBody::btRigidBodyConstructionInfo fallRigidBodyCI(mass, fallMotionState, fallShape, fallInertia);
+	RigidBody_c* rb = new RigidBody_c(ent1, fallRigidBodyCI);
+	ent1->AddComponent(rb);
 
-	ent1->AddComponent(collider);
 	ent1->AddComponent(render);
 	entidades.reserve(1);
 	entidades.push_back(ent1);
 
-	bulletWorld->addCollisionObject(objC);
+	bulletWorld->addRigidBody(rb->getRigidbody());
 }
 bool Escenas::initOgre(){
 

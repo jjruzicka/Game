@@ -16,13 +16,7 @@
     <ClCompile Include="..\..\Src\Application\GameManager_c.cpp">
       <Filter>Code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Src\Application\Hola_c.cpp">
-      <Filter>Code</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Src\Application\Mision_c.cpp">
-      <Filter>Code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Application\Nice_c.cpp">
       <Filter>Code</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\Application\ProyectoBasico.cpp">
@@ -60,13 +54,7 @@
     <ClInclude Include="..\..\Src\Application\GameManager_c.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Src\Application\Hola_c.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Src\Application\Mision_c.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Application\Nice_c.h">
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\Render_c.h">

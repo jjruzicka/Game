@@ -1,6 +1,6 @@
 #include "PlayerController_c.h"
 #include <iostream>
-
+#include "RigidBody_c.h"
 PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input)
 {
 	inputcomp_ = input;
@@ -12,7 +12,7 @@ PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input)
 
 bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 {
-
+	RigidBody_c* rb = new RigidBody_c();
 	switch (keyP.key)
 	{
 	case OIS::KC_ESCAPE:
@@ -34,8 +34,9 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 	case OIS::KC_UP:
 	case OIS::KC_W:
 		auxZ = entidad->getPoz();
-		auxZ += 1;
+		auxZ += 10;
 		entidad->setPoz(auxZ);
+		entidad->GetComponent(rb)->actualizarPos();
 		break;
 
 	case OIS::KC_DOWN:
@@ -68,7 +69,7 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 	default:
 		break;
 	}
-
+	delete rb;
 	return true;
 }
 
@@ -149,6 +150,7 @@ bool PlayerController_c::mouseReleased(const OIS::MouseEvent& me, OIS::MouseButt
 
 
 void PlayerController_c::Update(){
+	RigidBody_c* rb = new RigidBody_c();
 	if (auxX != 0){
 		auxX += 1;
 		entidad->setPox(auxX);
@@ -160,7 +162,9 @@ void PlayerController_c::Update(){
 	if (auxZ != 0){
 		auxZ += 1;
 		entidad->setPoz(auxZ);
+		entidad->GetComponent(rb)->actualizarPos();
 	}
+	delete rb;
 }
 
 PlayerController_c::~PlayerController_c()
