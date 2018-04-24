@@ -15,7 +15,7 @@ void Mapa::createmap(){
 	mTerrainGroup = OGRE_NEW Ogre::TerrainGroup(
 		scn,
 		Ogre::Terrain::ALIGN_X_Z,
-		513, 12000.0);
+		65, 12000.0);
 	mTerrainGroup->setFilenameConvention(Ogre::String("terrain"), Ogre::String("dat"));
 	mTerrainGroup->setOrigin(Ogre::Vector3::ZERO);
 

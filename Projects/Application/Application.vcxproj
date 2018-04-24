@@ -18,10 +18,8 @@
     <ClCompile Include="..\..\Src\Application\Mapa.cpp" />
     <ClCompile Include="..\..\Src\Application\PlayerController_c.cpp" />
     <ClCompile Include="..\..\Src\Application\GameManager_c.cpp" />
-    <ClCompile Include="..\..\Src\Application\Hola_c.cpp" />
     <ClCompile Include="..\..\Src\Application\Inventario_c.cpp" />
     <ClCompile Include="..\..\Src\Application\Mision_c.cpp" />
-    <ClCompile Include="..\..\Src\Application\Nice_c.cpp" />
     <ClCompile Include="..\..\Src\Application\Objeto.cpp" />
     <ClCompile Include="..\..\Src\Application\ProyectoBasico.cpp" />
     <ClCompile Include="..\..\Src\Application\Render_c.cpp" />
@@ -34,10 +32,8 @@
     <ClInclude Include="..\..\Src\Application\Mapa.h" />
     <ClInclude Include="..\..\Src\Application\PlayerController_c.h" />
     <ClInclude Include="..\..\Src\Application\GameManager_c.h" />
-    <ClInclude Include="..\..\Src\Application\Hola_c.h" />
     <ClInclude Include="..\..\Src\Application\Inventario_c.h" />
     <ClInclude Include="..\..\Src\Application\Mision_c.h" />
-    <ClInclude Include="..\..\Src\Application\Nice_c.h" />
     <ClInclude Include="..\..\Src\Application\Objeto.h" />
     <ClInclude Include="..\..\Src\Application\Render_c.h" />
   </ItemGroup>

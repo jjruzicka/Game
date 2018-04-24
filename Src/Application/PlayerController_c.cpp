@@ -35,12 +35,11 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 	case OIS::KC_UP:
 	case OIS::KC_W:
 		auxZ = entidad->getPoz();
-		auxZ +=1* entidad->getOrientationZ();
+		auxZ += entidad->getOrientationZ();
 		entidad->setPoz(auxZ);
-
-		/*auxX = entidad->getPox();
-		auxX += entidad->getOrientationX();
-		entidad->setPox(auxX);*/
+		auxX = entidad->getPox();
+		auxX +=  entidad->getOrientationX();
+		entidad->setPox(auxX);
 		mas = true;
 		istimetoStop = true;
 		break;
@@ -50,10 +49,9 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 		auxZ = entidad->getPoz();
 		auxZ -= entidad->getOrientationZ();
 		entidad->setPoz(auxZ);
-		/*
 		auxX = entidad->getPox();
 		auxX -= entidad->getOrientationX();
-		entidad->setPox(auxX);*/
+		entidad->setPox(auxX);
 		mas = false;
 		istimetoStop = true;
 		break;
@@ -72,20 +70,10 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 
 	case OIS::KC_PGDOWN:
 	case OIS::KC_E:
-		auxX = entidad->getPox();
-		auxX -= entidad->getOrientationX();
-		entidad->setPox(auxX);
-		mas = true;
-		istimetoStop = true;
 		break;
 
 	case OIS::KC_PGUP:
 	case OIS::KC_Q:
-		auxX = entidad->getPox();
-		auxX += 1 * entidad->getOrientationX();
-		entidad->setPox(auxX);
-		mas = false;
-		istimetoStop = true;
 		break;
 
 	default:
@@ -181,24 +169,24 @@ void PlayerController_c::Update(){
 		if (mas){
 			if (auxZ != 0){
 				auxZ = entidad->getPoz();
-				auxZ += entidad->getOrientationZ();
+				auxZ +=10* entidad->getOrientationZ();
 				entidad->setPoz(auxZ);
 			}
 			else{
 				auxX = entidad->getPox();
-				auxX += entidad->getOrientationX();
+				auxX += 10*entidad->getOrientationX();
 				entidad->setPox(auxX);
 			}
 		}
 		else if (!mas){
 			if (auxZ != 0){
 				auxZ = entidad->getPoz();
-				auxZ -= entidad->getOrientationZ();
+				auxZ -=10* entidad->getOrientationZ();
 				entidad->setPoz(auxZ);
 			}
 			else{
 				auxX = entidad->getPox();
-				auxX -= entidad->getOrientationX();
+				auxX -= 10*entidad->getOrientationX();
 				entidad->setPox(auxX);
 			}
 		}
