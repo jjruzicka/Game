@@ -9,7 +9,11 @@ struct Pos{
 	int y;
 	int z;
 };
-
+struct PosF{
+	float x;
+	float y;
+	float z;
+};
 
 class Entidad
 {
@@ -31,13 +35,13 @@ public:
 		return nullptr;
 	}
 
-	int getPox(){
+	float getPox(){
 		return posicion.x;
 	}
-	int getPoy(){
+	float getPoy(){
 		return posicion.y;
 	}
-	int getPoz(){
+	float getPoz(){
 		return posicion.z;
 	}
 
@@ -52,13 +56,13 @@ public:
 	}
 
 
-	void setPox(int x){
+	void setPox(float x){
 		posicion.x = x;
 	}
-	void setPoy(int y){
+	void setPoy(float y){
 		posicion.y=y;
 	}
-	void setPoz(int z){
+	void setPoz(float z){
 		 posicion.z=z;
 	}
 	void setRox(int x){
@@ -70,18 +74,44 @@ public:
 	void setRoz(int z){
 		rotation.z = z;
 	}
-	float getAngRot(){
+	int getAngRot(){
 		return angRot;
 	}
-	void setAngRot(float z){
+	void setAngRot(int z){
 		angRot = z;
+	}
+
+
+	float getOrientationX(){
+		return orientacion.x;
+	}
+
+	float getOrientationY(){
+		return orientacion.y;
+	}
+
+	float getOrientationZ(){
+		return orientacion.z;
+	}
+
+	void setOrientationX(float x){
+		orientacion.x = x;
+	}
+
+	void setOrientationY(float y){
+		orientacion.y = y;
+	}
+
+	void setOrientationZ(float z){
+		orientacion.z = z;
 	}
 private:
 	std::vector<Component*> componentes;
 
-	Pos posicion;
+	PosF posicion;
 	Pos rotation;
-	float angRot;
+	PosF orientacion;
+	int angRot;
 };
 
 #endif

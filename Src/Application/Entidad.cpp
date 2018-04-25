@@ -3,9 +3,11 @@
 #include <string>
 Entidad::Entidad()
 {
-	posicion = { 0, 0, 0 };
-	rotation = { 0, 0, 0 };
+	posicion = { 0, 0, 0 }; // coordenadas de un punto
+	rotation = { 0, 0, 0 }; // vector
+	orientacion = { 0, 0, 1 }; // vector
 	angRot = 0;
+
 }
 
 

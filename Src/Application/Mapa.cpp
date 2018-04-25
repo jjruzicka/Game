@@ -15,7 +15,7 @@ void Mapa::createmap(){
 	mTerrainGroup = OGRE_NEW Ogre::TerrainGroup(
 		scn,
 		Ogre::Terrain::ALIGN_X_Z,
-		513, 12000.0);
+		65, 12000.0);
 	mTerrainGroup->setFilenameConvention(Ogre::String("terrain"), Ogre::String("dat"));
 	mTerrainGroup->setOrigin(Ogre::Vector3::ZERO);
 
@@ -131,8 +131,8 @@ void Mapa::configureTerrainDefaults(Ogre::Light* light)
 	mTerrainGlobals->setCompositeMapDiffuse(light->getDiffuseColour());
 
 	Ogre::Terrain::ImportData& importData = mTerrainGroup->getDefaultImportSettings();
-	importData.terrainSize = 513;
-	importData.worldSize = 12000.0;
+	importData.terrainSize = 100;
+	importData.worldSize = 100;
 	importData.inputScale = 600;
 	importData.minBatchSize = 33;
 	importData.maxBatchSize = 65;

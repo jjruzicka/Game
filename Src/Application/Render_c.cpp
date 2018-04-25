@@ -1,5 +1,5 @@
 #include "Render_c.h"
-
+#include <iostream>
 
 Render_c::Render_c(Ogre::SceneNode*src, Entidad* ent, std::string nombre)
 {
@@ -10,15 +10,36 @@ Render_c::Render_c(Ogre::SceneNode*src, Entidad* ent, std::string nombre)
 	node->setPosition(ent->getPox(), ent->getPoy(), ent->getPoz());
 	node->attachObject(entOgre);
 	anguloRot = Ogre::Quaternion(Ogre::Degree(0),Ogre::Vector3::UNIT_Y);
+	//node->setOrientation(Ogre::Quaternion(180,0,0,0));
+	anguloRot.z = 1;
+	anguloRotent = 0;
+	
+	
 }
 
 void Render_c::Update(){
+	/*
+	Ogre::Vector3 originalDirectionVector(1,1,0);
+	Ogre::Quaternion rotation(Ogre::Degree(180), Ogre::Vector3::UNIT_X); //or whatever you rotate your node by
+	Ogre::Vector3 newDirectionVector = rotation * originalDirectionVector; //here's your new rotated vector.
+	*/
+
 	if (ent->getRoy() != 0){
+		anguloRotent += ent->getAngRot();//QUIZA SON RAD
 		anguloRot = Ogre::Quaternion(Ogre::Degree(ent->getAngRot()), Ogre::Vector3::UNIT_Y);
+		std::cout << node->getOrientation() << '\n';
 		node->rotate(anguloRot);
+		ent->setOrientationX(sin(anguloRotent));		
+		ent->setOrientationZ(cos(anguloRotent));
 	}
+
 	node->setPosition(ent->getPox(), ent->getPoy(), ent->getPoz());
+	
+	
 }
+
+//posicion+orientacion
+//orientacion (cos(q) , 0 , sen (q))
 Render_c::~Render_c()
 {
 }
