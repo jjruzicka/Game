@@ -2,7 +2,6 @@
 #define INVENTARIO_C_H
 #include "Component.h"
 #include "Entidad.h"
-#include <iostream>
 #include <unordered_map>
 #include <string>
 #include "Objeto.h"
@@ -25,7 +24,6 @@ private:
 	int contPociones;
 	Entidad* entidad;
 	std::unordered_map<std::string,int> inventario;
-	//std::unordered_map<std::string, Component*> inventario2;
 
 
 };

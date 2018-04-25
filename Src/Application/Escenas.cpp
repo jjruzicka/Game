@@ -1,7 +1,9 @@
 #include "Escenas.h"
 #include "Render_c.h"
 #include "PlayerController_c.h"
-
+#include "RigidBody_c.h"
+#include "Objeto.h"
+#include "Collider_c.h"
 using namespace Ogre;
 enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
@@ -17,21 +19,32 @@ Escenas::Escenas()
 	recursos = "OgreD/resources.cfg";
 #endif
 	initOgre();
+	initBullet();
+	
+
+	
 	inputcomp_ = InputComponent::getSingletonPtr();
 	inputcomp_->initialise(mWindow);
-
-
 	Entidad* ent1 = new Entidad();
 	//1683, 50, 2116
 	ent1->setPox(1700);// posicion 
 	ent1->setPoy(50);
 	ent1->setPoz(2000); //cuanto menor sea el numero, mas se aleja de la camara
 	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("personaje"), ent1, "Sinbad");
-	PlayerController_c * ois = new PlayerController_c(ent1,inputcomp_);
+	PlayerController_c * ois = new PlayerController_c(ent1, inputcomp_);
 	ent1->AddComponent(render);
 	ent1->AddComponent(ois);
 	entidades.push_back(ent1);
-	
+
+	btCollisionShape* fallShape = new btSphereShape(1);
+	btDefaultMotionState* fallMotionState = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1), btVector3(0, 30, 0)));
+	btScalar mass = 1;
+	btVector3 fallInertia(0, 9.8f, 0);
+	fallShape->calculateLocalInertia(mass, fallInertia);
+	btRigidBody::btRigidBodyConstructionInfo fallRigidBodyCI(mass, fallMotionState, fallShape, fallInertia);
+	//RigidBody_c* rb = new RigidBody_c(ent1, fallRigidBodyCI);
+	//ent1->AddComponent(rb);
+	//bulletWorld->addRigidBody(rb->getRigidbody());
 
 	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
 	lightdir.normalise();
@@ -53,7 +66,7 @@ Escenas::Escenas()
 	camNode->setPosition(Ogre::Vector3(0, 5, -35));
 	camNode->rotate(Ogre::Quaternion(Ogre::Degree(180), Ogre::Vector3::UNIT_Y));
 	camNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
-	
+
 	// create the camera
 	cam = scnMgr->createCamera("Cam");
 	cam->setNearClipDistance(0.1); //esto antes era 1
@@ -71,11 +84,10 @@ Escenas::Escenas()
 	vp = mWindow->addViewport(cam);
 	vp->setBackgroundColour(Ogre::ColourValue(150, 150, 150));
 	//vp->setBackgroundColour(Ogre::ColourValue(1, 1, 1));
-	
+
 	//Terrain
 	mapa = new Mapa(scnMgr, light);
 	mapa->createmap();
-
 }
 bool Escenas::initOgre(){
 
@@ -152,25 +164,48 @@ bool Escenas::initOgre(){
 
 	return true;
 }
+bool Escenas::initBullet(){
+	//build the broadPhase
+	broadPhase = new btDbvtBroadphase();
+
+	//Set up the collision configuration and dispacher
+	collisionConfiguration = new btDefaultCollisionConfiguration();
+	dispatcher = new btCollisionDispatcher(collisionConfiguration);
+
+	//the actual physics solver
+	solver = new btSequentialImpulseConstraintSolver();
+
+	//the world
+	bulletWorld = new btDiscreteDynamicsWorld(dispatcher, broadPhase, solver, collisionConfiguration);
+	bulletWorld->setGravity(btVector3(0, -10, 0));
+	return true;
+}
 
 bool Escenas::run(){
-
-
 	
-	
+
+	clock_t lastTicks = clock();
+	clock_t elapsedTicks = 0;
+	double deltaTime = 0;
+
 	while (true)
 	{
+		deltaTime = ((double)elapsedTicks) / 1000.f/*CLOCKS_PER_SEC*/;
+		lastTicks = clock();
 
 		inputcomp_->capture();
+
 		for (int i = 0; i<entidades.size(); i++)
 			entidades[i]->Update();
-		
+
+		// render ogre
 		Ogre::WindowEventUtilities::messagePump();
-
-
+		bulletWorld->stepSimulation((float)deltaTime);
+		
 		//comprobar si la ventana está abierta
 		if (mWindow->isClosed())return false;
 		if (!root->renderOneFrame())return false;
+		elapsedTicks = clock() - lastTicks;
 	}
 	return true;
 }
@@ -180,5 +215,11 @@ Escenas::~Escenas()
 {
 	for (int i = 0; i < entidades.size(); i++)
 		delete entidades[i];
+
+	delete bulletWorld;
+	delete collisionConfiguration;
+	delete dispatcher;
+	delete solver;
+	delete broadPhase;
 }
 

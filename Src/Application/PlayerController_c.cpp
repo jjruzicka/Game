@@ -1,6 +1,6 @@
 #include "PlayerController_c.h"
 #include <iostream>
-
+#include "RigidBody_c.h"
 PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input)
 {
 	inputcomp_ = input;
@@ -13,7 +13,7 @@ PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input)
 
 bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 {
-	
+
 	switch (keyP.key)
 	{
 	case OIS::KC_ESCAPE:
@@ -38,7 +38,7 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 		auxZ += entidad->getOrientationZ();
 		entidad->setPoz(auxZ);
 		auxX = entidad->getPox();
-		auxX +=  entidad->getOrientationX();
+		auxX += entidad->getOrientationX();
 		entidad->setPox(auxX);
 		mas = true;
 		istimetoStop = true;
@@ -59,7 +59,7 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 	case OIS::KC_LEFT:
 	case OIS::KC_A:
 		entidad->setRoy(1);
-		entidad->setAngRot(1 );
+		entidad->setAngRot(1);
 		break;
 
 	case OIS::KC_RIGHT:
@@ -82,7 +82,7 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 
 	return true;
 }
-	
+
 
 
 bool PlayerController_c::keyReleased(const OIS::KeyEvent& keyP){
@@ -169,24 +169,24 @@ void PlayerController_c::Update(){
 		if (mas){
 			if (auxZ != 0){
 				auxZ = entidad->getPoz();
-				auxZ +=10* entidad->getOrientationZ();
+				auxZ += 10 * entidad->getOrientationZ();
 				entidad->setPoz(auxZ);
 			}
 			else{
 				auxX = entidad->getPox();
-				auxX += 10*entidad->getOrientationX();
+				auxX += 10 * entidad->getOrientationX();
 				entidad->setPox(auxX);
 			}
 		}
 		else if (!mas){
 			if (auxZ != 0){
 				auxZ = entidad->getPoz();
-				auxZ -=10* entidad->getOrientationZ();
+				auxZ -= 10 * entidad->getOrientationZ();
 				entidad->setPoz(auxZ);
 			}
 			else{
 				auxX = entidad->getPox();
-				auxX -= 10*entidad->getOrientationX();
+				auxX -= 10 * entidad->getOrientationX();
 				entidad->setPox(auxX);
 			}
 		}

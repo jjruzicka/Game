@@ -10,16 +10,11 @@ public:
 	Render_c(Ogre::SceneNode*node, Entidad* ent, std::string nombre);
 	~Render_c();
 	virtual	void Update();
-	Ogre::SceneNode* getNode(){
-		return node;
-	};
-
-	Render_c(){};
 private:
 	Ogre::SceneNode* node;
 	Entidad* ent;
 	Ogre::Entity* entOgre;
 	Ogre::Quaternion anguloRot;
-	int anguloRotent;
+	float anguloRotent;
 };
 

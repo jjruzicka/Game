@@ -60,10 +60,10 @@ public:
 		posicion.x = x;
 	}
 	void setPoy(float y){
-		posicion.y=y;
+		posicion.y = y;
 	}
 	void setPoz(float z){
-		 posicion.z=z;
+		posicion.z = z;
 	}
 	void setRox(int x){
 		rotation.x = x;
@@ -113,5 +113,4 @@ private:
 	PosF orientacion;
 	int angRot;
 };
-
 #endif

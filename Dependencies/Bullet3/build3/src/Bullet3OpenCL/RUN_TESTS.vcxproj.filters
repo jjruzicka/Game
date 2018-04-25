@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\maria\Desktop\EXTRACCIONES\Bullet2Ogre\Game\Dependencies\bullet3\build3\CMakeFiles\adb068c79e69c1caa8a960916d9e1433\RUN_TESTS_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{9F0EEA98-32EE-3411-B237-B2A34C450637}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -11,7 +11,8 @@
 #include "OgreSceneNode.h"
 #include <OgreConfig.h>
 #include "OgreConfigFile.h"
-
+#include <btBulletCollisionCommon.h>
+#include <btBulletDynamicsCommon.h>
 #include <OgreTextureManager.h>
 #include <OgreWindowEventUtilities.h>
 #include <OgreException.h>
@@ -23,11 +24,19 @@ public:
 	Escenas();
 	~Escenas();
 	bool run();
+	bool initBullet();
 private:
 
 	bool initOgre();
-	bool initOIS();
 	std::vector<Entidad*> entidades;
+
+
+	btDiscreteDynamicsWorld* bulletWorld;
+	btDefaultCollisionConfiguration* collisionConfiguration;
+	btCollisionDispatcher* dispatcher;
+	btSequentialImpulseConstraintSolver* solver;
+	btBroadphaseInterface* broadPhase;
+
 
 	Mapa* mapa;
 	std::string recursos, plugins;
@@ -42,20 +51,5 @@ private:
 	Ogre::SceneNode* camNode = nullptr;
 
 	InputComponent* inputcomp_;
-	/*  //Gestor de paneles
-	OgreBites::CameraMan* camMan = nullptr;
-	SinbadMan* sinBadMgr = nullptr;
-	KnotFly* knotMgr = nullptr;
-	BombMan* bombMgr = nullptr;
-
-	ReflejoMan* planeMgr = nullptr;
-	std::vector<ObjectMan*> vecObjMan;
-	Ogre::SceneManager* scnMgr = nullptr;
-	OgreBites::TrayManager* trayMgr = nullptr;
-	Ogre::SceneNode* lightNode = nullptr;
-	Ogre::SceneNode* camNode = nullptr;
-	Ogre::RaySceneQuery * rayScnQuery = nullptr;
-	Ogre::Camera* cam = nullptr;
-	*/
 
 };
