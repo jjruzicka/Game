@@ -16,6 +16,7 @@
 #include <OgreTextureManager.h>
 #include <OgreWindowEventUtilities.h>
 #include <OgreException.h>
+#include "Mapa.h"
 #include "InputComponent.h"
 class Escenas
 {
@@ -29,12 +30,15 @@ private:
 	bool initOgre();
 	std::vector<Entidad*> entidades;
 
+
 	btDiscreteDynamicsWorld* bulletWorld;
 	btDefaultCollisionConfiguration* collisionConfiguration;
 	btCollisionDispatcher* dispatcher;
 	btSequentialImpulseConstraintSolver* solver;
 	btBroadphaseInterface* broadPhase;
 
+
+	Mapa* mapa;
 	std::string recursos, plugins;
 	Ogre::Root *root;
 	Ogre::ConfigFile cf;

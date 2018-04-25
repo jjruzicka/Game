@@ -6,6 +6,7 @@ class Objeto : public Entidad
 public:
     Objeto(std::string id);
     ~Objeto();
+	void Update();
     std::string getID(){ return identificador; }
 private:
     std::string identificador;

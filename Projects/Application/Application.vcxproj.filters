@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\..\Src\Application\Render_c.cpp">
+    <ClCompile Include="..\..\Src\Application\RigidBody_c.cpp">
+      <Filter>Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\Collider_c.cpp">
       <Filter>Code</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\Application\Component.cpp">
@@ -16,32 +19,35 @@
     <ClCompile Include="..\..\Src\Application\GameManager_c.cpp">
       <Filter>Code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Src\Application\Mision_c.cpp">
-      <Filter>Code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Application\ProyectoBasico.cpp">
-      <Filter>Code</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Src\Application\InputComponent.cpp">
-      <Filter>Code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Application\PlayerController_c.cpp">
       <Filter>Code</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\Application\Inventario_c.cpp">
       <Filter>Code</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Src\Application\Mapa.cpp">
+      <Filter>Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\Mision_c.cpp">
+      <Filter>Code</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Src\Application\Objeto.cpp">
       <Filter>Code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Src\Application\RigidBody_c.cpp">
+    <ClCompile Include="..\..\Src\Application\PlayerController_c.cpp">
       <Filter>Code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Src\Application\Collider_c.cpp">
+    <ClCompile Include="..\..\Src\Application\ProyectoBasico.cpp">
+      <Filter>Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\Render_c.cpp">
       <Filter>Code</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Src\Application\Collider_c.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Src\Application\Component.h">
       <Filter>Headers</Filter>
     </ClInclude>
@@ -54,37 +60,37 @@
     <ClInclude Include="..\..\Src\Application\GameManager_c.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Src\Application\Mision_c.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Application\Render_c.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Src\Application\InputComponent.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Application\PlayerController_c.h">
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\Inventario_c.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Src\Application\Mapa.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\Mision_c.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Src\Application\Objeto.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\PlayerController_c.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\Render_c.h">
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\RigidBody_c.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Src\Application\Collider_c.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Headers">
-      <UniqueIdentifier>{7e466105-2e0d-4a2c-9b7a-a0b8238ee45d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Code">
-      <UniqueIdentifier>{4c5b7471-b585-4ab1-af1a-3376cb41d86e}</UniqueIdentifier>
+      <UniqueIdentifier>{830fa04e-e3da-4551-b73c-16a2a40efaba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{c9d87b53-ff07-42e0-b2af-6e8cfd5e75ac}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
