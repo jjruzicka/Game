@@ -82,7 +82,7 @@
     <OutDir>$(SolutionDir)Exes\</OutDir>
     <TargetName>$(SolutionName)</TargetName>
     <IntDir>$(Platform)$(Configuration)\</IntDir>
-    <LibraryPath>$(SolutionDir)Dependencies\bullet3\build3\lib\$(Configuration);$(SolutionDir)Dependencies\OIS-master\build\lib\Debug;$(SolutionDir)Dependencies\Ogre\Build\lib\$(Configuration);$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)Dependencies\bullet3\build3\lib\$(Configuration);$(SolutionDir)Dependencies\OIS-master\build\lib\$(Configuration);$(SolutionDir)Dependencies\Ogre\Build\lib\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -117,7 +117,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>OgreMain.lib;Bullet3Geometry.lib;Bullet2FileLoader.lib;Bullet3Collision.lib;Bullet3Common.lib;Bullet3Dynamics.lib;Bullet3OpenCL_clew.lib;BulletCollision.lib;BulletDynamics.lib;BulletInverseDynamics.lib;BulletSoftBody.lib;LinearMath.lib;%(AdditionalDependencies);OIS.lib;OgreTerrain.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\OIS-master\build\lib\Debug;$(SolutionDir)Dependencies\bullet3\build3\lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\OIS-master\build\lib\$(Configuration);$(SolutionDir)Dependencies\bullet3\build3\lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
