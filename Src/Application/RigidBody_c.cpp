@@ -1,5 +1,5 @@
 #include "RigidBody_c.h"
-
+#include <iostream>
 
 RigidBody_c::RigidBody_c(Entidad* ent, const btRigidBody::btRigidBodyConstructionInfo &info) : rb(btRigidBody(info))
 {
@@ -19,9 +19,9 @@ void RigidBody_c::Update(){
 	
 	btTransform trans;
 	rb.getMotionState()->getWorldTransform(trans);
-	
+
 	float x = trans.getOrigin().getX();
-	float y = trans.getOrigin().getY() + 500;
+	float y = trans.getOrigin().getY();
 	float z = trans.getOrigin().getZ();
 
 	ent->setPox(x);

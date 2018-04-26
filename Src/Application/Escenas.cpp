@@ -35,9 +35,9 @@ Escenas::Escenas()
 	ent1->AddComponent(render);
 	ent1->AddComponent(ois);
 	entidades.push_back(ent1);
-
-	btCollisionShape* fallShape = new btSphereShape(1);
-	btDefaultMotionState* fallMotionState = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1), btVector3(0, 30, 0)));
+	//////////////////////////////////////////////////////rb del bicho////////////////////////////////////////////////////
+	btCollisionShape* fallShape = new btBoxShape(btVector3(10,5,10));
+	btDefaultMotionState* fallMotionState = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1), btVector3(ent1->getPox(), ent1->getPoy(), ent1->getPoz())));
 	btScalar mass = 1;
 	btVector3 fallInertia(0, 9.8f, 0);
 	fallShape->calculateLocalInertia(mass, fallInertia);
@@ -45,6 +45,25 @@ Escenas::Escenas()
 	RigidBody_c* rb = new RigidBody_c(ent1, fallRigidBodyCI);
 	ent1->AddComponent(rb);
 	bulletWorld->addRigidBody(rb->getRigidbody());
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////rb del bicho////////////////////////////////////////////////////
+	Entidad* ent2 = new Entidad();
+	entidades.push_back(ent2);
+	ent2->setPox(1700);// posicion 
+	ent2->setPoy(25);
+	ent2->setPoz(2000); //cuanto menor sea el numero, mas se aleja de la camara
+	Render_c* render2 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("personaje2"), ent2, "Robot");
+	ent2->AddComponent(render2);
+	btCollisionShape* fallShape2 = new btBoxShape(btVector3(10, 5, 10));
+	btDefaultMotionState* fallMotionState2 = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1), btVector3(ent2->getPox(), ent2->getPoy(), ent2->getPoz())));
+	btScalar mass2 = 1;
+	btVector3 fallInertia2(0, 9.8f, 0);
+	fallShape2->calculateLocalInertia(mass2, fallInertia2);
+	btRigidBody::btRigidBodyConstructionInfo fallRigidBodyCI2(mass2, fallMotionState2, fallShape2, fallInertia2);
+	RigidBody_c* rb2 = new RigidBody_c(ent2, fallRigidBodyCI2);
+	ent2->AddComponent(rb2);
+	bulletWorld->addRigidBody(rb2->getRigidbody());
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
 	lightdir.normalise();
