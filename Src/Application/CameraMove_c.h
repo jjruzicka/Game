@@ -30,6 +30,7 @@ private:
 
 	float spd;// , turn_spd, pitch_spd;
 	int distMax;
+	Ogre::Vector3 offset;
 	bool keyPressed(const OIS::KeyEvent& keyP);
 	bool keyReleased(const OIS::KeyEvent& keyP);
 	bool mouseMoved(const OIS::MouseEvent& me);
