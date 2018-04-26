@@ -15,8 +15,8 @@ Escenas::Escenas()
 	plugins = "OgreD/plugins_d.cfg";
 	recursos = "OgreD/resources_d.cfg";
 #else
-	plugins = "OgreD/plugins.cfg";
-	recursos = "OgreD/resources.cfg";
+	plugins = "Ogre/plugins.cfg";
+	recursos = "Ogre/resources.cfg";
 #endif
 	initOgre();
 	initBullet();

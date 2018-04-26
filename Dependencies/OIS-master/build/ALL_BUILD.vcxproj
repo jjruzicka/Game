@@ -158,16 +158,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="C:\hlocal\game\Game\Dependencies\OIS-master\build\ZERO_CHECK.vcxproj">
-      <Project>{17AF367E-C7F8-32DD-B3CD-12ACE3B39489}</Project>
-      <Name>ZERO_CHECK</Name>
-    </ProjectReference>
-    <ProjectReference Include="C:\hlocal\game\Game\Dependencies\OIS-master\build\OIS.vcxproj">
-      <Project>{14C4B0E3-277F-3368-BC3C-46BF1C14DF96}</Project>
-      <Name>OIS</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
