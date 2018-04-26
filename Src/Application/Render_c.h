@@ -7,7 +7,7 @@
 class Render_c : public Component
 {
 public:
-	Render_c(Ogre::SceneNode*node, Entidad* ent, std::string nombre);
+	Render_c(Ogre::SceneNode*node, Entidad* ent, std::string nombreMalla, std::string nombreEntidad);
 	~Render_c();
 	virtual	void Update();
 private:

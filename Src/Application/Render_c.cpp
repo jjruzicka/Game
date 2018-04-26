@@ -1,12 +1,12 @@
 #include "Render_c.h"
 #include <iostream>
 
-Render_c::Render_c(Ogre::SceneNode*src, Entidad* ent, std::string nombre)
+Render_c::Render_c(Ogre::SceneNode*src, Entidad* ent, std::string nombreMalla, std::string nombreEntidad)
 {
 	this->ent = ent;
 	this->node = src;
-	std::string mesh = nombre + ".mesh";
-	entOgre = node->getCreator()->createEntity(nombre, mesh);
+	std::string mesh = nombreMalla + ".mesh";
+	entOgre = node->getCreator()->createEntity(nombreEntidad, mesh);
 	node->setPosition(ent->getPox(), ent->getPoy(), ent->getPoz());
 	node->attachObject(entOgre);
 

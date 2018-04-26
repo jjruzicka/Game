@@ -25,17 +25,17 @@ Escenas::Escenas()
 	
 	inputcomp_ = InputComponent::getSingletonPtr();
 	inputcomp_->initialise(mWindow);
+	//////////////////////////////////////////////////////rb del pj PRINCIPAL////////////////////////////////////////////////////
 	Entidad* ent1 = new Entidad();
 	//1683, 50, 2116
 	ent1->setPox(1700);// posicion 
 	ent1->setPoy(50);
 	ent1->setPoz(2000); //cuanto menor sea el numero, mas se aleja de la camara
-	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("personaje"), ent1, "Sinbad");
+	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("personaje"), ent1, "Sinbad","Sinbad");
 	PlayerController_c * ois = new PlayerController_c(ent1, inputcomp_);
 	ent1->AddComponent(render);
 	ent1->AddComponent(ois);
 	entidades.push_back(ent1);
-	//////////////////////////////////////////////////////rb del bicho////////////////////////////////////////////////////
 	btCollisionShape* fallShape = new btBoxShape(btVector3(10,5,10));
 	btDefaultMotionState* fallMotionState = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1), btVector3(ent1->getPox(), ent1->getPoy(), ent1->getPoz())));
 	btScalar mass = 1;
@@ -46,13 +46,13 @@ Escenas::Escenas()
 	ent1->AddComponent(rb);
 	bulletWorld->addRigidBody(rb->getRigidbody());
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//////////////////////////////////////////////////////rb del bicho////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////rb del PJ2////////////////////////////////////////////////////
 	Entidad* ent2 = new Entidad();
 	entidades.push_back(ent2);
 	ent2->setPox(1700);// posicion 
 	ent2->setPoy(25);
 	ent2->setPoz(2000); //cuanto menor sea el numero, mas se aleja de la camara
-	Render_c* render2 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("personaje2"), ent2, "Robot");
+	Render_c* render2 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("personaje2"), ent2, "Sinbad","Sinbad2");
 	ent2->AddComponent(render2);
 	btCollisionShape* fallShape2 = new btBoxShape(btVector3(10, 5, 10));
 	btDefaultMotionState* fallMotionState2 = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1), btVector3(ent2->getPox(), ent2->getPoy(), ent2->getPoz())));
