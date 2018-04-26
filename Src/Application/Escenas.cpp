@@ -42,9 +42,9 @@ Escenas::Escenas()
 	btVector3 fallInertia(0, 9.8f, 0);
 	fallShape->calculateLocalInertia(mass, fallInertia);
 	btRigidBody::btRigidBodyConstructionInfo fallRigidBodyCI(mass, fallMotionState, fallShape, fallInertia);
-	//RigidBody_c* rb = new RigidBody_c(ent1, fallRigidBodyCI);
-	//ent1->AddComponent(rb);
-	//bulletWorld->addRigidBody(rb->getRigidbody());
+	RigidBody_c* rb = new RigidBody_c(ent1, fallRigidBodyCI);
+	ent1->AddComponent(rb);
+	bulletWorld->addRigidBody(rb->getRigidbody());
 
 	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
 	lightdir.normalise();
@@ -86,8 +86,9 @@ Escenas::Escenas()
 	//vp->setBackgroundColour(Ogre::ColourValue(1, 1, 1));
 
 	//Terrain
-	mapa = new Mapa(scnMgr, light);
+	mapa = new Mapa(scnMgr, light, bulletWorld);
 	mapa->createmap();
+	mapa->setPhysics();
 }
 bool Escenas::initOgre(){
 
@@ -197,6 +198,8 @@ bool Escenas::run(){
 
 		for (int i = 0; i<entidades.size(); i++)
 			entidades[i]->Update();
+
+		
 
 		// render ogre
 		Ogre::WindowEventUtilities::messagePump();

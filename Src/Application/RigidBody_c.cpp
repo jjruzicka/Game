@@ -21,7 +21,7 @@ void RigidBody_c::Update(){
 	rb.getMotionState()->getWorldTransform(trans);
 	
 	float x = trans.getOrigin().getX();
-	float y = trans.getOrigin().getY();
+	float y = trans.getOrigin().getY() + 500;
 	float z = trans.getOrigin().getZ();
 
 	ent->setPox(x);
@@ -34,5 +34,5 @@ void RigidBody_c::actualizarPos(){
 	trans.setOrigin(btVector3(ent->getPox(), ent->getPoy(), ent->getPoz()));
 	rb.applyCentralForce(btVector3(0, 0, 500));
 
-	//rb.getMotionState()->setWorldTransform(trans);
+	rb.getMotionState()->setWorldTransform(trans);
 }

@@ -1,7 +1,7 @@
 #include "Mapa.h"
 
 
-Mapa::Mapa(Ogre::SceneManager * scnMgr, Ogre::Light* light) : mTerrainGroup(0),
+Mapa::Mapa(Ogre::SceneManager * scnMgr, Ogre::Light* light, btDiscreteDynamicsWorld* World) : mTerrainGroup(0), bulletWorld(World),
 mTerrainGlobals(0), scn(scnMgr), luz(light)
 //mInfoLabel(0)
 {
@@ -10,6 +10,7 @@ mTerrainGlobals(0), scn(scnMgr), luz(light)
 
 void Mapa::createmap(){
 	// Terrain
+	
 	mTerrainGlobals = OGRE_NEW Ogre::TerrainGlobalOptions();
 
 	mTerrainGroup = OGRE_NEW Ogre::TerrainGroup(
@@ -35,11 +36,12 @@ void Mapa::createmap(){
 		{
 			Ogre::Terrain* t = ti.getNext()->instance;
 			initBlendMaps(t);
+			
 		}
 	}
-
+	
 	mTerrainGroup->freeTemporaryResources();
-
+	
 	// Sky Techniques
 	// mSceneMgr->setSkyBox(true, "Examples/SpaceSkyBox", 300, false);
 	scn->setSkyDome(true, "Examples/CloudySky", 5, 8);
@@ -50,6 +52,67 @@ void Mapa::createmap(){
 	 scn->setSkyPlane(
 	   true, plane, "Examples/SpaceSkyPlane", 1500, 40, true, 1.5, 150, 150);*/
 }
+
+void Mapa::setPhysics(){
+
+	Ogre::Terrain* pTerrain = mTerrainGroup->getTerrain(0, 0);
+	int terrainPageSize = pTerrain->getSize();
+
+	float *pTerrainHeightData = pTerrain->getHeightData();
+	float *pTerrainHeightDataConvert = new float [terrainPageSize * terrainPageSize];
+	for (int i = 0; i < terrainPageSize; ++i)
+	{
+		memcpy(pTerrainHeightDataConvert + terrainPageSize * i,
+			pTerrainHeightData + terrainPageSize * (terrainPageSize - i - 1),
+			sizeof(float)*(terrainPageSize));
+	}
+
+	btHeightfieldTerrainShape* pHeightShape
+		= new btHeightfieldTerrainShape(terrainPageSize,
+		terrainPageSize,
+		pTerrainHeightDataConvert,
+		1, /* Terrains getHeightData() is already scaled perfectly */
+		pTerrain->getMinHeight(),
+		pTerrain->getMaxHeight(),
+		1, /* upVector is Y positive in ogre-, bullet- and our world */
+		PHY_FLOAT,
+		true);
+
+	// Scale the mesh along x/z
+	float unitsBetweenVertices = pTerrain->getWorldSize() / (terrainPageSize - 1);
+	btVector3 scaling(unitsBetweenVertices, 1, unitsBetweenVertices);
+	pHeightShape->setLocalScaling(scaling);
+
+	// Ogre uses DiamonSubdivision for Terrain-mesh, so bullet should use it too
+	pHeightShape->setUseDiamondSubdivision(true);
+
+	// Now we create a btRigidBody
+	btRigidBody *pBody = new btRigidBody(0.0 /* mass 0.0 means static */,
+		new btDefaultMotionState(),
+		pHeightShape);
+
+	// 
+	Ogre::Vector3 terrainPosition = pTerrain->getPosition();
+	pBody->getWorldTransform().setOrigin(btVector3(terrainPosition.x,
+		terrainPosition.y
+		+ (pTerrain->getMaxHeight() - pTerrain->getMinHeight()) / 2, // Bullet's position differs from Ogre's. Ogre's y is at the bottom, bullet needs the middle if the height to be positioned right
+		terrainPosition.z));
+
+	pBody->getWorldTransform().setRotation(btQuaternion(Ogre::Quaternion::IDENTITY.x,
+		Ogre::Quaternion::IDENTITY.y,
+		Ogre::Quaternion::IDENTITY.z,
+		Ogre::Quaternion::IDENTITY.w));
+
+	bulletWorld->addRigidBody(pBody);
+
+	// Advanced Body configuration ->
+	// You can play with these or just leave the defaults:
+	// pBody->setFriction(1.0);
+	// pBody->setRestitution(0.0);
+	// pBody->setHitFraction(0.0);
+	// pBody->setDamping(0.2, 0.2);
+}
+
 
 void getTerrainImage(bool flipX, bool flipY, Ogre::Image& img)
 {
@@ -131,7 +194,7 @@ void Mapa::configureTerrainDefaults(Ogre::Light* light)
 	mTerrainGlobals->setCompositeMapDiffuse(light->getDiffuseColour());
 
 	Ogre::Terrain::ImportData& importData = mTerrainGroup->getDefaultImportSettings();
-	importData.terrainSize = 513;
+	importData.terrainSize = 65;
 	importData.worldSize = 12000.0;
 	importData.inputScale = 600;
 	importData.minBatchSize = 33;
