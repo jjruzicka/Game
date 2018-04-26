@@ -2,6 +2,7 @@
 #include "InputComponent.h"
 #include "Entidad.h"
 #include <OgreRenderWindow.h>
+#include "RigidBody_c.h"
 class PlayerController_c :
 	public InputComponent
 {
@@ -20,5 +21,7 @@ private:
 	Entidad* entidad;
 	float auxX, auxY, auxZ;
 	bool mas, istimetoStop;
+
+	RigidBody_c* rb;
 };
 

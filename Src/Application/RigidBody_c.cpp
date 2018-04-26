@@ -41,6 +41,10 @@ void RigidBody_c::Update(){
 }*/
 
 void RigidBody_c::actualizarPos(float x, float y, float z){
+	btTransform trans;
+	trans.setOrigin(btVector3(x, y, z));
+	rb.applyCentralForce(btVector3(0, 0, 500));
 
+	rb.getMotionState()->setWorldTransform(trans);
 }
 

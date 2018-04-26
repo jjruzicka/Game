@@ -9,6 +9,8 @@ PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input)
 	inputcomp_->addMouseListener(this, "raton");
 	auxX = auxY = auxZ = 0;
 	mas = istimetoStop = false;
+
+	rb = new RigidBody_c();
 }
 
 bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
@@ -30,6 +32,7 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 		auxZ = entidad->getPoz();
 		auxZ += entidad->getOrientationZ();
 		//entidad->setPoz(entidad->getPoz() + 10);
+		entidad->GetComponent(rb)->actualizarPos(entidad->getPox(), entidad->getPoy(), entidad->getPoz() + 10);
 		auxX = entidad->getPox();
 		auxX += entidad->getOrientationX();
 		entidad->setPox(auxX);
@@ -42,6 +45,7 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 		auxZ = entidad->getPoz();
 		auxZ -= entidad->getOrientationZ();
 		//entidad->setPoz(entidad->getPoz() - 10);
+		entidad->GetComponent(rb)->actualizarPos(entidad->getPox(), entidad->getPoy(), entidad->getPoz() - 10);
 		auxX = entidad->getPox();
 		auxX -= entidad->getOrientationX();
 		entidad->setPox(auxX);
@@ -187,4 +191,6 @@ PlayerController_c::~PlayerController_c()
 {
 	inputcomp_->removeKeyListener(this);
 	inputcomp_->removeMouseListener(this);
+
+	delete rb;
 }
