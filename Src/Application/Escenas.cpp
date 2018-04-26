@@ -29,8 +29,8 @@ Escenas::Escenas()
 	//1683, 50, 2116
 	ent1->setPox(1700);// posicion 
 	ent1->setPoy(50);
-	ent1->setPoz(2000); //cuanto menor sea el numero, mas se aleja de la camara
-	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("personaje"), ent1, "Sinbad");
+	ent1->setPoz(900); //cuanto menor sea el numero, mas se aleja de la camara
+	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("personaje"), ent1, "p3d_mediev");
 	PlayerController_c * ois = new PlayerController_c(ent1, inputcomp_);
 	ent1->AddComponent(render);
 	ent1->AddComponent(ois);
