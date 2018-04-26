@@ -27,12 +27,20 @@ void RigidBody_c::Update(){
 	ent->setPox(x);
 	ent->setPoy(y);
 	ent->setPoz(z);
+
+	std::cout << "Posicion rb: " << x << ", " << y << ", " << z << std::endl;
+
 }
 
-void RigidBody_c::actualizarPos(){
+/*void RigidBody_c::actualizarPos(){
 	btTransform trans;
 	trans.setOrigin(btVector3(ent->getPox(), ent->getPoy(), ent->getPoz()));
 	rb.applyCentralForce(btVector3(0, 0, 500));
 
 	rb.getMotionState()->setWorldTransform(trans);
+}*/
+
+void RigidBody_c::actualizarPos(float x, float y, float z){
+
 }
+

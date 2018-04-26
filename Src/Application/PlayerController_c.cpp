@@ -29,7 +29,7 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 	case OIS::KC_W:
 		auxZ = entidad->getPoz();
 		auxZ += entidad->getOrientationZ();
-		entidad->setPoz(auxZ);
+		//entidad->setPoz(entidad->getPoz() + 10);
 		auxX = entidad->getPox();
 		auxX += entidad->getOrientationX();
 		entidad->setPox(auxX);
@@ -41,7 +41,7 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 	case OIS::KC_S:
 		auxZ = entidad->getPoz();
 		auxZ -= entidad->getOrientationZ();
-		entidad->setPoz(auxZ);
+		//entidad->setPoz(entidad->getPoz() - 10);
 		auxX = entidad->getPox();
 		auxX -= entidad->getOrientationX();
 		entidad->setPox(auxX);

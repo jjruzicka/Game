@@ -15,7 +15,7 @@ public:
 		return &rb;
 	}
 
-	void actualizarPos();
+	void actualizarPos(float x, float y, float z);
 private:
 	btRigidBody rb;
 	Entidad* ent;

@@ -38,8 +38,8 @@ Escenas::Escenas()
 	entidades.push_back(ent1);
 	btCollisionShape* fallShape = new btBoxShape(btVector3(10,5,10));
 	btDefaultMotionState* fallMotionState = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1), btVector3(ent1->getPox(), ent1->getPoy(), ent1->getPoz())));
-	btScalar mass = 1;
-	btVector3 fallInertia(0, 9.8f, 0);
+	btScalar mass = 0;
+	btVector3 fallInertia(0, 0, 0);
 	fallShape->calculateLocalInertia(mass, fallInertia);
 	btRigidBody::btRigidBodyConstructionInfo fallRigidBodyCI(mass, fallMotionState, fallShape, fallInertia);
 	RigidBody_c* rb = new RigidBody_c(ent1, fallRigidBodyCI);
@@ -48,7 +48,7 @@ Escenas::Escenas()
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	//////////////////////////////////////////////////////rb del PJ2////////////////////////////////////////////////////
-	Entidad* ent2 = new Entidad();
+	/*Entidad* ent2 = new Entidad();
 	entidades.push_back(ent2);
 	ent2->setPox(1700);// posicion 
 	ent2->setPoy(25);
@@ -63,7 +63,7 @@ Escenas::Escenas()
 	btRigidBody::btRigidBodyConstructionInfo fallRigidBodyCI2(mass2, fallMotionState2, fallShape2, fallInertia2);
 	RigidBody_c* rb2 = new RigidBody_c(ent2, fallRigidBodyCI2);
 	ent2->AddComponent(rb2);
-	bulletWorld->addRigidBody(rb2->getRigidbody());
+	bulletWorld->addRigidBody(rb2->getRigidbody());*/
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
