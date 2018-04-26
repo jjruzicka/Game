@@ -30,14 +30,14 @@ private:
 	bool initOgre();
 	std::vector<Entidad*> entidades;
 
-
+	//Variables usadas para la iniciacion de bullet
 	btDiscreteDynamicsWorld* bulletWorld;
 	btDefaultCollisionConfiguration* collisionConfiguration;
 	btCollisionDispatcher* dispatcher;
 	btSequentialImpulseConstraintSolver* solver;
 	btBroadphaseInterface* broadPhase;
 
-
+	//Varibales usadas por Ogre
 	Mapa* mapa;
 	std::string recursos, plugins;
 	Ogre::Root *root;
@@ -50,6 +50,7 @@ private:
 	Ogre::Camera* cam = nullptr;
 	Ogre::SceneNode* camNode = nullptr;
 
+	//Componente de imput
 	InputComponent* inputcomp_;
 
 };

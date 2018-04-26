@@ -47,7 +47,6 @@ void Inventario_c::addObject(Objeto *e) {
 }
 
 void Inventario_c::removeObject(Objeto *e){
-	//if (inventario.count(e->getID())==1)
 	auto it = inventario.find(e->getID());
 	if (it->second == 1)
 		inventario.erase(e->getID());

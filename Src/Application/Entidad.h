@@ -23,6 +23,7 @@ public:
 	void Update();
 	void AddComponent(Component * component);
 
+	//OH OH ITS MAGIC, U KNOOOOW
 	template <class T>
 	T*  GetComponent(T* a){
 		int i = 0;

@@ -17,19 +17,12 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 	switch (keyP.key)
 	{
 	case OIS::KC_ESCAPE:
-		//mShutDown = true;
 		break;
 
 	case OIS::KC_1:
-		/*mCamera->getParentSceneNode()->detachObject(mCamera);
-		mCamNode = mSceneMgr->getSceneNode("CamNode1");
-		mCamNode->attachObject(mCamera);*/
 		break;
 
 	case OIS::KC_2:
-		/*mCamera->getParentSceneNode()->detachObject(mCamera);
-		mCamNode = mSceneMgr->getSceneNode("CamNode2");
-		mCamNode->attachObject(mCamera);*/
 		break;
 
 	case OIS::KC_UP:
@@ -134,8 +127,7 @@ bool PlayerController_c::mouseMoved(const OIS::MouseEvent& me)
 {
 	if (me.state.buttonDown(OIS::MB_Right))
 	{
-		/*mCamNode->yaw(Ogre::Degree(-mRotate * me.state.X.rel), Ogre::Node::TS_WORLD);
-		mCamNode->pitch(Ogre::Degree(-mRotate * me.state.Y.rel), Ogre::Node::TS_LOCAL);*/
+
 	}
 
 	return true;
@@ -143,12 +135,10 @@ bool PlayerController_c::mouseMoved(const OIS::MouseEvent& me)
 
 bool PlayerController_c::mousePressed(const OIS::MouseEvent& me, OIS::MouseButtonID id)
 {
-	/*Ogre::Light* light = mSceneMgr->getLight("Light1");*/
 
 	switch (id)
 	{
 	case OIS::MB_Left:
-		/*light->setVisible(!light->isVisible());*/
 		break;
 	default:
 		break;

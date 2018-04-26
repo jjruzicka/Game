@@ -22,7 +22,7 @@ Collider_c::~Collider_c()
 	delete ent;
 }
 
-void Collider_c::Update(){//LA ROTACION NO ES IMPORTANTE
+void Collider_c::Update(){
 	btScalar scalar = ent->getAngRot();
 	trans.setOrigin(btVector3(ent->getPox(), ent->getPoy(), ent->getPoz()));
 	trans.setRotation(*q);

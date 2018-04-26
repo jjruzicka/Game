@@ -30,7 +30,7 @@ Escenas::Escenas()
 	//1683, 50, 2116
 	ent1->setPox(1700);// posicion 
 	ent1->setPoy(50);
-	ent1->setPoz(2000); //cuanto menor sea el numero, mas se aleja de la camara
+	ent1->setPoz(2000);
 	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("personaje"), ent1, "Sinbad","Sinbad");
 	PlayerController_c * ois = new PlayerController_c(ent1, inputcomp_);
 	ent1->AddComponent(render);
@@ -46,12 +46,13 @@ Escenas::Escenas()
 	ent1->AddComponent(rb);
 	bulletWorld->addRigidBody(rb->getRigidbody());
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	//////////////////////////////////////////////////////rb del PJ2////////////////////////////////////////////////////
 	Entidad* ent2 = new Entidad();
 	entidades.push_back(ent2);
 	ent2->setPox(1700);// posicion 
 	ent2->setPoy(25);
-	ent2->setPoz(2000); //cuanto menor sea el numero, mas se aleja de la camara
+	ent2->setPoz(2000);
 	Render_c* render2 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("personaje2"), ent2, "Sinbad","Sinbad2");
 	ent2->AddComponent(render2);
 	btCollisionShape* fallShape2 = new btBoxShape(btVector3(10, 5, 10));
@@ -78,10 +79,6 @@ Escenas::Escenas()
 
 	// also need to tell where we are
 	camNode = scnMgr->getSceneNode("personaje")->createChildSceneNode();
-	/*camNode->setPosition(0, 0, 100);
-	camNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_WORLD); //esto lo que habia antes
-	*/
-	// para la escena, pruebas
 	camNode->setPosition(Ogre::Vector3(0, 5, -35));
 	camNode->rotate(Ogre::Quaternion(Ogre::Degree(180), Ogre::Vector3::UNIT_Y));
 	camNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
@@ -91,7 +88,6 @@ Escenas::Escenas()
 	cam->setNearClipDistance(0.1); //esto antes era 1
 	cam->setFarClipDistance(10000);
 	cam->setAutoAspectRatio(true);
-	//cam->setPolygonMode(Ogre::PM_WIREFRAME);  // en material
 	camNode->attachObject(cam);
 	cam->setQueryFlags(MY_QUERY_IGNORE);
 
@@ -102,7 +98,6 @@ Escenas::Escenas()
 	Viewport* vp;
 	vp = mWindow->addViewport(cam);
 	vp->setBackgroundColour(Ogre::ColourValue(150, 150, 150));
-	//vp->setBackgroundColour(Ogre::ColourValue(1, 1, 1));
 
 	//Terrain
 	mapa = new Mapa(scnMgr, light, bulletWorld);
@@ -222,6 +217,7 @@ bool Escenas::run(){
 
 		// render ogre
 		Ogre::WindowEventUtilities::messagePump();
+		//Tick de la fisica
 		bulletWorld->stepSimulation((float)deltaTime);
 		
 		//comprobar si la ventana está abierta

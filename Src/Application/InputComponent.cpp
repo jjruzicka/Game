@@ -23,7 +23,6 @@ InputComponent::~InputComponent()
 			mKeyboard = 0;
 		}
 		mInputSystem->destroyInputSystem(mInputSystem);
-		//mInputSystem->destroyInputSystem();
 		mInputSystem = 0;
 
 		// Clear Listeners
@@ -56,17 +55,12 @@ void InputComponent::initialise(Ogre::RenderWindow *renderWindow) {
 		// Create inputsystem
 		mInputSystem = OIS::InputManager::createInputSystem(paramList);
 
-		// If possible create a buffered keyboard
-		// (note: if below line doesn't compile, try:  if (mInputSystem->getNumberOfDevices(OIS::OISKeyboard) > 0) {
-		//if( mInputSystem->numKeyboards() > 0 ) {
+
 		if (mInputSystem->getNumberOfDevices(OIS::OISKeyboard) > 0) {
 			mKeyboard = static_cast<OIS::Keyboard*>(mInputSystem->createInputObject(OIS::OISKeyboard, true));
 			mKeyboard->setEventCallback(this);
 		}
 
-		// If possible create a buffered mouse
-		// (note: if below line doesn't compile, try:  if (mInputSystem->getNumberOfDevices(OIS::OISMouse) > 0) {
-		//if( mInputSystem->numMice() > 0 ) {
 		if (mInputSystem->getNumberOfDevices(OIS::OISMouse) > 0) {
 			mMouse = static_cast<OIS::Mouse*>(mInputSystem->createInputObject(OIS::OISMouse, true));
 			mMouse->setEventCallback(this);
@@ -183,7 +177,6 @@ void InputComponent::removeAllMouseListeners(void) {
 
 
 void InputComponent::setWindowExtents(int width, int height) {
-	// Set mouse region (if window resizes, we should alter this to reflect as well)
 	const OIS::MouseState &mouseState = mMouse->getMouseState();
 	mouseState.width = width;
 	mouseState.height = height;

@@ -3,7 +3,6 @@
 
 Mapa::Mapa(Ogre::SceneManager * scnMgr, Ogre::Light* light, btDiscreteDynamicsWorld* World) : mTerrainGroup(0), bulletWorld(World),
 mTerrainGlobals(0), scn(scnMgr), luz(light)
-//mInfoLabel(0)
 {
 
 }
@@ -42,15 +41,7 @@ void Mapa::createmap(){
 	
 	mTerrainGroup->freeTemporaryResources();
 	
-	// Sky Techniques
-	// mSceneMgr->setSkyBox(true, "Examples/SpaceSkyBox", 300, false);
 	scn->setSkyDome(true, "Examples/CloudySky", 5, 8);
-	 /*Ogre::Plane plane;
-	 plane.d = 1000;
-	 plane.normal = Ogre::Vector3::NEGATIVE_UNIT_Y;
-
-	 scn->setSkyPlane(
-	   true, plane, "Examples/SpaceSkyPlane", 1500, 40, true, 1.5, 150, 150);*/
 }
 
 void Mapa::setPhysics(){
@@ -105,12 +96,6 @@ void Mapa::setPhysics(){
 
 	bulletWorld->addRigidBody(pBody);
 
-	// Advanced Body configuration ->
-	// You can play with these or just leave the defaults:
-	// pBody->setFriction(1.0);
-	// pBody->setRestitution(0.0);
-	// pBody->setHitFraction(0.0);
-	// pBody->setDamping(0.2, 0.2);
 }
 
 

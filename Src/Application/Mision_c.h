@@ -38,9 +38,9 @@ public:
 
 private:
 
-	int cont;
-	int total;
-	std::string target;
+	int cont;//contador de los objetivos
+	int total;//objetivos totales
+	std::string target;//objetivo al que buscar, matar, etc
 };
 
 #endif
