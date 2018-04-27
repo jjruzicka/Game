@@ -8,7 +8,11 @@ class Render_c : public Component
 {
 public:
 	Render_c(Ogre::SceneNode*node, Entidad* ent, std::string nombreMalla, std::string nombreEntidad);
+	Render_c(){}
 	~Render_c();
+	Ogre::SceneNode* getNode(){
+		return node;
+	}
 	virtual	void Update();
 private:
 	Ogre::SceneNode* node;

@@ -1,6 +1,7 @@
 #include "PlayerController_c.h"
 #include <iostream>
 #include "RigidBody_c.h"
+#include "Render_c.h"
 PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input)
 {
 	inputcomp_ = input;
@@ -11,6 +12,7 @@ PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input)
 	mas = istimetoStop = false;
 
 	rb = new RigidBody_c();
+	rc = new Render_c();
 }
 
 bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
@@ -29,28 +31,44 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 
 	case OIS::KC_UP:
 	case OIS::KC_W:
-		auxZ = entidad->getPoz();
-		auxZ += entidad->getOrientationZ();
-		//entidad->setPoz(entidad->getPoz() + 10);
-		entidad->GetComponent(rb)->actualizarPos(entidad->getPox(), entidad->getPoy(), entidad->getPoz() + 10);
-		auxX = entidad->getPox();
-		auxX += entidad->getOrientationX();
-		entidad->setPox(auxX);
-		mas = true;
-		istimetoStop = true;
+	{
+					  auxZ = entidad->getPoz();
+					  auxZ += entidad->getOrientationZ();
+					  //entidad->setPoz(entidad->getPoz() + 10);
+					  Ogre::Vector3 cglobal(entidad->getPox(), entidad->getPoy(), entidad->getPoz());
+					  node = entidad->GetComponent(rc)->getNode();
+					  Ogre::Vector3 clocal = node->convertWorldToLocalPosition(cglobal);
+					  clocal.z += 10;
+					  cglobal = node->convertLocalToWorldPosition(clocal);
+					  //entidad->GetComponent(rb)->actualizarPos(entidad->getPox(), entidad->getPoy(), entidad->getPoz() + 10);
+					  entidad->GetComponent(rb)->actualizarPos(cglobal.x, cglobal.y, cglobal.z);
+					  auxX = entidad->getPox();
+					  auxX += entidad->getOrientationX();
+					  entidad->setPox(auxX);
+					  mas = true;
+					  istimetoStop = true;
+	}
 		break;
 
 	case OIS::KC_DOWN:
 	case OIS::KC_S:
-		auxZ = entidad->getPoz();
-		auxZ -= entidad->getOrientationZ();
-		//entidad->setPoz(entidad->getPoz() - 10);
-		entidad->GetComponent(rb)->actualizarPos(entidad->getPox(), entidad->getPoy(), entidad->getPoz() - 10);
-		auxX = entidad->getPox();
-		auxX -= entidad->getOrientationX();
-		entidad->setPox(auxX);
-		mas = false;
-		istimetoStop = true;
+	{
+					  auxZ = entidad->getPoz();
+					  auxZ -= entidad->getOrientationZ();
+					  //entidad->setPoz(entidad->getPoz() - 10);
+					  Ogre::Vector3 cglobal(entidad->getPox(), entidad->getPoy(), entidad->getPoz());
+					  node = entidad->GetComponent(rc)->getNode();
+					  Ogre::Vector3 clocal = node->convertWorldToLocalPosition(cglobal);
+					  clocal.z -= 10;
+					  cglobal = node->convertLocalToWorldPosition(clocal);
+					  entidad->GetComponent(rb)->actualizarPos(cglobal.x, cglobal.y, cglobal.z);
+					  //entidad->GetComponent(rb)->actualizarPos(entidad->getPox(), entidad->getPoy(), entidad->getPoz() - 10);
+					  auxX = entidad->getPox();
+					  auxX -= entidad->getOrientationX();
+					  entidad->setPox(auxX);
+					  mas = false;
+					  istimetoStop = true;
+	}
 		break;
 
 	case OIS::KC_LEFT:
@@ -193,4 +211,5 @@ PlayerController_c::~PlayerController_c()
 	inputcomp_->removeMouseListener(this);
 
 	delete rb;
+	delete rc;
 }
