@@ -33,11 +33,6 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 	case OIS::KC_W:
 	{
 					  node = entidad->GetComponent(rc)->getNode();
-					  auxZ = entidad->getPoz();
-					  auxZ += entidad->getOrientationZ();
-					  auxX = entidad->getPox();
-					  auxX += entidad->getOrientationX();
-					  entidad->setPox(auxX);
 					  mas = true;
 					  istimetoStop = true;
 	}
@@ -47,11 +42,6 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 	case OIS::KC_S:
 	{
 					  node = entidad->GetComponent(rc)->getNode();
-					  auxZ = entidad->getPoz();
-					  auxZ -= entidad->getOrientationZ();
-					  auxX = entidad->getPox();
-					  auxX -= entidad->getOrientationX();
-					  entidad->setPox(auxX);
 					  mas = false;
 					  istimetoStop = true;
 	}
