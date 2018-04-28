@@ -32,6 +32,7 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 	case OIS::KC_UP:
 	case OIS::KC_W:
 	{
+					  node = entidad->GetComponent(rc)->getNode();
 					  auxZ = entidad->getPoz();
 					  auxZ += entidad->getOrientationZ();
 					  auxX = entidad->getPox();
@@ -45,6 +46,7 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 	case OIS::KC_DOWN:
 	case OIS::KC_S:
 	{
+					  node = entidad->GetComponent(rc)->getNode();
 					  auxZ = entidad->getPoz();
 					  auxZ -= entidad->getOrientationZ();
 					  auxX = entidad->getPox();
@@ -163,7 +165,6 @@ void PlayerController_c::Update(){
 
 	if (istimetoStop){
 		Ogre::Vector3 cglobal(entidad->getPox(), entidad->getPoy(), entidad->getPoz());
-		node = entidad->GetComponent(rc)->getNode();
 		Ogre::Vector3 clocal = node->convertWorldToLocalPosition(cglobal);
 		if (mas){
 			clocal.z += 3;
