@@ -34,14 +34,6 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 	{
 					  auxZ = entidad->getPoz();
 					  auxZ += entidad->getOrientationZ();
-					  //entidad->setPoz(entidad->getPoz() + 10);
-					  Ogre::Vector3 cglobal(entidad->getPox(), entidad->getPoy(), entidad->getPoz());
-					  node = entidad->GetComponent(rc)->getNode();
-					  Ogre::Vector3 clocal = node->convertWorldToLocalPosition(cglobal);
-					  clocal.z += 10;
-					  cglobal = node->convertLocalToWorldPosition(clocal);
-					  //entidad->GetComponent(rb)->actualizarPos(entidad->getPox(), entidad->getPoy(), entidad->getPoz() + 10);
-					  entidad->GetComponent(rb)->actualizarPos(cglobal.x, cglobal.y, cglobal.z);
 					  auxX = entidad->getPox();
 					  auxX += entidad->getOrientationX();
 					  entidad->setPox(auxX);
@@ -55,14 +47,6 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 	{
 					  auxZ = entidad->getPoz();
 					  auxZ -= entidad->getOrientationZ();
-					  //entidad->setPoz(entidad->getPoz() - 10);
-					  Ogre::Vector3 cglobal(entidad->getPox(), entidad->getPoy(), entidad->getPoz());
-					  node = entidad->GetComponent(rc)->getNode();
-					  Ogre::Vector3 clocal = node->convertWorldToLocalPosition(cglobal);
-					  clocal.z -= 10;
-					  cglobal = node->convertLocalToWorldPosition(clocal);
-					  entidad->GetComponent(rb)->actualizarPos(cglobal.x, cglobal.y, cglobal.z);
-					  //entidad->GetComponent(rb)->actualizarPos(entidad->getPox(), entidad->getPoy(), entidad->getPoz() - 10);
 					  auxX = entidad->getPox();
 					  auxX -= entidad->getOrientationX();
 					  entidad->setPox(auxX);
@@ -178,30 +162,17 @@ bool PlayerController_c::mouseReleased(const OIS::MouseEvent& me, OIS::MouseButt
 void PlayerController_c::Update(){
 
 	if (istimetoStop){
+		Ogre::Vector3 cglobal(entidad->getPox(), entidad->getPoy(), entidad->getPoz());
+		node = entidad->GetComponent(rc)->getNode();
+		Ogre::Vector3 clocal = node->convertWorldToLocalPosition(cglobal);
 		if (mas){
-			if (auxZ != 0){
-				auxZ = entidad->getPoz();
-				auxZ += 10 * entidad->getOrientationZ();
-				entidad->setPoz(auxZ);
-			}
-			else{
-				auxX = entidad->getPox();
-				auxX += 10 * entidad->getOrientationX();
-				entidad->setPox(auxX);
-			}
+			clocal.z += 3;
 		}
 		else if (!mas){
-			if (auxZ != 0){
-				auxZ = entidad->getPoz();
-				auxZ -= 10 * entidad->getOrientationZ();
-				entidad->setPoz(auxZ);
-			}
-			else{
-				auxX = entidad->getPox();
-				auxX -= 10 * entidad->getOrientationX();
-				entidad->setPox(auxX);
-			}
+			clocal.z -= 3;
 		}
+		cglobal = node->convertLocalToWorldPosition(clocal);
+		entidad->GetComponent(rb)->actualizarPos(cglobal.x, cglobal.y, cglobal.z);
 	}
 }
 

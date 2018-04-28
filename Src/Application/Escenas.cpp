@@ -4,6 +4,7 @@
 #include "RigidBody_c.h"
 #include "Objeto.h"
 #include "Collider_c.h"
+
 using namespace Ogre;
 enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
@@ -37,9 +38,10 @@ Escenas::Escenas()
 	ent1->AddComponent(ois);
 	entidades.push_back(ent1);
 	btCollisionShape* fallShape = new btBoxShape(btVector3(10,5,10));
+	//
 	btDefaultMotionState* fallMotionState = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1), btVector3(ent1->getPox(), ent1->getPoy(), ent1->getPoz())));
 	btScalar mass = 0;
-	btVector3 fallInertia(0, 0, 0);
+	btVector3 fallInertia(0, 9.8f, 0);
 	fallShape->calculateLocalInertia(mass, fallInertia);
 	btRigidBody::btRigidBodyConstructionInfo fallRigidBodyCI(mass, fallMotionState, fallShape, fallInertia);
 	RigidBody_c* rb = new RigidBody_c(ent1, fallRigidBodyCI);

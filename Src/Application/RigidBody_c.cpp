@@ -5,6 +5,8 @@ RigidBody_c::RigidBody_c(Entidad* ent, const btRigidBody::btRigidBodyConstructio
 {
 	this->ent = ent;
 	rb = btRigidBody(info);
+	//rb.setCollisionFlags(rb.getCollisionFlags() | btCollisionObject::CF_KINEMATIC_OBJECT);
+	//rb.setActivationState(DISABLE_DEACTIVATION);
 
 }
 
@@ -28,7 +30,7 @@ void RigidBody_c::Update(){
 	ent->setPoy(y);
 	ent->setPoz(z);
 
-	std::cout << "Posicion rb: " << x << ", " << y << ", " << z << std::endl;
+	//std::cout << "Posicion rb: " << x << ", " << y << ", " << z << std::endl;
 
 }
 
