@@ -18,6 +18,12 @@
 #include <OgreException.h>
 #include "Mapa.h"
 #include "InputComponent.h"
+#include "Gui3D.h"
+#include "GUI.h"
+#include "Gui3DPanel.h"
+#include "Gui3DScreenPanel.h"
+
+
 class Escenas
 {
 public:
@@ -26,9 +32,10 @@ public:
 	bool run();
 	bool initBullet();
 private:
-
+	
 	bool initOgre();
 	std::vector<Entidad*> entidades;
+	Ogre::Viewport* vp = nullptr;
 
 
 	btDiscreteDynamicsWorld* bulletWorld;
@@ -36,6 +43,10 @@ private:
 	btCollisionDispatcher* dispatcher;
 	btSequentialImpulseConstraintSolver* solver;
 	btBroadphaseInterface* broadPhase;
+
+	
+	GUI* gui;
+	
 
 
 	Mapa* mapa;
@@ -46,7 +57,8 @@ private:
 	Ogre::SceneManager * scnMgr;
 	Ogre::Light* light;
 	Ogre::SceneNode* lightNode = nullptr;
-
+	
+	
 	Ogre::Camera* cam = nullptr;
 	Ogre::SceneNode* camNode = nullptr;
 

@@ -15,8 +15,10 @@
     <ClCompile Include="..\..\Src\Application\Component.cpp" />
     <ClCompile Include="..\..\Src\Application\Entidad.cpp" />
     <ClCompile Include="..\..\Src\Application\Escenas.cpp" />
+    <ClCompile Include="..\..\Src\Application\GUI.cpp" />
     <ClCompile Include="..\..\Src\Application\InputComponent.cpp" />
     <ClCompile Include="..\..\Src\Application\Mapa.cpp" />
+    <ClCompile Include="..\..\Src\Application\MyPurplePanelColors.cpp" />
     <ClCompile Include="..\..\Src\Application\PlayerController_c.cpp" />
     <ClCompile Include="..\..\Src\Application\GameManager_c.cpp" />
     <ClCompile Include="..\..\Src\Application\Inventario_c.cpp" />
@@ -31,8 +33,10 @@
     <ClInclude Include="..\..\Src\Application\Component.h" />
     <ClInclude Include="..\..\Src\Application\Entidad.h" />
     <ClInclude Include="..\..\Src\Application\Escenas.h" />
+    <ClInclude Include="..\..\Src\Application\GUI.h" />
     <ClInclude Include="..\..\Src\Application\InputComponent.h" />
     <ClInclude Include="..\..\Src\Application\Mapa.h" />
+    <ClInclude Include="..\..\Src\Application\MyPurplePanelColors.h" />
     <ClInclude Include="..\..\Src\Application\PlayerController_c.h" />
     <ClInclude Include="..\..\Src\Application\GameManager_c.h" />
     <ClInclude Include="..\..\Src\Application\Inventario_c.h" />
@@ -96,8 +100,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>OgreMain_d.lib;%(AdditionalDependencies);OIS.lib;OgreTerrain_d.lib;Bullet3Geometry_Debug.lib;Bullet2FileLoader_Debug.lib;Bullet3Collision_Debug.lib;BulletCollision_Debug.lib;Bullet3Common_Debug.lib;Bullet3Dynamics_Debug.lib;BulletDynamics_Debug.lib;Bullet3OpenCL_clew_Debug.lib;BulletInverseDynamics_Debug.lib;BulletSoftBody_Debug.lib;LinearMath_Debug.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\OIS-master\build\lib\Debug;$(SolutionDir)Dependencies\OIS\build\lib\$(Configuration);$(SolutionDir)Dependencies\bullet3\build3\lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OgreMain_d.lib;%(AdditionalDependencies);OIS.lib;OgreTerrain_d.lib;Bullet3Geometry_Debug.lib;Bullet2FileLoader_Debug.lib;Bullet3Collision_Debug.lib;BulletCollision_Debug.lib;Bullet3Common_Debug.lib;Bullet3Dynamics_Debug.lib;BulletDynamics_Debug.lib;Bullet3OpenCL_clew_Debug.lib;BulletInverseDynamics_Debug.lib;BulletSoftBody_Debug.lib;LinearMath_Debug.lib;Gui3DDebugStatic.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\OIS-master\build\lib\Debug;$(SolutionDir)Dependencies\OIS\build\lib\$(Configuration);$(SolutionDir)Dependencies\Gui3D-master\sdk;$(SolutionDir)Dependencies\bullet3\build3\lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

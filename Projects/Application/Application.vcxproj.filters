@@ -43,6 +43,12 @@
     <ClCompile Include="..\..\Src\Application\Render_c.cpp">
       <Filter>Code</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Src\Application\MyPurplePanelColors.cpp">
+      <Filter>Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\GUI.cpp">
+      <Filter>Code</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Application\Collider_c.h">
@@ -82,6 +88,12 @@
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\RigidBody_c.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\MyPurplePanelColors.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\GUI.h">
       <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>

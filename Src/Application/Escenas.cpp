@@ -4,6 +4,9 @@
 #include "RigidBody_c.h"
 #include "Objeto.h"
 #include "Collider_c.h"
+#include <iostream>
+#include <sstream>
+#include <vector>
 using namespace Ogre;
 enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
@@ -18,6 +21,7 @@ Escenas::Escenas()
 	plugins = "OgreD/plugins.cfg";
 	recursos = "OgreD/resources.cfg";
 #endif
+	
 	initOgre();
 	initBullet();
 	
@@ -25,12 +29,14 @@ Escenas::Escenas()
 	
 	inputcomp_ = InputComponent::getSingletonPtr();
 	inputcomp_->initialise(mWindow);
+	
+	
 	Entidad* ent1 = new Entidad();
 	//1683, 50, 2116
 	ent1->setPox(1700);// posicion 
 	ent1->setPoy(50);
 	ent1->setPoz(900); //cuanto menor sea el numero, mas se aleja de la camara
-	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("personaje"), ent1, "p3d_mediev");
+	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("personaje"), ent1, "Sinbad");
 	PlayerController_c * ois = new PlayerController_c(ent1, inputcomp_);
 	ent1->AddComponent(render);
 	ent1->AddComponent(ois);
@@ -80,15 +86,16 @@ Escenas::Escenas()
 
 
 	// and tell it to render into the main window
-	Viewport* vp;
+	
 	vp = mWindow->addViewport(cam);
 	vp->setBackgroundColour(Ogre::ColourValue(150, 150, 150));
 	//vp->setBackgroundColour(Ogre::ColourValue(1, 1, 1));
-
+	gui = new GUI(inputcomp_, vp, scnMgr, cam, camNode);
+	gui->createPanel();
 	//Terrain
-	mapa = new Mapa(scnMgr, light, bulletWorld);
+	/*mapa = new Mapa(scnMgr, light, bulletWorld);
 	mapa->createmap();
-	mapa->setPhysics();
+	mapa->setPhysics();*/
 }
 bool Escenas::initOgre(){
 
@@ -165,6 +172,9 @@ bool Escenas::initOgre(){
 
 	return true;
 }
+
+
+
 bool Escenas::initBullet(){
 	//build the broadPhase
 	broadPhase = new btDbvtBroadphase();
@@ -188,12 +198,27 @@ bool Escenas::run(){
 	clock_t lastTicks = clock();
 	clock_t elapsedTicks = 0;
 	double deltaTime = 0;
+	
 
 	while (true)
 	{
 		deltaTime = ((double)elapsedTicks) / 1000.f/*CLOCKS_PER_SEC*/;
 		lastTicks = clock();
+		// Actualize counters
+		/*globalClock.addTime(lastTicks);
+		localClock.addTime(lastTicks);*/
 
+		/*std::ostringstream s;
+		s << "global time: " << std::fixed << globalClock.getTimeSec() << "s";
+		captionGlobalTime->text(s.str());*/
+
+		/*s.str("");
+		s << "local time: " << std::fixed << localClock.getTimeSec() << "s";
+		captionLocalTime->text(s.str());*/
+
+		/*mPanel->injectTime(deltaTime);
+		mSPanel->injectTime(deltaTime);
+		mSPanel2->injectTime(deltaTime);*/
 		inputcomp_->capture();
 
 		for (int i = 0; i<entidades.size(); i++)
@@ -213,6 +238,24 @@ bool Escenas::run(){
 	return true;
 }
 
+//bool Escenas::keyPressed(const OIS::KeyEvent &e)
+//{
+//	mPanel->injectKeyPressed(e);
+//	mSPanel->injectKeyPressed(e);
+//	mSPanel2->injectKeyPressed(e);
+//	return true;
+//}
+//
+//bool Escenas::keyReleased(const OIS::KeyEvent &e)
+//{
+//	mPanel->injectKeyReleased(e);
+//	mSPanel->injectKeyReleased(e);
+//	mSPanel2->injectKeyReleased(e);
+//	return true;
+//}
+
+
+
 
 Escenas::~Escenas()
 {
@@ -224,5 +267,8 @@ Escenas::~Escenas()
 	delete dispatcher;
 	delete solver;
 	delete broadPhase;
+	delete gui;
+	inputcomp_->removeKeyListener(inputcomp_);
+	inputcomp_->removeMouseListener(inputcomp_);
 }
 
