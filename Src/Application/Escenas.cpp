@@ -96,6 +96,9 @@ Escenas::Escenas()
 	/*mapa = new Mapa(scnMgr, light, bulletWorld);
 	mapa->createmap();
 	mapa->setPhysics();*/
+
+	
+
 }
 bool Escenas::initOgre(){
 
@@ -153,7 +156,9 @@ bool Escenas::initOgre(){
 	//Render Window Creation
 	
 	mWindow = root->initialise(true, "P3");
-	mWindow->setFullscreen(true, mWindow->getWidth() * 2, mWindow->getHeight() * 2);
+
+	mWindow->setFullscreen(true, mWindow->getWidth(), mWindow->getHeight());
+
 	//------------------------------------------------------------------------------------------------------
 	//Resources Init
 
