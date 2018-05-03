@@ -18,8 +18,8 @@ Escenas::Escenas()
 	plugins = "OgreD/plugins_d.cfg";
 	recursos = "OgreD/resources_d.cfg";
 #else
-	plugins = "OgreD/plugins.cfg";
-	recursos = "OgreD/resources.cfg";
+	plugins = "Ogre/plugins.cfg";
+	recursos = "Ogre/resources.cfg";
 #endif
 	
 	initOgre();
@@ -72,7 +72,7 @@ Escenas::Escenas()
 	camNode->setPosition(Ogre::Vector3(0, 5, -35));
 	camNode->rotate(Ogre::Quaternion(Ogre::Degree(180), Ogre::Vector3::UNIT_Y));
 	camNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
-
+	
 	// create the camera
 	cam = scnMgr->createCamera("Cam");
 	cam->setNearClipDistance(0.1); //esto antes era 1
@@ -151,8 +151,9 @@ bool Escenas::initOgre(){
 
 	//------------------------------------------------------------------------------------------------------
 	//Render Window Creation
+	
 	mWindow = root->initialise(true, "P3");
-
+	mWindow->setFullscreen(true, mWindow->getWidth() * 2, mWindow->getHeight() * 2);
 	//------------------------------------------------------------------------------------------------------
 	//Resources Init
 

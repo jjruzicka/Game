@@ -15,6 +15,7 @@ GUI::GUI(InputComponent* input_, Ogre::Viewport* vp, Ogre::SceneManager * scnMgr
 	// Create a layer for the mousePointer
 	mNormalizedMousePosition = Ogre::Vector2(0.5, 0.5);
 	mMousePointerLayer = mGui3D->getScreen("mainScreen")->createLayer(2);
+	//el puto png del puntero.
 	mMousePointer = mMousePointerLayer->createRectangle(vp->getActualWidth() / 2,
 	vp->getActualHeight() / 2, 12, 18);
 	mMousePointer->background_image("mousepointer");
@@ -24,6 +25,7 @@ GUI::GUI(InputComponent* input_, Ogre::Viewport* vp, Ogre::SceneManager * scnMgr
 	camera->setDirection(cameraDirection);
 
 	view = vp;
+	
 
 	numFrameLastClicked = 0;
 	nbFramesSinceStart = 0;
