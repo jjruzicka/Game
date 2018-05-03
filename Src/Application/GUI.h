@@ -6,6 +6,7 @@
 #include "Gui3DPanel.h"
 #include "Gui3DScreenPanel.h"
 #include "MyPurplePanelColors.h"
+#include "MyEnvironmentDemoPanelColors.h"
 class GUI: public InputComponent
 {
 public:
@@ -42,6 +43,12 @@ private:
 	Gui3D::Caption* captionGlobalTime;
 	Gui3D::Caption* captionDisplayTextZone;
 	Gui3D::Caption* captionLocalTime;
+
+	//conversations
+	Gui3D::Caption* captionChecked;
+	Gui3D::Caption* captionCombobox;
+
+	MyEnvironmentDemoPanelColors mMyEnvironmentDemoPanelColors;
 
 	// As Gui3D doesn't fully abstract Gorilla, you still have to deal with it. 
 	// See http://www.valentinfrechaud.fr/Gui3DWiki/index.php/Gui3D_and_Gorilla for more infos.

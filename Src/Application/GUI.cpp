@@ -57,7 +57,7 @@ void GUI::createPanel(){
 
 	captionLocalTime = mSPanel->makeCaption(0, 0, 300, 40, "local time: 0s");
 
-	mSPanel->makeButton(25, 40, 250, 50, "Click me weirdo")
+	mSPanel->makeButton(25, 40, 250, 50, "Reset")
 		->setPressedCallback(this, &GUI::resetLocalFrameCount);
 
 	mSPanel->makeCaption(0, 110, 300, 40, "Enter some text : ");
@@ -70,7 +70,7 @@ void GUI::createPanel(){
 	mSPanel2 = new Gui3D::ScreenPanel(
 		mGui3D,
 		myScreen,
-		Ogre::Vector2(50, 450),
+		Ogre::Vector2(300, 600),
 		Ogre::Vector2(250, 100),
 		"purple",
 		"test_screenPanel2");
@@ -96,6 +96,7 @@ bool GUI::textChanged(Gui3D::PanelElement* e)
 
 bool GUI::resetGlobalFrameCount(Gui3D::PanelElement* e)
 {
+	std::cout << "click" << std::endl;
 	globalClock.reset();
 	localClock.reset();
 
