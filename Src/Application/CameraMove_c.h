@@ -40,6 +40,7 @@ private:
 	//Ogre::Camera* cam;
 	//Ogre::SceneNode* node;
 	Ogre::SceneNode* cam_node;
+	float angulo;
 	//Ogre::SceneNode* pitch_node;
 	//Ogre::RenderWindow* rndWindow;
 	//InputComponent* input;

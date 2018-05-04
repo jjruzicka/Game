@@ -1,9 +1,10 @@
 #include "CameraMove_c.h"
 #include <iostream>
 #include <math.h>
+const float PI = 3.141592653f;
 CameraMove_c::CameraMove_c(Entidad* eCam, Entidad* eJug, Ogre::SceneNode* camNode, InputComponent * input)
 	: entidadCamara(eCam), entidadJugador(eJug), cam_node(camNode), inputcomp_(input){
-	spd = 0.10;
+	spd = 1;
 	inputcomp_->addKeyListener(this, "teclado2");
 	inputcomp_->addMouseListener(this, "raton2");
 	entidadCamara->setPox(cam_node->getPosition().x);
@@ -16,6 +17,7 @@ CameraMove_c::CameraMove_c(Entidad* eCam, Entidad* eJug, Ogre::SceneNode* camNod
 		// offset = target.transform.position - transform.position;
 	//turn_spd = 12;
 	//pitch_spd = 4;
+	angulo = 0;
 }
 CameraMove_c::~CameraMove_c()
 {
@@ -51,6 +53,7 @@ void CameraMove_c::Update(){
 
 	cam_node->setPosition(entidadCamara->getPox(), entidadCamara->getPoy(), entidadCamara->getPoz());
 	cam_node->lookAt(Ogre::Vector3(entidadJugador->getPox(), entidadJugador->getPoy(), entidadJugador->getPoz()), Ogre::Node::TS_WORLD);
+	//cam_node->yaw(Ogre::Radian(angulo), Ogre::Node::TS_WORLD);
 }
 
 bool CameraMove_c::keyPressed(const OIS::KeyEvent& keyP)
@@ -161,19 +164,15 @@ bool CameraMove_c::mouseMoved(const OIS::MouseEvent& me)
 		mCamNode->pitch(Ogre::Degree(-mRotate * me.state.Y.rel), Ogre::Node::TS_LOCAL);*/
 
 		float horizontal = me.state.X.rel *spd;
-		float auxiliar = pow(distMax, 2) - pow((entidadCamara->getPox() + horizontal), 2) + 2 * entidadJugador->getPox()*(entidadCamara->getPox() + horizontal) - pow(entidadJugador->getPox(), 2);
-		float stopyaa = abs(auxiliar);
-		float y;
-		if (auxiliar >= 0){
-			y = -sqrtf(stopyaa) + entidadJugador->getPoz();
-		}
-		else y = sqrtf(stopyaa) + entidadJugador->getPoz();
+		angulo += horizontal;
 
-		y -= entidadCamara->getPoz();
-
-		entidadCamara->setPox(entidadCamara->getPox() + horizontal);
-		entidadCamara->setPoz(entidadCamara->getPoz() + y);
-
+		float t = angulo * PI / 180;
+		float x, y;
+		x = distMax* cosf(t) + entidadJugador->getPox();
+		y = distMax* sinf(t) + entidadJugador->getPoz();
+		entidadCamara->setPox( x);
+		entidadCamara->setPoz( y);
+		
 
 
 		//target.transform.Rotate(0, horizontal, 0);
