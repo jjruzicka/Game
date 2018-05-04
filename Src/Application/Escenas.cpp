@@ -103,7 +103,7 @@ Escenas::Escenas()
 	camNode->attachObject(cam);
 	cam->setQueryFlags(MY_QUERY_IGNORE);*/
 
-	camNode->setPosition(Ogre::Vector3(ent1->getPox(), ent1->getPoy() + 20, ent1->getPoz() - 30));
+	camNode->setPosition(Ogre::Vector3(ent1->getPox(), ent1->getPoy() + 10, ent1->getPoz() - 30));
 	camNode->rotate(Ogre::Vector3(0, 0, 1), Ogre::Degree(180));
 	camNode->lookAt(Ogre::Vector3(ent1->getPox(), ent1->getPoy(), ent1->getPoz()), Ogre::Node::TS_WORLD);
 

@@ -3,7 +3,7 @@
 #include <math.h>
 CameraMove_c::CameraMove_c(Entidad* eCam, Entidad* eJug, Ogre::SceneNode* camNode, InputComponent * input)
 	: entidadCamara(eCam), entidadJugador(eJug), cam_node(camNode), inputcomp_(input){
-	spd = 10;
+	spd = 0.10;
 	inputcomp_->addKeyListener(this, "teclado2");
 	inputcomp_->addMouseListener(this, "raton2");
 	entidadCamara->setPox(cam_node->getPosition().x);
@@ -32,6 +32,23 @@ void CameraMove_c::updateMouse(float dt, const OIS::MouseEvent& me){
 }*/
 
 void CameraMove_c::Update(){
+	if (entidadCamara->getPox() > entidadJugador->getPox() + distMax)
+	{
+		entidadCamara->setPox(entidadCamara->getPox() - 1);
+	}
+	else if (entidadCamara->getPox() < entidadJugador->getPox() - distMax){
+		entidadCamara->setPox(entidadCamara->getPox() + 1);
+	}
+
+	if (entidadCamara->getPoz() > entidadJugador->getPoz() + distMax)
+	{
+		entidadCamara->setPoz(entidadCamara->getPoz() - 1);
+	}
+	else if (entidadCamara->getPoz() < entidadJugador->getPoz() - distMax){
+		entidadCamara->setPoz(entidadCamara->getPoz() + 1);
+	}
+
+
 	cam_node->setPosition(entidadCamara->getPox(), entidadCamara->getPoy(), entidadCamara->getPoz());
 	cam_node->lookAt(Ogre::Vector3(entidadJugador->getPox(), entidadJugador->getPoy(), entidadJugador->getPoz()), Ogre::Node::TS_WORLD);
 }
@@ -143,11 +160,21 @@ bool CameraMove_c::mouseMoved(const OIS::MouseEvent& me)
 		/*mCamNode->yaw(Ogre::Degree(-mRotate * me.state.X.rel), Ogre::Node::TS_WORLD);
 		mCamNode->pitch(Ogre::Degree(-mRotate * me.state.Y.rel), Ogre::Node::TS_LOCAL);*/
 
-		float horizontal = me.state.X.rel;// *spd;
-		entidadCamara->setPox(entidadCamara->getPox() + horizontal);
-		entidadCamara->setPoz(entidadCamara->getPoz() + horizontal);
+		float horizontal = me.state.X.rel *spd;
+		float auxiliar = pow(distMax, 2) - pow((entidadCamara->getPox() + horizontal), 2) + 2 * entidadJugador->getPox()*(entidadCamara->getPox() + horizontal) - pow(entidadJugador->getPox(), 2);
+		float stopyaa = abs(auxiliar);
+		float y;
+		if (auxiliar >= 0){
+			y = -sqrtf(stopyaa) + entidadJugador->getPoz();
+		}
+		else y = sqrtf(stopyaa) + entidadJugador->getPoz();
 
-		
+		y -= entidadCamara->getPoz();
+
+		entidadCamara->setPox(entidadCamara->getPox() + horizontal);
+		entidadCamara->setPoz(entidadCamara->getPoz() + y);
+
+
 
 		//target.transform.Rotate(0, horizontal, 0);
 
