@@ -52,6 +52,15 @@
     <ClCompile Include="..\..\Dependencies\Gui3D-master\examples\build\MyEnvironmentDemoPanelColors.cpp">
       <Filter>Code</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Src\Application\EscenasManager.cpp">
+      <Filter>Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\Menu.cpp">
+      <Filter>Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\Juego.cpp">
+      <Filter>Code</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Application\Collider_c.h">
@@ -100,6 +109,15 @@
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Dependencies\Gui3D-master\examples\build\MyEnvironmentDemoPanelColors.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\EscenasManager.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\Menu.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\Juego.h">
       <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>

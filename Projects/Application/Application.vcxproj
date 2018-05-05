@@ -16,9 +16,12 @@
     <ClCompile Include="..\..\Src\Application\Component.cpp" />
     <ClCompile Include="..\..\Src\Application\Entidad.cpp" />
     <ClCompile Include="..\..\Src\Application\Escenas.cpp" />
+    <ClCompile Include="..\..\Src\Application\EscenasManager.cpp" />
     <ClCompile Include="..\..\Src\Application\GUI.cpp" />
     <ClCompile Include="..\..\Src\Application\InputComponent.cpp" />
+    <ClCompile Include="..\..\Src\Application\Juego.cpp" />
     <ClCompile Include="..\..\Src\Application\Mapa.cpp" />
+    <ClCompile Include="..\..\Src\Application\Menu.cpp" />
     <ClCompile Include="..\..\Src\Application\MyPurplePanelColors.cpp" />
     <ClCompile Include="..\..\Src\Application\PlayerController_c.cpp" />
     <ClCompile Include="..\..\Src\Application\GameManager_c.cpp" />
@@ -35,9 +38,12 @@
     <ClInclude Include="..\..\Src\Application\Component.h" />
     <ClInclude Include="..\..\Src\Application\Entidad.h" />
     <ClInclude Include="..\..\Src\Application\Escenas.h" />
+    <ClInclude Include="..\..\Src\Application\EscenasManager.h" />
     <ClInclude Include="..\..\Src\Application\GUI.h" />
     <ClInclude Include="..\..\Src\Application\InputComponent.h" />
+    <ClInclude Include="..\..\Src\Application\Juego.h" />
     <ClInclude Include="..\..\Src\Application\Mapa.h" />
+    <ClInclude Include="..\..\Src\Application\Menu.h" />
     <ClInclude Include="..\..\Src\Application\MyPurplePanelColors.h" />
     <ClInclude Include="..\..\Src\Application\PlayerController_c.h" />
     <ClInclude Include="..\..\Src\Application\GameManager_c.h" />

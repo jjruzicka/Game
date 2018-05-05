@@ -28,27 +28,26 @@ class Escenas
 {
 public:
 	Escenas();
-	~Escenas();
-	bool run();
-	bool initBullet();
-private:
-	
-	bool initOgre();
+	virtual ~Escenas();
+	virtual bool run()  = 0;
+protected:
+	virtual bool initBullet();
+	virtual bool initOgre();
 	std::vector<Entidad*> entidades;
 	Ogre::Viewport* vp = nullptr;
 
-
+	///// FISICA
 	btDiscreteDynamicsWorld* bulletWorld;
 	btDefaultCollisionConfiguration* collisionConfiguration;
 	btCollisionDispatcher* dispatcher;
 	btSequentialImpulseConstraintSolver* solver;
 	btBroadphaseInterface* broadPhase;
-
+	////////////////
 	
 	GUI* gui;
-	
+	InputComponent* inputcomp_;
 
-
+	///// OGRE
 	Mapa* mapa;
 	std::string recursos, plugins;
 	Ogre::Root *root;
@@ -57,11 +56,9 @@ private:
 	Ogre::SceneManager * scnMgr;
 	Ogre::Light* light;
 	Ogre::SceneNode* lightNode = nullptr;
-	
-	
 	Ogre::Camera* cam = nullptr;
 	Ogre::SceneNode* camNode = nullptr;
-
-	InputComponent* inputcomp_;
+	////////////////
+	
 
 };
