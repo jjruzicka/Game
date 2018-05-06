@@ -15,7 +15,9 @@ public:
 	RigidBody_c(){};
 	~RigidBody_c();
 	void Update();
-
+	btRigidBody* getRigidBody(){
+		return rb;
+	}
 
 	void actualizarPos(float x, float y, float z);
 private:

@@ -25,6 +25,7 @@ public:
 	~Escenas();
 	bool run();
 	bool initBullet();
+
 private:
 
 	bool initOgre();

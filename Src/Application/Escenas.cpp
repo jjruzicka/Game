@@ -221,13 +221,13 @@ bool Escenas::run(){
 		lastTicks = clock();
 
 		inputcomp_->capture(); 
+		//Tick de la fisica
 		bulletWorld->stepSimulation((float)deltaTime);
 		for (int i = 0; i<entidades.size(); i++)
 			entidades[i]->Update();
-
+		
 		// render ogre
 		Ogre::WindowEventUtilities::messagePump();
-		//Tick de la fisica
 		
 		//comprobar si la ventana está abierta
 		if (mWindow->isClosed())return false;
@@ -236,7 +236,6 @@ bool Escenas::run(){
 	}
 	return true;
 }
-
 
 Escenas::~Escenas()
 {
