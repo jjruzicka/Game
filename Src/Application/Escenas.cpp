@@ -30,8 +30,8 @@ Escenas::Escenas()
 	Entidad* ent1 = new Entidad();
 	//1683, 50, 2116
 	ent1->setPox(1700);// posicion 
-	ent1->setPoy(50);
-	ent1->setPoz(2000);
+	ent1->setPoy(10);
+	ent1->setPoz(1800);
 	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("personaje"), ent1, "Sinbad","Sinbad");
 	PlayerController_c * ois = new PlayerController_c(ent1, inputcomp_);
 	ent1->AddComponent(render);
@@ -67,12 +67,12 @@ Escenas::Escenas()
 	//////////////////////////////////////////////////////rb del PJ2////////////////////////////////////////////////////
 	Entidad* ent2 = new Entidad();
 	ent2->setPox(1700);// posicion 
-	ent2->setPoy(50);
-	ent2->setPoz(2100);
+	ent2->setPoy(10);
+	ent2->setPoz(1850);
 	Render_c* render2 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("personaje2"), ent2, "Sinbad","Sinbad2");
 	ent2->AddComponent(render2);
 	
-	RigidBody_c* static_rb = new RigidBody_c(ent2, physicType::estatico, bulletWorld, 10, 5, 10, 0);
+	RigidBody_c* static_rb = new RigidBody_c(ent2, physicType::estatico, bulletWorld, 10, 5, 10, 1);
 	ent2->AddComponent(static_rb);
 	entidades.push_back(ent2);
 	

@@ -31,10 +31,12 @@ RigidBody_c::RigidBody_c(Entidad* _ent, physicType _tipo, btDiscreteDynamicsWorl
 	btDefaultMotionState* motionState = new btDefaultMotionState(pTransform); // damos dimesiones al box
 
 	if (tipo == physicType::estatico || tipo == physicType::kinematico){
-		masa = 0;
+		masa = 1; // deberia ser 0 pero atraviesa
 	}
 
 	btVector3 localInertia(0, 0, 0); // La inercia inicial siempre es 0
+	if (tipo == physicType::dinamico)
+		localInertia.setY(-10);
 	shape = new btBoxShape(btVector3(alto, profundo, ancho));
 	shape->calculateLocalInertia(masa, localInertia); // inicializamos el cuerpo
 
@@ -58,11 +60,12 @@ void RigidBody_c::Update(){
 	float x = trans.getOrigin().getX();
 	float y = trans.getOrigin().getY();
 	float z = trans.getOrigin().getZ();
-	std::cout << x << " , " << y << " , " << z << std::endl;
 	ent->setPox(x);
 	ent->setPoy(y);
 	ent->setPoz(z);
 
+	if (tipo == physicType::dinamico)
+	std::cout << "Posicion: " << x << ", " << y << ", " << z << std::endl;
 
 }
 
@@ -79,13 +82,13 @@ void RigidBody_c::actualizarPos(float x, float y, float z){
 	//std::cout << "Posicion rb: " << x << ", " << y << ", " << z << std::endl;
 
 	btTransform trans;
-
 	// CAMBIANDO LA POSICION SE MUEVE PERO NO COLISIONA
 	trans.setIdentity();
 	trans.setOrigin(btVector3(x, y, z));
 	//rb->activate(true);
-	std::cout << "antes: " << trans.getOrigin().getX() << " , " << trans.getOrigin().getZ()<< std::endl;
-	rb->setCenterOfMassTransform(trans);
+	//std::cout << "antes: " << trans.getOrigin().getX() << " , " << trans.getOrigin().getZ()<< std::endl;
+	rb->proceedToTransform(trans);
+	//rb->setCenterOfMassTransform(trans);
 	
 	// CON VELOCIDAD NI QUIERA SE MUEVE
 	/*btVector3 vel = rb->getLinearVelocity();

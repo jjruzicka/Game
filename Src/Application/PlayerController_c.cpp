@@ -157,10 +157,10 @@ void PlayerController_c::Update(){
 		Ogre::Vector3 cglobal(entidad->getPox(), entidad->getPoy(), entidad->getPoz());
 		Ogre::Vector3 clocal = node->convertWorldToLocalPosition(cglobal);
 		if (mas){
-			clocal.z += 3;
+			clocal.z += 1;
 		}
 		else if (!mas){
-			clocal.z -= 3;
+			clocal.z -= 1;
 		}
 		cglobal = node->convertLocalToWorldPosition(clocal);
 		entidad->GetComponent(rb)->actualizarPos(cglobal.x, cglobal.y, cglobal.z);
