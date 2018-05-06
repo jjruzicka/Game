@@ -11,10 +11,14 @@ EscenasManager::EscenasManager()
 	juegoB = false;
 	menuB = true;
 
-	if (menuB)
+	if (menuB){
 		menu = new Menu();
-	else if (juegoB)
+		juego = nullptr;
+	}
+	else if (juegoB){
 		juego = new Juego();
+		menu = nullptr;
+	}
 }
 
 bool EscenasManager::run(){
