@@ -36,36 +36,46 @@ Escenas::Escenas()
 	PlayerController_c * ois = new PlayerController_c(ent1, inputcomp_);
 	ent1->AddComponent(render);
 	ent1->AddComponent(ois);
+
+	// RigidBody del personaje principal (KINEMATICO)
+	RigidBody_c* player_rb = new RigidBody_c(ent1, physicType::kinematico, bulletWorld, 10, 5, 10, 0);
+	ent1->AddComponent(player_rb);
 	entidades.push_back(ent1);
-	btCollisionShape* fallShape = new btBoxShape(btVector3(10,5,10));
-	//
-	btDefaultMotionState* fallMotionState = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1), btVector3(ent1->getPox(), ent1->getPoy(), ent1->getPoz())));
+
+	// NO LO BORRO PORSIACA
+	/*btTransform pTransform;
+	pTransform.setIdentity();
+	pTransform.setOrigin(btVector3(1700, 50, 2000));
+	btScalar mass = 0; //  No estoy seguro de esto
+	btVector3 localInertia(0, 0, 0); // La inercia inicial siempre es 0
+	btDefaultMotionState* motionState = new btDefaultMotionState(pTransform);
+	btCollisionShape* shape = new btBoxShape(btVector3(10,5,10)); // alto, profundo, ancho
+	shape->calculateLocalInertia(mass, localInertia); // inicializamos el cuerpo
+	btRigidBody::btRigidBodyConstructionInfo RigidBodyInfo(mass, motionState, shape, localInertia);
+	btRigidBody* body = new btRigidBody(RigidBodyInfo);
+	bulletWorld->addRigidBody(body);*/
+
+	/*btDefaultMotionState* fallMotionState = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1), btVector3(ent1->getPox(), ent1->getPoy(), ent1->getPoz())));
 	btScalar mass = 0;
 	btVector3 fallInertia(0, 9.8f, 0);
 	fallShape->calculateLocalInertia(mass, fallInertia);
 	btRigidBody::btRigidBodyConstructionInfo fallRigidBodyCI(mass, fallMotionState, fallShape, fallInertia);
 	RigidBody_c* rb = new RigidBody_c(ent1, fallRigidBodyCI);
-	ent1->AddComponent(rb);
-	bulletWorld->addRigidBody(rb->getRigidbody());
+	ent1->AddComponent(rb);*/
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	//////////////////////////////////////////////////////rb del PJ2////////////////////////////////////////////////////
-	/*Entidad* ent2 = new Entidad();
-	entidades.push_back(ent2);
+	Entidad* ent2 = new Entidad();
 	ent2->setPox(1700);// posicion 
-	ent2->setPoy(25);
-	ent2->setPoz(2000);
+	ent2->setPoy(50);
+	ent2->setPoz(2100);
 	Render_c* render2 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("personaje2"), ent2, "Sinbad","Sinbad2");
 	ent2->AddComponent(render2);
-	btCollisionShape* fallShape2 = new btBoxShape(btVector3(10, 5, 10));
-	btDefaultMotionState* fallMotionState2 = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1), btVector3(ent2->getPox(), ent2->getPoy(), ent2->getPoz())));
-	btScalar mass2 = 1;
-	btVector3 fallInertia2(0, 9.8f, 0);
-	fallShape2->calculateLocalInertia(mass2, fallInertia2);
-	btRigidBody::btRigidBodyConstructionInfo fallRigidBodyCI2(mass2, fallMotionState2, fallShape2, fallInertia2);
-	RigidBody_c* rb2 = new RigidBody_c(ent2, fallRigidBodyCI2);
-	ent2->AddComponent(rb2);
-	bulletWorld->addRigidBody(rb2->getRigidbody());*/
+	
+	RigidBody_c* static_rb = new RigidBody_c(ent2, physicType::estatico, bulletWorld, 10, 5, 10, 0);
+	ent2->AddComponent(static_rb);
+	entidades.push_back(ent2);
+	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);

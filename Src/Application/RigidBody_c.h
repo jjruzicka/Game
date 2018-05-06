@@ -4,21 +4,31 @@
 #include <btBulletDynamicsCommon.h>
 #include "Component.h"
 #include "Entidad.h"
+
+enum class physicType { kinematico, estatico, dinamico /*No se se si sera necesario*/ };
+
 class RigidBody_c : public Component
 {
 public:
-	RigidBody_c(Entidad* ent, const btRigidBody::btRigidBodyConstructionInfo & info);
-	RigidBody_c() :rb(btRigidBody(0, nullptr, nullptr)){};
+	RigidBody_c(Entidad* _ent, physicType _tipo, btDiscreteDynamicsWorld* _bulletWorld, 
+		float _alto, float _ancho, float _profundo, btScalar _masa);
+	RigidBody_c(){};
 	~RigidBody_c();
 	void Update();
-	btRigidBody * getRigidbody(){
-		return &rb;
-	}
+
 
 	void actualizarPos(float x, float y, float z);
 private:
-	btRigidBody rb;
 	Entidad* ent;
+	physicType tipo;
+	btDiscreteDynamicsWorld* bulletWorld;
+	float alto, ancho, profundo;
+	btTransform pTransform;
+	btScalar masa; 
+	btCollisionShape* shape;
+	btDefaultMotionState* motionState;
+	btRigidBody* rb;
+
 };
 
 #endif
