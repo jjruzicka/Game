@@ -1,21 +1,8 @@
 #include "RigidBody_c.h"
 #include <iostream>
-
-/* ESTO ES LO QUE TIENEN ELLOS
-float altoCaja, anchoCaja, profCaja;
-btTransform pTransform;
-tipoFisica tipo;
-btScalar mass;
-btCollisionShape* shape;
-btDefaultMotionState *motionState;
-btRigidBody* body;
-btTransform trans;
-void *userPointer;
-bool _suelo;
-*/
-
+//LA Z ES LA ALTURA CUANDO SE METE A BULLET
 RigidBody_c::RigidBody_c(Entidad* _ent, physicType _tipo, btDiscreteDynamicsWorld* _bulletWorld,
-	float _alto, float _ancho, float _profundo, btScalar _masa)
+	float _profundo, float _ancho, float _alto, btScalar _masa)
 {
 	ent = _ent;
 	tipo = _tipo;
@@ -30,14 +17,10 @@ RigidBody_c::RigidBody_c(Entidad* _ent, physicType _tipo, btDiscreteDynamicsWorl
 	
 	btDefaultMotionState* motionState = new btDefaultMotionState(pTransform); // damos dimesiones al box
 
-	if (tipo == physicType::estatico || tipo == physicType::kinematico){
-		masa = 1; // deberia ser 0 pero atraviesa
-	}
-
 	btVector3 localInertia(0, 0, 0); // La inercia inicial siempre es 0
 	if (tipo == physicType::dinamico)
 		localInertia.setY(-10);
-	shape = new btBoxShape(btVector3(alto, profundo, ancho));
+	shape = new btBoxShape(btVector3(ancho, profundo, alto));
 	shape->calculateLocalInertia(masa, localInertia); // inicializamos el cuerpo
 
 	btRigidBody::btRigidBodyConstructionInfo RigidBodyInfo(masa, motionState, shape, localInertia);
@@ -63,9 +46,6 @@ void RigidBody_c::Update(){
 	ent->setPox(x);
 	ent->setPoy(y);
 	ent->setPoz(z);
-
-	if (tipo == physicType::dinamico)
-	std::cout << "Posicion: " << x << ", " << y << ", " << z << std::endl;
 
 }
 

@@ -38,7 +38,7 @@ Escenas::Escenas()
 	ent1->AddComponent(ois);
 
 	// RigidBody del personaje principal (KINEMATICO)
-	RigidBody_c* player_rb = new RigidBody_c(ent1, physicType::kinematico, bulletWorld, 10, 5, 10, 0);
+	RigidBody_c* player_rb = new RigidBody_c(ent1, physicType::kinematico, bulletWorld, 5, 5 ,5, 1);
 	ent1->AddComponent(player_rb);
 	entidades.push_back(ent1);
 
@@ -72,7 +72,7 @@ Escenas::Escenas()
 	Render_c* render2 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("personaje2"), ent2, "Sinbad","Sinbad2");
 	ent2->AddComponent(render2);
 	
-	RigidBody_c* static_rb = new RigidBody_c(ent2, physicType::estatico, bulletWorld, 10, 5, 10, 1);
+	RigidBody_c* static_rb = new RigidBody_c(ent2, physicType::kinematico, bulletWorld, 5, 5, 5, 1);
 	ent2->AddComponent(static_rb);
 	entidades.push_back(ent2);
 	
@@ -214,23 +214,20 @@ bool Escenas::run(){
 	clock_t lastTicks = clock();
 	clock_t elapsedTicks = 0;
 	double deltaTime = 0;
-
+	bulletWorld->stepSimulation((float)deltaTime);
 	while (true)
 	{
 		deltaTime = ((double)elapsedTicks) / 1000.f/*CLOCKS_PER_SEC*/;
 		lastTicks = clock();
 
-		inputcomp_->capture();
-
+		inputcomp_->capture(); 
+		bulletWorld->stepSimulation((float)deltaTime);
 		for (int i = 0; i<entidades.size(); i++)
 			entidades[i]->Update();
-
-		
 
 		// render ogre
 		Ogre::WindowEventUtilities::messagePump();
 		//Tick de la fisica
-		bulletWorld->stepSimulation((float)deltaTime);
 		
 		//comprobar si la ventana está abierta
 		if (mWindow->isClosed())return false;

@@ -17,7 +17,7 @@ PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input)
 
 bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 {
-
+	
 	switch (keyP.key)
 	{
 	case OIS::KC_ESCAPE:
@@ -84,7 +84,6 @@ bool PlayerController_c::keyReleased(const OIS::KeyEvent& keyP){
 		auxZ = 0;
 		istimetoStop = false;
 		break;
-
 	case OIS::KC_DOWN:
 	case OIS::KC_S:
 		auxZ = 0;
@@ -154,16 +153,16 @@ bool PlayerController_c::mouseReleased(const OIS::MouseEvent& me, OIS::MouseButt
 void PlayerController_c::Update(){
 
 	if (istimetoStop){
-		Ogre::Vector3 cglobal(entidad->getPox(), entidad->getPoy(), entidad->getPoz());
-		Ogre::Vector3 clocal = node->convertWorldToLocalPosition(cglobal);
-		if (mas){
-			clocal.z += 1;
-		}
-		else if (!mas){
-			clocal.z -= 1;
-		}
-		cglobal = node->convertLocalToWorldPosition(clocal);
-		entidad->GetComponent(rb)->actualizarPos(cglobal.x, cglobal.y, cglobal.z);
+			Ogre::Vector3 cglobal(entidad->getPox(), entidad->getPoy(), entidad->getPoz());
+			Ogre::Vector3 clocal = node->convertWorldToLocalPosition(cglobal);
+			if (mas){
+				clocal.z += 1;
+			}
+			else if (!mas){
+				clocal.z -= 1;
+			}
+			cglobal = node->convertLocalToWorldPosition(clocal);
+			entidad->GetComponent(rb)->actualizarPos(cglobal.x, cglobal.y, cglobal.z);
 	}
 }
 

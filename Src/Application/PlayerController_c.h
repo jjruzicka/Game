@@ -22,7 +22,6 @@ private:
 	Entidad* entidad;
 	float auxX, auxY, auxZ;
 	bool mas, istimetoStop;
-
 	RigidBody_c* rb;
 	Render_c * rc;
 	Ogre::SceneNode* node;
