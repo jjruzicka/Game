@@ -4,7 +4,7 @@
 #include "RigidBody_c.h"
 #include "Objeto.h"
 #include "Collider_c.h"
-
+#include "StatsPJ_c.h"
 using namespace Ogre;
 enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
@@ -33,10 +33,11 @@ Escenas::Escenas()
 	ent1->setPoy(10);
 	ent1->setPoz(1800);
 	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("personaje"), ent1, "Sinbad","Sinbad");
-	PlayerController_c * ois = new PlayerController_c(ent1, inputcomp_);
+	StatsPJ_c* stas= new StatsPJ_c(5,10,2,100);
+	PlayerController_c * ois = new PlayerController_c(ent1, inputcomp_, stas);
+	ent1->AddComponent(stas);
 	ent1->AddComponent(render);
 	ent1->AddComponent(ois);
-
 	// RigidBody del personaje principal (KINEMATICO)
 	RigidBody_c* player_rb = new RigidBody_c(ent1, physicType::kinematico, bulletWorld, 5, 5 ,5, 1);
 	ent1->AddComponent(player_rb);
@@ -215,6 +216,9 @@ bool Escenas::run(){
 	clock_t elapsedTicks = 0;
 	double deltaTime = 0;
 	bulletWorld->stepSimulation((float)deltaTime);
+	//////////////////////////////////////
+	RigidBody_c* RB = new RigidBody_c();
+	/////////////////////////////////////
 	while (true)
 	{
 		deltaTime = ((double)elapsedTicks) / 1000.f/*CLOCKS_PER_SEC*/;
@@ -228,7 +232,7 @@ bool Escenas::run(){
 		
 		// render ogre
 		Ogre::WindowEventUtilities::messagePump();
-		
+		colisiono(entidades[1]->GetComponent(RB)->getRigidBody());
 		//comprobar si la ventana está abierta
 		if (mWindow->isClosed())return false;
 		if (!root->renderOneFrame())return false;
@@ -236,7 +240,14 @@ bool Escenas::run(){
 	}
 	return true;
 }
-
+bool Escenas::colisiono(btRigidBody* myrb){
+	RigidBody_c* RB = new RigidBody_c();
+	//std::cout << bulletWorld->getNumCollisionObjects() << "\n";
+	if (myrb->checkCollideWith(entidades[1]->GetComponent(RB)->getRigidBody())){
+		return true;
+	}
+	else false;
+}
 Escenas::~Escenas()
 {
 	for (int i = 0; i < entidades.size(); i++)

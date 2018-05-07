@@ -25,7 +25,7 @@ public:
 	~Escenas();
 	bool run();
 	bool initBullet();
-
+	bool colisiono(btRigidBody* myrb);
 private:
 
 	bool initOgre();

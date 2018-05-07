@@ -4,11 +4,12 @@
 #include <OgreRenderWindow.h>
 #include "RigidBody_c.h"
 #include "Render_c.h"
+#include "StatsPJ_c.h"
 class PlayerController_c :
 	public InputComponent
 {
 public:
-	PlayerController_c(Entidad* ent, InputComponent * input);
+	PlayerController_c(Entidad* ent, InputComponent * input, StatsPJ_c* estadisticas);
 	void Update();
 
 	~PlayerController_c();
@@ -24,6 +25,7 @@ private:
 	bool mas, istimetoStop;
 	RigidBody_c* rb;
 	Render_c * rc;
+	StatsPJ_c* estadisticas;
 	Ogre::SceneNode* node;
 };
 
