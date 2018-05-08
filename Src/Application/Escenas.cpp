@@ -5,6 +5,7 @@
 #include "Objeto.h"
 #include "Collider_c.h"
 #include "CameraMove_c.h"
+#include <string>
 using namespace Ogre;
 enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
@@ -106,6 +107,7 @@ Escenas::Escenas()
 	camNode->setPosition(Ogre::Vector3(ent1->getPox(), ent1->getPoy() + 10, ent1->getPoz() - 30));
 	camNode->rotate(Ogre::Vector3(0, 0, 1), Ogre::Degree(180));
 	camNode->lookAt(Ogre::Vector3(ent1->getPox(), ent1->getPoy(), ent1->getPoz()), Ogre::Node::TS_WORLD);
+	camNode->setAutoTracking(true, scnMgr->getSceneNode("personaje"));
 
 	Entidad* entCamara = new Entidad();
 	CameraMove_c* camMove = new CameraMove_c(entCamara, ent1, camNode, inputcomp_);

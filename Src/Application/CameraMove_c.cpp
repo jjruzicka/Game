@@ -5,6 +5,7 @@ const float PI = 3.141592653f;
 CameraMove_c::CameraMove_c(Entidad* eCam, Entidad* eJug, Ogre::SceneNode* camNode, InputComponent * input)
 	: entidadCamara(eCam), entidadJugador(eJug), cam_node(camNode), inputcomp_(input){
 	spd = 0.2;
+	follow_spd = 2;
 	inputcomp_->addKeyListener(this, "teclado2");
 	inputcomp_->addMouseListener(this, "raton2");
 	entidadCamara->setPox(cam_node->getPosition().x);
@@ -17,7 +18,9 @@ CameraMove_c::CameraMove_c(Entidad* eCam, Entidad* eJug, Ogre::SceneNode* camNod
 		// offset = target.transform.position - transform.position;
 	//turn_spd = 12;
 	//pitch_spd = 4;
-	angulo = -90;}
+	angulo = -90;
+	cam_node->setFixedYawAxis(true);
+}
 CameraMove_c::~CameraMove_c()
 {
 	inputcomp_->removeKeyListener(this);
@@ -35,23 +38,24 @@ void CameraMove_c::updateMouse(float dt, const OIS::MouseEvent& me){
 void CameraMove_c::Update(){
 	if (entidadCamara->getPox() > entidadJugador->getPox() + distMax)
 	{
-		entidadCamara->setPox(entidadCamara->getPox() - 1);
+		entidadCamara->setPox(entidadCamara->getPox() - follow_spd);
 	}
 	else if (entidadCamara->getPox() < entidadJugador->getPox() - distMax){
-		entidadCamara->setPox(entidadCamara->getPox() + 1);
+		entidadCamara->setPox(entidadCamara->getPox() + follow_spd);
 	}
 
 	if (entidadCamara->getPoz() > entidadJugador->getPoz() + distMax)
 	{
-		entidadCamara->setPoz(entidadCamara->getPoz() - 1);
+		entidadCamara->setPoz(entidadCamara->getPoz() - follow_spd);
 	}
 	else if (entidadCamara->getPoz() < entidadJugador->getPoz() - distMax){
-		entidadCamara->setPoz(entidadCamara->getPoz() + 1);
+		entidadCamara->setPoz(entidadCamara->getPoz() + follow_spd);
 	}
 
 
 	cam_node->setPosition(entidadCamara->getPox(), entidadCamara->getPoy(), entidadCamara->getPoz());
-	cam_node->lookAt(Ogre::Vector3(entidadJugador->getPox(), entidadJugador->getPoy(), entidadJugador->getPoz()), Ogre::Node::TS_WORLD);
+	//cam_node->lookAt(Ogre::Vector3(entidadJugador->getPox(), entidadJugador->getPoy(), entidadJugador->getPoz()), Ogre::Node::TS_WORLD);
+	
 }
 
 bool CameraMove_c::keyPressed(const OIS::KeyEvent& keyP)
@@ -175,7 +179,7 @@ bool CameraMove_c::mouseMoved(const OIS::MouseEvent& me)
 		entidadCamara->setPox( x);
 		entidadCamara->setPoz( y);
 		
-		cam_node->roll(Ogre::Degree(-horizontal / 2.25), Ogre::Node::TS_LOCAL);
+		//cam_node->roll(Ogre::Degree(-horizontal / 2.25), Ogre::Node::TS_LOCAL);
 	}
 
 	return true;
