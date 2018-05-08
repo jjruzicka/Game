@@ -11,7 +11,7 @@ CameraMove_c::CameraMove_c(Entidad* eCam, Entidad* eJug, Ogre::SceneNode* camNod
 	entidadCamara->setPox(cam_node->getPosition().x);
 	entidadCamara->setPoy(cam_node->getPosition().y);
 	entidadCamara->setPoz(cam_node->getPosition().z);
-	distMax = 20;
+	distMin = 20;
 	offset = Ogre::Vector3((entidadJugador->getPox() - entidadCamara->getPox()),
 		(entidadJugador->getPoy() - entidadCamara->getPoy()),
 		(entidadJugador->getPoz() - entidadCamara->getPoz()));
@@ -36,26 +36,26 @@ void CameraMove_c::updateMouse(float dt, const OIS::MouseEvent& me){
 }*/
 
 void CameraMove_c::Update(){
-	if (entidadCamara->getPox() > entidadJugador->getPox() + distMax)
+	if (entidadCamara->getPox() > entidadJugador->getPox() + distMin)
 	{
 		entidadCamara->setPox(entidadCamara->getPox() - follow_spd);
 	}
-	else if (entidadCamara->getPox() < entidadJugador->getPox() - distMax){
+	else if (entidadCamara->getPox() < entidadJugador->getPox() - distMin){
 		entidadCamara->setPox(entidadCamara->getPox() + follow_spd);
 	}
 
-	if (entidadCamara->getPoz() > entidadJugador->getPoz() + distMax)
+	if (entidadCamara->getPoz() > entidadJugador->getPoz() + distMin)
 	{
 		entidadCamara->setPoz(entidadCamara->getPoz() - follow_spd);
 	}
-	else if (entidadCamara->getPoz() < entidadJugador->getPoz() - distMax){
+	else if (entidadCamara->getPoz() < entidadJugador->getPoz() - distMin){
 		entidadCamara->setPoz(entidadCamara->getPoz() + follow_spd);
 	}
 
-
 	cam_node->setPosition(entidadCamara->getPox(), entidadCamara->getPoy(), entidadCamara->getPoz());
+
 	//cam_node->lookAt(Ogre::Vector3(entidadJugador->getPox(), entidadJugador->getPoy(), entidadJugador->getPoz()), Ogre::Node::TS_WORLD);
-	
+
 }
 
 bool CameraMove_c::keyPressed(const OIS::KeyEvent& keyP)
@@ -80,7 +80,6 @@ bool CameraMove_c::keyPressed(const OIS::KeyEvent& keyP)
 
 	case OIS::KC_UP:
 	case OIS::KC_W:
-		std::cout << "aaaaaaaaaaaaaaaaaaaaaaaaaaa";
 		break;
 
 	case OIS::KC_DOWN:
@@ -162,27 +161,39 @@ bool CameraMove_c::mouseMoved(const OIS::MouseEvent& me)
 {
 	if (me.state.buttonDown(OIS::MB_Right))
 	{
-		/*mCamNode->yaw(Ogre::Degree(-mRotate * me.state.X.rel), Ogre::Node::TS_WORLD);
-		mCamNode->pitch(Ogre::Degree(-mRotate * me.state.Y.rel), Ogre::Node::TS_LOCAL);*/
+
+		Ogre::Quaternion quat = cam_node->getOrientation();
+		Ogre::Degree gradosExtra = Ogre::Degree(quat.getYaw());
+		angulo = (-gradosExtra.valueDegrees() + 90);
 
 		float horizontal = me.state.X.rel *spd;
 		angulo += horizontal;
+
 		if (angulo >= 360)
-			angulo = 0;
+			angulo -= 300;
 		if (angulo <= -360)
-			angulo = 0;
+			angulo += 360;
 
 		float t = angulo * PI / 180;
 		float x, y;
-		x = distMax* cosf(t) + entidadJugador->getPox();
-		y = distMax* sinf(t) + entidadJugador->getPoz();
-		entidadCamara->setPox( x);
-		entidadCamara->setPoz( y);
+		calculaOffset();
+		float distancia = sqrtf(pow(offset.x, 2) + pow(offset.z, 2));
+		x = distancia* cosf(t) + entidadJugador->getPox();
+		y = distancia* sinf(t) + entidadJugador->getPoz();
+
+		entidadCamara->setPox(x);
+		entidadCamara->setPoz(y);
 		
 		//cam_node->roll(Ogre::Degree(-horizontal / 2.25), Ogre::Node::TS_LOCAL);
 	}
 
 	return true;
+}
+
+void CameraMove_c::calculaOffset(){
+	offset = Ogre::Vector3((entidadJugador->getPox() - entidadCamara->getPox()),
+		(entidadJugador->getPoy() - entidadCamara->getPoy()),
+		(entidadJugador->getPoz() - entidadCamara->getPoz()));
 }
 
 bool CameraMove_c::mousePressed(const OIS::MouseEvent& me, OIS::MouseButtonID id)
@@ -203,5 +214,13 @@ bool CameraMove_c::mousePressed(const OIS::MouseEvent& me, OIS::MouseButtonID id
 
 bool CameraMove_c::mouseReleased(const OIS::MouseEvent& me, OIS::MouseButtonID id)
 {
+	/*switch (id)
+	{
+	case OIS::MB_Right:
+		angulo = 0;
+		break;
+	default:
+		break;
+	}*/
 	return true;
 }
