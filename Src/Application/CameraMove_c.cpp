@@ -4,21 +4,20 @@
 const float PI = 3.141592653f;
 CameraMove_c::CameraMove_c(Entidad* eCam, Entidad* eJug, Ogre::SceneNode* camNode, InputComponent * input)
 	: entidadCamara(eCam), entidadJugador(eJug), cam_node(camNode), inputcomp_(input){
-	spd = 1;
+	spd = 0.2;
 	inputcomp_->addKeyListener(this, "teclado2");
 	inputcomp_->addMouseListener(this, "raton2");
 	entidadCamara->setPox(cam_node->getPosition().x);
 	entidadCamara->setPoy(cam_node->getPosition().y);
 	entidadCamara->setPoz(cam_node->getPosition().z);
-	distMax = 10;
+	distMax = 20;
 	offset = Ogre::Vector3((entidadJugador->getPox() - entidadCamara->getPox()),
 		(entidadJugador->getPoy() - entidadCamara->getPoy()),
 		(entidadJugador->getPoz() - entidadCamara->getPoz()));
 		// offset = target.transform.position - transform.position;
 	//turn_spd = 12;
 	//pitch_spd = 4;
-	angulo = 0;
-}
+	angulo = -90;}
 CameraMove_c::~CameraMove_c()
 {
 	inputcomp_->removeKeyListener(this);
@@ -53,7 +52,6 @@ void CameraMove_c::Update(){
 
 	cam_node->setPosition(entidadCamara->getPox(), entidadCamara->getPoy(), entidadCamara->getPoz());
 	cam_node->lookAt(Ogre::Vector3(entidadJugador->getPox(), entidadJugador->getPoy(), entidadJugador->getPoz()), Ogre::Node::TS_WORLD);
-	//cam_node->yaw(Ogre::Radian(angulo), Ogre::Node::TS_WORLD);
 }
 
 bool CameraMove_c::keyPressed(const OIS::KeyEvent& keyP)
@@ -165,6 +163,10 @@ bool CameraMove_c::mouseMoved(const OIS::MouseEvent& me)
 
 		float horizontal = me.state.X.rel *spd;
 		angulo += horizontal;
+		if (angulo >= 360)
+			angulo = 0;
+		if (angulo <= -360)
+			angulo = 0;
 
 		float t = angulo * PI / 180;
 		float x, y;
@@ -173,19 +175,7 @@ bool CameraMove_c::mouseMoved(const OIS::MouseEvent& me)
 		entidadCamara->setPox( x);
 		entidadCamara->setPoz( y);
 		
-
-
-		//target.transform.Rotate(0, horizontal, 0);
-
-
-		//float desiredAngle = entidadJugador->getRoy();
-		//float desiredAngle = target.transform.eulerAngles.y;
-		//Ogre::Vector3 rotation = Ogre::Vector3(0, desiredAngle, 0);
-		
-		//Quaternion rotation = Quaternion.Euler(0, desiredAngle, 0);
-		//transform.position = target.transform.position - (rotation * offset);
-
-		//transform.LookAt(target.transform);
+		cam_node->roll(Ogre::Degree(-horizontal / 2.25), Ogre::Node::TS_LOCAL);
 	}
 
 	return true;
