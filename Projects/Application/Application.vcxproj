@@ -22,9 +22,11 @@
     <ClCompile Include="..\..\Src\Application\Inventario_c.cpp" />
     <ClCompile Include="..\..\Src\Application\Mision_c.cpp" />
     <ClCompile Include="..\..\Src\Application\Objeto.cpp" />
+    <ClCompile Include="..\..\Src\Application\Proyectil.cpp" />
     <ClCompile Include="..\..\Src\Application\ProyectoBasico.cpp" />
     <ClCompile Include="..\..\Src\Application\Render_c.cpp" />
     <ClCompile Include="..\..\Src\Application\RigidBody_c.cpp" />
+    <ClCompile Include="MovimientoProyectil_c.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Application\Collider_c.h" />
@@ -38,8 +40,10 @@
     <ClInclude Include="..\..\Src\Application\Inventario_c.h" />
     <ClInclude Include="..\..\Src\Application\Mision_c.h" />
     <ClInclude Include="..\..\Src\Application\Objeto.h" />
+    <ClInclude Include="..\..\Src\Application\Proyectil.h" />
     <ClInclude Include="..\..\Src\Application\Render_c.h" />
     <ClInclude Include="..\..\Src\Application\RigidBody_c.h" />
+    <ClInclude Include="MovimientoProyectil_c.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{E2595455-6AE6-4E56-AFDD-820B8F62CAC1}</ProjectGuid>

@@ -110,7 +110,7 @@ public:
 	void setOrientationZ(float z){
 		orientacion.z = z;
 	}
-private:
+protected:
 	std::vector<Component*> componentes;
 
 	PosF posicion;
