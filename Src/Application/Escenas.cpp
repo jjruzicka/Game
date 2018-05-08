@@ -67,7 +67,7 @@ bool Escenas::initOgre(){
 	
 	mWindow = root->initialise(true, "P3");
 
-	mWindow->setFullscreen(true, mWindow->getWidth(), mWindow->getHeight());
+	//mWindow->setFullscreen(true, mWindow->getWidth(), mWindow->getHeight());
 
 	//------------------------------------------------------------------------------------------------------
 	//Resources Init
@@ -113,14 +113,16 @@ Escenas::~Escenas()
 {
 	for (int i = 0; i < entidades.size(); i++)
 		delete entidades[i];
-
-	delete bulletWorld;
-	delete collisionConfiguration;
-	delete dispatcher;
-	delete solver;
-	delete broadPhase;
-	delete gui;
 	inputcomp_->removeKeyListener(inputcomp_);
 	inputcomp_->removeMouseListener(inputcomp_);
+
+
+	/////LEER INIT Y DESTRIR DE ABAJO A ARRIBA LO MISMO CON BULLET
+
+
+	scnMgr->getRootSceneNode()->removeAllChildren();
+	root->destroySceneManager(scnMgr);
+	root->destroyRenderTarget("P3");
+	root = nullptr;
 }
 

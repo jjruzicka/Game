@@ -16,12 +16,7 @@
 #include <OgreTextureManager.h>
 #include <OgreWindowEventUtilities.h>
 #include <OgreException.h>
-#include "Mapa.h"
 #include "InputComponent.h"
-#include "Gui3D.h"
-#include "GUI.h"
-#include "Gui3DPanel.h"
-#include "Gui3DScreenPanel.h"
 
 
 class Escenas
@@ -36,6 +31,7 @@ protected:
 	std::vector<Entidad*> entidades;
 	Ogre::Viewport* vp = nullptr;
 
+
 	///// FISICA
 	btDiscreteDynamicsWorld* bulletWorld;
 	btDefaultCollisionConfiguration* collisionConfiguration;
@@ -44,11 +40,9 @@ protected:
 	btBroadphaseInterface* broadPhase;
 	////////////////
 	
-	GUI* gui;
 	InputComponent* inputcomp_;
 
 	///// OGRE
-	Mapa* mapa;
 	std::string recursos, plugins;
 	Ogre::Root *root;
 	Ogre::ConfigFile cf;

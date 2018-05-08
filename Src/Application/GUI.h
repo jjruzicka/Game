@@ -7,13 +7,18 @@
 #include "Gui3DScreenPanel.h"
 #include "MyPurplePanelColors.h"
 #include "MyEnvironmentDemoPanelColors.h"
+#include "Menu.h"
+
 class GUI: public InputComponent
 {
 public:
-	GUI(InputComponent* input_, Ogre::Viewport* vp, Ogre::SceneManager * scnMgr, Ogre::Camera * cam, Ogre::SceneNode* camNode);
+	GUI(InputComponent* input_, Ogre::Viewport* vp, Ogre::SceneManager * scnMgr, Ogre::Camera * cam, Ogre::SceneNode* camNode, Menu* menuc);
 	void createPanel();
 	~GUI();
 private:
+
+	Menu* menu;
+
 	InputComponent* icomp_;
 	Ogre::SceneManager * scn;
 	Ogre::Viewport* view;

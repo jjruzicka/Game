@@ -1,8 +1,9 @@
 #include "GUI.h"
 #include <iostream>
 
-GUI::GUI(InputComponent* input_, Ogre::Viewport* vp, Ogre::SceneManager * scnMgr, Ogre::Camera * cam, Ogre::SceneNode* camNode)
+GUI::GUI(InputComponent* input_, Ogre::Viewport* vp, Ogre::SceneManager * scnMgr, Ogre::Camera * cam, Ogre::SceneNode* camNode, Menu* menuc)
 {
+	menu = menuc;
 	scn = scnMgr;
 	camera = cam;
 	cNode = camNode;
@@ -34,7 +35,7 @@ GUI::GUI(InputComponent* input_, Ogre::Viewport* vp, Ogre::SceneManager * scnMgr
 }
 void GUI::createPanel(){
 	// 3D Panel (using Gorilla::ScreenRenderable)
-	mPanel = new Gui3D::Panel(
+	/*mPanel = new Gui3D::Panel(
 		mGui3D, scn, Ogre::Vector2(400, 200), 10, "purple", "test_panel");
 
 	mPanel->makeCaption(5, -30, 390, 30, "Simple 2D Demo Panel");
@@ -45,12 +46,12 @@ void GUI::createPanel(){
 	mPanel->makeCaption(10, 150, 130, 30, "text entered : ");
 	captionDisplayTextZone = mPanel->makeCaption(140, 150, 190, 30, "");
 
-	mPanel->mNode->setPosition(0, 2.1, -8);
+	mPanel->mNode->setPosition(0, 2.1, -8);*/
 
 	// 2D Panel (using Gorilla::Screen)
 	Gorilla::Screen* myScreen = mGui3D->getScreen("mainScreen");
 
-	mSPanel = new Gui3D::ScreenPanel(mGui3D,
+	/*mSPanel = new Gui3D::ScreenPanel(mGui3D,
 		myScreen,
 		Ogre::Vector2(450, 350),
 		Ogre::Vector2(300, 200),
@@ -66,26 +67,31 @@ void GUI::createPanel(){
 
 	Gui3D::TextZone* t = mSPanel->makeTextZone(10, 150, 280, 30, "");
 	t->setValueChangedCallback(this, &GUI::textChanged);
-	t->setMaxStringLength(15);
+	t->setMaxStringLength(15);*/
+
+
 
 	// 2nd test panel
 	mSPanel2 = new Gui3D::ScreenPanel(
 		mGui3D,
 		myScreen,
-		Ogre::Vector2(300, 600),
-		Ogre::Vector2(250, 100),
+		Ogre::Vector2(300, 200),
+		Ogre::Vector2(400, 400),
 		"purple",
 		"test_screenPanel2");
 
-	mSPanel2->makeCaption(0, 0, 250, 30, "Health : 60");
-	mSPanel2->makeCaption(0, 30, 250, 30, "Power : 50");
-	mSPanel2->makeButton(0, 60, 250, 40, "Reset global timer")
+	
+	mSPanel2->makeButton(0, 0, 400, 100, "PLAY")
+		->setPressedCallback(this, &GUI::resetGlobalFrameCount);
+	mSPanel2->makeButton(0, 150, 400, 100, "CREDITS")
+		->setPressedCallback(this, &GUI::resetGlobalFrameCount);
+	mSPanel2->makeButton(0, 300, 400, 100, "EXIT")
 		->setPressedCallback(this, &GUI::resetGlobalFrameCount);
 
 	// We don't want any panels to display mouse cursor. It is handled
 	//  by our Simple2DDemo.
-	mPanel->hideInternalMousePointer();
-	mSPanel->hideInternalMousePointer();
+	//mPanel->hideInternalMousePointer();
+	//mSPanel->hideInternalMousePointer();
 	mSPanel2->hideInternalMousePointer();
 }
 
@@ -98,6 +104,7 @@ bool GUI::textChanged(Gui3D::PanelElement* e)
 
 bool GUI::resetGlobalFrameCount(Gui3D::PanelElement* e)
 {
+	menu->MenuToPlay();
 	std::cout << "click" << std::endl;
 	globalClock.reset();
 	localClock.reset();
@@ -107,6 +114,7 @@ bool GUI::resetGlobalFrameCount(Gui3D::PanelElement* e)
 
 bool GUI::resetLocalFrameCount(Gui3D::PanelElement* e)
 {
+	
 	localClock.reset();
 	return true;
 }
@@ -122,16 +130,16 @@ bool GUI::buttonPressed(Gui3D::PanelElement* e)
 
 bool GUI::mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id)
 {
-	mPanel->injectMousePressed(evt, id);
-	mSPanel->injectMousePressed(evt, id);
+	//mPanel->injectMousePressed(evt, id);
+	//mSPanel->injectMousePressed(evt, id);
 	mSPanel2->injectMousePressed(evt, id);
 	return true;
 }
 
 bool GUI::mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id)
 {
-	mPanel->injectMouseReleased(evt, id);
-	mSPanel->injectMouseReleased(evt, id);
+	//mPanel->injectMouseReleased(evt, id);
+	//mSPanel->injectMouseReleased(evt, id);
 	mSPanel2->injectMouseReleased(evt, id);
 	return true;
 }
@@ -169,11 +177,11 @@ bool GUI::mouseMoved(const OIS::MouseEvent &arg)
 		mNormalizedMousePosition.x * view->getActualWidth(),
 		mNormalizedMousePosition.y * view->getActualHeight());
 
-	mPanel->injectMouseMoved(camera->getCameraToViewportRay(
-		mNormalizedMousePosition.x, mNormalizedMousePosition.y));
+	//mPanel->injectMouseMoved(camera->getCameraToViewportRay(
+		//mNormalizedMousePosition.x, mNormalizedMousePosition.y));
 
-	mSPanel->injectMouseMoved(mNormalizedMousePosition.x * view->getActualWidth(),
-		mNormalizedMousePosition.y * view->getActualHeight());
+	/*mSPanel->injectMouseMoved(mNormalizedMousePosition.x * view->getActualWidth(),
+		mNormalizedMousePosition.y * view->getActualHeight());*/
 
 	mSPanel2->injectMouseMoved(mNormalizedMousePosition.x * view->getActualWidth(),
 		mNormalizedMousePosition.y * view->getActualHeight());

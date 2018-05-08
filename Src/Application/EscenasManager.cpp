@@ -12,7 +12,7 @@ EscenasManager::EscenasManager()
 	menuB = true;
 
 	if (menuB){
-		menu = new Menu();
+		menu = new Menu(this);
 		juego = nullptr;
 	}
 	else if (juegoB){
@@ -39,7 +39,7 @@ void EscenasManager::MenuToGame(){
 void EscenasManager::GameToMenu(){
 	menuB = true;
 	juegoB = false;
-	menu = new Menu();
+	menu = new Menu(this);
 	delete juego;
 	run();
 }

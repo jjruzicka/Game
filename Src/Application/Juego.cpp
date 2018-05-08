@@ -19,9 +19,8 @@ Juego::Juego()
 	plugins = "Ogre/plugins.cfg";
 	recursos = "Ogre/resources.cfg";
 #endif
-	
-	Escenas::initOgre();
-	Escenas::initBullet();
+		Escenas::initOgre();
+		//Escenas::initBullet();
 	
 
 	
@@ -88,8 +87,8 @@ Juego::Juego()
 	vp = mWindow->addViewport(cam);
 	vp->setBackgroundColour(Ogre::ColourValue(150, 150, 150));
 	//vp->setBackgroundColour(Ogre::ColourValue(1, 1, 1));
-	gui = new GUI(inputcomp_, vp, scnMgr, cam, camNode);
-	gui->createPanel();
+	/*i = new GUI(inputcomp_, vp, scnMgr, cam, camNode, this);
+	gui->createPanel();*/
 	//Terrain
 	/*mapa = new Mapa(scnMgr, light, bulletWorld);
 	mapa->createmap();

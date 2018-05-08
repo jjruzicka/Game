@@ -4,13 +4,14 @@
 #include "RigidBody_c.h"
 #include "Objeto.h"
 #include "Collider_c.h"
+#include "GUI.h"
 #include <iostream>
 using namespace Ogre;
 enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
 	MY_QUERY_INTERACT = 1 << 0
 };
-Menu::Menu()
+Menu::Menu(EscenasManager* scnM)
 {
 #ifdef _DEBUG
 	plugins = "OgreD/plugins_d.cfg";
@@ -19,11 +20,10 @@ Menu::Menu()
 	plugins = "Ogre/plugins.cfg";
 	recursos = "Ogre/resources.cfg";
 #endif
-	
 	Escenas::initOgre();
 	Escenas::initBullet();
-	
 
+	this->scnM = scnM;
 	
 	inputcomp_ = InputComponent::getSingletonPtr();
 	inputcomp_->initialise(mWindow);
@@ -86,9 +86,9 @@ Menu::Menu()
 	// and tell it to render into the main window
 	
 	vp = mWindow->addViewport(cam);
-	vp->setBackgroundColour(Ogre::ColourValue(150, 150, 150));
+	vp->setBackgroundColour(Ogre::ColourValue::Black);
 	//vp->setBackgroundColour(Ogre::ColourValue(1, 1, 1));
-	gui = new GUI(inputcomp_, vp, scnMgr, cam, camNode);
+	GUI* gui = new GUI(inputcomp_, vp, scnMgr, cam, camNode,this);
 	gui->createPanel();
 	//Terrain
 	/*mapa = new Mapa(scnMgr, light, bulletWorld);
@@ -98,7 +98,9 @@ Menu::Menu()
 	
 
 }
-
+void Menu::MenuToPlay(){
+	scnM->MenuToGame();
+}
 
 bool Menu::run(){
 	
