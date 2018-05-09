@@ -4,7 +4,7 @@
 class Menu : public Escenas
 {
 public:
-	Menu(EscenasManager* scnM, Ogre::RenderWindow* mWindow, Ogre::SceneManager * scnMgrOgre, btDiscreteDynamicsWorld* bulletWorld);
+	Menu(EscenasManager* scnM);
 	virtual ~Menu();
 	virtual bool run();
 	void MenuToPlay();

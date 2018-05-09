@@ -11,21 +11,31 @@ enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
 	MY_QUERY_INTERACT = 1 << 0
 };
-Menu::Menu(EscenasManager* scnM, Ogre::RenderWindow* mWindow, Ogre::SceneManager * scnMgrOgre, btDiscreteDynamicsWorld* bulletWorld)
+Menu::Menu(EscenasManager* scnM)
 {
-	this->mWindow = mWindow;
-	this->scnMgr = scnMgrOgre;
+#ifdef _DEBUG
+	plugins = "OgreD/plugins_d.cfg";
+	recursos = "OgreD/resources_d.cfg";
+#else
+	plugins = "Ogre/plugins.cfg";
+	recursos = "Ogre/resources.cfg";
+#endif
+	Escenas::initOgre();
+	Escenas::initBullet();
+
 	this->scnM = scnM;
-	this->bulletWorld = bulletWorld;
+
 	inputcomp_ = InputComponent::getSingletonPtr();
 	inputcomp_->initialise(mWindow);
-	
-	
+
+	//COSAS A MIRAR  --> SI QUITAS LA ENTIDAD Y LAS COLAS DE BULLET Y EMPIEZAS DIRECTAMENTE CON LA LUZ, REVIENTA.
+
+
 	Entidad* ent1 = new Entidad();
 	//1683, 50, 2116
 	ent1->setPox(1700);// posicion 
 	ent1->setPoy(50);
-	ent1->setPoz(900); //cuanto menor sea el numero, mas se aleja de la camara
+	ent1->setPoz(2000); //cuanto menor sea el numero, mas se aleja de la camara
 	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("personaje"), ent1, "Sinbad");
 	PlayerController_c * ois = new PlayerController_c(ent1, inputcomp_);
 	ent1->AddComponent(render);
@@ -45,7 +55,7 @@ Menu::Menu(EscenasManager* scnM, Ogre::RenderWindow* mWindow, Ogre::SceneManager
 	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
 	lightdir.normalise();
 
-	light = scnMgr->createLight("tstLight");
+	Ogre::Light* light = scnMgr->createLight("tstLight");
 	light->setType(Ogre::Light::LT_DIRECTIONAL);
 	light->setDirection(lightdir);
 	light->setDiffuseColour(Ogre::ColourValue::White);
@@ -62,7 +72,7 @@ Menu::Menu(EscenasManager* scnM, Ogre::RenderWindow* mWindow, Ogre::SceneManager
 	camNode->setPosition(Ogre::Vector3(0, 5, -35));
 	camNode->rotate(Ogre::Quaternion(Ogre::Degree(180), Ogre::Vector3::UNIT_Y));
 	camNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
-	
+
 	// create the camera
 	cam = scnMgr->createCamera("Cam");
 	cam->setNearClipDistance(0.1); //esto antes era 1
@@ -76,11 +86,11 @@ Menu::Menu(EscenasManager* scnM, Ogre::RenderWindow* mWindow, Ogre::SceneManager
 
 
 	// and tell it to render into the main window
-	
+
 	vp = mWindow->addViewport(cam);
 	vp->setBackgroundColour(Ogre::ColourValue::Black);
 	//vp->setBackgroundColour(Ogre::ColourValue(1, 1, 1));
-	GUI* gui = new GUI(inputcomp_, vp, scnMgr, cam, camNode,this);
+	GUI* gui = new GUI(inputcomp_, vp, scnMgr, cam, camNode, this);
 	gui->createPanel();
 	//Terrain
 	/*mapa = new Mapa(scnMgr, light, bulletWorld);
@@ -134,6 +144,7 @@ bool Menu::run(){
 		
 		//comprobar si la ventana está abierta
 		if (mWindow->isClosed())return false;
+		if (!root->renderOneFrame())return false;
 		elapsedTicks = clock() - lastTicks;
 	}
 	return true;
@@ -141,5 +152,9 @@ bool Menu::run(){
 
 Menu::~Menu()
 {
+	scnMgr->getRootSceneNode()->removeAllChildren();
+	root->destroySceneManager(scnMgr);
+	root->destroyRenderTarget("P3");
+	delete root;
 }
 
