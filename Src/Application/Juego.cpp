@@ -90,9 +90,9 @@ Juego::Juego()
 	/*i = new GUI(inputcomp_, vp, scnMgr, cam, camNode, this);
 	gui->createPanel();*/
 	//Terrain
-	/*mapa = new Mapa(scnMgr, light, bulletWorld);
+	mapa = new Mapa(scnMgr, light, bulletWorld);
 	mapa->createmap();
-	mapa->setPhysics();*/
+	mapa->setPhysics();
 
 	
 

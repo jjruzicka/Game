@@ -17,6 +17,7 @@
 #include <OgreWindowEventUtilities.h>
 #include <OgreException.h>
 #include "InputComponent.h"
+#include "Mapa.h"
 
 
 class Escenas
@@ -41,6 +42,8 @@ protected:
 	////////////////
 	
 	InputComponent* inputcomp_;
+
+	Mapa* mapa;
 
 	///// OGRE
 	std::string recursos, plugins;

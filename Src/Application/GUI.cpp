@@ -82,11 +82,11 @@ void GUI::createPanel(){
 
 	
 	mSPanel2->makeButton(0, 0, 400, 100, "PLAY")
-		->setPressedCallback(this, &GUI::resetGlobalFrameCount);
+		->setPressedCallback(this, &GUI::play_);
 	mSPanel2->makeButton(0, 150, 400, 100, "CREDITS")
-		->setPressedCallback(this, &GUI::resetGlobalFrameCount);
+		->setPressedCallback(this, &GUI::exit_);
 	mSPanel2->makeButton(0, 300, 400, 100, "EXIT")
-		->setPressedCallback(this, &GUI::resetGlobalFrameCount);
+		->setPressedCallback(this, &GUI::exit_);
 
 	// We don't want any panels to display mouse cursor. It is handled
 	//  by our Simple2DDemo.
@@ -102,20 +102,17 @@ bool GUI::textChanged(Gui3D::PanelElement* e)
 	return true;
 }
 
-bool GUI::resetGlobalFrameCount(Gui3D::PanelElement* e)
+bool GUI::play_(Gui3D::PanelElement* e)
 {
 	menu->MenuToPlay();
-	std::cout << "click" << std::endl;
-	globalClock.reset();
-	localClock.reset();
 
 	return true;
 }
 
-bool GUI::resetLocalFrameCount(Gui3D::PanelElement* e)
+bool GUI::exit_(Gui3D::PanelElement* e)
 {
 	
-	localClock.reset();
+	menu->exit = true;
 	return true;
 }
 

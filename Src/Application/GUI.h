@@ -23,8 +23,8 @@ private:
 	Ogre::SceneManager * scn;
 	Ogre::Viewport* view;
 	bool textChanged(Gui3D::PanelElement* e);
-	bool resetGlobalFrameCount(Gui3D::PanelElement* e);
-	bool resetLocalFrameCount(Gui3D::PanelElement* e);
+	bool play_(Gui3D::PanelElement* e);
+	bool exit_(Gui3D::PanelElement* e);
 	bool buttonPressed(Gui3D::PanelElement* e);
 	/*bool keyPressed(const OIS::KeyEvent &e);
 	bool keyReleased(const OIS::KeyEvent &e);*/

@@ -8,6 +8,7 @@ public:
 	virtual ~Menu();
 	virtual bool run();
 	void MenuToPlay();
+	bool exit;
 private:
 	EscenasManager* scnM;
 //variables vienen de escenas.h

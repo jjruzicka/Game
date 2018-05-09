@@ -29,7 +29,7 @@ Menu::Menu(EscenasManager* scnM)
 	inputcomp_->initialise(mWindow);
 
 	//COSAS A MIRAR  --> SI QUITAS LA ENTIDAD Y LAS COLAS DE BULLET Y EMPIEZAS DIRECTAMENTE CON LA LUZ, REVIENTA.
-
+	exit = false;
 
 	Entidad* ent1 = new Entidad();
 	//1683, 50, 2116
@@ -112,7 +112,7 @@ bool Menu::run(){
 	double deltaTime = 0;
 	
 
-	while (true)
+	while (!exit)
 	{
 		deltaTime = ((double)elapsedTicks) / 1000.f/*CLOCKS_PER_SEC*/;
 		lastTicks = clock();
@@ -147,6 +147,7 @@ bool Menu::run(){
 		if (!root->renderOneFrame())return false;
 		elapsedTicks = clock() - lastTicks;
 	}
+	mWindow->destroy();
 	return true;
 }
 
