@@ -3,10 +3,9 @@
 class Juego : public Escenas
 {
 public:
-	Juego();
+	Juego(Ogre::RenderWindow* mWindow, Ogre::SceneManager * scnMgrOgre, btDiscreteDynamicsWorld* bulletWorld);
 	virtual ~Juego();
 	virtual bool run();
-
 private:
 	//variables vienen de escenas.h
 };

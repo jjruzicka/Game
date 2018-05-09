@@ -10,20 +10,11 @@ enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
 	MY_QUERY_INTERACT = 1 << 0
 };
-Juego::Juego()
+Juego::Juego(Ogre::RenderWindow* mWindow, Ogre::SceneManager * scnMgrOgre, btDiscreteDynamicsWorld* bulletWorld)
 {
-#ifdef _DEBUG
-	plugins = "OgreD/plugins_d.cfg";
-	recursos = "OgreD/resources_d.cfg";
-#else
-	plugins = "Ogre/plugins.cfg";
-	recursos = "Ogre/resources.cfg";
-#endif
-		Escenas::initOgre();
-		//Escenas::initBullet();
-	
-
-	
+	this->mWindow = mWindow;
+	this->scnMgr = scnMgrOgre;
+	this->bulletWorld = bulletWorld;
 	inputcomp_ = InputComponent::getSingletonPtr();
 	inputcomp_->initialise(mWindow);
 	
@@ -61,7 +52,7 @@ Juego::Juego()
 	scnMgr->setAmbientLight(Ogre::ColourValue(0.2, 0.2, 0.2));
 
 	// also need to tell where we are
-	camNode = scnMgr->getSceneNode("personaje")->createChildSceneNode();
+	Ogre::SceneNode* camNode = scnMgr->getSceneNode("personaje")->createChildSceneNode();
 	/*camNode->setPosition(0, 0, 100);
 	camNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_WORLD); //esto lo que habia antes
 	*/
@@ -71,7 +62,7 @@ Juego::Juego()
 	camNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
 	
 	// create the camera
-	cam = scnMgr->createCamera("Cam");
+	Ogre::Camera* cam = scnMgr->createCamera("Cam");
 	cam->setNearClipDistance(0.1); //esto antes era 1
 	cam->setFarClipDistance(10000);
 	cam->setAutoAspectRatio(true);
@@ -84,7 +75,7 @@ Juego::Juego()
 
 	// and tell it to render into the main window
 	
-	vp = mWindow->addViewport(cam);
+	Ogre::Viewport* vp = mWindow->addViewport(cam);
 	vp->setBackgroundColour(Ogre::ColourValue(150, 150, 150));
 	//vp->setBackgroundColour(Ogre::ColourValue(1, 1, 1));
 	/*i = new GUI(inputcomp_, vp, scnMgr, cam, camNode, this);
@@ -139,7 +130,6 @@ bool Juego::run(){
 		
 		//comprobar si la ventana está abierta
 		if (mWindow->isClosed())return false;
-		if (!root->renderOneFrame())return false;
 		elapsedTicks = clock() - lastTicks;
 	}
 	return true;
@@ -147,5 +137,6 @@ bool Juego::run(){
 
 Juego::~Juego()
 {
+
 }
 

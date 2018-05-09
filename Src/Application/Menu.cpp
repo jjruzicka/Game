@@ -11,20 +11,12 @@ enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
 	MY_QUERY_INTERACT = 1 << 0
 };
-Menu::Menu(EscenasManager* scnM)
+Menu::Menu(EscenasManager* scnM, Ogre::RenderWindow* mWindow, Ogre::SceneManager * scnMgrOgre, btDiscreteDynamicsWorld* bulletWorld)
 {
-#ifdef _DEBUG
-	plugins = "OgreD/plugins_d.cfg";
-	recursos = "OgreD/resources_d.cfg";
-#else
-	plugins = "Ogre/plugins.cfg";
-	recursos = "Ogre/resources.cfg";
-#endif
-	Escenas::initOgre();
-	Escenas::initBullet();
-
+	this->mWindow = mWindow;
+	this->scnMgr = scnMgrOgre;
 	this->scnM = scnM;
-	
+	this->bulletWorld = bulletWorld;
 	inputcomp_ = InputComponent::getSingletonPtr();
 	inputcomp_->initialise(mWindow);
 	
@@ -53,7 +45,7 @@ Menu::Menu(EscenasManager* scnM)
 	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
 	lightdir.normalise();
 
-	Ogre::Light* light = scnMgr->createLight("tstLight");
+	light = scnMgr->createLight("tstLight");
 	light->setType(Ogre::Light::LT_DIRECTIONAL);
 	light->setDirection(lightdir);
 	light->setDiffuseColour(Ogre::ColourValue::White);
@@ -142,7 +134,6 @@ bool Menu::run(){
 		
 		//comprobar si la ventana está abierta
 		if (mWindow->isClosed())return false;
-		if (!root->renderOneFrame())return false;
 		elapsedTicks = clock() - lastTicks;
 	}
 	return true;
