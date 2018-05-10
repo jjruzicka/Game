@@ -5,20 +5,21 @@ const float PI = 3.141592653f;
 CameraMove_c::CameraMove_c(Entidad* eCam, Entidad* eJug, Ogre::SceneNode* camNode, InputComponent * input)
 	: entidadCamara(eCam), entidadJugador(eJug), cam_node(camNode), inputcomp_(input){
 	spd = 0.2;
-	follow_spd = 2;
+	follow_spd = 3;
 	inputcomp_->addKeyListener(this, "teclado2");
 	inputcomp_->addMouseListener(this, "raton2");
 	entidadCamara->setPox(cam_node->getPosition().x);
 	entidadCamara->setPoy(cam_node->getPosition().y);
 	entidadCamara->setPoz(cam_node->getPosition().z);
 	distMin = 20;
+	distMax = 50;
 	offset = Ogre::Vector3((entidadJugador->getPox() - entidadCamara->getPox()),
 		(entidadJugador->getPoy() - entidadCamara->getPoy()),
 		(entidadJugador->getPoz() - entidadCamara->getPoz()));
-		// offset = target.transform.position - transform.position;
 	//turn_spd = 12;
 	//pitch_spd = 4;
 	angulo = -90;
+	botonDerecho = false;
 	cam_node->setFixedYawAxis(true);
 }
 CameraMove_c::~CameraMove_c()
@@ -27,29 +28,59 @@ CameraMove_c::~CameraMove_c()
 	inputcomp_->removeMouseListener(this);
 }
 
-/*void CameraMove_c::updateKey(float dt, const OIS::KeyEvent& keyP){
-
-}
-void CameraMove_c::updateMouse(float dt, const OIS::MouseEvent& me){
-	cam_node->yaw(Ogre::Degree(dt * -me.state.X.rel * turn_spd));
-	cam_node->pitch(Ogre::Degree(dt * -me.state.Y.rel * pitch_spd));
-}*/
-
 void CameraMove_c::Update(){
-	if (entidadCamara->getPox() > entidadJugador->getPox() + distMin)
-	{
-		entidadCamara->setPox(entidadCamara->getPox() - follow_spd);
-	}
-	else if (entidadCamara->getPox() < entidadJugador->getPox() - distMin){
-		entidadCamara->setPox(entidadCamara->getPox() + follow_spd);
-	}
+	if (botonDerecho){
+		if (entidadCamara->getPox() > entidadJugador->getPox() + distMin)
+		{
+			entidadCamara->setPox(entidadCamara->getPox() - follow_spd);
+		}
+		else if (entidadCamara->getPox() < entidadJugador->getPox() - distMin){
+			entidadCamara->setPox(entidadCamara->getPox() + follow_spd);
+		}
 
-	if (entidadCamara->getPoz() > entidadJugador->getPoz() + distMin)
-	{
-		entidadCamara->setPoz(entidadCamara->getPoz() - follow_spd);
+		if (entidadCamara->getPoz() > entidadJugador->getPoz() + distMin)
+		{
+			entidadCamara->setPoz(entidadCamara->getPoz() - follow_spd);
+		}
+		else if (entidadCamara->getPoz() < entidadJugador->getPoz() - distMin){
+			entidadCamara->setPoz(entidadCamara->getPoz() + follow_spd);
+		}
 	}
-	else if (entidadCamara->getPoz() < entidadJugador->getPoz() - distMin){
-		entidadCamara->setPoz(entidadCamara->getPoz() + follow_spd);
+	//if (!botonDerecho){
+
+	/*if (distancia > distMax){
+		if (entidadCamara->getPoz() > entidadJugador->getPoz() + distMax){
+			entidadCamara->setPoz(entidadJugador->getPoz() + distMax-5);
+		}
+		
+		else if (entidadCamara->getPoz() < entidadJugador->getPoz() - distMax){
+			entidadCamara->setPoz(entidadJugador->getPoz() - distMax+5);
+		}
+		if (entidadCamara->getPox() > entidadJugador->getPox() + distMax){
+			entidadCamara->setPox(entidadJugador->getPox() + distMax - 5);
+		}
+
+		else if (entidadCamara->getPox() < entidadJugador->getPox() - distMax){
+			entidadCamara->setPox(entidadJugador->getPox() - distMax + 5);
+		}
+	}*/
+	else{
+		calculaOffset();
+		float distancia = sqrtf(pow(offset.x, 2) + pow(offset.z, 2));
+		if (distancia > distMin){
+			if (entidadCamara->getPox() > entidadJugador->getPox() + 5){
+				entidadCamara->setPox(entidadCamara->getPox() - follow_spd);
+			}
+			else if (entidadCamara->getPox() < entidadJugador->getPox() - 5){
+				entidadCamara->setPox(entidadCamara->getPox() + follow_spd);
+			}
+			if (entidadCamara->getPoz() > entidadJugador->getPoz() - distMin){
+				entidadCamara->setPoz(entidadCamara->getPoz() - follow_spd);
+			}
+			else if (entidadCamara->getPoz() < entidadJugador->getPoz() - distMin - follow_spd){
+				entidadCamara->setPoz(entidadCamara->getPoz() + follow_spd);
+			}
+		}
 	}
 
 	cam_node->setPosition(entidadCamara->getPox(), entidadCamara->getPoy(), entidadCamara->getPoz());
@@ -161,7 +192,7 @@ bool CameraMove_c::mouseMoved(const OIS::MouseEvent& me)
 {
 	if (me.state.buttonDown(OIS::MB_Right))
 	{
-
+		botonDerecho = true;
 		Ogre::Quaternion quat = cam_node->getOrientation();
 		Ogre::Degree gradosExtra = Ogre::Degree(quat.getYaw());
 		angulo = (-gradosExtra.valueDegrees() + 90);
@@ -214,13 +245,13 @@ bool CameraMove_c::mousePressed(const OIS::MouseEvent& me, OIS::MouseButtonID id
 
 bool CameraMove_c::mouseReleased(const OIS::MouseEvent& me, OIS::MouseButtonID id)
 {
-	/*switch (id)
+	switch (id)
 	{
 	case OIS::MB_Right:
-		angulo = 0;
+		botonDerecho = false;
 		break;
 	default:
 		break;
-	}*/
+	}
 	return true;
 }

@@ -29,7 +29,8 @@ private:
 	//void initViewports();
 
 	float spd, follow_spd;// , turn_spd, pitch_spd;
-	int distMin;
+	int distMin, distMax;
+	bool botonDerecho;
 	Ogre::Vector3 offset;
 	bool keyPressed(const OIS::KeyEvent& keyP);
 	bool keyReleased(const OIS::KeyEvent& keyP);
