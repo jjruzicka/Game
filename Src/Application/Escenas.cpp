@@ -68,7 +68,7 @@ Escenas::Escenas()
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	//////////////////////////////////////////////////////rb del PJ2////////////////////////////////////////////////////
-	/*Entidad* ent2 = new Entidad();
+	Entidad* ent2 = new Entidad("p2");
 	ent2->setPox(1700);// posicion 
 	ent2->setPoy(10);
 	ent2->setPoz(1850);
@@ -77,8 +77,9 @@ Escenas::Escenas()
 	
 	RigidBody_c* static_rb = new RigidBody_c(ent2, physicType::kinematico, bulletWorld, 5, 5, 5, 1);
     static_rb->getRigidBody()->setCollisionFlags(static_rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
+    static_rb->getRigidBody()->setUserPointer(ent2);
 	ent2->AddComponent(static_rb);
-	entidades.push_back(ent2);*/
+	entidades.push_back(ent2);
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -119,6 +120,7 @@ Escenas::Escenas()
 	mapa = new Mapa(scnMgr, light, bulletWorld);
 	mapa->createmap();
 	mapa->setPhysics();
+    mapa->getRigidBody()->setUserPointer(mapa);
 }
 
 
@@ -199,12 +201,18 @@ bool Escenas::initOgre(){
 }
 bool callbackfunction(btManifoldPoint& cp,const btCollisionObjectWrapper * colObj0,int partId0,int index0,const btCollisionObjectWrapper * colObj1,int partId1,int index1){
     //std::cout << colObj0 << "       " << colObj1 << std::endl;
-    if (((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p")
-        ((Entidad*)colObj0->getCollisionObject()->getUserPointer())->setID("x");
-    else 
-        ((Entidad*)colObj0->getCollisionObject()->getUserPointer())->setID("p");
-    std::cout << ((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID()<< std::endl;
-    
+    if (((Entidad*)colObj0->getCollisionObject()->getUserPointer()) != nullptr && ((Entidad*)colObj1->getCollisionObject()->getUserPointer()) != nullptr){
+        if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "p2"){
+            ((Entidad*)colObj0->getCollisionObject()->getUserPointer())->setID("x");
+            std::cout << ((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() << std::endl;
+        }
+        /*else
+        ((Entidad*)colObj0->getCollisionObject()->getUserPointer())->setID("p");*/
+        std::cout << ((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID()<< std::endl;
+        //std::cout << ((Mapa*)colObj1->getCollisionObject()->getUserPointer()) << std::endl;
+
+    }
+    //else std::cout << ((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() << std::endl;
     return false;
 }
 bool Escenas::initBullet(){
