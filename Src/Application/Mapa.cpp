@@ -83,6 +83,7 @@ void Mapa::setPhysics(){
 		pHeightShape);
 
 	// 
+    //pBody->setCollisionFlags(4);
 	Ogre::Vector3 terrainPosition = pTerrain->getPosition();
 	pBody->getWorldTransform().setOrigin(btVector3(terrainPosition.x,
 		terrainPosition.y

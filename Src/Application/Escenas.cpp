@@ -27,19 +27,21 @@ Escenas::Escenas()
 	inputcomp_ = InputComponent::getSingletonPtr();
 	inputcomp_->initialise(mWindow);
 	//////////////////////////////////////////////////////rb del pj PRINCIPAL////////////////////////////////////////////////////
-	Entidad* ent1 = new Entidad();
+	Entidad* ent1 = new Entidad("p");
 	//1683, 50, 2116
 	ent1->setPox(1700);// posicion 
 	ent1->setPoy(10);
 	ent1->setPoz(1800);
 	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("personaje"), ent1, "Sinbad","Sinbad");
 	PlayerController_c * ois = new PlayerController_c(ent1, inputcomp_);
+    std::cout << ent1->getID() << std::endl;
 	ent1->AddComponent(render);
 	ent1->AddComponent(ois);
 
 	// RigidBody del personaje principal (KINEMATICO)
 	RigidBody_c* player_rb = new RigidBody_c(ent1, physicType::kinematico, bulletWorld, 5, 5 ,5, 1);
     player_rb->getRigidBody()->setCollisionFlags(player_rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
+    player_rb->getRigidBody()->setUserPointer(ent1);
 	ent1->AddComponent(player_rb);
 	entidades.push_back(ent1);
 
@@ -196,7 +198,12 @@ bool Escenas::initOgre(){
 	return true;
 }
 bool callbackfunction(btManifoldPoint& cp,const btCollisionObjectWrapper * colObj0,int partId0,int index0,const btCollisionObjectWrapper * colObj1,int partId1,int index1){
-    std::cout << colObj0 << "       " << colObj1 << std::endl;
+    //std::cout << colObj0 << "       " << colObj1 << std::endl;
+    if (((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p")
+        ((Entidad*)colObj0->getCollisionObject()->getUserPointer())->setID("x");
+    else 
+        ((Entidad*)colObj0->getCollisionObject()->getUserPointer())->setID("p");
+    std::cout << ((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID()<< std::endl;
     
     return false;
 }
