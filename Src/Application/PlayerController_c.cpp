@@ -2,10 +2,11 @@
 #include <iostream>
 #include "RigidBody_c.h"
 #include "Render_c.h"
-PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input)
+PlayerController_c::PlayerController_c(Entidad * ent, Escenas* esc, InputComponent * input)
 {
 	inputcomp_ = input;
 	entidad = ent;
+	escena = esc;
 	inputcomp_->addKeyListener(this, "teclado");
 	inputcomp_->addMouseListener(this, "raton");
 	auxX = auxY = auxZ = 0;

@@ -32,8 +32,8 @@ Escenas::Escenas()
 	ent1->setPox(1700);// posicion 
 	ent1->setPoy(10);
 	ent1->setPoz(1800);
-	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("personaje"), ent1, "Sinbad","Sinbad");
-	PlayerController_c * ois = new PlayerController_c(ent1, inputcomp_);
+	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("personaje"), ent1, "Sinbad","Sinbad2");
+	PlayerController_c * ois = new PlayerController_c(ent1, this, inputcomp_);
 	ent1->AddComponent(render);
 	ent1->AddComponent(ois);
 
@@ -69,7 +69,7 @@ Escenas::Escenas()
 	ent2->setPox(1700);// posicion 
 	ent2->setPoy(10);
 	ent2->setPoz(1850);
-	Render_c* render2 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("personaje2"), ent2, "Sinbad","Sinbad2");
+	Render_c* render2 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("personaje2"), ent2, "Sinbad","Sinbad");
 	ent2->AddComponent(render2);
 	
 	RigidBody_c* static_rb = new RigidBody_c(ent2, physicType::kinematico, bulletWorld, 5, 5, 5, 1);

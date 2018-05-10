@@ -26,6 +26,9 @@ public:
 	bool run();
 	bool initBullet();
 
+	btDiscreteDynamicsWorld * getBulletWorld(){
+		return bulletWorld;
+	}
 private:
 
 	bool initOgre();

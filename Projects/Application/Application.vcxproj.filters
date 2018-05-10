@@ -46,7 +46,9 @@
     <ClCompile Include="..\..\Src\Application\Proyectil.cpp">
       <Filter>Code</Filter>
     </ClCompile>
-    <ClCompile Include="MovimientoProyectil_c.cpp" />
+    <ClCompile Include="MovimientoProyectil_c.cpp">
+      <Filter>Code</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Application\Collider_c.h">
@@ -91,7 +93,9 @@
     <ClInclude Include="..\..\Src\Application\Proyectil.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="MovimientoProyectil_c.h" />
+    <ClInclude Include="MovimientoProyectil_c.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Code">
