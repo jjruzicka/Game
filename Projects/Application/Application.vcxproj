@@ -14,6 +14,7 @@
     <ClCompile Include="..\..\Dependencies\Gui3D-master\examples\build\MyEnvironmentDemoPanelColors.cpp" />
     <ClCompile Include="..\..\Src\Application\Collider_c.cpp" />
     <ClCompile Include="..\..\Src\Application\Component.cpp" />
+    <ClCompile Include="..\..\Src\Application\Credits.cpp" />
     <ClCompile Include="..\..\Src\Application\Entidad.cpp" />
     <ClCompile Include="..\..\Src\Application\Escenas.cpp" />
     <ClCompile Include="..\..\Src\Application\EscenasManager.cpp" />
@@ -36,6 +37,7 @@
     <ClInclude Include="..\..\Dependencies\Gui3D-master\examples\build\MyEnvironmentDemoPanelColors.h" />
     <ClInclude Include="..\..\Src\Application\Collider_c.h" />
     <ClInclude Include="..\..\Src\Application\Component.h" />
+    <ClInclude Include="..\..\Src\Application\Credits.h" />
     <ClInclude Include="..\..\Src\Application\Entidad.h" />
     <ClInclude Include="..\..\Src\Application\Escenas.h" />
     <ClInclude Include="..\..\Src\Application\EscenasManager.h" />
