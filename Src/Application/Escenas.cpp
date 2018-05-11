@@ -60,7 +60,7 @@ Escenas::Escenas()
     static_rb->getRigidBody()->setCollisionFlags(static_rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
     static_rb->getRigidBody()->setUserPointer(ent2);
 	ent2->AddComponent(static_rb);
-	Mision_c* mision = new Mision_c(20,"ogroEnemy");
+	Mision_c* mision = new Mision_c(1,"ogroEnemy",500,ent2);
 	ent2->AddComponent(mision);
 	entidades.push_back(ent2);
 	
@@ -269,7 +269,9 @@ bool Escenas::run(){
 
 void Escenas::activaMision(Entidad* npc){
 	Mision_c* mision = new Mision_c();	
-	gm->dameMision(npc->GetComponent(mision));
+	mision = npc->GetComponent(mision);
+	if (mision != nullptr)
+		gm->dameMision(mision);
 }
 void Escenas::atacar(Entidad* npc){
 	StatsEntJuego_c* stats = new StatsEntJuego_c();

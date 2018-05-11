@@ -68,7 +68,6 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 
 	case OIS::KC_PGUP:
 	case OIS::KC_Q:
-		estadisticas->sumaExp(50);
 		break;
 
 	default:

@@ -26,7 +26,24 @@ public:
 	int numComponent(){
 		return componentes.size();
 	}
-	//OH OH ITS MAGIC, U KNOOOOW
+
+	void DestroyComponent(Component* c){
+		int i = 0;
+		std::cout << componentes.size() << "-> ";
+		while (i < componentes.size()){
+			if (typeid(*componentes[i]) == typeid(*c)){
+				Component* aux = componentes[i];
+				componentes[i] = componentes[componentes.size() - 1];
+				componentes[componentes.size() - 1] = aux;
+				componentes.pop_back();
+				delete aux;
+			}
+			i++;
+		}
+		std::cout << componentes.size() << "\n";
+	}
+
+
 	template <class T>
 	T*  GetComponent(T* a){
 		int i = 0;
