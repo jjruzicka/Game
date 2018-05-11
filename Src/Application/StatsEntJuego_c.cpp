@@ -10,7 +10,7 @@ void StatsEntJuego_c::muerte(){
 	escena->killAdd(ent);
 }
 StatsEntJuego_c::StatsEntJuego_c(int vida, int defensa, int damage){
-	this->vida = vida;
+	this->vida = vida + defensa/2;
 	this->damage = damage;
 	this->defensa = defensa;
 }
