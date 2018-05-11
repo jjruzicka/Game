@@ -19,7 +19,7 @@ struct PosF{
 class Entidad
 {
 public:
-	Entidad();
+	Entidad(std::string id);
 	~Entidad();
 	void Update();
 	void AddComponent(Component * component);
@@ -110,6 +110,13 @@ public:
 	void setOrientationZ(float z){
 		orientacion.z = z;
 	}
+
+    std::string getID(){
+        return i;
+    }
+    void setID(std::string id){
+        i = id;
+    }
 private:
 	std::vector<Component*> componentes;
 
@@ -117,5 +124,6 @@ private:
 	Pos rotation;
 	PosF orientacion;
 	int angRot;
+    std::string i;
 };
 #endif

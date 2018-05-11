@@ -1,7 +1,7 @@
 #include "Objeto.h"
 
 
-Objeto::Objeto(std::string id) : Entidad()
+Objeto::Objeto(std::string id) : Entidad(id)
 {
     identificador = id;
 }

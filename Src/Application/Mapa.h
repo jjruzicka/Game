@@ -15,6 +15,9 @@ public:
 	~Mapa();
 	void createmap();
 	void setPhysics();
+    btRigidBody* getRigidBody(){
+        return pBody;
+    }
 
 private:
 	void defineTerrain(long x, long y);
@@ -27,6 +30,7 @@ private:
 	bool mTerrainsImported;
 	Ogre::TerrainGroup* mTerrainGroup;
 	Ogre::TerrainGlobalOptions* mTerrainGlobals;
+    btRigidBody *pBody;
 
 
 };

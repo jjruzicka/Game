@@ -78,11 +78,12 @@ void Mapa::setPhysics(){
 	pHeightShape->setUseDiamondSubdivision(true);
 
 	// Now we create a btRigidBody
-	btRigidBody *pBody = new btRigidBody(0.0 /* mass 0.0 means static */,
+	pBody = new btRigidBody(0.0 /* mass 0.0 means static */,
 		new btDefaultMotionState(),
 		pHeightShape);
 
 	// 
+    //pBody->setCollisionFlags(4);
 	Ogre::Vector3 terrainPosition = pTerrain->getPosition();
 	pBody->getWorldTransform().setOrigin(btVector3(terrainPosition.x,
 		terrainPosition.y
