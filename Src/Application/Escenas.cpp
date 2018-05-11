@@ -1,10 +1,11 @@
 #include "Escenas.h"
 #include "Render_c.h"
 #include "PlayerController_c.h"
-#include "RigidBody_c.h"
+//#include "RigidBody_c.h"
 #include "Objeto.h"
 #include "Collider_c.h"
-
+#include "CameraMove_c.h"
+#include <string>
 using namespace Ogre;
 enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
@@ -22,6 +23,17 @@ Escenas::Escenas()
 	initOgre();
 	initBullet();
 	
+	camNode = scnMgr->getRootSceneNode()->createChildSceneNode();
+
+	// create the camera
+	cam = scnMgr->createCamera("Cam");
+	cam->setNearClipDistance(0.1); //esto antes era 1
+	cam->setFarClipDistance(10000);
+	cam->setAutoAspectRatio(true);
+	//cam->setPolygonMode(Ogre::PM_WIREFRAME);  // en material
+	camNode->attachObject(cam);
+	cam->setQueryFlags(MY_QUERY_IGNORE);
+
 
 	
 	inputcomp_ = InputComponent::getSingletonPtr();
@@ -71,11 +83,10 @@ Escenas::Escenas()
 	ent2->setPoz(1850);
 	Render_c* render2 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("personaje2"), ent2, "Sinbad","Sinbad2");
 	ent2->AddComponent(render2);
-	
 	RigidBody_c* static_rb = new RigidBody_c(ent2, physicType::kinematico, bulletWorld, 5, 5, 5, 1);
 	ent2->AddComponent(static_rb);
 	entidades.push_back(ent2);
-	
+
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
@@ -89,7 +100,7 @@ Escenas::Escenas()
 
 	scnMgr->setAmbientLight(Ogre::ColourValue(0.2, 0.2, 0.2));
 
-	// also need to tell where we are
+	/*// also need to tell where we are
 	camNode = scnMgr->getSceneNode("personaje")->createChildSceneNode();
 	camNode->setPosition(Ogre::Vector3(0, 5, -35));
 	camNode->rotate(Ogre::Quaternion(Ogre::Degree(180), Ogre::Vector3::UNIT_Y));
@@ -101,9 +112,18 @@ Escenas::Escenas()
 	cam->setFarClipDistance(10000);
 	cam->setAutoAspectRatio(true);
 	camNode->attachObject(cam);
-	cam->setQueryFlags(MY_QUERY_IGNORE);
+	cam->setQueryFlags(MY_QUERY_IGNORE);*/
 
+	camNode->setPosition(Ogre::Vector3(ent1->getPox(), ent1->getPoy() + 10, ent1->getPoz() - 30));
+	camNode->rotate(Ogre::Vector3(0, 0, 1), Ogre::Degree(180));
+	camNode->lookAt(Ogre::Vector3(ent1->getPox(), ent1->getPoy(), ent1->getPoz()), Ogre::Node::TS_WORLD);
+	camNode->setAutoTracking(true, scnMgr->getSceneNode("personaje"));
 
+	Entidad* entCamara = new Entidad();
+	CameraMove_c* camMove = new CameraMove_c(entCamara, ent1, camNode, inputcomp_);
+	entCamara->AddComponent(camMove);
+	entidades.reserve(1);
+	entidades.push_back(entCamara);
 
 
 	// and tell it to render into the main window
