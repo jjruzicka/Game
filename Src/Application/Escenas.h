@@ -18,6 +18,7 @@
 #include <OgreException.h>
 #include "Mapa.h"
 #include "InputComponent.h"
+#include "GameManager_c.h"
 class Escenas
 {
 public:
@@ -32,12 +33,13 @@ public:
         const btCollisionObjectWrapper * colObj1,
         int partId1,
         int index1);*/
-
+	void activaMision(Entidad* npc);
 private:
 
 	bool initOgre();
 	std::vector<Entidad*> entidades;
-
+	
+	GameManager_c* gm;
 	//Variables usadas para la iniciacion de bullet
 	btDiscreteDynamicsWorld* bulletWorld;
 	btDefaultCollisionConfiguration* collisionConfiguration;

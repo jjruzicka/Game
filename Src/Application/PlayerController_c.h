@@ -4,14 +4,16 @@
 #include <OgreRenderWindow.h>
 #include "RigidBody_c.h"
 #include "Render_c.h"
+#include "Escenas.h"
 class PlayerController_c :
 	public InputComponent
 {
 public:
-	PlayerController_c(Entidad* ent, InputComponent * input);
+	PlayerController_c(Entidad* ent, InputComponent * input, Escenas* escena);
+	PlayerController_c(){};
 	void Update();
-
 	~PlayerController_c();
+	void chocasCon(int i, Entidad* ent);//0 para cuando no es nada, 1 npc
 private:
 	bool keyPressed(const OIS::KeyEvent& keyP);
 	bool keyReleased(const OIS::KeyEvent& keyP);
@@ -24,6 +26,10 @@ private:
 	bool mas, istimetoStop;
 	RigidBody_c* rb;
 	Render_c * rc;
+	Escenas* escena;
 	Ogre::SceneNode* node;
+	
+	int chocoCon;
+	Entidad* entColision;
 };
 

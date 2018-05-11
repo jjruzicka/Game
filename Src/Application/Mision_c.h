@@ -7,6 +7,7 @@ class Mision_c : public Component
 {
 public:
 	Mision_c(int total, std::string target);
+	Mision_c(){};
 	void Update(){};
 	~Mision_c();
 

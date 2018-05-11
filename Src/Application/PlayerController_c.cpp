@@ -2,7 +2,7 @@
 #include <iostream>
 #include "RigidBody_c.h"
 #include "Render_c.h"
-PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input)
+PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input, Escenas* escena)
 {
 	inputcomp_ = input;
 	entidad = ent;
@@ -10,9 +10,10 @@ PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input)
 	inputcomp_->addMouseListener(this, "raton");
 	auxX = auxY = auxZ = 0;
 	mas = istimetoStop = false;
-
+	chocoCon = 0;
 	rb = new RigidBody_c();
 	rc = new Render_c();
+	this->escena = escena;
 }
 
 bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
@@ -102,6 +103,11 @@ bool PlayerController_c::keyReleased(const OIS::KeyEvent& keyP){
 
 	case OIS::KC_PGDOWN:
 	case OIS::KC_E:
+		if (chocoCon != 0){
+			if (chocoCon == 1)//eres un npc y me das las misiones
+				escena->activaMision(entColision);
+				std::cout << "ILLO misiones \n";
+		}
 		auxX = 0;
 		istimetoStop = false;
 		break;
@@ -166,6 +172,11 @@ void PlayerController_c::Update(){
 	}
 }
 
+void PlayerController_c::chocasCon(int i, Entidad* ent){//0 para cuando no es nada, 1 npc
+	chocoCon = i;
+	entColision = ent;
+}
+
 PlayerController_c::~PlayerController_c()
 {
 	inputcomp_->removeKeyListener(this);
@@ -174,3 +185,4 @@ PlayerController_c::~PlayerController_c()
 	delete rb;
 	delete rc;
 }
+
