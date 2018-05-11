@@ -16,7 +16,7 @@ void Render_c::Update(){
 	if (ent->getRoy() != 0){
 		anguloRotent += ent->getAngRot();//QUIZA SON RAD LO MAS SEGURO
 		anguloRot = Ogre::Quaternion(Ogre::Degree(ent->getAngRot()), Ogre::Vector3::UNIT_Y);
-		std::cout << node->getOrientation() << '\n';
+		//std::cout << node->getOrientation() << '\n';
 		node->rotate(anguloRot);
 		ent->setOrientationX(sin(anguloRotent));
 		ent->setOrientationZ(cos(anguloRotent));

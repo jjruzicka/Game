@@ -4,7 +4,7 @@
 #include "RigidBody_c.h"
 #include "Objeto.h"
 #include "Collider_c.h"
-
+#include "StatsPJ_c.h"
 using namespace Ogre;
 enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
@@ -33,11 +33,11 @@ Escenas::Escenas()
 	ent1->setPoy(10);
 	ent1->setPoz(1800);
 	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("personaje"), ent1, "Sinbad","Sinbad");
-	PlayerController_c * ois = new PlayerController_c(ent1, inputcomp_,this);
-    std::cout << ent1->getID() << std::endl;
+	StatsPJ_c* stas= new StatsPJ_c(5,10,2,100);
+	PlayerController_c * ois = new PlayerController_c(ent1, inputcomp_,this ,stas);
+	ent1->AddComponent(stas);
 	ent1->AddComponent(render);
 	ent1->AddComponent(ois);
-
 	// RigidBody del personaje principal (KINEMATICO)
 	RigidBody_c* player_rb = new RigidBody_c(ent1, physicType::kinematico, bulletWorld, 5, 5 ,5, 1);
     player_rb->getRigidBody()->setCollisionFlags(player_rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
@@ -45,26 +45,6 @@ Escenas::Escenas()
 	ent1->AddComponent(player_rb);
 	entidades.push_back(ent1);
 
-	// NO LO BORRO PORSIACA
-	/*btTransform pTransform;
-	pTransform.setIdentity();
-	pTransform.setOrigin(btVector3(1700, 50, 2000));
-	btScalar mass = 0; //  No estoy seguro de esto
-	btVector3 localInertia(0, 0, 0); // La inercia inicial siempre es 0
-	btDefaultMotionState* motionState = new btDefaultMotionState(pTransform);
-	btCollisionShape* shape = new btBoxShape(btVector3(10,5,10)); // alto, profundo, ancho
-	shape->calculateLocalInertia(mass, localInertia); // inicializamos el cuerpo
-	btRigidBody::btRigidBodyConstructionInfo RigidBodyInfo(mass, motionState, shape, localInertia);
-	btRigidBody* body = new btRigidBody(RigidBodyInfo);
-	bulletWorld->addRigidBody(body);*/
-
-	/*btDefaultMotionState* fallMotionState = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1), btVector3(ent1->getPox(), ent1->getPoy(), ent1->getPoz())));
-	btScalar mass = 0;
-	btVector3 fallInertia(0, 9.8f, 0);
-	fallShape->calculateLocalInertia(mass, fallInertia);
-	btRigidBody::btRigidBodyConstructionInfo fallRigidBodyCI(mass, fallMotionState, fallShape, fallInertia);
-	RigidBody_c* rb = new RigidBody_c(ent1, fallRigidBodyCI);
-	ent1->AddComponent(rb);*/
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	//////////////////////////////////////////////////////rb del PJ2////////////////////////////////////////////////////
@@ -205,8 +185,6 @@ bool Escenas::initOgre(){
 	return true;
 }
 bool callbackfunction(btManifoldPoint& cp,const btCollisionObjectWrapper * colObj0,int partId0,int index0,const btCollisionObjectWrapper * colObj1,int partId1,int index1){
-    //std::cout << colObj0 << "       " << colObj1 << std::endl;
-	
     if (((Entidad*)colObj0->getCollisionObject()->getUserPointer()) != nullptr && ((Entidad*)colObj1->getCollisionObject()->getUserPointer()) != nullptr){
         if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "p2"){
 			PlayerController_c* pC = new PlayerController_c();
@@ -216,12 +194,7 @@ bool callbackfunction(btManifoldPoint& cp,const btCollisionObjectWrapper * colOb
 			PlayerController_c* pC = new PlayerController_c();
 			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(pC)->chocasCon(0,nullptr);
 		}
-        /*else
-        ((Entidad*)colObj0->getCollisionObject()->getUserPointer())->setID("p");*/
-        //std::cout << ((Mapa*)colObj1->getCollisionObject()->getUserPointer()) << std::endl;
-
     }
-    //else std::cout << ((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() << std::endl;
     return false;
 }
 bool Escenas::initBullet(){
@@ -243,26 +216,28 @@ bool Escenas::initBullet(){
 }
 
 bool Escenas::run(){
-	
+
 
 	clock_t lastTicks = clock();
 	clock_t elapsedTicks = 0;
 	double deltaTime = 0;
 	bulletWorld->stepSimulation((float)deltaTime);
+	//////////////////////////////////////
+	RigidBody_c* RB = new RigidBody_c();
+	/////////////////////////////////////
 	while (true)
 	{
 		deltaTime = ((double)elapsedTicks) / 1000.f/*CLOCKS_PER_SEC*/;
 		lastTicks = clock();
 
-		inputcomp_->capture(); 
+		inputcomp_->capture();
 		//Tick de la fisica
 		bulletWorld->stepSimulation((float)deltaTime);
-		for (int i = 0; i<entidades.size(); i++)
+		for (int i = 0; i < entidades.size(); i++)
 			entidades[i]->Update();
-		
+
 		// render ogre
 		Ogre::WindowEventUtilities::messagePump();
-		
 		//comprobar si la ventana está abierta
 		if (mWindow->isClosed())return false;
 		if (!root->renderOneFrame())return false;

@@ -5,11 +5,12 @@
 #include "RigidBody_c.h"
 #include "Render_c.h"
 #include "Escenas.h"
+#include "StatsPJ_c.h"
 class PlayerController_c :
 	public InputComponent
 {
 public:
-	PlayerController_c(Entidad* ent, InputComponent * input, Escenas* escena);
+	PlayerController_c(Entidad* ent, InputComponent * input, Escenas* escena, StatsPJ_c* estadisticas);
 	PlayerController_c(){};
 	void Update();
 	~PlayerController_c();
@@ -27,6 +28,7 @@ private:
 	RigidBody_c* rb;
 	Render_c * rc;
 	Escenas* escena;
+	StatsPJ_c* estadisticas;
 	Ogre::SceneNode* node;
 	
 	int chocoCon;

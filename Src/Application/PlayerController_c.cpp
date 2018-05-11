@@ -1,8 +1,9 @@
 #include "PlayerController_c.h"
 #include <iostream>
+
 #include "RigidBody_c.h"
 #include "Render_c.h"
-PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input, Escenas* escena)
+PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input, Escenas* escena, StatsPJ_c* estadisticas)
 {
 	inputcomp_ = input;
 	entidad = ent;
@@ -14,6 +15,7 @@ PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input, Es
 	rb = new RigidBody_c();
 	rc = new Render_c();
 	this->escena = escena;
+	this->estadisticas = estadisticas;
 }
 
 bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
@@ -66,6 +68,7 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 
 	case OIS::KC_PGUP:
 	case OIS::KC_Q:
+		estadisticas->sumaExp(50);
 		break;
 
 	default:
