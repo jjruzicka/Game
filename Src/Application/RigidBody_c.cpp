@@ -25,16 +25,17 @@ RigidBody_c::RigidBody_c(Entidad* _ent, physicType _tipo, btDiscreteDynamicsWorl
 
 	btRigidBody::btRigidBodyConstructionInfo RigidBodyInfo(masa, motionState, shape, localInertia);
 	rb = new btRigidBody(RigidBodyInfo);
-    //rb->setCollisionFlags(rb->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
 	bulletWorld->addRigidBody(rb);
 }
 
 
 RigidBody_c::~RigidBody_c()
 {
+	bulletWorld->removeRigidBody(rb);
 	delete rb;
-	delete motionState;
 	delete shape;
+	delete motionState;
+	
 }
 
 void RigidBody_c::Update(){

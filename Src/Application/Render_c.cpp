@@ -25,4 +25,5 @@ void Render_c::Update(){
 }
 Render_c::~Render_c()
 {
+	node->detachObject(ent->getID());
 }

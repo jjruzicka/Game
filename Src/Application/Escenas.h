@@ -27,6 +27,8 @@ public:
 	bool run();
 	bool initBullet();
 	void activaMision(Entidad* npc);
+	void atacar(Entidad* npc);
+	void killAdd(Entidad* obj);
 private:
 
 	bool initOgre();

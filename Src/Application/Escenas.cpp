@@ -32,7 +32,7 @@ Escenas::Escenas()
 	ent1->setPox(1700);// posicion 
 	ent1->setPoy(10);
 	ent1->setPoz(1800);
-	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("personaje"), ent1, "Sinbad","Sinbad");
+	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("p"), ent1, "Sinbad","p");
 	StatsPJ_c* stas= new StatsPJ_c(5,10,2,100);
 	PlayerController_c * ois = new PlayerController_c(ent1, inputcomp_,this ,stas);
 	ent1->AddComponent(stas);
@@ -41,6 +41,7 @@ Escenas::Escenas()
 	// RigidBody del personaje principal (KINEMATICO)
 	RigidBody_c* player_rb = new RigidBody_c(ent1, physicType::kinematico, bulletWorld, 5, 5 ,5, 1);
     player_rb->getRigidBody()->setCollisionFlags(player_rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
+
     player_rb->getRigidBody()->setUserPointer(ent1);
 	ent1->AddComponent(player_rb);
 	entidades.push_back(ent1);
@@ -52,14 +53,14 @@ Escenas::Escenas()
 	ent2->setPox(1700);// posicion 
 	ent2->setPoy(10);
 	ent2->setPoz(1850);
-	Render_c* render2 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("personaje2"), ent2, "Sinbad","Sinbad2");
+	Render_c* render2 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("p2"), ent2, "Sinbad","p2");
 	ent2->AddComponent(render2);
 	
 	RigidBody_c* static_rb = new RigidBody_c(ent2, physicType::kinematico, bulletWorld, 5, 5, 5, 1);
     static_rb->getRigidBody()->setCollisionFlags(static_rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
     static_rb->getRigidBody()->setUserPointer(ent2);
 	ent2->AddComponent(static_rb);
-	Mision_c* mision = new Mision_c(20,"Matojo");
+	Mision_c* mision = new Mision_c(20,"ogroEnemy");
 	ent2->AddComponent(mision);
 	entidades.push_back(ent2);
 	
@@ -67,6 +68,21 @@ Escenas::Escenas()
 	Entidad* ent3 = new Entidad("GM");
 	gm = new GameManager_c(ent1);
 	ent3->AddComponent(gm);
+	entidades.push_back(ent3);
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	Entidad* ent4 = new Entidad("ogroEnemy");
+	ent4->setPox(1700);// posicion 
+	ent4->setPoy(10);
+	ent4->setPoz(1750);
+	Render_c* render3 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("ogroEnemy"), ent4, "Sinbad", "ogroEnemy");
+	ent4->AddComponent(render3);
+	RigidBody_c* static_rb2 = new RigidBody_c(ent4, physicType::kinematico, bulletWorld, 5, 5, 5, 1);
+	static_rb2->getRigidBody()->setCollisionFlags(static_rb2->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
+	static_rb2->getRigidBody()->setUserPointer(ent4);
+	ent4->AddComponent(static_rb2);
+	StatsEntJuego_c* statsE = new StatsEntJuego_c(2,10,2,this,ent4);
+	ent4->AddComponent(statsE);
+	entidades.push_back(ent4);
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
 	lightdir.normalise();
@@ -80,7 +96,7 @@ Escenas::Escenas()
 	scnMgr->setAmbientLight(Ogre::ColourValue(0.2, 0.2, 0.2));
 
 	// also need to tell where we are
-	camNode = scnMgr->getSceneNode("personaje")->createChildSceneNode();
+	camNode = scnMgr->getSceneNode("p")->createChildSceneNode();
 	camNode->setPosition(Ogre::Vector3(0, 5, -35));
 	camNode->rotate(Ogre::Quaternion(Ogre::Degree(180), Ogre::Vector3::UNIT_Y));
 	camNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
@@ -181,7 +197,6 @@ bool Escenas::initOgre(){
 	//we generate the default sceneManager. (more SceneManagers in Ogre::ST_....)
 	scnMgr = root->createSceneManager(Ogre::ST_GENERIC);
 
-
 	return true;
 }
 bool callbackfunction(btManifoldPoint& cp,const btCollisionObjectWrapper * colObj0,int partId0,int index0,const btCollisionObjectWrapper * colObj1,int partId1,int index1){
@@ -189,7 +204,11 @@ bool callbackfunction(btManifoldPoint& cp,const btCollisionObjectWrapper * colOb
         if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "p2"){
 			PlayerController_c* pC = new PlayerController_c();
 			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(pC)->chocasCon(1, (Entidad*)colObj1->getCollisionObject()->getUserPointer());
-			}
+		}
+		else if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "ogroEnemy"){
+			PlayerController_c* pC = new PlayerController_c();
+			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(pC)->chocasCon(2, ((Entidad*)colObj1->getCollisionObject()->getUserPointer()));
+		}
 		else if (((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p"){
 			PlayerController_c* pC = new PlayerController_c();
 			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(pC)->chocasCon(0,nullptr);
@@ -229,8 +248,10 @@ bool Escenas::run(){
 	{
 		deltaTime = ((double)elapsedTicks) / 1000.f/*CLOCKS_PER_SEC*/;
 		lastTicks = clock();
-
-		inputcomp_->capture();
+		if (elapsedTicks >= 0.5){
+			inputcomp_->capture();
+			elapsedTicks = 0;
+		}
 		//Tick de la fisica
 		bulletWorld->stepSimulation((float)deltaTime);
 		for (int i = 0; i < entidades.size(); i++)
@@ -249,6 +270,31 @@ bool Escenas::run(){
 void Escenas::activaMision(Entidad* npc){
 	Mision_c* mision = new Mision_c();	
 	gm->dameMision(npc->GetComponent(mision));
+}
+void Escenas::atacar(Entidad* npc){
+	StatsEntJuego_c* stats = new StatsEntJuego_c();
+	StatsPJ_c* statspj = new StatsPJ_c();
+	npc->GetComponent(stats)->restaVida(entidades[0]->GetComponent(statspj)->getDamage());
+}
+
+void Escenas::killAdd(Entidad* obj){
+	gm->killADDMision(obj->getID());
+	int i = 0;
+	bool encontrado = false;
+	while (!encontrado && i < entidades.size()){
+		if (obj == entidades[i])
+			encontrado = true;
+		else i++;
+	}
+	if (i < entidades.size()){
+		Entidad* aux = entidades[i];
+		entidades[i] = entidades[entidades.size() - 1];
+		entidades[entidades.size() - 1] = aux;
+		RigidBody_c* rb = new RigidBody_c();
+		aux->GetComponent(rb)->getRigidBody()->setCollisionFlags(4);
+		entidades.pop_back();
+		scnMgr->destroyEntity(obj->getID());
+	}
 }
 
 Escenas::~Escenas()

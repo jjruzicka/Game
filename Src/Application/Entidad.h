@@ -23,7 +23,9 @@ public:
 	~Entidad();
 	void Update();
 	void AddComponent(Component * component);
-
+	int numComponent(){
+		return componentes.size();
+	}
 	//OH OH ITS MAGIC, U KNOOOOW
 	template <class T>
 	T*  GetComponent(T* a){
@@ -124,6 +126,6 @@ private:
 	Pos rotation;
 	PosF orientacion;
 	int angRot;
-    std::string i;
+    std::string i = " ";
 };
 #endif

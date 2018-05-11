@@ -6,6 +6,7 @@ class StatsPJ_c : public StatsEntJuego_c
 {
 public:
 	StatsPJ_c(int vida, int defensa, int damage, int expNivelTotal);
+	StatsPJ_c(){};
 	~StatsPJ_c();
 	void Update();
 	void sumaExp(int valor){
