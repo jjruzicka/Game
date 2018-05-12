@@ -142,11 +142,15 @@ bool PlayerController_c::mousePressed(const OIS::MouseEvent& me, OIS::MouseButto
 	{
 		std::cout << "Dispara" << std::endl;
 		node = entidad->GetComponent(rc)->getNode();
+		// pasamos la posicion un poco adelantada para que el proyectil no se cree dentro del personaje
 		Ogre::Vector3 pGlobal(entidad->getPox(), entidad->getPoy(), entidad->getPoz());
-		Ogre::Vector3 pLocal = node->convertLocalToWorldPosition(pGlobal);
+		Ogre::Vector3 pLocal = node->convertWorldToLocalPosition(pGlobal);
+		pLocal.z += 20;
+		pGlobal = node->convertLocalToWorldPosition(pLocal);
+
 		Proyectil * proyectil = new Proyectil(escena->getSceneManger()->getRootSceneNode()->createChildSceneNode("Proyectil" + std::to_string(contadorProyectiles)),
-			escena->getBulletWorld(), contadorProyectiles, entidad->getPox(), entidad->getPoy(), entidad->getPoz(),
-			pLocal.x, pLocal.y, pLocal.z, entidad->getOrientationX(), entidad->getOrientationY(), entidad->getOrientationZ(),
+			escena->getBulletWorld(), contadorProyectiles, pGlobal.x, pGlobal.y, pGlobal.z,
+			entidad->getOrientationX(), entidad->getOrientationY(), entidad->getOrientationZ(),
 			5, 5, 5);
 		escena->addEntidad(proyectil);
 		contadorProyectiles++;

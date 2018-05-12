@@ -1,7 +1,7 @@
 #include "MovimientoProyectil_c.h"
 
 
-MovimientoProyectil_c::MovimientoProyectil_c(Entidad* ent, Ogre::Vector3 pl)
+MovimientoProyectil_c::MovimientoProyectil_c(Entidad* ent)
 {
 	entidad = ent;
 	rc = new Render_c();
@@ -26,6 +26,7 @@ void MovimientoProyectil_c::Update(){
 	}
 	else 
 		clocal.z += 3;
+
 	cglobal = node->convertLocalToWorldPosition(clocal);
 	entidad->GetComponent(rb)->actualizarPos(cglobal.x, cglobal.y, cglobal.z);
 }

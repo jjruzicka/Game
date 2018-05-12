@@ -9,7 +9,7 @@ class MovimientoProyectil_c :
 	public Component
 {
 public:
-	MovimientoProyectil_c(Entidad* ent, Ogre::Vector3 pl);
+	MovimientoProyectil_c(Entidad* ent);
 	~MovimientoProyectil_c();
 	void Update();
 
