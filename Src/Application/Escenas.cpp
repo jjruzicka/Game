@@ -38,7 +38,7 @@ Escenas::Escenas()
 	ent1->AddComponent(ois);
 
 	// RigidBody del personaje principal (KINEMATICO)
-	RigidBody_c* player_rb = new RigidBody_c(ent1, physicType::kinematico, bulletWorld, 5, 5 ,5, 1);
+	RigidBody_c* player_rb = new RigidBody_c(ent1, physicType::estatico, bulletWorld, 5, 5 ,5, 1);
 	ent1->AddComponent(player_rb);
 	entidades.push_back(ent1);
 
@@ -65,7 +65,7 @@ Escenas::Escenas()
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	//////////////////////////////////////////////////////rb del PJ2////////////////////////////////////////////////////
-	Entidad* ent2 = new Entidad();
+	/*Entidad* ent2 = new Entidad();
 	ent2->setPox(1700);// posicion 
 	ent2->setPoy(10);
 	ent2->setPoz(1850);
@@ -74,7 +74,7 @@ Escenas::Escenas()
 	
 	RigidBody_c* static_rb = new RigidBody_c(ent2, physicType::kinematico, bulletWorld, 5, 5, 5, 1);
 	ent2->AddComponent(static_rb);
-	entidades.push_back(ent2);
+	entidades.push_back(ent2);*/
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

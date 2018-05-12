@@ -32,11 +32,11 @@ Proyectil::Proyectil(Ogre::SceneNode* n, btDiscreteDynamicsWorld * bw, int _id, 
 	alto = alt;
 
 	// añadimos componente render
-	render = new Render_c(node, this, "NombreDelPuntoMesh", "Proyectil" + std::to_string(id));
-
+	render = new Render_c(node, this, "Sinbad", "Proyectil" + std::to_string(id));
+	this->AddComponent(render);
 	// añadmos componente fisico
 	rb = new RigidBody_c(this, physicType::kinematico, bulletWorld, largo, ancho, alto, MASA);
-
+	this->AddComponent(rb); 
 	// añadimos componente del moviento
 	Ogre::Vector3 pLocal(posicionLocal.x, posicionLocal.y, posicionLocal.z);
 	movimiento = new MovimientoProyectil_c(this, pLocal);

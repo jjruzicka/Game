@@ -20,8 +20,11 @@ private:
 	bool first;
 	Ogre::SceneNode* node;
 	Ogre::Vector3 posicionLocal;
-	Ogre::Vector3 poscionGlobal;
+	Ogre::Vector3 posicionGlobal;
 	const int DISTACIA_MAX = 100;
-	const int VELOCIDAD = 8;
+	const int VELOCIDAD = 1;
+
+	Ogre::Vector3 cglobal;
+	Ogre::Vector3 clocal;
 };
 

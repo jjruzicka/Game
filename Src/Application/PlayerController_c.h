@@ -27,5 +27,6 @@ private:
 	Render_c * rc;
 	Ogre::SceneNode* node;
 	Escenas * escena;
+	int contadorProyectiles;
 };
 

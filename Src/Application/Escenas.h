@@ -29,6 +29,12 @@ public:
 	btDiscreteDynamicsWorld * getBulletWorld(){
 		return bulletWorld;
 	}
+	Ogre::SceneManager * getSceneManger(){
+		return scnMgr;
+	}
+	void addEntidad(Entidad* ent){
+		entidades.push_back(ent);
+	}
 private:
 
 	bool initOgre();

@@ -2,6 +2,7 @@
 #include <iostream>
 #include "RigidBody_c.h"
 #include "Render_c.h"
+#include "Proyectil.h"
 PlayerController_c::PlayerController_c(Entidad * ent, Escenas* esc, InputComponent * input)
 {
 	inputcomp_ = input;
@@ -11,6 +12,7 @@ PlayerController_c::PlayerController_c(Entidad * ent, Escenas* esc, InputCompone
 	inputcomp_->addMouseListener(this, "raton");
 	auxX = auxY = auxZ = 0;
 	mas = istimetoStop = false;
+	contadorProyectiles = 1;
 
 	rb = new RigidBody_c();
 	rc = new Render_c();
@@ -137,6 +139,18 @@ bool PlayerController_c::mousePressed(const OIS::MouseEvent& me, OIS::MouseButto
 	switch (id)
 	{
 	case OIS::MB_Left:
+	{
+		std::cout << "Dispara" << std::endl;
+		node = entidad->GetComponent(rc)->getNode();
+		Ogre::Vector3 pGlobal(entidad->getPox(), entidad->getPoy(), entidad->getPoz());
+		Ogre::Vector3 pLocal = node->convertLocalToWorldPosition(pGlobal);
+		Proyectil * proyectil = new Proyectil(escena->getSceneManger()->getRootSceneNode()->createChildSceneNode("Proyectil" + std::to_string(contadorProyectiles)),
+			escena->getBulletWorld(), contadorProyectiles, entidad->getPox(), entidad->getPoy(), entidad->getPoz(),
+			pLocal.x, pLocal.y, pLocal.z, entidad->getOrientationX(), entidad->getOrientationY(), entidad->getOrientationZ(),
+			5, 5, 5);
+		escena->addEntidad(proyectil);
+		contadorProyectiles++;
+	}
 		break;
 	default:
 		break;
