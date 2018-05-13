@@ -147,11 +147,11 @@ bool PlayerController_c::mousePressed(const OIS::MouseEvent& me, OIS::MouseButto
 		Ogre::Vector3 pLocal = node->convertWorldToLocalPosition(pGlobal);
 		pLocal.z += 20;
 		pGlobal = node->convertLocalToWorldPosition(pLocal);
+		std::cout << "player: " << entidad->getOrientationX() << entidad->getOrientationY() << entidad->getOrientationZ() << std::endl;
 
 		Proyectil * proyectil = new Proyectil(escena->getSceneManger()->getRootSceneNode()->createChildSceneNode("Proyectil" + std::to_string(contadorProyectiles)),
 			escena->getBulletWorld(), contadorProyectiles, pGlobal.x, pGlobal.y, pGlobal.z,
-			entidad->getOrientationX(), entidad->getOrientationY(), entidad->getOrientationZ(),
-			5, 5, 5);
+			node->getOrientation(), 5, 5, 5);
 		escena->addEntidad(proyectil);
 		contadorProyectiles++;
 	}

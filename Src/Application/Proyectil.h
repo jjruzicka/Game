@@ -12,19 +12,10 @@ class Proyectil :
 	public Entidad
 {
 public:
-	Proyectil(Ogre::SceneNode* n, btDiscreteDynamicsWorld * bw, int id, float posGlx, float posGly, float posGlz, float oriX, float oriY, float oriZ, float alt, float anch, float larg);
+	Proyectil(Ogre::SceneNode* n, btDiscreteDynamicsWorld * bw, int id, float posGlx, float posGly, float posGlz, Ogre::Quaternion orientacion, float alt, float anch, float larg);
 	~Proyectil();
-	/*void setPosicionLocal(PosF pos){
-		posicionLocal.x = pos.x;
-		posicionLocal.y = pos.y;
-		posicionLocal.z = pos.z;
-	}*/
-	/*PosF getPosicionLocal(){
-		return posicionLocal;
-	}*/
 
 private:
-	//PosF posicionLocal;
 	const int DISTACIA_MAX = 100;
 	Ogre::SceneNode * node;
 	btDiscreteDynamicsWorld * bulletWorld;

@@ -1,7 +1,7 @@
 #include "Proyectil.h"
 
 
-Proyectil::Proyectil(Ogre::SceneNode* n, btDiscreteDynamicsWorld * bw, int _id, float posGlx, float posGly, float posGlz, float oriX, float oriY, float oriZ, float larg, float anch, float alt) : Entidad()
+Proyectil::Proyectil(Ogre::SceneNode* n, btDiscreteDynamicsWorld * bw, int _id, float posGlx, float posGly, float posGlz, Ogre::Quaternion orientacion, float larg, float anch, float alt) : Entidad()
 {	
 	// nodo de ogre
 	node = n;
@@ -17,11 +17,10 @@ Proyectil::Proyectil(Ogre::SceneNode* n, btDiscreteDynamicsWorld * bw, int _id, 
 	posicion.y = posGly;
 	posicion.z = posGlz;
 
-	// orientacion
-	orientacion.x = oriX;
-	orientacion.y = oriY;
-	orientacion.z = oriZ;
+	// rotacion
+	node->setOrientation(orientacion);
 
+	std::cout << "bala: " << orientacion.x << orientacion.y << orientacion.z << std::endl;
 	largo = larg;
 	ancho = anch;
 	alto = alt;

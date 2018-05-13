@@ -46,9 +46,6 @@ void RigidBody_c::Update(){
 	ent->setPox(x);
 	ent->setPoy(y);
 	ent->setPoz(z);
-	if (tipo == physicType::kinematico)
-	std::cout << "Posicion entidad: " << x << " , " << y << " , " << z << std::endl;
-
 
 }
 
