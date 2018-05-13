@@ -1,40 +1,45 @@
 #pragma once
-#include "Escenas.h"
 #include "InputComponent.h"
 #include "EscenasManager.h"
 #include "Gui3D.h"
+#include "MyPurplePanelColors.h"
+#include "Gui3DPanelElement.h"
 #include "Gui3DPanel.h"
 #include "Gui3DScreenPanel.h"
-#include "MyPurplePanelColors.h"
-#include "MyEnvironmentDemoPanelColors.h"
-class Menu : public Escenas, public InputComponent
+#include "Estados.h"
+class Menu : public Estados, OIS::MouseListener
 {
 public:
-	Menu(EscenasManager* scnM);
-	virtual ~Menu();
-	virtual bool run();
+	Menu(Escenas* scn);
+	~Menu();
 	
+	bool putCamera();
 	
 protected:
+	
+	virtual void update();
+
+	
 	bool exit_(Gui3D::PanelElement* e);
 	virtual void createPanel();
 	bool play_(Gui3D::PanelElement* e);
-	bool credits_(Gui3D::PanelElement* e);
+	
 	virtual bool mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id);
 	virtual bool mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id);
 	Ogre::Vector2 getScreenCenterMouseDistance();
 	virtual bool mouseMoved(const OIS::MouseEvent &arg);
-	EscenasManager* scnM;
-
+	
 	bool exit;
+	bool init;
 
 	Ogre::Vector3 cameraDirection;
+	Ogre::SceneNode* camNode = nullptr;
 
 	// Gui3D main object
-	Gui3D::Gui3D* mGui3D;
-
+	
 	// The main panel (display in 3D)
-	Gui3D::Panel* mPanel;
+	Gui3D::Gui3D* mGui3D;
+	MyPurplePanelColors mMyPurplePanelColors;
 
 	// The screen Panel (display in 2D)
 	Gui3D::ScreenPanel* mSPanel;
@@ -53,6 +58,6 @@ protected:
 
 	int mClicksOnButton;
 	
-	MyPurplePanelColors mMyPurplePanelColors;
+	
 //variables vienen de escenas.h
 };

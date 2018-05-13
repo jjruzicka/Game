@@ -61,7 +61,7 @@
     <ClCompile Include="..\..\Src\Application\Juego.cpp">
       <Filter>Code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Src\Application\Credits.cpp">
+    <ClCompile Include="..\..\Src\Application\Estados.cpp">
       <Filter>Code</Filter>
     </ClCompile>
   </ItemGroup>
@@ -123,7 +123,7 @@
     <ClInclude Include="..\..\Src\Application\Juego.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Src\Application\Credits.h">
+    <ClInclude Include="..\..\Src\Application\Estados.h">
       <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>
