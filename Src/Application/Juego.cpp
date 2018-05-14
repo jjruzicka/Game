@@ -10,23 +10,33 @@ enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
 	MY_QUERY_INTERACT = 1 << 0
 };
-Juego::Juego(Escenas* scn) : Estados(scn)
+Juego::Juego()
 {
+#ifdef _DEBUG
+	plugins = "OgreD/plugins_d.cfg";
+	recursos = "OgreD/resources_d.cfg";
+#else
+	plugins = "Ogre/plugins.cfg";
+	recursos = "Ogre/resources.cfg";
+#endif
+		Escenas::initOgre();
+		Escenas::initBullet();
 	
-	this->scnM = scn;
 
-	initBullet();
 	
-
+	inputcomp_ = InputComponent::getSingletonPtr();
+	inputcomp_->initialise(mWindow);
+	
+	
 	Entidad* ent1 = new Entidad();
 	//1683, 50, 2116
 	ent1->setPox(1700);// posicion 
 	ent1->setPoy(50);
 	ent1->setPoz(900); //cuanto menor sea el numero, mas se aleja de la camara
-	Render_c* render = new Render_c(scnM->scnMgr->getRootSceneNode()->createChildSceneNode("personaje5"), ent1, "Sinbad");
-	//PlayerController_c * ois = new PlayerController_c(ent1, inputcomp_);
+	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("personaje"), ent1, "Sinbad");
+	PlayerController_c * ois = new PlayerController_c(ent1, inputcomp_);
 	ent1->AddComponent(render);
-	//ent1->AddComponent(ois);
+	ent1->AddComponent(ois);
 	entidades.push_back(ent1);
 
 	btCollisionShape* fallShape = new btSphereShape(1);
@@ -39,21 +49,19 @@ Juego::Juego(Escenas* scn) : Estados(scn)
 	ent1->AddComponent(rb);
 	bulletWorld->addRigidBody(rb->getRigidbody());
 
-	
-
 	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
 	lightdir.normalise();
 
-	Ogre::Light* light = scnM->scnMgr->createLight("tstLight");
+	Ogre::Light* light = scnMgr->createLight("tstLight");
 	light->setType(Ogre::Light::LT_DIRECTIONAL);
 	light->setDirection(lightdir);
 	light->setDiffuseColour(Ogre::ColourValue::White);
 	light->setSpecularColour(Ogre::ColourValue(0.4, 0.4, 0.4));
 
-	scnM->scnMgr->setAmbientLight(Ogre::ColourValue(0.2, 0.2, 0.2));
+	scnMgr->setAmbientLight(Ogre::ColourValue(0.2, 0.2, 0.2));
 
 	// also need to tell where we are
-	camNode = scnM->scnMgr->getSceneNode("personaje5")->createChildSceneNode();
+	camNode = scnMgr->getSceneNode("personaje")->createChildSceneNode();
 	/*camNode->setPosition(0, 0, 100);
 	camNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_WORLD); //esto lo que habia antes
 	*/
@@ -63,26 +71,26 @@ Juego::Juego(Escenas* scn) : Estados(scn)
 	camNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
 	
 	// create the camera
-	//
-	//cam->setNearClipDistance(0.1); //esto antes era 1
-	//cam->setFarClipDistance(10000);
-	//cam->setAutoAspectRatio(true);
+	cam = scnMgr->createCamera("Cam");
+	cam->setNearClipDistance(0.1); //esto antes era 1
+	cam->setFarClipDistance(10000);
+	cam->setAutoAspectRatio(true);
 	//cam->setPolygonMode(Ogre::PM_WIREFRAME);  // en material
-	/*camNode->attachObject(cam);*/
-	/*cam->setQueryFlags(MY_QUERY_IGNORE);
-*/
+	camNode->attachObject(cam);
+	cam->setQueryFlags(MY_QUERY_IGNORE);
+
 
 
 
 	// and tell it to render into the main window
 	
-	/*vp = scnM->mWindow->addViewport(cam);
-	vp->setBackgroundColour(Ogre::ColourValue(150, 150, 150));*/
+	vp = mWindow->addViewport(cam);
+	vp->setBackgroundColour(Ogre::ColourValue(150, 150, 150));
 	//vp->setBackgroundColour(Ogre::ColourValue(1, 1, 1));
 	/*i = new GUI(inputcomp_, vp, scnMgr, cam, camNode, this);
 	gui->createPanel();*/
 	//Terrain
-	mapa = new Mapa(scnM->scnMgr, light, bulletWorld);
+	mapa = new Mapa(scnMgr, light, bulletWorld);
 	mapa->createmap();
 	mapa->setPhysics();
 
@@ -90,30 +98,54 @@ Juego::Juego(Escenas* scn) : Estados(scn)
 
 }
 
-bool Juego::initBullet(){
-	//build the broadPhase
-	broadPhase = new btDbvtBroadphase();
 
-	//Set up the collision configuration and dispacher
-	collisionConfiguration = new btDefaultCollisionConfiguration();
-	dispatcher = new btCollisionDispatcher(collisionConfiguration);
+bool Juego::run(){
+	
 
-	//the actual physics solver
-	solver = new btSequentialImpulseConstraintSolver();
+	clock_t lastTicks = clock();
+	clock_t elapsedTicks = 0;
+	double deltaTime = 0;
+	
 
-	//the world
-	bulletWorld = new btDiscreteDynamicsWorld(dispatcher, broadPhase, solver, collisionConfiguration);
-	bulletWorld->setGravity(btVector3(0, -10, 0));
+	while (true)
+	{
+		deltaTime = ((double)elapsedTicks) / 1000.f/*CLOCKS_PER_SEC*/;
+		lastTicks = clock();
+		// Actualize counters
+		/*globalClock.addTime(lastTicks);
+		localClock.addTime(lastTicks);*/
+
+		/*std::ostringstream s;
+		s << "global time: " << std::fixed << globalClock.getTimeSec() << "s";
+		captionGlobalTime->text(s.str());*/
+
+		/*s.str("");
+		s << "local time: " << std::fixed << localClock.getTimeSec() << "s";
+		captionLocalTime->text(s.str());*/
+
+		/*mPanel->injectTime(deltaTime);
+		mSPanel->injectTime(deltaTime);
+		mSPanel2->injectTime(deltaTime);*/
+		inputcomp_->capture();
+
+		for (int i = 0; i<entidades.size(); i++)
+			entidades[i]->Update();
+
+		
+
+		// render ogre
+		Ogre::WindowEventUtilities::messagePump();
+		bulletWorld->stepSimulation((float)deltaTime);
+		
+		//comprobar si la ventana está abierta
+		if (mWindow->isClosed())return false;
+		if (!root->renderOneFrame())return false;
+		elapsedTicks = clock() - lastTicks;
+	}
 	return true;
 }
 
-
-
 Juego::~Juego()
 {
-	for (int i = 0; i < entidades.size(); i++)
-		delete entidades[i];
-	//inputcomp_->removeKeyListener(inputcomp_);
-	//inputcomp_->removeMouseListener(inputcomp_);*/
 }
 

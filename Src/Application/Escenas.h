@@ -18,19 +18,32 @@
 #include <OgreException.h>
 #include "InputComponent.h"
 #include "Mapa.h"
-#include "EscenasManager.h"
 
 
-
-
-class Escenas 
+class Escenas
 {
 public:
 	Escenas();
-	
 	virtual ~Escenas();
-	virtual bool run();
+	virtual bool run()  = 0;
+protected:
+	virtual bool initBullet();
+	virtual bool initOgre();
+	std::vector<Entidad*> entidades;
+	Ogre::Viewport* vp = nullptr;
+
+
+	///// FISICA
+	btDiscreteDynamicsWorld* bulletWorld;
+	btDefaultCollisionConfiguration* collisionConfiguration;
+	btCollisionDispatcher* dispatcher;
+	btSequentialImpulseConstraintSolver* solver;
+	btBroadphaseInterface* broadPhase;
+	////////////////
 	
+	InputComponent* inputcomp_;
+
+	Mapa* mapa;
 
 	///// OGRE
 	std::string recursos, plugins;
@@ -38,25 +51,11 @@ public:
 	Ogre::ConfigFile cf;
 	Ogre::RenderWindow* mWindow;
 	Ogre::SceneManager * scnMgr;
-	
-
-	////////////////
 	Ogre::Light* light;
 	Ogre::SceneNode* lightNode = nullptr;
 	Ogre::Camera* cam = nullptr;
-	Ogre::Viewport* vp = nullptr;
-	
-	EscenasManager* escenasState;
-	InputComponent* inputcomp_;
-	/*virtual bool keyPressed(const OIS::KeyEvent &e){ return true; };
-	virtual bool keyReleased(const OIS::KeyEvent &e){ return true; };
-	virtual bool mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id){ return true; };
-	virtual bool mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id){ return true; };
-	virtual bool mouseMoved(const OIS::MouseEvent &arg){ return true; };*/
-
-protected:
-	bool initOgre();
-	bool initCamera();
+	Ogre::SceneNode* camNode = nullptr;
+	////////////////
 	
 
 };

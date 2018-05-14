@@ -2,12 +2,6 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
-#include "Menu.h"
-#include "Render_c.h"
-#include "PlayerController_c.h"
-#include "RigidBody_c.h"
-#include "Objeto.h"
-#include "Collider_c.h"
 using namespace Ogre;
 enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
@@ -15,27 +9,6 @@ enum QueryFlags {
 };
 Escenas::Escenas()
 {
-#ifdef _DEBUG
-	plugins = "OgreD/plugins_d.cfg";
-	recursos = "OgreD/resources_d.cfg";
-#else
-	plugins = "Ogre/plugins.cfg";
-	recursos = "Ogre/resources.cfg";
-#endif
-
-	initOgre();
-	initCamera();
-	
-	
-	inputcomp_ = InputComponent::getSingletonPtr();
-	inputcomp_->initialise(mWindow);
-
-
-	escenasState = new EscenasManager();
-	
-
-
-	
 }
 bool Escenas::initOgre(){
 
@@ -118,55 +91,31 @@ bool Escenas::initOgre(){
 }
 
 
-	
 
-bool Escenas::initCamera(){
-	cam = scnMgr->createCamera("Cam");
+bool Escenas::initBullet(){
+	//build the broadPhase
+	broadPhase = new btDbvtBroadphase();
 
-	vp = mWindow->addViewport(cam);
-	vp->setBackgroundColour(Ogre::ColourValue::Black);
+	//Set up the collision configuration and dispacher
+	collisionConfiguration = new btDefaultCollisionConfiguration();
+	dispatcher = new btCollisionDispatcher(collisionConfiguration);
+
+	//the actual physics solver
+	solver = new btSequentialImpulseConstraintSolver();
+
+	//the world
+	bulletWorld = new btDiscreteDynamicsWorld(dispatcher, broadPhase, solver, collisionConfiguration);
+	bulletWorld->setGravity(btVector3(0, -10, 0));
 	return true;
 }
-
-bool Escenas::run(){
-	clock_t lastTicks = clock();
-	clock_t elapsedTicks = 0;
-	double deltaTime = 0;
-
-	
-	while (true)
-	{
-		deltaTime = ((double)elapsedTicks) / 1000.f/*CLOCKS_PER_SEC*/;
-		lastTicks = clock();
-
-		//escenasState->currentState()->render();
-		inputcomp_->capture();
-		
-		escenasState->states[0]->update();
-	
-
-
-
-		// render ogre
-		Ogre::WindowEventUtilities::messagePump();
-		if (escenasState->states[0]->bulletWorld != nullptr)
-			escenasState->states[0]->bulletWorld->stepSimulation((float)deltaTime);
-
-		//comprobar si la ventana está abierta
-		if (mWindow->isClosed())return false;
-		if (!root->renderOneFrame())return false;
-		elapsedTicks = clock() - lastTicks;
-	}
-	mWindow->destroy();
-	return true;
-}
-
-
 
 
 Escenas::~Escenas()
 {
-	
+	for (int i = 0; i < entidades.size(); i++)
+		delete entidades[i];
+	inputcomp_->removeKeyListener(inputcomp_);
+	inputcomp_->removeMouseListener(inputcomp_);
 
 
 	/////LEER INIT Y DESTRIR DE ABAJO A ARRIBA LO MISMO CON BULLET

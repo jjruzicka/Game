@@ -4,183 +4,158 @@
 #include "RigidBody_c.h"
 #include "Objeto.h"
 #include "Collider_c.h"
-#include "Juego.h"
-
+#include "GUI.h"
 #include <iostream>
 using namespace Ogre;
 enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
 	MY_QUERY_INTERACT = 1 << 0
 };
-Menu::Menu(Escenas* scn) : Estados(scn)
+Menu::Menu(EscenasManager* scnM)
 {
-	bulletWorld = nullptr;
-	
-	getInput()->addMouseListener(this, "raton2");
-	
-	
+#ifdef _DEBUG
+	plugins = "OgreD/plugins_d.cfg";
+	recursos = "OgreD/resources_d.cfg";
+#else
+	plugins = "Ogre/plugins.cfg";
+	recursos = "Ogre/resources.cfg";
+#endif
+	Escenas::initOgre();
+	Escenas::initBullet();
+
+	this->scnM = scnM;
+
+	inputcomp_ = InputComponent::getSingletonPtr();
+	inputcomp_->initialise(mWindow);
+
+	//COSAS A MIRAR  --> SI QUITAS LA ENTIDAD Y LAS COLAS DE BULLET Y EMPIEZAS DIRECTAMENTE CON LA LUZ, REVIENTA.
 	exit = false;
-	init = false;
-	
-	cameraON = false;
-	
-	
-	mGui3D = new Gui3D::Gui3D(&mMyPurplePanelColors);
-	mGui3D->createScreen(getVp(), "purple", "mainScreen");
 
-	createPanel();
+	Entidad* ent1 = new Entidad();
+	//1683, 50, 2116
+	ent1->setPox(1700);// posicion 
+	ent1->setPoy(50);
+	ent1->setPoz(2000); //cuanto menor sea el numero, mas se aleja de la camara
+	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("personaje"), ent1, "Sinbad");
+	PlayerController_c * ois = new PlayerController_c(ent1, inputcomp_);
+	ent1->AddComponent(render);
+	ent1->AddComponent(ois);
+	entidades.push_back(ent1);
 
-	
-	
-	
+	btCollisionShape* fallShape = new btSphereShape(1);
+	btDefaultMotionState* fallMotionState = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1), btVector3(0, 30, 0)));
+	btScalar mass = 1;
+	btVector3 fallInertia(0, 9.8f, 0);
+	fallShape->calculateLocalInertia(mass, fallInertia);
+	btRigidBody::btRigidBodyConstructionInfo fallRigidBodyCI(mass, fallMotionState, fallShape, fallInertia);
+	RigidBody_c* rb = new RigidBody_c(ent1, fallRigidBodyCI);
+	ent1->AddComponent(rb);
+	bulletWorld->addRigidBody(rb->getRigidbody());
 
-	
-	
+	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
+	lightdir.normalise();
 
-}
+	Ogre::Light* light = scnMgr->createLight("tstLight");
+	light->setType(Ogre::Light::LT_DIRECTIONAL);
+	light->setDirection(lightdir);
+	light->setDiffuseColour(Ogre::ColourValue::White);
+	light->setSpecularColour(Ogre::ColourValue(0.4, 0.4, 0.4));
 
-void Menu::update(){
-	if (!cameraON)
-	putCamera();
+	scnMgr->setAmbientLight(Ogre::ColourValue(0.2, 0.2, 0.2));
 
-		
-}
-
-void Menu::createPanel(){
-	
-	// 2D Panel (using Gorilla::Screen)
-	Gorilla::Screen* myScreen = mGui3D->getScreen("mainScreen");
-
-
-	// 2nd test panel
-	mSPanel2 = new Gui3D::ScreenPanel(
-		mGui3D,
-		myScreen,
-		Ogre::Vector2(300, 200),
-		Ogre::Vector2(400, 400),
-		"purple",
-		"test_screenPanel2");
-
-
-	mSPanel2->makeButton(0, 0, 400, 100, "PLAY")
-		->setPressedCallback(this, &Menu::play_);
-	
-	mSPanel2->makeButton(0, 300, 400, 100, "EXIT")
-		->setPressedCallback(this, &Menu::exit_);
-
-	
-	mSPanel2->hideInternalMousePointer();
-}
-
-bool Menu::putCamera(){
-	
-
-
-	camNode = escen->scnMgr->getRootSceneNode()->createChildSceneNode("personaje");
-
+	// also need to tell where we are
+	camNode = scnMgr->getSceneNode("personaje")->createChildSceneNode();
+	/*camNode->setPosition(0, 0, 100);
+	camNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_WORLD); //esto lo que habia antes
+	*/
 	// para la escena, pruebas
-	camNode->setPosition(Ogre::Vector3(0, 2, -2));
+	camNode->setPosition(Ogre::Vector3(0, 5, -35));
 	camNode->rotate(Ogre::Quaternion(Ogre::Degree(180), Ogre::Vector3::UNIT_Y));
 	camNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
 
 	// create the camera
-
-	getCamera()->setNearClipDistance(0.1); //esto antes era 1
-	getCamera()->setFarClipDistance(10000);
-	getCamera()->setAutoAspectRatio(true);
+	cam = scnMgr->createCamera("Cam");
+	cam->setNearClipDistance(0.1); //esto antes era 1
+	cam->setFarClipDistance(10000);
+	cam->setAutoAspectRatio(true);
 	//cam->setPolygonMode(Ogre::PM_WIREFRAME);  // en material
-	camNode->attachObject(getCamera());
-	getCamera()->setQueryFlags(MY_QUERY_IGNORE);
+	camNode->attachObject(cam);
+	cam->setQueryFlags(MY_QUERY_IGNORE);
 
 
-	cameraDirection = Ogre::Vector3(0, 0, -1);
-	getCamera()->setDirection(cameraDirection);
 
-	mNormalizedMousePosition = Ogre::Vector2(0.5, 0.5);
-	mMousePointerLayer = mGui3D->getScreen("mainScreen")->createLayer(2);
 
-	mMousePointer = mMousePointerLayer->createRectangle(getVp()->getActualWidth() / 2,
-		getVp()->getActualHeight() / 2, 12, 18);
-	mMousePointer->background_image("mousepointer");
-	cameraON = true;
-	return cameraON;
-}
+	// and tell it to render into the main window
 
-bool Menu::exit_(Gui3D::PanelElement* e)
-{
+	vp = mWindow->addViewport(cam);
+	vp->setBackgroundColour(Ogre::ColourValue::Black);
+	//vp->setBackgroundColour(Ogre::ColourValue(1, 1, 1));
+	GUI* gui = new GUI(inputcomp_, vp, scnMgr, cam, camNode, this);
+	gui->createPanel();
+	//Terrain
+	/*mapa = new Mapa(scnMgr, light, bulletWorld);
+	mapa->createmap();
+	mapa->setPhysics();*/
 
-	exit = true;
-	return true;
-}
-
-bool Menu::play_(Gui3D::PanelElement* e){
 	
-	escen->escenasState->MenuToGame();
-	return true;
+
+}
+void Menu::MenuToPlay(){
+	scnM->MenuToGame();
 }
 
-
-
-bool Menu::mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id)
-{
-	mSPanel2->injectMousePressed(evt, id);
-	return true;
-}
-
-bool Menu::mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id)
-{
+bool Menu::run(){
 	
-	mSPanel2->injectMouseReleased(evt, id);
+
+	clock_t lastTicks = clock();
+	clock_t elapsedTicks = 0;
+	double deltaTime = 0;
+	
+
+	while (!exit)
+	{
+		deltaTime = ((double)elapsedTicks) / 1000.f/*CLOCKS_PER_SEC*/;
+		lastTicks = clock();
+		// Actualize counters
+		/*globalClock.addTime(lastTicks);
+		localClock.addTime(lastTicks);*/
+
+		/*std::ostringstream s;
+		s << "global time: " << std::fixed << globalClock.getTimeSec() << "s";
+		captionGlobalTime->text(s.str());*/
+
+		/*s.str("");
+		s << "local time: " << std::fixed << localClock.getTimeSec() << "s";
+		captionLocalTime->text(s.str());*/
+
+		/*mPanel->injectTime(deltaTime);
+		mSPanel->injectTime(deltaTime);
+		mSPanel2->injectTime(deltaTime);*/
+		inputcomp_->capture();
+
+		for (int i = 0; i<entidades.size(); i++)
+			entidades[i]->Update();
+
+		
+
+		// render ogre
+		Ogre::WindowEventUtilities::messagePump();
+		bulletWorld->stepSimulation((float)deltaTime);
+		
+		//comprobar si la ventana está abierta
+		if (mWindow->isClosed())return false;
+		if (!root->renderOneFrame())return false;
+		elapsedTicks = clock() - lastTicks;
+	}
+	mWindow->destroy();
 	return true;
 }
-
-Ogre::Vector2 Menu::getScreenCenterMouseDistance()
-{
-	Ogre::Real posX = (mMousePointer->position().x - getVp()->getActualWidth())
-		/ getVp()->getActualWidth();
-	Ogre::Real posY = (mMousePointer->position().y - getVp()->getActualHeight())
-		/ getVp()->getActualHeight();
-
-	return Ogre::Vector2(posX + 0.5, posY + 0.5);
-}
-
-bool Menu::mouseMoved(const OIS::MouseEvent &arg)
-{
-	// Set the new camera smooth direction movement
-	Ogre::Vector2 distance(getScreenCenterMouseDistance());
-	getCamera()->setDirection(cameraDirection
-		+ Ogre::Vector3(distance.x, -distance.y, 0) / 30);
-
-	// Raycast for the actual panel
-	Ogre::Real xMove = static_cast<Ogre::Real>(arg.state.X.rel);
-	Ogre::Real yMove = static_cast<Ogre::Real>(arg.state.Y.rel);
-
-	mNormalizedMousePosition.x += xMove / getVp()->getActualWidth();
-	mNormalizedMousePosition.y += yMove / getVp()->getActualHeight();
-
-	mNormalizedMousePosition.x = std::max<Ogre::Real>(mNormalizedMousePosition.x, 0);
-	mNormalizedMousePosition.y = std::max<Ogre::Real>(mNormalizedMousePosition.y, 0);
-	mNormalizedMousePosition.x = std::min<Ogre::Real>(mNormalizedMousePosition.x, 1);
-	mNormalizedMousePosition.y = std::min<Ogre::Real>(mNormalizedMousePosition.y, 1);
-
-	mMousePointer->position(
-		mNormalizedMousePosition.x * getVp()->getActualWidth(),
-		mNormalizedMousePosition.y * getVp()->getActualHeight());
-
-
-	mSPanel2->injectMouseMoved(mNormalizedMousePosition.x * getVp()->getActualWidth(),
-		mNormalizedMousePosition.y * getVp()->getActualHeight());
-
-	return true;
-}
-
 
 Menu::~Menu()
 {
-	delete mGui3D;
-	delete camNode;
-	delete mSPanel2;
-	getInput()->removeMouseListener("raton2");
-	
+	scnMgr->getRootSceneNode()->removeAllChildren();
+	root->destroySceneManager(scnMgr);
+	root->destroyRenderTarget("P3");
+	delete root;
 }
 

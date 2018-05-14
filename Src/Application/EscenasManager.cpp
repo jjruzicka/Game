@@ -1,6 +1,6 @@
 #include "EscenasManager.h"
-
-
+#include "Menu.h"
+#include "Juego.h"
 using namespace Ogre;
 enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
@@ -10,36 +10,44 @@ EscenasManager::EscenasManager()
 {
 	juegoB = false;
 	menuB = true;
-	
 
 	if (menuB){
-		states.push_back(new Menu(esc));
-		
+		menu = new Menu(this);
+		juego = nullptr;
 	}
 	else if (juegoB){
-		states.push_back(new Juego(esc));
-		
+		juego = new Juego();
+		menu = nullptr;
 	}
+}
+
+bool EscenasManager::run(){
+	if (juegoB)
+		juego->run();
+	else if (menuB)
+		menu->run();
+	return true;
 }
 
 void EscenasManager::MenuToGame(){
 	menuB = false;
 	juegoB = true;
-	delete states[0];
-	states.push_back(new Juego(esc));
-	
+	delete menu;
+	juego = new Juego();
+	run();
 }
 void EscenasManager::GameToMenu(){
 	menuB = true;
 	juegoB = false;
-	delete states[0];
-	states.push_back(new Menu(esc));
-	
+	menu = new Menu(this);
+	delete juego;
+	run();
 }
-
 EscenasManager::~EscenasManager()
 {
-	delete states[0];
-
+	if (menuB)
+		delete menu;
+	else if (juegoB)
+		delete juego;
 }
 
