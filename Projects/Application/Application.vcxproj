@@ -15,13 +15,19 @@
     <ClCompile Include="..\..\Src\Application\Component.cpp" />
     <ClCompile Include="..\..\Src\Application\Entidad.cpp" />
     <ClCompile Include="..\..\Src\Application\Escenas.cpp" />
-    <ClCompile Include="..\..\Src\Application\InputComponent.cpp" />
-    <ClCompile Include="..\..\Src\Application\Mapa.cpp" />
-    <ClCompile Include="..\..\Src\Application\PlayerController_c.cpp" />
+    <ClCompile Include="..\..\Src\Application\EscenasManager.cpp" />
     <ClCompile Include="..\..\Src\Application\GameManager_c.cpp" />
+    <ClCompile Include="..\..\Src\Application\GUI.cpp" />
+    <ClCompile Include="..\..\Src\Application\InputComponent.cpp" />
     <ClCompile Include="..\..\Src\Application\Inventario_c.cpp" />
+    <ClCompile Include="..\..\Src\Application\Juego.cpp" />
+    <ClCompile Include="..\..\Src\Application\Mapa.cpp" />
+    <ClCompile Include="..\..\Src\Application\Menu.cpp" />
     <ClCompile Include="..\..\Src\Application\Mision_c.cpp" />
+    <ClCompile Include="..\..\Src\Application\MyEnvironmentDemoPanelColors.cpp" />
+    <ClCompile Include="..\..\Src\Application\MyPurplePanelColors.cpp" />
     <ClCompile Include="..\..\Src\Application\Objeto.cpp" />
+    <ClCompile Include="..\..\Src\Application\PlayerController_c.cpp" />
     <ClCompile Include="..\..\Src\Application\ProyectoBasico.cpp" />
     <ClCompile Include="..\..\Src\Application\Render_c.cpp" />
     <ClCompile Include="..\..\Src\Application\RigidBody_c.cpp" />
@@ -33,13 +39,19 @@
     <ClInclude Include="..\..\Src\Application\Component.h" />
     <ClInclude Include="..\..\Src\Application\Entidad.h" />
     <ClInclude Include="..\..\Src\Application\Escenas.h" />
-    <ClInclude Include="..\..\Src\Application\InputComponent.h" />
-    <ClInclude Include="..\..\Src\Application\Mapa.h" />
-    <ClInclude Include="..\..\Src\Application\PlayerController_c.h" />
+    <ClInclude Include="..\..\Src\Application\EscenasManager.h" />
     <ClInclude Include="..\..\Src\Application\GameManager_c.h" />
+    <ClInclude Include="..\..\Src\Application\GUI.h" />
+    <ClInclude Include="..\..\Src\Application\InputComponent.h" />
     <ClInclude Include="..\..\Src\Application\Inventario_c.h" />
+    <ClInclude Include="..\..\Src\Application\Juego.h" />
+    <ClInclude Include="..\..\Src\Application\Mapa.h" />
+    <ClInclude Include="..\..\Src\Application\Menu.h" />
     <ClInclude Include="..\..\Src\Application\Mision_c.h" />
+    <ClInclude Include="..\..\Src\Application\MyEnvironmentDemoPanelColors.h" />
+    <ClInclude Include="..\..\Src\Application\MyPurplePanelColors.h" />
     <ClInclude Include="..\..\Src\Application\Objeto.h" />
+    <ClInclude Include="..\..\Src\Application\PlayerController_c.h" />
     <ClInclude Include="..\..\Src\Application\Render_c.h" />
     <ClInclude Include="..\..\Src\Application\RigidBody_c.h" />
     <ClInclude Include="..\..\Src\Application\StatsEntJuego_c.h" />
@@ -95,13 +107,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\Ogre\Components\Terrain\include;$(SolutionDir)Dependencies\OIS-master\includes;$(SolutionDir)Dependencies\Ogre\OgreMain\include;$(SolutionDir)Dependencies\Ogre\Build\include;$(SolutionDir)Dependencies\bullet3\src;$(SolutionDir)Dependencies\bullet3\src\BulletCollision\CollisionShapes;$(SolutionDir)Src\Application;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\Gui3D-master\sdk;$(SolutionDir)Dependencies\Ogre\Components\Terrain\include;$(SolutionDir)Dependencies\OIS-master\includes;$(SolutionDir)Dependencies\Ogre\OgreMain\include;$(SolutionDir)Dependencies\Ogre\Build\include;$(SolutionDir)Dependencies\bullet3\src;$(SolutionDir)Dependencies\bullet3\src\BulletCollision\CollisionShapes;$(SolutionDir)Src\Application;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>OgreMain_d.lib;%(AdditionalDependencies);OIS.lib;OgreTerrain_d.lib;Bullet3Geometry_Debug.lib;Bullet2FileLoader_Debug.lib;Bullet3Collision_Debug.lib;BulletCollision_Debug.lib;Bullet3Common_Debug.lib;Bullet3Dynamics_Debug.lib;BulletDynamics_Debug.lib;Bullet3OpenCL_clew_Debug.lib;BulletInverseDynamics_Debug.lib;BulletSoftBody_Debug.lib;LinearMath_Debug.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\OIS-master\build\lib\Debug;$(SolutionDir)Dependencies\OIS\build\lib\$(Configuration);$(SolutionDir)Dependencies\bullet3\build3\lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OgreMain_d.lib;%(AdditionalDependencies);OIS.lib;OgreTerrain_d.lib;Bullet3Geometry_Debug.lib;Bullet2FileLoader_Debug.lib;Bullet3Collision_Debug.lib;BulletCollision_Debug.lib;Bullet3Common_Debug.lib;Bullet3Dynamics_Debug.lib;BulletDynamics_Debug.lib;Bullet3OpenCL_clew_Debug.lib;BulletInverseDynamics_Debug.lib;BulletSoftBody_Debug.lib;LinearMath_Debug.lib;Gui3DDebugStatic.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\OIS-master\build\lib\Debug;$(SolutionDir)Dependencies\OIS\build\lib\$(Configuration);$(SolutionDir)Dependencies\Gui3D-master\sdk;$(SolutionDir)Dependencies\bullet3\build3\lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

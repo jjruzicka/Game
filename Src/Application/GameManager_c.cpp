@@ -4,7 +4,7 @@
 GameManager_c::GameManager_c(Entidad* personaje)
 {
 	this->personaje = personaje;
-	misionActiva = nullptr;
+	this->misionActiva = nullptr;
 }
 
 

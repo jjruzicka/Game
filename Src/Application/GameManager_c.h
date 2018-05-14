@@ -1,7 +1,6 @@
 #ifndef GAMEMANAGER_C
 #define GAMEMANAGER_C
 #include <string>
-#include "Component.h"
 #include "Mision_c.h"
 #include "Entidad.h"
 class GameManager_c : public Component

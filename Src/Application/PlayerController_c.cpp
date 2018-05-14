@@ -3,7 +3,7 @@
 
 #include "RigidBody_c.h"
 #include "Render_c.h"
-PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input, Escenas* escena, StatsPJ_c* estadisticas)
+PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input, Juego* escena, StatsPJ_c* estadisticas)
 {
 	inputcomp_ = input;
 	entidad = ent;
@@ -20,7 +20,7 @@ PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input, Es
 
 bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 {
-	
+
 	switch (keyP.key)
 	{
 	case OIS::KC_ESCAPE:
@@ -35,20 +35,20 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 	case OIS::KC_UP:
 	case OIS::KC_W:
 	{
-					  node = entidad->GetComponent(rc)->getNode();
-					  mas = true;
-					  istimetoStop = true;
+		node = entidad->GetComponent(rc)->getNode();
+		mas = true;
+		istimetoStop = true;
 	}
-		break;
+	break;
 
 	case OIS::KC_DOWN:
 	case OIS::KC_S:
 	{
-					  node = entidad->GetComponent(rc)->getNode();
-					  mas = false;
-					  istimetoStop = true;
+		node = entidad->GetComponent(rc)->getNode();
+		mas = false;
+		istimetoStop = true;
 	}
-		break;
+	break;
 
 	case OIS::KC_LEFT:
 	case OIS::KC_A:
@@ -167,16 +167,16 @@ bool PlayerController_c::mouseReleased(const OIS::MouseEvent& me, OIS::MouseButt
 void PlayerController_c::Update(){
 
 	if (istimetoStop){
-			Ogre::Vector3 cglobal(entidad->getPox(), entidad->getPoy(), entidad->getPoz());
-			Ogre::Vector3 clocal = node->convertWorldToLocalPosition(cglobal);
-			if (mas){
-				clocal.z += 1;
-			}
-			else if (!mas){
-				clocal.z -= 1;
-			}
-			cglobal = node->convertLocalToWorldPosition(clocal);
-			entidad->GetComponent(rb)->actualizarPos(cglobal.x, cglobal.y, cglobal.z);
+		Ogre::Vector3 cglobal(entidad->getPox(), entidad->getPoy(), entidad->getPoz());
+		Ogre::Vector3 clocal = node->convertWorldToLocalPosition(cglobal);
+		if (mas){
+			clocal.z += 1;
+		}
+		else if (!mas){
+			clocal.z -= 1;
+		}
+		cglobal = node->convertLocalToWorldPosition(clocal);
+		entidad->GetComponent(rb)->actualizarPos(cglobal.x, cglobal.y, cglobal.z);
 	}
 }
 
@@ -193,4 +193,3 @@ PlayerController_c::~PlayerController_c()
 	delete rb;
 	delete rc;
 }
-

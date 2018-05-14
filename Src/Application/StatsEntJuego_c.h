@@ -3,11 +3,11 @@
 #define STATSENTJUEGO_C_H
 #include "Component.h"
 #include <iostream>
-#include "Escenas.h"
+#include "Juego.h"
 class StatsEntJuego_c : public Component
 {
 public:
-	StatsEntJuego_c(int vida, int defensa, int damage, Escenas* escena, Entidad* ent);
+	StatsEntJuego_c(int vida, int defensa, int damage, Juego* escena, Entidad* ent);
 	StatsEntJuego_c(int vida, int defensa, int damage);
 	StatsEntJuego_c(){};
 	~StatsEntJuego_c();
@@ -24,7 +24,7 @@ public:
 		return damage;
 	}
 protected:
-	Escenas* escena;
+	Juego* escena;
 	Entidad* ent;
 	int vida;
 	int defensa;

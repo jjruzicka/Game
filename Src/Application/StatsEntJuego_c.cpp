@@ -1,7 +1,7 @@
 #include "StatsEntJuego_c.h"
 
 
-StatsEntJuego_c::StatsEntJuego_c(int vida, int defensa, int damage, Escenas* escena, Entidad* ent) : StatsEntJuego_c(vida, defensa,damage)
+StatsEntJuego_c::StatsEntJuego_c(int vida, int defensa, int damage, Juego* escena, Entidad* ent) : StatsEntJuego_c(vida, defensa,damage)
 {
 	this->ent = ent;
 	this->escena = escena;
