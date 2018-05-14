@@ -115,6 +115,11 @@ bool PlayerController_c::keyReleased(const OIS::KeyEvent& keyP){
 				entColision = nullptr;
 				std::cout << "Matar \n";
 			}
+			else if (chocoCon ==3){
+				escena->killAdd(entColision);
+				entColision = nullptr;
+				std::cout << "Coger \n";
+			}
 		}
 		auxX = 0;
 		istimetoStop = false;
