@@ -1,9 +1,11 @@
 #include "PlayerController_c.h"
 #include <iostream>
+
 #include "RigidBody_c.h"
 #include "Render_c.h"
 #include "Proyectil.h"
-PlayerController_c::PlayerController_c(Entidad * ent, Escenas* esc, InputComponent * input)
+
+PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input, Juego* esc, StatsPJ_c* estadisticas)
 {
 	inputcomp_ = input;
 	entidad = ent;
@@ -13,14 +15,18 @@ PlayerController_c::PlayerController_c(Entidad * ent, Escenas* esc, InputCompone
 	auxX = auxY = auxZ = 0;
 	mas = istimetoStop = false;
 	contadorProyectiles = 1;
-
+	chocoCon = 0;
 	rb = new RigidBody_c();
 	rc = new Render_c();
+	this->escena = escena;
+	this->estadisticas = estadisticas;
+	this->cdAtack = 50;
+	cont = cdAtack;
 }
 
 bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 {
-	
+
 	switch (keyP.key)
 	{
 	case OIS::KC_ESCAPE:
@@ -35,20 +41,20 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 	case OIS::KC_UP:
 	case OIS::KC_W:
 	{
-					  node = entidad->GetComponent(rc)->getNode();
-					  mas = true;
-					  istimetoStop = true;
+		node = entidad->GetComponent(rc)->getNode();
+		mas = true;
+		istimetoStop = true;
 	}
-		break;
+	break;
 
 	case OIS::KC_DOWN:
 	case OIS::KC_S:
 	{
-					  node = entidad->GetComponent(rc)->getNode();
-					  mas = false;
-					  istimetoStop = true;
+		node = entidad->GetComponent(rc)->getNode();
+		mas = false;
+		istimetoStop = true;
 	}
-		break;
+	break;
 
 	case OIS::KC_LEFT:
 	case OIS::KC_A:
@@ -105,12 +111,32 @@ bool PlayerController_c::keyReleased(const OIS::KeyEvent& keyP){
 
 	case OIS::KC_PGDOWN:
 	case OIS::KC_E:
+		if (chocoCon != 0){
+			if (chocoCon == 1){//eres un npc y me das las misiones
+				escena->activaMision(entColision);
+				std::cout << "ILLO misiones \n";
+			}
+			else if (chocoCon == 2){
+				if (cont >= cdAtack){
+					cont = 0;
+					escena->atacar(entColision);
+					entColision = nullptr;
+					std::cout << "Matar \n";
+				}
+			}
+			else if (chocoCon ==3){
+				escena->killAdd(entColision);
+				entColision = nullptr;
+				std::cout << "Coger \n";
+			}
+		}
 		auxX = 0;
 		istimetoStop = false;
 		break;
 
 	case OIS::KC_PGUP:
 	case OIS::KC_Q:
+		estadisticas->restaVida(1);
 		auxX = 0;
 		istimetoStop = false;
 		break;
@@ -149,7 +175,8 @@ bool PlayerController_c::mousePressed(const OIS::MouseEvent& me, OIS::MouseButto
 		pGlobal = node->convertLocalToWorldPosition(pLocal);
 		std::cout << "player: " << entidad->getOrientationX() << entidad->getOrientationY() << entidad->getOrientationZ() << std::endl;
 
-		Proyectil * proyectil = new Proyectil(escena->getSceneManger()->getRootSceneNode()->createChildSceneNode("Proyectil" + std::to_string(contadorProyectiles)),
+		Proyectil * proyectil = new Proyectil("proyectilPlayer" + std::to_string(contadorProyectiles), escena,
+			escena->getSceneManger()->getRootSceneNode()->createChildSceneNode("Proyectil" + std::to_string(contadorProyectiles)),
 			escena->getBulletWorld(), contadorProyectiles, pGlobal.x, pGlobal.y, pGlobal.z,
 			node->getOrientation(), 5, 5, 5);
 		escena->addEntidad(proyectil);
@@ -170,19 +197,24 @@ bool PlayerController_c::mouseReleased(const OIS::MouseEvent& me, OIS::MouseButt
 
 
 void PlayerController_c::Update(){
-
 	if (istimetoStop){
-			Ogre::Vector3 cglobal(entidad->getPox(), entidad->getPoy(), entidad->getPoz());
-			Ogre::Vector3 clocal = node->convertWorldToLocalPosition(cglobal);
-			if (mas){
-				clocal.z += 1;
-			}
-			else if (!mas){
-				clocal.z -= 1;
-			}
-			cglobal = node->convertLocalToWorldPosition(clocal);
-			entidad->GetComponent(rb)->actualizarPos(cglobal.x, cglobal.y, cglobal.z);
+		Ogre::Vector3 cglobal(entidad->getPox(), entidad->getPoy(), entidad->getPoz());
+		Ogre::Vector3 clocal = node->convertWorldToLocalPosition(cglobal);
+		if (mas){
+			clocal.z += 1;
+		}
+		else if (!mas){
+			clocal.z -= 1;
+		}
+		cglobal = node->convertLocalToWorldPosition(clocal);
+		entidad->GetComponent(rb)->actualizarPos(cglobal.x, cglobal.y, cglobal.z);
 	}
+	cont++;
+}
+
+void PlayerController_c::chocasCon(int i, Entidad* ent){//0 para cuando no es nada, 1 npc
+	chocoCon = i;
+	entColision = ent;
 }
 
 PlayerController_c::~PlayerController_c()

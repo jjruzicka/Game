@@ -7,23 +7,23 @@
 #include "RigidBody_c.h"
 #include <btBulletCollisionCommon.h>
 #include <btBulletDynamicsCommon.h>
+#include "Juego.h"
 
 class Proyectil :
 	public Entidad
 {
 public:
-	Proyectil(Ogre::SceneNode* n, btDiscreteDynamicsWorld * bw, int id, float posGlx, float posGly, float posGlz, Ogre::Quaternion orientacion, float alt, float anch, float larg);
+	Proyectil(std::string id, Juego * esc, Ogre::SceneNode* n, btDiscreteDynamicsWorld * bw, int bId, float posGlx, float posGly, float posGlz, Ogre::Quaternion orientacion, float alt, float anch, float larg);
 	~Proyectil();
 
 private:
-	const int DISTACIA_MAX = 100;
+	Juego * escena;
 	Ogre::SceneNode * node;
 	btDiscreteDynamicsWorld * bulletWorld;
 	Render_c * render;
 	RigidBody_c * rb;
 	MovimientoProyectil_c * movimiento;
-
-	int id;
+	int bulletId;
 	float largo;
 	float ancho;
 	float alto;

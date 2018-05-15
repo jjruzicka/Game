@@ -1,108 +1,156 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\..\Src\Application\RigidBody_c.cpp">
-      <Filter>Code</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Src\Application\Collider_c.cpp">
-      <Filter>Code</Filter>
+      <Filter>code</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\Application\Component.cpp">
-      <Filter>Code</Filter>
+      <Filter>code</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\Application\Entidad.cpp">
-      <Filter>Code</Filter>
+      <Filter>code</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\Application\Escenas.cpp">
-      <Filter>Code</Filter>
+      <Filter>code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\EscenasManager.cpp">
+      <Filter>code</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\Application\GameManager_c.cpp">
-      <Filter>Code</Filter>
+      <Filter>code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\GUI.cpp">
+      <Filter>code</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\Application\InputComponent.cpp">
-      <Filter>Code</Filter>
+      <Filter>code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Src\Application\Inventario_c.cpp">
-      <Filter>Code</Filter>
+    <ClCompile Include="..\..\Src\Application\StatsPJ_c.cpp">
+      <Filter>code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Src\Application\Mapa.cpp">
-      <Filter>Code</Filter>
+    <ClCompile Include="..\..\Src\Application\StatsEntJuego_c.cpp">
+      <Filter>code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Src\Application\Mision_c.cpp">
-      <Filter>Code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Application\Objeto.cpp">
-      <Filter>Code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Application\PlayerController_c.cpp">
-      <Filter>Code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Application\ProyectoBasico.cpp">
-      <Filter>Code</Filter>
+    <ClCompile Include="..\..\Src\Application\RigidBody_c.cpp">
+      <Filter>code</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\Application\Render_c.cpp">
-      <Filter>Code</Filter>
+      <Filter>code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\ProyectoBasico.cpp">
+      <Filter>code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\PlayerController_c.cpp">
+      <Filter>code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\Objeto.cpp">
+      <Filter>code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\MyPurplePanelColors.cpp">
+      <Filter>code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\MyEnvironmentDemoPanelColors.cpp">
+      <Filter>code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\Mision_c.cpp">
+      <Filter>code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\Menu.cpp">
+      <Filter>code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\Mapa.cpp">
+      <Filter>code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\Juego.cpp">
+      <Filter>code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\Inventario_c.cpp">
+      <Filter>code</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\Application\Proyectil.cpp">
       <Filter>Code</Filter>
     </ClCompile>
-    <ClCompile Include="MovimientoProyectil_c.cpp">
-      <Filter>Code</Filter>
+    <ClCompile Include="..\..\Src\Application\MovimientoProyectil_c.cpp">
+      <Filter>code</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Application\Collider_c.h">
-      <Filter>Headers</Filter>
+      <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\Component.h">
-      <Filter>Headers</Filter>
+      <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\Entidad.h">
-      <Filter>Headers</Filter>
+      <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\Escenas.h">
-      <Filter>Headers</Filter>
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\EscenasManager.h">
+      <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\GameManager_c.h">
-      <Filter>Headers</Filter>
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\GUI.h">
+      <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\InputComponent.h">
-      <Filter>Headers</Filter>
+      <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\Inventario_c.h">
-      <Filter>Headers</Filter>
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\Juego.h">
+      <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\Mapa.h">
-      <Filter>Headers</Filter>
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\Menu.h">
+      <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\Mision_c.h">
-      <Filter>Headers</Filter>
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\MyEnvironmentDemoPanelColors.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\MyPurplePanelColors.h">
+      <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\Objeto.h">
-      <Filter>Headers</Filter>
+      <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\PlayerController_c.h">
-      <Filter>Headers</Filter>
+      <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\Render_c.h">
-      <Filter>Headers</Filter>
+      <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\RigidBody_c.h">
-      <Filter>Headers</Filter>
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\StatsEntJuego_c.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\StatsPJ_c.h">
+      <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\Proyectil.h">
-      <Filter>Headers</Filter>
+      <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="MovimientoProyectil_c.h">
-      <Filter>Headers</Filter>
+    <ClInclude Include="..\..\Src\Application\MovimientoProyectil_c.h">
+      <Filter>header</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Code">
-      <UniqueIdentifier>{830fa04e-e3da-4551-b73c-16a2a40efaba}</UniqueIdentifier>
+    <Filter Include="code">
+      <UniqueIdentifier>{77adfdfe-cc55-4add-a748-60e18a32fc0b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Headers">
-      <UniqueIdentifier>{c9d87b53-ff07-42e0-b2af-6e8cfd5e75ac}</UniqueIdentifier>
+    <Filter Include="header">
+      <UniqueIdentifier>{f2fb6480-a7a3-470f-af88-791cf81575ab}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

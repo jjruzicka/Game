@@ -19,12 +19,31 @@ struct PosF{
 class Entidad
 {
 public:
-	Entidad();
+	Entidad(std::string id);
 	~Entidad();
 	void Update();
 	void AddComponent(Component * component);
+	int numComponent(){
+		return componentes.size();
+	}
 
-	//OH OH ITS MAGIC, U KNOOOOW
+	void DestroyComponent(Component* c){
+		int i = 0;
+		std::cout << componentes.size() << "-> ";
+		while (i < componentes.size()){
+			if (typeid(*componentes[i]) == typeid(*c)){
+				Component* aux = componentes[i];
+				componentes[i] = componentes[componentes.size() - 1];
+				componentes[componentes.size() - 1] = aux;
+				componentes.pop_back();
+				delete aux;
+			}
+			i++;
+		}
+		std::cout << componentes.size() << "\n";
+	}
+
+
 	template <class T>
 	T*  GetComponent(T* a){
 		int i = 0;
@@ -110,6 +129,14 @@ public:
 	void setOrientationZ(float z){
 		orientacion.z = z;
 	}
+
+    std::string getID(){
+        return i;
+    }
+    void setID(std::string id){
+        i = id;
+    }
+
 protected:
 	std::vector<Component*> componentes;
 
@@ -117,5 +144,6 @@ protected:
 	Pos rotation;
 	PosF orientacion;
 	int angRot;
+    std::string i = " ";
 };
 #endif

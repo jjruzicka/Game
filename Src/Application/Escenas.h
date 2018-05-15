@@ -16,39 +16,48 @@
 #include <OgreTextureManager.h>
 #include <OgreWindowEventUtilities.h>
 #include <OgreException.h>
-#include "Mapa.h"
 #include "InputComponent.h"
+#include "Mapa.h"
+
 class Escenas
 {
 public:
 	Escenas();
-	~Escenas();
-	bool run();
-	bool initBullet();
-
-	btDiscreteDynamicsWorld * getBulletWorld(){
+	virtual ~Escenas();
+	virtual bool run() = 0;
+	
+	btDiscreteDynamicsWorld* getBulletWorld(){
 		return bulletWorld;
-	}
+	};
+
+	void addEntidad(Entidad * ent){
+		entidades.push_back(ent);
+	};
+
 	Ogre::SceneManager * getSceneManger(){
 		return scnMgr;
 	}
-	void addEntidad(Entidad* ent){
-		entidades.push_back(ent);
-	}
-private:
 
-	bool initOgre();
+protected:
+
+
+	virtual bool initBullet();
+	virtual bool initOgre();
 	std::vector<Entidad*> entidades;
+	Ogre::Viewport* vp = nullptr;
 
-	//Variables usadas para la iniciacion de bullet
+
+	///// FISICA
 	btDiscreteDynamicsWorld* bulletWorld;
 	btDefaultCollisionConfiguration* collisionConfiguration;
 	btCollisionDispatcher* dispatcher;
 	btSequentialImpulseConstraintSolver* solver;
-	btBroadphaseInterface* broadPhase;
-
-	//Varibales usadas por Ogre
+	btBroadphaseInterface* broadPhase;	
+	InputComponent* inputcomp_;
+	////////////////////////////////////
 	Mapa* mapa;
+
+	///// OGRE
 	std::string recursos, plugins;
 	Ogre::Root *root;
 	Ogre::ConfigFile cf;
@@ -56,11 +65,7 @@ private:
 	Ogre::SceneManager * scnMgr;
 	Ogre::Light* light;
 	Ogre::SceneNode* lightNode = nullptr;
-
 	Ogre::Camera* cam = nullptr;
 	Ogre::SceneNode* camNode = nullptr;
-
-	//Componente de imput
-	InputComponent* inputcomp_;
-
+	///////////////////////
 };

@@ -1,10 +1,7 @@
 #include "Escenas.h"
-#include "Render_c.h"
-#include "PlayerController_c.h"
-#include "RigidBody_c.h"
-#include "Objeto.h"
-#include "Collider_c.h"
-
+#include <iostream>
+#include <sstream>
+#include <vector>
 using namespace Ogre;
 enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
@@ -12,116 +9,16 @@ enum QueryFlags {
 };
 Escenas::Escenas()
 {
-#ifdef _DEBUG
-	plugins = "OgreD/plugins_d.cfg";
-	recursos = "OgreD/resources_d.cfg";
-#else
-	plugins = "OgreD/plugins.cfg";
-	recursos = "OgreD/resources.cfg";
-#endif
-	initOgre();
-	initBullet();
-	
-
-	
-	inputcomp_ = InputComponent::getSingletonPtr();
-	inputcomp_->initialise(mWindow);
-	//////////////////////////////////////////////////////rb del pj PRINCIPAL////////////////////////////////////////////////////
-	Entidad* ent1 = new Entidad();
-	//1683, 50, 2116
-	ent1->setPox(1700);// posicion 
-	ent1->setPoy(10);
-	ent1->setPoz(1800);
-	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("personaje"), ent1, "Sinbad","Sinbad2");
-	PlayerController_c * ois = new PlayerController_c(ent1, this, inputcomp_);
-	ent1->AddComponent(render);
-	ent1->AddComponent(ois);
-
-	// RigidBody del personaje principal (KINEMATICO)
-	RigidBody_c* player_rb = new RigidBody_c(ent1, physicType::estatico, bulletWorld, 5, 5 ,5, 1);
-	ent1->AddComponent(player_rb);
-	entidades.push_back(ent1);
-
-	// NO LO BORRO PORSIACA
-	/*btTransform pTransform;
-	pTransform.setIdentity();
-	pTransform.setOrigin(btVector3(1700, 50, 2000));
-	btScalar mass = 0; //  No estoy seguro de esto
-	btVector3 localInertia(0, 0, 0); // La inercia inicial siempre es 0
-	btDefaultMotionState* motionState = new btDefaultMotionState(pTransform);
-	btCollisionShape* shape = new btBoxShape(btVector3(10,5,10)); // alto, profundo, ancho
-	shape->calculateLocalInertia(mass, localInertia); // inicializamos el cuerpo
-	btRigidBody::btRigidBodyConstructionInfo RigidBodyInfo(mass, motionState, shape, localInertia);
-	btRigidBody* body = new btRigidBody(RigidBodyInfo);
-	bulletWorld->addRigidBody(body);*/
-
-	/*btDefaultMotionState* fallMotionState = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1), btVector3(ent1->getPox(), ent1->getPoy(), ent1->getPoz())));
-	btScalar mass = 0;
-	btVector3 fallInertia(0, 9.8f, 0);
-	fallShape->calculateLocalInertia(mass, fallInertia);
-	btRigidBody::btRigidBodyConstructionInfo fallRigidBodyCI(mass, fallMotionState, fallShape, fallInertia);
-	RigidBody_c* rb = new RigidBody_c(ent1, fallRigidBodyCI);
-	ent1->AddComponent(rb);*/
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	//////////////////////////////////////////////////////rb del PJ2////////////////////////////////////////////////////
-	/*Entidad* ent2 = new Entidad();
-	ent2->setPox(1700);// posicion 
-	ent2->setPoy(10);
-	ent2->setPoz(1850);
-	Render_c* render2 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("personaje2"), ent2, "Sinbad","Sinbad");
-	ent2->AddComponent(render2);
-	
-	RigidBody_c* static_rb = new RigidBody_c(ent2, physicType::kinematico, bulletWorld, 5, 5, 5, 1);
-	ent2->AddComponent(static_rb);
-	entidades.push_back(ent2);*/
-	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
-	lightdir.normalise();
-
-	Ogre::Light* light = scnMgr->createLight("tstLight");
-	light->setType(Ogre::Light::LT_DIRECTIONAL);
-	light->setDirection(lightdir);
-	light->setDiffuseColour(Ogre::ColourValue::White);
-	light->setSpecularColour(Ogre::ColourValue(0.4, 0.4, 0.4));
-
-	scnMgr->setAmbientLight(Ogre::ColourValue(0.2, 0.2, 0.2));
-
-	// also need to tell where we are
-	camNode = scnMgr->getSceneNode("personaje")->createChildSceneNode();
-	camNode->setPosition(Ogre::Vector3(0, 5, -35));
-	camNode->rotate(Ogre::Quaternion(Ogre::Degree(180), Ogre::Vector3::UNIT_Y));
-	camNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
-
-	// create the camera
-	cam = scnMgr->createCamera("Cam");
-	cam->setNearClipDistance(0.1); //esto antes era 1
-	cam->setFarClipDistance(10000);
-	cam->setAutoAspectRatio(true);
-	camNode->attachObject(cam);
-	cam->setQueryFlags(MY_QUERY_IGNORE);
-
-
-
-
-	// and tell it to render into the main window
-	Viewport* vp;
-	vp = mWindow->addViewport(cam);
-	vp->setBackgroundColour(Ogre::ColourValue(150, 150, 150));
-
-	//Terrain
-	mapa = new Mapa(scnMgr, light, bulletWorld);
-	mapa->createmap();
-	mapa->setPhysics();
 }
+
+
 bool Escenas::initOgre(){
 
 	//------------------------------------------------------------------------------------------------------
 	//Setting UP Resources 
 
 	//Parsing the config file into the system.
+	
 	root = new Ogre::Root(plugins);
 	try{
 		cf.load(recursos);
@@ -170,7 +67,10 @@ bool Escenas::initOgre(){
 
 	//------------------------------------------------------------------------------------------------------
 	//Render Window Creation
+	
 	mWindow = root->initialise(true, "P3");
+
+	//mWindow->setFullscreen(true, mWindow->getWidth(), mWindow->getHeight());
 
 	//------------------------------------------------------------------------------------------------------
 	//Resources Init
@@ -188,9 +88,9 @@ bool Escenas::initOgre(){
 	//we generate the default sceneManager. (more SceneManagers in Ogre::ST_....)
 	scnMgr = root->createSceneManager(Ogre::ST_GENERIC);
 
-
 	return true;
 }
+
 bool Escenas::initBullet(){
 	//build the broadPhase
 	broadPhase = new btDbvtBroadphase();
@@ -208,44 +108,9 @@ bool Escenas::initBullet(){
 	return true;
 }
 
-bool Escenas::run(){
-	
-
-	clock_t lastTicks = clock();
-	clock_t elapsedTicks = 0;
-	double deltaTime = 0;
-	bulletWorld->stepSimulation((float)deltaTime);
-	while (true)
-	{
-		deltaTime = ((double)elapsedTicks) / 1000.f/*CLOCKS_PER_SEC*/;
-		lastTicks = clock();
-
-		inputcomp_->capture(); 
-		//Tick de la fisica
-		bulletWorld->stepSimulation((float)deltaTime);
-		for (int i = 0; i<entidades.size(); i++)
-			entidades[i]->Update();
-		
-		// render ogre
-		Ogre::WindowEventUtilities::messagePump();
-		
-		//comprobar si la ventana está abierta
-		if (mWindow->isClosed())return false;
-		if (!root->renderOneFrame())return false;
-		elapsedTicks = clock() - lastTicks;
-	}
-	return true;
-}
-
 Escenas::~Escenas()
 {
 	for (int i = 0; i < entidades.size(); i++)
 		delete entidades[i];
-
-	delete bulletWorld;
-	delete collisionConfiguration;
-	delete dispatcher;
-	delete solver;
-	delete broadPhase;
 }
 

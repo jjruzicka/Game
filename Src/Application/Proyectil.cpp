@@ -1,13 +1,16 @@
 #include "Proyectil.h"
 
 
-Proyectil::Proyectil(Ogre::SceneNode* n, btDiscreteDynamicsWorld * bw, int _id, float posGlx, float posGly, float posGlz, Ogre::Quaternion orientacion, float larg, float anch, float alt) : Entidad()
+Proyectil::Proyectil(std::string id, Juego* esc, Ogre::SceneNode* n, btDiscreteDynamicsWorld * bw, int bId, float posGlx, float posGly, float posGlz, Ogre::Quaternion orientacion, float larg, float anch, float alt) : Entidad(id)
 {	
+	// escena del juego
+	escena = esc;
+
 	// nodo de ogre
 	node = n;
 
 	// id unico de la bala
-	id = _id;
+	bulletId = bId;
 
 	// bullet world
 	bulletWorld = bw;
@@ -31,11 +34,11 @@ Proyectil::Proyectil(Ogre::SceneNode* n, btDiscreteDynamicsWorld * bw, int _id, 
 
 	// añadimos componente del moviento
 	//Ogre::Vector3 pLocal(posicionLocal.x, posicionLocal.y, posicionLocal.z);
-	movimiento = new MovimientoProyectil_c(this);
+	movimiento = new MovimientoProyectil_c(this, escena);
 	this->AddComponent(movimiento);
 
 	// añadimos componente render
-	render = new Render_c(node, this, "Sinbad", "Proyectil" + std::to_string(id));
+	render = new Render_c(node, this, "Sinbad", "Proyectil" + std::to_string(bulletId));
 	this->AddComponent(render);
 
 
@@ -44,6 +47,9 @@ Proyectil::Proyectil(Ogre::SceneNode* n, btDiscreteDynamicsWorld * bw, int _id, 
 
 Proyectil::~Proyectil()
 {
+	delete rb;
+	delete movimiento;
+	delete render;
 }
 
 

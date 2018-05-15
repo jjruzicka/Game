@@ -2,11 +2,12 @@
 #define MISION_C
 #include <string>
 #include "Component.h"
-
+#include "Entidad.h"
 class Mision_c : public Component
 {
 public:
-	Mision_c(int total, std::string target);
+	Mision_c(int total, std::string target,int exp, Entidad* ent);
+	Mision_c(){};
 	void Update(){};
 	~Mision_c();
 
@@ -36,8 +37,15 @@ public:
 		return cont >= total;
 	}
 
+	Entidad* getEntidad(){
+		return ent;
+	}
+	int getExp(){
+		return exp;
+	}
 private:
-
+	Entidad* ent;
+	int exp;
 	int cont;//contador de los objetivos
 	int total;//objetivos totales
 	std::string target;//objetivo al que buscar, matar, etc

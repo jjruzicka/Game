@@ -31,9 +31,11 @@ RigidBody_c::RigidBody_c(Entidad* _ent, physicType _tipo, btDiscreteDynamicsWorl
 
 RigidBody_c::~RigidBody_c()
 {
+	bulletWorld->removeRigidBody(rb);
 	delete rb;
-	delete motionState;
 	delete shape;
+	delete motionState;
+	
 }
 
 void RigidBody_c::Update(){

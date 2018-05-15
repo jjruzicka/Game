@@ -6,7 +6,6 @@
 #include <OISKeyboard.h>
 #include <OISJoyStick.h>
 #include <OISInputManager.h>
-
 #include <OgreRenderWindow.h>
 
 class InputComponent :
@@ -32,8 +31,6 @@ public:
 	void removeAllListeners(void);
 	void removeAllKeyListeners(void);
 	void removeAllMouseListeners(void);
-
-
 	void setWindowExtents(int width, int height);
 	Entidad* entidad;
 	OIS::Mouse*    getMouse(void);
@@ -42,7 +39,7 @@ public:
 
 
 	static InputComponent* getSingletonPtr(void);
-	 ~InputComponent();
+	virtual ~InputComponent();
 private:
 	InputComponent(const InputComponent&) { }
 	InputComponent & operator = (const InputComponent& i);
@@ -58,7 +55,7 @@ private:
 	OIS::Mouse        *mMouse;
 	OIS::Keyboard     *mKeyboard;
 	OIS::InputManager *mInputSystem;
-
+	Ogre::RenderWindow *renderWindow;
 	std::vector<OIS::JoyStick*> mJoysticks;
 	std::vector<OIS::JoyStick*>::iterator itJoystick;
 	std::vector<OIS::JoyStick*>::iterator itJoystickEnd;
