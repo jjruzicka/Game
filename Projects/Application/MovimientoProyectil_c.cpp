@@ -7,17 +7,26 @@ MovimientoProyectil_c::MovimientoProyectil_c(Entidad* ent)
 	rc = new Render_c();
 	rb = new RigidBody_c();
 	first = true;
+	duration = 0;
 }
 
 
 MovimientoProyectil_c::~MovimientoProyectil_c()
 {
+	delete rc;
+	delete rb;
 }
 
 void MovimientoProyectil_c::Update(){
-	if (first)
+	if (first){
 		node = entidad->GetComponent(rc)->getNode();
+		start = std::clock(); // get current time
+	}
 	
+	duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+	if (duration > 3) // number of seconds it take to destroy the proyectile
+		delete entidad;
+
 	cglobal = Ogre::Vector3(entidad->getPox(), entidad->getPoy(), entidad->getPoz());
 	clocal = node->convertWorldToLocalPosition(cglobal);
 	if (first){

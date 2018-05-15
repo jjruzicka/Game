@@ -4,12 +4,15 @@
 #include "Entidad.h"
 #include "Render_c.h"
 #include "RigidBody_c.h"
+#include <cstdio>
+#include <ctime>
 
 class MovimientoProyectil_c :
 	public Component
 {
 public:
 	MovimientoProyectil_c(Entidad* ent);
+	MovimientoProyectil_c(){};
 	~MovimientoProyectil_c();
 	void Update();
 
@@ -26,5 +29,8 @@ private:
 
 	Ogre::Vector3 cglobal;
 	Ogre::Vector3 clocal;
+
+	std::clock_t start;
+	double duration;
 };
 
