@@ -51,7 +51,7 @@ void CameraMove_c::Update(){
 
 	cam_node->setPosition(entidadCamara->getPox(), entidadCamara->getPoy(), entidadCamara->getPoz());
 
-	//cam_node->lookAt(Ogre::Vector3(entidadJugador->getPox(), entidadJugador->getPoy(), entidadJugador->getPoz()), Ogre::Node::TS_WORLD);
+	cam_node->lookAt(Ogre::Vector3(entidadJugador->getPox(), entidadJugador->getPoy()+ 5, entidadJugador->getPoz()), Ogre::Node::TS_WORLD);
 
 }
 
