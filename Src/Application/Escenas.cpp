@@ -112,7 +112,5 @@ Escenas::~Escenas()
 {
 	for (int i = 0; i < entidades.size(); i++)
 		delete entidades[i];
-	inputcomp_->removeKeyListener(inputcomp_);
-	inputcomp_->removeMouseListener(inputcomp_);
 }
 

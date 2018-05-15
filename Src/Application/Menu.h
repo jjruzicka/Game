@@ -1,6 +1,7 @@
 #pragma once
 #include "Escenas.h"
 #include "EscenasManager.h"
+#include "GUI.h"
 class Menu : public Escenas
 {
 public:
@@ -11,5 +12,6 @@ public:
 	bool exit;
 private:
 	EscenasManager* scnM;
+	GUI* gui;
 //variables vienen de escenas.h
 };

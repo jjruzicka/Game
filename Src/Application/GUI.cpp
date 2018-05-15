@@ -1,7 +1,7 @@
 #include "GUI.h"
 #include <iostream>
-
-GUI::GUI(InputComponent* input_, Ogre::Viewport* vp, Ogre::SceneManager * scnMgr, Ogre::Camera * cam, Ogre::SceneNode* camNode, Menu* menuc)
+#include "Menu.h"
+GUI::GUI(InputComponent* input_, Ogre::Viewport* vp, Ogre::SceneManager * scnMgr, Ogre::Camera * cam, Ogre::SceneNode* camNode, Escenas* menuc)
 {
 	menu = menuc;
 	scn = scnMgr;
@@ -10,13 +10,13 @@ GUI::GUI(InputComponent* input_, Ogre::Viewport* vp, Ogre::SceneManager * scnMgr
 	icomp_ = input_;
 	icomp_->addKeyListener(this, "teclado2");
 	icomp_->addMouseListener(this, "raton2");
-	mGui3D = new Gui3D::Gui3D(&mMyPurplePanelColors);
+	mMyPurplePanelColors = new MyPurplePanelColors();
+	mGui3D = new Gui3D::Gui3D(mMyPurplePanelColors);
 	mGui3D->createScreen(vp, "purple", "mainScreen");
 
 	// Create a layer for the mousePointer
 	mNormalizedMousePosition = Ogre::Vector2(0.5, 0.5);
-	mMousePointerLayer = mGui3D->getScreen("mainScreen")->createLayer(2);
-	//el puto png del puntero.
+	mMousePointerLayer = mGui3D->getScreen("mainScreen")->createLayer();
 	mMousePointer = mMousePointerLayer->createRectangle(vp->getActualWidth() / 2,
 	vp->getActualHeight() / 2, 12, 18);
 	mMousePointer->background_image("mousepointer");
@@ -34,42 +34,7 @@ GUI::GUI(InputComponent* input_, Ogre::Viewport* vp, Ogre::SceneManager * scnMgr
 
 }
 void GUI::createPanel(){
-	// 3D Panel (using Gorilla::ScreenRenderable)
-	/*mPanel = new Gui3D::Panel(
-		mGui3D, scn, Ogre::Vector2(400, 200), 10, "purple", "test_panel");
-
-	mPanel->makeCaption(5, -30, 390, 30, "Simple 2D Demo Panel");
-
-	mPanel->makeButton(100, 10, 200, 30, "click me!")->setPressedCallback(this, &GUI::buttonPressed);
-	captionButton = mPanel->makeCaption(10, 60, 380, 30, "The button hasn't been clicked yet");
-	captionGlobalTime = mPanel->makeCaption(10, 110, 380, 30, "global time: 0s");
-	mPanel->makeCaption(10, 150, 130, 30, "text entered : ");
-	captionDisplayTextZone = mPanel->makeCaption(140, 150, 190, 30, "");
-
-	mPanel->mNode->setPosition(0, 2.1, -8);*/
-
-	// 2D Panel (using Gorilla::Screen)
-	Gorilla::Screen* myScreen = mGui3D->getScreen("mainScreen");
-
-	/*mSPanel = new Gui3D::ScreenPanel(mGui3D,
-		myScreen,
-		Ogre::Vector2(450, 350),
-		Ogre::Vector2(300, 200),
-		"purple",
-		"test_screenPanel");
-
-	captionLocalTime = mSPanel->makeCaption(0, 0, 300, 40, "local time: 0s");
-
-	mSPanel->makeButton(25, 40, 250, 50, "Reset")
-		->setPressedCallback(this, &GUI::resetLocalFrameCount);
-
-	mSPanel->makeCaption(0, 110, 300, 40, "Enter some text : ");
-
-	Gui3D::TextZone* t = mSPanel->makeTextZone(10, 150, 280, 30, "");
-	t->setValueChangedCallback(this, &GUI::textChanged);
-	t->setMaxStringLength(15);*/
-
-
+	myScreen = mGui3D->getScreen("mainScreen");
 
 	// 2nd test panel
 	mSPanel2 = new Gui3D::ScreenPanel(
@@ -104,7 +69,7 @@ bool GUI::textChanged(Gui3D::PanelElement* e)
 
 bool GUI::play_(Gui3D::PanelElement* e)
 {
-	menu->MenuToPlay();
+	static_cast<Menu*>(menu)->MenuToPlay();
 
 	return true;
 }
@@ -112,7 +77,7 @@ bool GUI::play_(Gui3D::PanelElement* e)
 bool GUI::exit_(Gui3D::PanelElement* e)
 {
 	
-	menu->exit = true;
+	static_cast<Menu*>(menu)->exit = true;
 	return true;
 }
 
@@ -174,12 +139,6 @@ bool GUI::mouseMoved(const OIS::MouseEvent &arg)
 		mNormalizedMousePosition.x * view->getActualWidth(),
 		mNormalizedMousePosition.y * view->getActualHeight());
 
-	//mPanel->injectMouseMoved(camera->getCameraToViewportRay(
-		//mNormalizedMousePosition.x, mNormalizedMousePosition.y));
-
-	/*mSPanel->injectMouseMoved(mNormalizedMousePosition.x * view->getActualWidth(),
-		mNormalizedMousePosition.y * view->getActualHeight());*/
-
 	mSPanel2->injectMouseMoved(mNormalizedMousePosition.x * view->getActualWidth(),
 		mNormalizedMousePosition.y * view->getActualHeight());
 
@@ -188,4 +147,17 @@ bool GUI::mouseMoved(const OIS::MouseEvent &arg)
 
 GUI::~GUI()
 {
+	delete mSPanel2;
+	mMousePointer = nullptr;
+	mMousePointerLayer->destroyAllRectangles();
+	mGui3D->getScreen("mainScreen")->destroy(mMousePointerLayer);
+	mGui3D->destroyScreen(myScreen);
+	delete mGui3D;
+	delete mMyPurplePanelColors;
+	menu = nullptr;
+	scn = nullptr;
+	camera = nullptr;
+	cNode = nullptr;
+	icomp_ = nullptr;
+	view = nullptr;
 }

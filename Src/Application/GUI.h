@@ -7,17 +7,17 @@
 #include "Gui3DScreenPanel.h"
 #include "MyPurplePanelColors.h"
 #include "MyEnvironmentDemoPanelColors.h"
-#include "Menu.h"
+#include "Escenas.h"
 
 class GUI: public InputComponent
 {
 public:
-	GUI(InputComponent* input_, Ogre::Viewport* vp, Ogre::SceneManager * scnMgr, Ogre::Camera * cam, Ogre::SceneNode* camNode, Menu* menuc);
+	GUI(InputComponent* input_, Ogre::Viewport* vp, Ogre::SceneManager * scnMgr, Ogre::Camera * cam, Ogre::SceneNode* camNode, Escenas* menuc);
 	void createPanel();
 	~GUI();
 private:
 
-	Menu* menu;
+	Escenas* menu;
 
 	InputComponent* icomp_;
 	Ogre::SceneManager * scn;
@@ -60,7 +60,7 @@ private:
 	Gorilla::Layer* mMousePointerLayer;
 	Gorilla::Rectangle* mMousePointer;
 	Ogre::Vector2 mNormalizedMousePosition;
-
+	Gorilla::Screen* myScreen;
 	int mClicksOnButton;
 
 	Gui3D::Clock globalClock;
@@ -73,7 +73,7 @@ private:
 	Ogre::Camera * camera;
 	Ogre::SceneNode* cNode;
 
-	MyPurplePanelColors mMyPurplePanelColors;
+	MyPurplePanelColors* mMyPurplePanelColors;
 	
 };
 

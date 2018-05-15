@@ -24,7 +24,7 @@ Juego::Juego(EscenasManager* escenasManager)
 	initOgre();
 	initBullet();
 
-
+	
 	this->escenasManager = escenasManager;
 	inputcomp_ = InputComponent::getSingletonPtr();
 	inputcomp_->initialise(mWindow);
@@ -186,9 +186,6 @@ bool Juego::run(){
 	clock_t elapsedTicks = 0;
 	double deltaTime = 0;
 	bulletWorld->stepSimulation((float)deltaTime);
-	//////////////////////////////////////
-	RigidBody_c* RB = new RigidBody_c();
-	/////////////////////////////////////
 	while (true)
 	{
 		deltaTime = ((double)elapsedTicks) / 1000.f/*CLOCKS_PER_SEC*/;
@@ -248,11 +245,15 @@ void Juego::muerteJugador(){
 
 Juego::~Juego()
 {
+	//A ELLA LE GUSTA BORRAR LAS COSAS
+	//DALE MAS BORRADO DE COSAS
+	delete mapa;
 	delete bulletWorld;
 	delete collisionConfiguration;
 	delete dispatcher;
 	delete solver;
 	delete broadPhase;
+
 	scnMgr->getRootSceneNode()->removeAllChildren();
 	root->destroySceneManager(scnMgr);
 	root->destroyRenderTarget("P3");

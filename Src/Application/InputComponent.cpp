@@ -42,7 +42,8 @@ void InputComponent::initialise(Ogre::RenderWindow *renderWindow) {
 		std::ostringstream windowHndStr;
 
 		// Get window handle
-		renderWindow->getCustomAttribute("WINDOW", &windowHnd);
+		this->renderWindow = renderWindow;
+		this->renderWindow->getCustomAttribute("WINDOW", &windowHnd);
 
 		// Fill parameter list
 		windowHndStr << (unsigned int)windowHnd;
@@ -68,7 +69,7 @@ void InputComponent::initialise(Ogre::RenderWindow *renderWindow) {
 			// Get window size
 			unsigned int width, height, depth;
 			int left, top;
-			renderWindow->getMetrics(width, height, depth, left, top);
+			this->renderWindow->getMetrics(width, height, depth, left, top);
 
 			// Set mouse region
 			this->setWindowExtents(width, height);
@@ -254,6 +255,10 @@ InputComponent* InputComponent::getSingletonPtr(void) {
 	if (!mInputComponent) {
 		mInputComponent = new InputComponent();
 	}
-
+	else{
+		mInputComponent->removeAllListeners();
+		delete mInputComponent;
+		mInputComponent = new InputComponent();
+	}
 	return mInputComponent;
 }

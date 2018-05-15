@@ -4,7 +4,6 @@
 #include "RigidBody_c.h"
 #include "Objeto.h"
 #include "Collider_c.h"
-#include "GUI.h"
 #include <iostream>
 using namespace Ogre;
 enum QueryFlags {
@@ -20,8 +19,8 @@ Menu::Menu(EscenasManager* scnM)
 	plugins = "Ogre/plugins.cfg";
 	recursos = "Ogre/resources.cfg";
 #endif
-	Escenas::initOgre();
-	Escenas::initBullet();
+	initOgre();
+	initBullet();
 
 	this->scnM = scnM;
 
@@ -78,7 +77,7 @@ Menu::Menu(EscenasManager* scnM)
 	vp = mWindow->addViewport(cam);
 	vp->setBackgroundColour(Ogre::ColourValue::Black);
 	//vp->setBackgroundColour(Ogre::ColourValue(1, 1, 1));
-	GUI* gui = new GUI(inputcomp_, vp, scnMgr, cam, camNode, this);
+	gui = new GUI(inputcomp_, vp, scnMgr, cam, camNode, this);
 	gui->createPanel();
 	//Terrain
 	/*mapa = new Mapa(scnMgr, light, bulletWorld);
@@ -135,15 +134,23 @@ bool Menu::run(){
 		if (!root->renderOneFrame())return false;
 		elapsedTicks = clock() - lastTicks;
 	}
-	mWindow->destroy();
 	return true;
 }
 
 Menu::~Menu()
 {
+	delete bulletWorld;
+	delete collisionConfiguration;
+	delete dispatcher;
+	delete solver;
+	delete broadPhase;
+	gui->removeAllListeners();
+	delete gui;
 	scnMgr->getRootSceneNode()->removeAllChildren();
 	root->destroySceneManager(scnMgr);
 	root->destroyRenderTarget("P3");
 	delete root;
+
+
 }
 
