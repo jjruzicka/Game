@@ -16,6 +16,8 @@ PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input, Ju
 	rc = new Render_c();
 	this->escena = escena;
 	this->estadisticas = estadisticas;
+	this->cdAtack = 50;
+	cont = cdAtack;
 }
 
 bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
@@ -111,9 +113,12 @@ bool PlayerController_c::keyReleased(const OIS::KeyEvent& keyP){
 				std::cout << "ILLO misiones \n";
 			}
 			else if (chocoCon == 2){
-				escena->atacar(entColision);
-				entColision = nullptr;
-				std::cout << "Matar \n";
+				if (cont >= cdAtack){
+					cont = 0;
+					escena->atacar(entColision);
+					entColision = nullptr;
+					std::cout << "Matar \n";
+				}
 			}
 			else if (chocoCon ==3){
 				escena->killAdd(entColision);
@@ -127,6 +132,7 @@ bool PlayerController_c::keyReleased(const OIS::KeyEvent& keyP){
 
 	case OIS::KC_PGUP:
 	case OIS::KC_Q:
+		estadisticas->restaVida(1);
 		auxX = 0;
 		istimetoStop = false;
 		break;
@@ -170,7 +176,6 @@ bool PlayerController_c::mouseReleased(const OIS::MouseEvent& me, OIS::MouseButt
 
 
 void PlayerController_c::Update(){
-
 	if (istimetoStop){
 		Ogre::Vector3 cglobal(entidad->getPox(), entidad->getPoy(), entidad->getPoz());
 		Ogre::Vector3 clocal = node->convertWorldToLocalPosition(cglobal);
@@ -183,6 +188,7 @@ void PlayerController_c::Update(){
 		cglobal = node->convertLocalToWorldPosition(clocal);
 		entidad->GetComponent(rb)->actualizarPos(cglobal.x, cglobal.y, cglobal.z);
 	}
+	cont++;
 }
 
 void PlayerController_c::chocasCon(int i, Entidad* ent){//0 para cuando no es nada, 1 npc

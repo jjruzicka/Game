@@ -30,8 +30,10 @@ private:
 	Juego* escena;
 	StatsPJ_c* estadisticas;
 	Ogre::SceneNode* node;
-
 	int chocoCon;
 	Entidad* entColision;
+
+	int cdAtack;
+	int cont;
 };
 

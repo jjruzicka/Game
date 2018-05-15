@@ -16,7 +16,7 @@ EscenasManager::EscenasManager()
 		juego = nullptr;
 	}
 	else if (juegoB){
-		juego = new Juego();
+		juego = new Juego(this);
 		menu = nullptr;
 	}
 }
@@ -33,14 +33,14 @@ void EscenasManager::MenuToGame(){
 	menuB = false;
 	juegoB = true;
 	delete menu;
-	juego = new Juego();
+	juego = new Juego(this);
 	run();
 }
 void EscenasManager::GameToMenu(){
 	menuB = true;
 	juegoB = false;
-	menu = new Menu(this);
 	delete juego;
+	menu = new Menu(this);
 	run();
 }
 EscenasManager::~EscenasManager()

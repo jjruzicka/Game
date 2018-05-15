@@ -6,12 +6,13 @@
 #include "Objeto.h"
 #include "Collider_c.h"
 #include "StatsPJ_c.h"
+#include "StatsEntJuego_c.h"
 using namespace Ogre;
 enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
 	MY_QUERY_INTERACT = 1 << 0
 };
-Juego::Juego()
+Juego::Juego(EscenasManager* escenasManager)
 {
 #ifdef _DEBUG
 	plugins = "OgreD/plugins_d.cfg";
@@ -24,7 +25,7 @@ Juego::Juego()
 	initBullet();
 
 
-
+	this->escenasManager = escenasManager;
 	inputcomp_ = InputComponent::getSingletonPtr();
 	inputcomp_->initialise(mWindow);
 	//////////////////////////////////////////////////////rb del pj PRINCIPAL////////////////////////////////////////////////////
@@ -34,7 +35,7 @@ Juego::Juego()
 	ent1->setPoy(10);
 	ent1->setPoz(1800);
 	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("p"), ent1, "Sinbad", "p");
-	StatsPJ_c* stas = new StatsPJ_c(5, 10, 2, 100);
+	StatsPJ_c* stas = new StatsPJ_c(5, 10, 2, 100,this);
 	PlayerController_c * ois = new PlayerController_c(ent1, inputcomp_, this, stas);
 	ent1->AddComponent(stas);
 	ent1->AddComponent(render);
@@ -61,9 +62,9 @@ Juego::Juego()
 	static_rb->getRigidBody()->setCollisionFlags(static_rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
 	static_rb->getRigidBody()->setUserPointer(ent2);
 	ent2->AddComponent(static_rb);
-	Mision_c* mision = new Mision_c(1, "Pan", 500, ent2);
+	Mision_c* mision = new Mision_c(1, "Pan", 100, ent2);
 	ent2->AddComponent(mision);
-	Mision_c* mision2 = new Mision_c(1, "ogroEnemy", 500, ent2);
+	Mision_c* mision2 = new Mision_c(1, "ogroEnemy", 150, ent2);
 	ent2->AddComponent(mision2);
 	entidades.push_back(ent2);
 
@@ -241,15 +242,20 @@ void Juego::killAdd(Entidad* obj){
 		scnMgr->destroyEntity(obj->getID());
 	}
 }
+void Juego::muerteJugador(){
+	escenasManager->GameToMenu();
+}
+
 Juego::~Juego()
 {
-	for (int i = 0; i < entidades.size(); i++)
-		delete entidades[i];
-
 	delete bulletWorld;
 	delete collisionConfiguration;
 	delete dispatcher;
 	delete solver;
 	delete broadPhase;
+	scnMgr->getRootSceneNode()->removeAllChildren();
+	root->destroySceneManager(scnMgr);
+	root->destroyRenderTarget("P3");
+	delete root;
 }
 
