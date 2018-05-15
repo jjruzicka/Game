@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Src\Application\CameraMove_c.cpp" />
     <ClCompile Include="..\..\Src\Application\Collider_c.cpp" />
     <ClCompile Include="..\..\Src\Application\Component.cpp" />
     <ClCompile Include="..\..\Src\Application\Entidad.cpp" />
@@ -35,6 +36,7 @@
     <ClCompile Include="..\..\Src\Application\StatsPJ_c.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Src\Application\CameraMove_c.h" />
     <ClInclude Include="..\..\Src\Application\Collider_c.h" />
     <ClInclude Include="..\..\Src\Application\Component.h" />
     <ClInclude Include="..\..\Src\Application\Entidad.h" />

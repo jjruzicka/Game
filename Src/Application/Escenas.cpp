@@ -18,7 +18,7 @@ bool Escenas::initOgre(){
 	//Setting UP Resources 
 
 	//Parsing the config file into the system.
-	
+
 	root = new Ogre::Root(plugins);
 	try{
 		cf.load(recursos);
@@ -67,7 +67,7 @@ bool Escenas::initOgre(){
 
 	//------------------------------------------------------------------------------------------------------
 	//Render Window Creation
-	
+
 	mWindow = root->initialise(true, "P3");
 
 	//mWindow->setFullscreen(true, mWindow->getWidth(), mWindow->getHeight());
@@ -113,4 +113,3 @@ Escenas::~Escenas()
 	for (int i = 0; i < entidades.size(); i++)
 		delete entidades[i];
 }
-
