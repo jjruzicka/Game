@@ -38,7 +38,7 @@ Proyectil::Proyectil(std::string id, Juego* esc, Ogre::SceneNode* n, btDiscreteD
 	this->AddComponent(movimiento);
 
 	// añadimos componente render
-	render = new Render_c(node, this, "Sinbad", "Proyectil" + std::to_string(bulletId));
+	render = new Render_c(node, this, "Sinbad", id);
 	this->AddComponent(render);
 
 

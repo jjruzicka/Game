@@ -35,6 +35,9 @@ private:
 	Entidad* entColision;
 
 	int cdAtack;
-	int cont;
+	int contAtack;
+
+	int cdDisparo;
+	int contDisparo;
 };
 

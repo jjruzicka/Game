@@ -26,15 +26,15 @@ public:
 	virtual ~Escenas();
 	virtual bool run() = 0;
 	
-	btDiscreteDynamicsWorld* getBulletWorld(){
+	virtual btDiscreteDynamicsWorld* getBulletWorld(){
 		return bulletWorld;
 	};
 
-	void addEntidad(Entidad * ent){
+	virtual void addEntidad(Entidad * ent){
 		entidades.push_back(ent);
 	};
 
-	Ogre::SceneManager * getSceneManger(){
+	virtual Ogre::SceneManager * getSceneManger(){
 		return scnMgr;
 	}
 
