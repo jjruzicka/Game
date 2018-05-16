@@ -7,7 +7,7 @@
 PatrullarNPC::PatrullarNPC(int x, Entidad * ent, Juego* esc)
 {
 	this->mov = x;
-	this->contMov = 0;
+	this->contMov = x;
 	entidad = ent;
 	escena = esc;
 	mas = false;
@@ -19,24 +19,19 @@ PatrullarNPC::PatrullarNPC(int x, Entidad * ent, Juego* esc)
 }
 
 void PatrullarNPC::Update(){
+	entidad->setRoy(0);
 	if (chocoCon != 1){
 		Ogre::Vector3 cglobal(entidad->getPox(), entidad->getPoy(), entidad->getPoz());
 		Ogre::Vector3 clocal = node->convertWorldToLocalPosition(cglobal);
-		if (mas){
-			clocal.z += 1;
-			contMov++;
-		}
-		else if (!mas){
-			clocal.z -= 1;
-			contMov--;
-		}
+		clocal.z += 1;
+		contMov++;
 		cglobal = node->convertLocalToWorldPosition(clocal);
 		entidad->GetComponent(rb)->actualizarPos(cglobal.x, cglobal.y, cglobal.z);
-
-		if (mas && contMov >= mov)
-			mas = false;
-		else if (!mas && contMov <= -mov)
-			mas = true;
+		if (contMov >= mov*2){
+			contMov = 0;
+			entidad->setRoy(1);
+			entidad->setAngRot(180);
+		}
 	}
 }
 
