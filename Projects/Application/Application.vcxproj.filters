@@ -73,6 +73,7 @@
     <ClCompile Include="..\..\Src\Application\MovimientoProyectil_c.cpp">
       <Filter>code</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Src\Application\PatrullarNPC.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Application\Collider_c.h">
@@ -144,6 +145,7 @@
     <ClInclude Include="..\..\Src\Application\MovimientoProyectil_c.h">
       <Filter>header</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Src\Application\PatrullarNPC.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="code">

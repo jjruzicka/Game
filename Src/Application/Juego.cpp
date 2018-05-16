@@ -7,6 +7,7 @@
 #include "Collider_c.h"
 #include "StatsPJ_c.h"
 #include "StatsEntJuego_c.h"
+#include "PatrullarNPC.h"
 using namespace Ogre;
 enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
@@ -66,6 +67,8 @@ Juego::Juego(EscenasManager* escenasManager)
 	ent2->AddComponent(mision);
 	Mision_c* mision2 = new Mision_c(1, "ogroEnemy", 150, ent2);
 	ent2->AddComponent(mision2);
+	PatrullarNPC* patrulla = new PatrullarNPC(20, ent2, this);
+	ent2->AddComponent(patrulla);
 	entidades.push_back(ent2);
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -144,7 +147,9 @@ bool callbackfunction(btManifoldPoint& cp, const btCollisionObjectWrapper * colO
 	if (((Entidad*)colObj0->getCollisionObject()->getUserPointer()) != nullptr && ((Entidad*)colObj1->getCollisionObject()->getUserPointer()) != nullptr){
 		if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "p2"){
 			PlayerController_c* pC = new PlayerController_c();
+			PatrullarNPC* patroll = new PatrullarNPC();
 			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(pC)->chocasCon(1, (Entidad*)colObj1->getCollisionObject()->getUserPointer());
+			((Entidad*)colObj1->getCollisionObject()->getUserPointer())->GetComponent(patroll)->chocasCon(1, (Entidad*)colObj0->getCollisionObject()->getUserPointer());
 		}
 		else if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "ogroEnemy"){
 			PlayerController_c* pC = new PlayerController_c();
@@ -157,6 +162,10 @@ bool callbackfunction(btManifoldPoint& cp, const btCollisionObjectWrapper * colO
 		else if (((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p"){
 			PlayerController_c* pC = new PlayerController_c();
 			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(pC)->chocasCon(0, nullptr);
+		}
+		else if (((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p2"){
+			PatrullarNPC* patroll = new PatrullarNPC();
+			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(patroll)->chocasCon(0, nullptr);
 		}
 	}
 	return false;
