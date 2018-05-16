@@ -111,6 +111,56 @@ Juego::Juego(EscenasManager* escenasManager)
 	static_rb3->getRigidBody()->setUserPointer(ent5);
 	ent5->AddComponent(static_rb3);
 	entidades.push_back(ent5);
+
+	////////////////////////////////////////////////ARBOL//////////////////////////////////////////////////////////////////
+	Entidad* ent6 = new Entidad("Arbol1");
+	ent6->setPox(1800);// posicion 
+	ent6->setPoy(50);
+	ent6->setPoz(2000);
+	Render_c* render5 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("Arbol1"), ent6, "tree.05", "Arbol1");
+	ent6->AddComponent(render5);
+	RigidBody_c* static_rb4 = new RigidBody_c(ent6, bulletWorld, 40, 40, 40, 1);
+	static_rb4->getRigidBody()->setCollisionFlags(static_rb4->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
+	static_rb4->getRigidBody()->setUserPointer(ent6);
+	ent6->AddComponent(static_rb4);
+	entidades.push_back(ent6);
+
+
+	Entidad* ent7 = new Entidad("Casa");
+	ent7->setPox(1300);// posicion 
+	ent7->setPoy(500);
+	ent7->setPoz(3000);
+	Render_c* render6 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("Casa"), ent7, "tudorhouse", "Casa");
+	ent7->AddComponent(render6);
+	RigidBody_c* static_rb5 = new RigidBody_c(ent7, bulletWorld, 5, 5, 5, 0);
+	static_rb5->getRigidBody()->setCollisionFlags(static_rb5->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
+	static_rb5->getRigidBody()->setUserPointer(ent7);
+	ent7->AddComponent(static_rb5);
+	entidades.push_back(ent7);
+
+	Entidad* ent8 = new Entidad("tree");
+	ent8->setPox(1950);// posicion 
+	ent8->setPoy(250);
+	ent8->setPoz(2500);
+	Render_c* render7 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("tree"), ent8, "tree.09", "tree");
+	ent8->AddComponent(render7);
+	RigidBody_c* static_rb6 = new RigidBody_c(ent8, bulletWorld, 100, 100, 100, 0);
+	static_rb6->getRigidBody()->setCollisionFlags(static_rb6->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
+	static_rb6->getRigidBody()->setUserPointer(ent8);
+	ent8->AddComponent(static_rb6);
+	entidades.push_back(ent8);
+
+	Entidad* ent9 = new Entidad("tree3");
+	ent9->setPox(1500);// posicion 
+	ent9->setPoy(50);
+	ent9->setPoz(2000);
+	Render_c* render8 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("tree3"), ent9, "tree.07", "tree3");
+	ent9->AddComponent(render8);
+	RigidBody_c* static_rb7 = new RigidBody_c(ent9, bulletWorld, 50, 50, 50, 0);
+	static_rb7->getRigidBody()->setCollisionFlags(static_rb7->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
+	static_rb7->getRigidBody()->setUserPointer(ent9);
+	ent9->AddComponent(static_rb7);
+	entidades.push_back(ent9);
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
 	lightdir.normalise();
