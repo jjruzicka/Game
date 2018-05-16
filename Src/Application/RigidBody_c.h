@@ -5,13 +5,11 @@
 #include "Component.h"
 #include "Entidad.h"
 
-enum class physicType { kinematico, estatico, dinamico /*No se se si sera necesario*/ };
-
 class RigidBody_c : public Component
 {
 public:
-	RigidBody_c(Entidad* _ent, physicType _tipo, btDiscreteDynamicsWorld* _bulletWorld, 
-		float _alto, float _ancho, float _profundo, btScalar _masa);
+	RigidBody_c(Entidad* _ent, btDynamicsWorld* _bulletWorld,
+		float _profundo, float _ancho, float _alto, btScalar _masa);
 	RigidBody_c(){};
 	~RigidBody_c();
 	void Update();
@@ -24,8 +22,7 @@ public:
 	void actualizarPos(float x, float y, float z);
 private:
 	Entidad* ent;
-	physicType tipo;
-	btDiscreteDynamicsWorld* bulletWorld;
+	btDynamicsWorld* bulletWorld;
 	float alto, ancho, profundo;
 	btTransform pTransform;
 	btScalar masa; 

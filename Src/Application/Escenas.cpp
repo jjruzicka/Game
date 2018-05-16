@@ -104,7 +104,7 @@ bool Escenas::initBullet(){
 
 	//the world
 	bulletWorld = new btDiscreteDynamicsWorld(dispatcher, broadPhase, solver, collisionConfiguration);
-	bulletWorld->setGravity(btVector3(0, -10, 0));
+	bulletWorld->setGravity(btVector3(0, -1, 0));
 	return true;
 }
 

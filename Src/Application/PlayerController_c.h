@@ -25,11 +25,10 @@ private:
 	Entidad* entidad;
 	float auxX, auxY, auxZ;
 	bool mas, istimetoStop;
-	RigidBody_c* rb;
-	Render_c * rc;
 	Juego* escena;
 	StatsPJ_c* estadisticas;
 	Ogre::SceneNode* node;
+	RigidBody_c* rb;
 	int contadorProyectiles;
 	int chocoCon;
 	Entidad* entColision;

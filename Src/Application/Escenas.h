@@ -26,7 +26,7 @@ public:
 	virtual ~Escenas();
 	virtual bool run() = 0;
 	
-	virtual btDiscreteDynamicsWorld* getBulletWorld(){
+	virtual btDynamicsWorld* getBulletWorld(){
 		return bulletWorld;
 	};
 
@@ -48,7 +48,7 @@ protected:
 
 
 	///// FISICA
-	btDiscreteDynamicsWorld* bulletWorld;
+	btDynamicsWorld* bulletWorld;
 	btDefaultCollisionConfiguration* collisionConfiguration;
 	btCollisionDispatcher* dispatcher;
 	btSequentialImpulseConstraintSolver* solver;

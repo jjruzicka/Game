@@ -38,7 +38,6 @@ void StatsPJ_c::Update(){
 
 		std::cout << "Level up" << "\nNivel: " << nivel << "\nExp actual: " << exp << "\nExperiencia a conseguir : " << expNivelTotal << "\n";
 	}
-	std::cout << vida << "\n";
 	if (vida <= 0)
 		muerte();
 }

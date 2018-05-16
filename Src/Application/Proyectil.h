@@ -13,13 +13,13 @@ class Proyectil :
 	public Entidad
 {
 public:
-	Proyectil(std::string id, Juego * esc, Ogre::SceneNode* n, btDiscreteDynamicsWorld * bw, int bId, float posGlx, float posGly, float posGlz, Ogre::Quaternion orientacion, float alt, float anch, float larg);
+	Proyectil(std::string id, Juego * esc, Ogre::SceneNode* n, btDynamicsWorld * bw, int bId, float posGlx, float posGly, float posGlz, Ogre::Quaternion orientacion, float alt, float anch, float larg);
 	~Proyectil();
 
 private:
 	Juego * escena;
 	Ogre::SceneNode * node;
-	btDiscreteDynamicsWorld * bulletWorld;
+	btDynamicsWorld * bulletWorld;
 	Render_c * render;
 	RigidBody_c * rb;
 	MovimientoProyectil_c * movimiento;

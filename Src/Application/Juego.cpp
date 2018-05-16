@@ -33,20 +33,20 @@ Juego::Juego(EscenasManager* escenasManager)
 	Entidad* ent1 = new Entidad("p");
 	//1683, 50, 2116
 	ent1->setPox(1700);// posicion 
-	ent1->setPoy(10);
+	ent1->setPoy(5);
 	ent1->setPoz(1800);
 	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("p"), ent1, "Sinbad", "p");
 	StatsPJ_c* stas = new StatsPJ_c(5, 10, 2, 100,this);
-	PlayerController_c * ois = new PlayerController_c(ent1, inputcomp_, this, stas);
 	ent1->AddComponent(stas);
 	ent1->AddComponent(render);
-	ent1->AddComponent(ois);
-	// RigidBody del personaje principal (KINEMATICO)
-	RigidBody_c* player_rb = new RigidBody_c(ent1, physicType::kinematico, bulletWorld, 5, 5, 5, 1);
-	player_rb->getRigidBody()->setCollisionFlags(player_rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
 
+	// RigidBody del personaje principal (KINEMATICO)
+	RigidBody_c* player_rb = new RigidBody_c(ent1, bulletWorld, 5, 5, 5, 1);
+	player_rb->getRigidBody()->setCollisionFlags(player_rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
 	player_rb->getRigidBody()->setUserPointer(ent1);
 	ent1->AddComponent(player_rb);
+	PlayerController_c * ois = new PlayerController_c(ent1, inputcomp_, this, stas);
+	ent1->AddComponent(ois);
 	entidades.push_back(ent1);
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -54,21 +54,21 @@ Juego::Juego(EscenasManager* escenasManager)
 	//////////////////////////////////////////////////////rb del PJ2////////////////////////////////////////////////////
 	Entidad* ent2 = new Entidad("p2");
 	ent2->setPox(1700);// posicion 
-	ent2->setPoy(10);
+	ent2->setPoy(5);
 	ent2->setPoz(1850);
 	Render_c* render2 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("p2"), ent2, "Sinbad", "p2");
 	ent2->AddComponent(render2);
 
-	RigidBody_c* static_rb = new RigidBody_c(ent2, physicType::kinematico, bulletWorld, 5, 5, 5, 1);
+	RigidBody_c* static_rb = new RigidBody_c(ent2,bulletWorld, 5, 5, 5, 1);
 	static_rb->getRigidBody()->setCollisionFlags(static_rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
 	static_rb->getRigidBody()->setUserPointer(ent2);
 	ent2->AddComponent(static_rb);
+	PatrullarNPC* patrulla = new PatrullarNPC(10, ent2, this);
+	ent2->AddComponent(patrulla);
 	Mision_c* mision = new Mision_c(1, "Pan", 100, ent2);
 	ent2->AddComponent(mision);
 	Mision_c* mision2 = new Mision_c(1, "ogroEnemy", 150, ent2);
 	ent2->AddComponent(mision2);
-	PatrullarNPC* patrulla = new PatrullarNPC(20, ent2, this);
-	ent2->AddComponent(patrulla);
 	entidades.push_back(ent2);
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -79,11 +79,11 @@ Juego::Juego(EscenasManager* escenasManager)
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	Entidad* ent4 = new Entidad("ogroEnemy");
 	ent4->setPox(1700);// posicion 
-	ent4->setPoy(10);
+	ent4->setPoy(5);
 	ent4->setPoz(1750);
 	Render_c* render3 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("ogroEnemy"), ent4, "Sinbad", "ogroEnemy");
 	ent4->AddComponent(render3);
-	RigidBody_c* static_rb2 = new RigidBody_c(ent4, physicType::kinematico, bulletWorld, 5, 5, 5, 1);
+	RigidBody_c* static_rb2 = new RigidBody_c(ent4, bulletWorld, 5, 5, 5, 1);
 	static_rb2->getRigidBody()->setCollisionFlags(static_rb2->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
 	static_rb2->getRigidBody()->setUserPointer(ent4);
 	ent4->AddComponent(static_rb2);
@@ -93,11 +93,11 @@ Juego::Juego(EscenasManager* escenasManager)
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	Entidad* ent5 = new Entidad("Pan");
 	ent5->setPox(1700);// posicion 
-	ent5->setPoy(10);
+	ent5->setPoy(5);
 	ent5->setPoz(1785);
 	Render_c* render4 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("Pan"), ent5, "Sinbad", "Pan");
 	ent5->AddComponent(render4);
-	RigidBody_c* static_rb3 = new RigidBody_c(ent5, physicType::kinematico, bulletWorld, 5, 5, 5, 1);
+	RigidBody_c* static_rb3 = new RigidBody_c(ent5, bulletWorld, 5, 5, 5, 1);
 	static_rb3->getRigidBody()->setCollisionFlags(static_rb3->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
 	static_rb3->getRigidBody()->setUserPointer(ent5);
 	ent5->AddComponent(static_rb3);
@@ -194,7 +194,6 @@ bool Juego::run(){
 	clock_t lastTicks = clock();
 	clock_t elapsedTicks = 0;
 	double deltaTime = 0;
-	bulletWorld->stepSimulation((float)deltaTime);
 	while (true)
 	{
 		deltaTime = ((double)elapsedTicks) / 1000.f/*CLOCKS_PER_SEC*/;
@@ -204,7 +203,8 @@ bool Juego::run(){
 			elapsedTicks = 0;
 		}
 		//Tick de la fisica
-		bulletWorld->stepSimulation((float)deltaTime);
+		bulletWorld->stepSimulation(1.f / 60.f, 10);
+
 		for (int i = 0; i < entidades.size(); i++)
 			entidades[i]->Update();
 
@@ -244,6 +244,7 @@ void Juego::killAdd(Entidad* obj){
 		entidades[entidades.size() - 1] = aux;
 		RigidBody_c* rb = new RigidBody_c();
 		aux->GetComponent(rb)->getRigidBody()->setCollisionFlags(4);
+		bulletWorld->removeRigidBody(aux->GetComponent(rb)->getRigidBody());
 		entidades.pop_back();
 		scnMgr->destroyEntity(obj->getID());
 	}

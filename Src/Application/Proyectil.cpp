@@ -1,7 +1,7 @@
 #include "Proyectil.h"
 
 
-Proyectil::Proyectil(std::string id, Juego* esc, Ogre::SceneNode* n, btDiscreteDynamicsWorld * bw, int bId, float posGlx, float posGly, float posGlz, Ogre::Quaternion orientacion, float larg, float anch, float alt) : Entidad(id)
+Proyectil::Proyectil(std::string id, Juego* esc, Ogre::SceneNode* n, btDynamicsWorld * bw, int bId, float posGlx, float posGly, float posGlz, Ogre::Quaternion orientacion, float larg, float anch, float alt) : Entidad(id)
 {	
 	// escena del juego
 	escena = esc;
@@ -29,7 +29,7 @@ Proyectil::Proyectil(std::string id, Juego* esc, Ogre::SceneNode* n, btDiscreteD
 	alto = alt;
 
 	// añadmos componente fisico
-	rb = new RigidBody_c(this, physicType::kinematico, bulletWorld, largo, ancho, alto, MASA);
+	rb = new RigidBody_c(this,  bulletWorld, largo, ancho, alto, MASA);
 	this->AddComponent(rb); 
 
 	// añadimos componente del moviento

@@ -11,7 +11,7 @@
 class Mapa
 {
 public:
-	Mapa(Ogre::SceneManager * scnMgr, Ogre::Light* light, btDiscreteDynamicsWorld* World);
+	Mapa(Ogre::SceneManager * scnMgr, Ogre::Light* light, btDynamicsWorld* World);
 	~Mapa();
 	void createmap();
 	void setPhysics();
@@ -26,7 +26,7 @@ private:
 	
 	Ogre::SceneManager * scn;
 	Ogre::Light* luz;
-	btDiscreteDynamicsWorld* bulletWorld;
+	btDynamicsWorld* bulletWorld;
 	bool mTerrainsImported;
 	Ogre::TerrainGroup* mTerrainGroup;
 	Ogre::TerrainGlobalOptions* mTerrainGlobals;

@@ -16,13 +16,14 @@ PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input, Ju
 	mas = istimetoStop = false;
 	contadorProyectiles = 1;
 	chocoCon = 0;
-	rb = new RigidBody_c();
-	rc = new Render_c();
+	RigidBody_c* gt = new RigidBody_c();
+	Render_c* rc = new Render_c();
 	this->escena = escena;
 	this->estadisticas = estadisticas;
 	this->cdAtack = 50;
 	contAtack = cdAtack;
-
+	rb = entidad->GetComponent(gt);
+	node = entidad->GetComponent(rc)->getNode();
 	this->cdDisparo = 200;
 	contDisparo = cdDisparo;
 }
@@ -44,7 +45,6 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 	case OIS::KC_UP:
 	case OIS::KC_W:
 	{
-		node = entidad->GetComponent(rc)->getNode();
 		mas = true;
 		istimetoStop = true;
 	}
@@ -53,7 +53,6 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 	case OIS::KC_DOWN:
 	case OIS::KC_S:
 	{
-		node = entidad->GetComponent(rc)->getNode();
 		mas = false;
 		istimetoStop = true;
 	}
@@ -171,7 +170,6 @@ bool PlayerController_c::mousePressed(const OIS::MouseEvent& me, OIS::MouseButto
 	{
 		if (contDisparo >= cdDisparo){
 			contDisparo = 0;
-			node = entidad->GetComponent(rc)->getNode();
 			// pasamos la posicion un poco adelantada para que el proyectil no se cree dentro del personaje
 			Ogre::Vector3 pGlobal(entidad->getPox(), entidad->getPoy(), entidad->getPoz());
 			Ogre::Vector3 pLocal = node->convertWorldToLocalPosition(pGlobal);
@@ -210,7 +208,7 @@ void PlayerController_c::Update(){
 			clocal.z -= 1;
 		}
 		cglobal = node->convertLocalToWorldPosition(clocal);
-		entidad->GetComponent(rb)->actualizarPos(cglobal.x, cglobal.y, cglobal.z);
+		rb->actualizarPos(cglobal.x, cglobal.y, cglobal.z);
 	}
 	contAtack++;
 	contDisparo++;
@@ -227,5 +225,4 @@ PlayerController_c::~PlayerController_c()
 	inputcomp_->removeMouseListener(this);
 
 	delete rb;
-	delete rc;
 }

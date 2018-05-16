@@ -1,7 +1,7 @@
 #include "Mapa.h"
 
 
-Mapa::Mapa(Ogre::SceneManager * scnMgr, Ogre::Light* light, btDiscreteDynamicsWorld* World) : mTerrainGroup(0), bulletWorld(World),
+Mapa::Mapa(Ogre::SceneManager * scnMgr, Ogre::Light* light, btDynamicsWorld* World) : mTerrainGroup(0), bulletWorld(World),
 mTerrainGlobals(0), scn(scnMgr), luz(light)
 {
 
@@ -182,7 +182,7 @@ void Mapa::configureTerrainDefaults(Ogre::Light* light)
 	Ogre::Terrain::ImportData& importData = mTerrainGroup->getDefaultImportSettings();
 	importData.terrainSize = 65;
 	importData.worldSize = 12000.0;
-	importData.inputScale = 600;
+	importData.inputScale = 0;
 	importData.minBatchSize = 33;
 	importData.maxBatchSize = 65;
 
