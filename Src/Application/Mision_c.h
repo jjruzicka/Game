@@ -1,5 +1,5 @@
-#ifndef MISION_C
-#define MISION_C
+#ifndef MISION_C_H
+#define MISION_C_H
 #include <string>
 #include "Component.h"
 #include "Entidad.h"

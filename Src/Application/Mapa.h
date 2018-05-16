@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MAPA_H
+#define MAPA_H
 
 #include "OgreSceneNode.h"
 #include <OgreTerrain.h>
@@ -31,9 +32,8 @@ private:
 	Ogre::TerrainGroup* mTerrainGroup;
 	Ogre::TerrainGlobalOptions* mTerrainGlobals;
     btRigidBody *pBody;
-
-
 };
+#endif
 
 
 

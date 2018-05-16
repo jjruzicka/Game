@@ -26,8 +26,6 @@ private:
 	bool play_(Gui3D::PanelElement* e);
 	bool exit_(Gui3D::PanelElement* e);
 	bool buttonPressed(Gui3D::PanelElement* e);
-	/*bool keyPressed(const OIS::KeyEvent &e);
-	bool keyReleased(const OIS::KeyEvent &e);*/
 	bool mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id);
 	bool mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id);
 	Ogre::Vector2 getScreenCenterMouseDistance();

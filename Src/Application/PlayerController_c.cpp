@@ -12,7 +12,6 @@ PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input, Ju
 	escena = esc;
 	inputcomp_->addKeyListener(this, "teclado");
 	inputcomp_->addMouseListener(this, "raton");
-	auxX = auxY = auxZ = 0;
 	mas = istimetoStop = false;
 	contadorProyectiles = 1;
 	chocoCon = 0;
@@ -92,12 +91,10 @@ bool PlayerController_c::keyReleased(const OIS::KeyEvent& keyP){
 	{
 	case OIS::KC_UP:
 	case OIS::KC_W:
-		auxZ = 0;
 		istimetoStop = false;
 		break;
 	case OIS::KC_DOWN:
 	case OIS::KC_S:
-		auxZ = 0;
 		istimetoStop = false;
 		break;
 
@@ -116,30 +113,25 @@ bool PlayerController_c::keyReleased(const OIS::KeyEvent& keyP){
 		if (chocoCon != 0){
 			if (chocoCon == 1 && entColision != nullptr){//eres un npc y me das las misiones
 				escena->activaMision(entColision);
-				std::cout << "ILLO misiones \n";
 			}
 			else if (chocoCon == 2 && entColision != nullptr){
 				if (contAtack >= cdAtack){
 					contAtack = 0;
 					escena->atacar(entColision);
 					entColision = nullptr;
-					std::cout << "Matar \n";
 				}
 			}
 			else if (chocoCon == 3 && entColision != nullptr){
 				escena->killAdd(entColision);
 				entColision = nullptr;
-				std::cout << "Coger \n";
 			}
 		}
-		auxX = 0;
 		istimetoStop = false;
 		break;
 
 	case OIS::KC_PGUP:
 	case OIS::KC_Q:
 		estadisticas->restaVida(1);
-		auxX = 0;
 		istimetoStop = false;
 		break;
 
@@ -177,7 +169,7 @@ bool PlayerController_c::mousePressed(const OIS::MouseEvent& me, OIS::MouseButto
 			pGlobal = node->convertLocalToWorldPosition(pLocal);
 			Proyectil * proyectil = new Proyectil("proyectilPlayer" + std::to_string(contadorProyectiles), escena,
 				escena->getSceneManger()->getRootSceneNode()->createChildSceneNode("Proyectil" + std::to_string(contadorProyectiles)),
-				escena->getBulletWorld(), contadorProyectiles, pGlobal.x, pGlobal.y, pGlobal.z,
+				escena->getBulletWorld(), pGlobal.x, pGlobal.y, pGlobal.z,
 				node->getOrientation(), 5, 5, 5);
 			escena->addEntidad(proyectil);
 			contadorProyectiles++;

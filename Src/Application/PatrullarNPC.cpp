@@ -4,18 +4,15 @@
 #include "RigidBody_c.h"
 #include "Render_c.h"
 
-PatrullarNPC::PatrullarNPC(int x, Entidad * ent, Juego* esc)
+PatrullarNPC::PatrullarNPC(int x, Entidad * ent)
 {
 	this->mov = x;
 	this->contMov = x;
 	entidad = ent;
-	escena = esc;
-	mas = false;
 	chocoCon = 0;
 	rb = new RigidBody_c();
-	rc = new Render_c();
+	Render_c* rc = new Render_c();
 	node = entidad->GetComponent(rc)->getNode();
-	this->escena = escena;
 }
 
 void PatrullarNPC::Update(){
@@ -35,13 +32,11 @@ void PatrullarNPC::Update(){
 	}
 }
 
-void PatrullarNPC::chocasCon(int i, Entidad* ent){//0 para cuando no es nada, 1 npc
+void PatrullarNPC::chocasCon(int i){//0 para cuando no es nada, 1 npc
 	chocoCon = i;
-	entColision = ent;
 }
 
 PatrullarNPC::~PatrullarNPC()
 {
 	delete rb;
-	delete rc;
 }

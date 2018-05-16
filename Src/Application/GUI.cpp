@@ -55,8 +55,6 @@ void GUI::createPanel(){
 
 	// We don't want any panels to display mouse cursor. It is handled
 	//  by our Simple2DDemo.
-	//mPanel->hideInternalMousePointer();
-	//mSPanel->hideInternalMousePointer();
 	mSPanel2->hideInternalMousePointer();
 }
 
@@ -92,16 +90,12 @@ bool GUI::buttonPressed(Gui3D::PanelElement* e)
 
 bool GUI::mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id)
 {
-	//mPanel->injectMousePressed(evt, id);
-	//mSPanel->injectMousePressed(evt, id);
 	mSPanel2->injectMousePressed(evt, id);
 	return true;
 }
 
 bool GUI::mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id)
 {
-	//mPanel->injectMouseReleased(evt, id);
-	//mSPanel->injectMouseReleased(evt, id);
 	mSPanel2->injectMouseReleased(evt, id);
 	return true;
 }

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MOVIMIENTOPROYECTIL_C_H
+#define MOVIMIENTOPROYECTIL_C_H
 #include "Component.h"
 #include <OgreRenderWindow.h>
 #include "Entidad.h"
@@ -23,10 +24,6 @@ private:
 	RigidBody_c * rb;
 	bool first;
 	Ogre::SceneNode* node;
-	Ogre::Vector3 posicionLocal;
-	Ogre::Vector3 posicionGlobal;
-	const int DISTACIA_MAX = 100;
-	const int VELOCIDAD = 1;
 
 	Ogre::Vector3 cglobal;
 	Ogre::Vector3 clocal;
@@ -34,4 +31,5 @@ private:
 	std::clock_t start;
 	double duration;
 };
+#endif
 

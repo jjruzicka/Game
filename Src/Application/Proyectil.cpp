@@ -1,16 +1,13 @@
 #include "Proyectil.h"
 
 
-Proyectil::Proyectil(std::string id, Juego* esc, Ogre::SceneNode* n, btDynamicsWorld * bw, int bId, float posGlx, float posGly, float posGlz, Ogre::Quaternion orientacion, float larg, float anch, float alt) : Entidad(id)
+Proyectil::Proyectil(std::string id, Juego* esc, Ogre::SceneNode* n, btDynamicsWorld * bw,  float posGlx, float posGly, float posGlz, Ogre::Quaternion orientacion, float larg, float anch, float alt) : Entidad(id)
 {	
 	// escena del juego
 	escena = esc;
 
 	// nodo de ogre
 	node = n;
-
-	// id unico de la bala
-	bulletId = bId;
 
 	// bullet world
 	bulletWorld = bw;
@@ -23,7 +20,6 @@ Proyectil::Proyectil(std::string id, Juego* esc, Ogre::SceneNode* n, btDynamicsW
 	// rotacion
 	node->setOrientation(orientacion);
 
-	std::cout << "bala: " << orientacion.x << orientacion.y << orientacion.z << std::endl;
 	largo = larg;
 	ancho = anch;
 	alto = alt;
@@ -33,7 +29,6 @@ Proyectil::Proyectil(std::string id, Juego* esc, Ogre::SceneNode* n, btDynamicsW
 	this->AddComponent(rb); 
 
 	// añadimos componente del moviento
-	//Ogre::Vector3 pLocal(posicionLocal.x, posicionLocal.y, posicionLocal.z);
 	movimiento = new MovimientoProyectil_c(this, escena);
 	this->AddComponent(movimiento);
 

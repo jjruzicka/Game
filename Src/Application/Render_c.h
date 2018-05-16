@@ -1,4 +1,5 @@
-#pragma once
+#ifndef RENDER_C_H
+#define RENDER_C_H
 #include "Component.h"
 #include "Entidad.h"
 #include <string>
@@ -21,4 +22,4 @@ private:
 	Ogre::Quaternion anguloRot;
 	float anguloRotent;
 };
-
+#endif

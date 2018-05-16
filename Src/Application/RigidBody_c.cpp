@@ -22,7 +22,7 @@ RigidBody_c::RigidBody_c(Entidad* _ent, btDynamicsWorld* _bulletWorld,
 	btRigidBody::btRigidBodyConstructionInfo RigidBodyInfo(masa, motionState, shape, localInertia);
 	rb = new btRigidBody(RigidBodyInfo);
 	rb->setLinearFactor(btVector3(1,0,1));
-	rb->setSleepingThresholds(0, 0);//COMO TOQUES ESTO TE ARRANCO EL CUELLO Y TE METO LA POLLA HASTA LLEGAR AL INTESTINO
+	rb->setSleepingThresholds(0, 0);
 	bulletWorld->addRigidBody(rb);
 }
 
@@ -50,7 +50,6 @@ void RigidBody_c::actualizarPos(float x, float y, float z){
 	btTransform trans;
 	trans.setIdentity();
 	trans.setOrigin(btVector3(x, y, z));
-	//rb->proceedToTransform(trans);
 	rb->setWorldTransform(trans);
 }
 

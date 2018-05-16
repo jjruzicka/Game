@@ -1,5 +1,5 @@
-#ifndef GAMEMANAGER_C
-#define GAMEMANAGER_C
+#ifndef GAMEMANAGER_C_H
+#define GAMEMANAGER_C_H
 #include <string>
 #include "Mision_c.h"
 #include "Entidad.h"

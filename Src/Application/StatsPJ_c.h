@@ -1,4 +1,3 @@
-#pragma once
 #ifndef STATSPJ_C_H
 #define STATSPJ_C_H
 #include "Juego.h"

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ESCENASMANAGER_H
+#define ESCENASMANAGER_H
 #include "Escenas.h"
 
 
@@ -18,3 +19,4 @@ private:
 	Escenas* juego;
 	Escenas* menu;
 };
+#endif

@@ -1,6 +1,6 @@
-#pragma once
+#ifndef ESCENAS_H
+#define ESCENAS_H
 #include <vector>
-#include <iostream>
 #include "Entidad.h"
 #include <OgreRoot.h>
 #include <OgreRenderSystem.h>
@@ -69,3 +69,4 @@ protected:
 	Ogre::SceneNode* camNode = nullptr;
 	///////////////////////
 };
+#endif

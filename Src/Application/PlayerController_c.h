@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PLAYERCONTROLLER_C_H
+#define PLAYERCONTROLLER_C_H
 #include "InputComponent.h"
 #include "Entidad.h"
 #include <OgreRenderWindow.h>
@@ -23,7 +24,6 @@ private:
 	bool mouseReleased(const OIS::MouseEvent& me, OIS::MouseButtonID id);
 	InputComponent* inputcomp_;
 	Entidad* entidad;
-	float auxX, auxY, auxZ;
 	bool mas, istimetoStop;
 	Juego* escena;
 	StatsPJ_c* estadisticas;
@@ -39,4 +39,4 @@ private:
 	int cdDisparo;
 	int contDisparo;
 };
-
+#endif

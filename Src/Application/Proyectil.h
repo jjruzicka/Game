@@ -1,6 +1,6 @@
-#pragma once
+#ifndef PROYECTIL_H
+#define PROYECTIL_H
 #include "Entidad.h"
-#include "Escenas.h"
 #include "MovimientoProyectil_c.h"
 #include <OgreRenderWindow.h>
 #include "Render_c.h"
@@ -13,7 +13,7 @@ class Proyectil :
 	public Entidad
 {
 public:
-	Proyectil(std::string id, Juego * esc, Ogre::SceneNode* n, btDynamicsWorld * bw, int bId, float posGlx, float posGly, float posGlz, Ogre::Quaternion orientacion, float alt, float anch, float larg);
+	Proyectil(std::string id, Juego * esc, Ogre::SceneNode* n, btDynamicsWorld * bw, float posGlx, float posGly, float posGlz, Ogre::Quaternion orientacion, float alt, float anch, float larg);
 	~Proyectil();
 
 private:
@@ -23,10 +23,9 @@ private:
 	Render_c * render;
 	RigidBody_c * rb;
 	MovimientoProyectil_c * movimiento;
-	int bulletId;
 	float largo;
 	float ancho;
 	float alto;
-	const btScalar MASA = 0; // para que vaya recto
+	const btScalar MASA = 1; // para que vaya recto
 };
-
+#endif

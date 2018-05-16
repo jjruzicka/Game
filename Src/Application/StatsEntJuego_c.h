@@ -1,4 +1,3 @@
-#pragma once
 #ifndef STATSENTJUEGO_C_H
 #define STATSENTJUEGO_C_H
 #include "Component.h"

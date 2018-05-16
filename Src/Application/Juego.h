@@ -1,4 +1,5 @@
-#pragma once
+#ifndef JUEGO_H
+#define JUEGO_H
 #include "GameManager_c.h"
 #include "EscenasManager.h"
 class Juego : public Escenas
@@ -17,3 +18,4 @@ private:
 	GameManager_c* gm;
 	EscenasManager* escenasManager;
 };
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef INPUTCOMPONENT_H
+#define INPUTCOMPONENT_H
 #include "Entidad.h"
 #include "Component.h"
 #include "Ogre.h"
@@ -74,5 +75,5 @@ private:
 
 	static InputComponent *mInputComponent;
 };
-
+#endif
 

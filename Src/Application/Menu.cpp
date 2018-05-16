@@ -27,7 +27,6 @@ Menu::Menu(EscenasManager* scnM)
 	inputcomp_ = InputComponent::getSingletonPtr();
 	inputcomp_->initialise(mWindow);
 
-	//COSAS A MIRAR  --> SI QUITAS LA ENTIDAD Y LAS COLAS DE BULLET Y EMPIEZAS DIRECTAMENTE CON LA LUZ, REVIENTA.
 	exit = false;
 
 	Entidad* ent1 = new Entidad("p");
@@ -52,9 +51,7 @@ Menu::Menu(EscenasManager* scnM)
 
 	// also need to tell where we are
 	camNode = scnMgr->getSceneNode("p")->createChildSceneNode();
-	/*camNode->setPosition(0, 0, 100);
-	camNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_WORLD); //esto lo que habia antes
-	*/
+
 	// para la escena, pruebas
 	camNode->setPosition(Ogre::Vector3(0, 5, -35));
 	camNode->rotate(Ogre::Quaternion(Ogre::Degree(180), Ogre::Vector3::UNIT_Y));
@@ -62,10 +59,9 @@ Menu::Menu(EscenasManager* scnM)
 
 	// create the camera
 	cam = scnMgr->createCamera("Cam");
-	cam->setNearClipDistance(0.1); //esto antes era 1
+	cam->setNearClipDistance(0.1);
 	cam->setFarClipDistance(10000);
 	cam->setAutoAspectRatio(true);
-	//cam->setPolygonMode(Ogre::PM_WIREFRAME);  // en material
 	camNode->attachObject(cam);
 	cam->setQueryFlags(MY_QUERY_IGNORE);
 
@@ -76,13 +72,9 @@ Menu::Menu(EscenasManager* scnM)
 
 	vp = mWindow->addViewport(cam);
 	vp->setBackgroundColour(Ogre::ColourValue::Black);
-	//vp->setBackgroundColour(Ogre::ColourValue(1, 1, 1));
+
 	gui = new GUI(inputcomp_, vp, scnMgr, cam, camNode, this);
 	gui->createPanel();
-	//Terrain
-	/*mapa = new Mapa(scnMgr, light, bulletWorld);
-	mapa->createmap();
-	mapa->setPhysics();*/
 
 	
 
@@ -103,21 +95,6 @@ bool Menu::run(){
 	{
 		deltaTime = ((double)elapsedTicks) / 1000.f/*CLOCKS_PER_SEC*/;
 		lastTicks = clock();
-		// Actualize counters
-		/*globalClock.addTime(lastTicks);
-		localClock.addTime(lastTicks);*/
-
-		/*std::ostringstream s;
-		s << "global time: " << std::fixed << globalClock.getTimeSec() << "s";
-		captionGlobalTime->text(s.str());*/
-
-		/*s.str("");
-		s << "local time: " << std::fixed << localClock.getTimeSec() << "s";
-		captionLocalTime->text(s.str());*/
-
-		/*mPanel->injectTime(deltaTime);
-		mSPanel->injectTime(deltaTime);
-		mSPanel2->injectTime(deltaTime);*/
 		inputcomp_->capture();
 
 		for (int i = 0; i<entidades.size(); i++)

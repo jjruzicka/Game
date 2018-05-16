@@ -5,21 +5,17 @@ const float PI = 3.141592653f;
 CameraMove_c::CameraMove_c(Entidad* eCam, Entidad* eJug, Ogre::SceneNode* camNode, InputComponent * input)
 	: entidadCamara(eCam), entidadJugador(eJug), cam_node(camNode), inputcomp_(input){
 	spd = 0.2;
-	follow_spd = 0.7;
-	inputcomp_->addKeyListener(this, "teclado2");
 	inputcomp_->addMouseListener(this, "raton2");
 	entidadCamara->setPox(cam_node->getPosition().x);
 	entidadCamara->setPoy(cam_node->getPosition().y);
 	entidadCamara->setPoz(cam_node->getPosition().z);
-	distMin = 15;
 	distMax = 25;
 	offset = Ogre::Vector3((entidadJugador->getPox() - entidadCamara->getPox()),
 		(entidadJugador->getPoy() - entidadCamara->getPoy()),
 		(entidadJugador->getPoz() - entidadCamara->getPoz()));
-	//turn_spd = 12;
-	//pitch_spd = 4;
+
+
 	angulo = -90;
-	botonDerecho = false;
 	cam_node->setFixedYawAxis(true);
 }
 CameraMove_c::~CameraMove_c()
@@ -29,7 +25,6 @@ CameraMove_c::~CameraMove_c()
 }
 
 void CameraMove_c::Update(){
-	//if (!botonDerecho){
 	calculaOffset();
 	float distancia = sqrtf(pow(offset.x, 2) + pow(offset.z, 2));
 	if (distancia > distMax){
@@ -55,110 +50,10 @@ void CameraMove_c::Update(){
 
 }
 
-bool CameraMove_c::keyPressed(const OIS::KeyEvent& keyP)
-{
-	switch (keyP.key)
-	{
-	case OIS::KC_ESCAPE:
-		//mShutDown = true;
-		break;
-
-	case OIS::KC_1:
-		/*mCamera->getParentSceneNode()->detachObject(mCamera);
-		mCamNode = mSceneMgr->getSceneNode("CamNode1");
-		mCamNode->attachObject(mCamera);*/
-		break;
-
-	case OIS::KC_2:
-		/*mCamera->getParentSceneNode()->detachObject(mCamera);
-		mCamNode = mSceneMgr->getSceneNode("CamNode2");
-		mCamNode->attachObject(mCamera);*/
-		break;
-
-	case OIS::KC_UP:
-	case OIS::KC_W:
-		break;
-
-	case OIS::KC_DOWN:
-	case OIS::KC_S:
-		/*mDirection.z = mMove;*/
-		break;
-
-	case OIS::KC_LEFT:
-	case OIS::KC_A:
-		/*mDirection.x = -mMove;*/
-		break;
-
-	case OIS::KC_RIGHT:
-	case OIS::KC_D:
-		/*mDirection.x = mMove;*/
-		break;
-
-	case OIS::KC_PGDOWN:
-	case OIS::KC_E:
-		/*mDirection.y = -mMove;*/
-		break;
-
-	case OIS::KC_PGUP:
-	case OIS::KC_Q:
-		/*mDirection.y = mMove;*/
-		break;
-
-	default:
-		break;
-	}
-
-	return true;
-}
-
-
-
-bool CameraMove_c::keyReleased(const OIS::KeyEvent& keyP){
-	switch (keyP.key)
-	{
-	case OIS::KC_UP:
-	case OIS::KC_W:
-		//entidad->setPox(0);
-		break;
-
-	case OIS::KC_DOWN:
-	case OIS::KC_S:
-		/*mDirection.z = 0;*/
-		break;
-
-	case OIS::KC_LEFT:
-	case OIS::KC_A:
-		/*mDirection.x = 0;*/
-		break;
-
-	case OIS::KC_RIGHT:
-	case OIS::KC_D:
-		/*mDirection.x = 0;*/
-		break;
-
-	case OIS::KC_PGDOWN:
-	case OIS::KC_E:
-		/*mDirection.y = 0;*/
-		break;
-
-	case OIS::KC_PGUP:
-	case OIS::KC_Q:
-		/*mDirection.y = 0;*/
-		break;
-
-	default:
-		break;
-	}
-
-	return true;
-
-}
-
 bool CameraMove_c::mouseMoved(const OIS::MouseEvent& me)
 {
 	if (me.state.buttonDown(OIS::MB_Right))
 	{
-		botonDerecho = true;
 		Ogre::Quaternion quat = cam_node->getOrientation();
 		Ogre::Degree gradosExtra = Ogre::Degree(quat.getYaw());
 		angulo = (-gradosExtra.valueDegrees() + 90);
@@ -181,7 +76,6 @@ bool CameraMove_c::mouseMoved(const OIS::MouseEvent& me)
 		entidadCamara->setPox(x);
 		entidadCamara->setPoz(y);
 		
-		//cam_node->roll(Ogre::Degree(-horizontal / 2.25), Ogre::Node::TS_LOCAL);
 	}
 
 	return true;
@@ -195,12 +89,10 @@ void CameraMove_c::calculaOffset(){
 
 bool CameraMove_c::mousePressed(const OIS::MouseEvent& me, OIS::MouseButtonID id)
 {
-	/*Ogre::Light* light = mSceneMgr->getLight("Light1");*/
 
 	switch (id)
 	{
 	case OIS::MB_Left:
-		/*light->setVisible(!light->isVisible());*/
 		break;
 	default:
 		break;
@@ -214,7 +106,6 @@ bool CameraMove_c::mouseReleased(const OIS::MouseEvent& me, OIS::MouseButtonID i
 	switch (id)
 	{
 	case OIS::MB_Right:
-		botonDerecho = false;
 		break;
 	default:
 		break;

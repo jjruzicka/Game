@@ -79,15 +79,12 @@ public:
 
 	void setPox(float x){
 		posicion.x = x;
-		//std::cout << "Posicion entity: " << posicion.x << ", " << posicion.y << ", " << posicion.z << std::endl;
 	}
 	void setPoy(float y){
 		posicion.y = y;
-		//std::cout << "Posicion entity: " << posicion.x << ", " << posicion.y << ", " << posicion.z << std::endl;
 	}
 	void setPoz(float z){
 		posicion.z = z;
-		//std::cout << "Posicion entity: " << posicion.x << ", " << posicion.y << ", " << posicion.z << std::endl;
 	}
 	void setRox(int x){
 		rotation.x = x;

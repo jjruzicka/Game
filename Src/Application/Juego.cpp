@@ -30,7 +30,7 @@ Juego::Juego(EscenasManager* escenasManager)
 
 	// create the camera
 	cam = scnMgr->createCamera("Cam");
-	cam->setNearClipDistance(0.1); //esto antes era 1
+	cam->setNearClipDistance(0.1); 
 	cam->setFarClipDistance(10000);
 	cam->setAutoAspectRatio(true);
 	camNode->attachObject(cam);
@@ -42,7 +42,7 @@ Juego::Juego(EscenasManager* escenasManager)
 	//////////////////////////////////////////////////////rb del pj PRINCIPAL////////////////////////////////////////////////////
 	Entidad* ent1 = new Entidad("p");
 	//1683, 50, 2116
-	ent1->setPox(1700);// posicion 
+	ent1->setPox(1700);
 	ent1->setPoy(5);
 	ent1->setPoz(1800);
 	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("p"), ent1, "Sinbad", "p");
@@ -50,7 +50,6 @@ Juego::Juego(EscenasManager* escenasManager)
 	ent1->AddComponent(stas);
 	ent1->AddComponent(render);
 
-	// RigidBody del personaje principal (KINEMATICO)
 	RigidBody_c* player_rb = new RigidBody_c(ent1, bulletWorld, 5, 5, 5, 1);
 	player_rb->getRigidBody()->setCollisionFlags(player_rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
 	player_rb->getRigidBody()->setUserPointer(ent1);
@@ -73,7 +72,7 @@ Juego::Juego(EscenasManager* escenasManager)
 	static_rb->getRigidBody()->setCollisionFlags(static_rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
 	static_rb->getRigidBody()->setUserPointer(ent2);
 	ent2->AddComponent(static_rb);
-	PatrullarNPC* patrulla = new PatrullarNPC(10, ent2, this);
+	PatrullarNPC* patrulla = new PatrullarNPC(10, ent2);
 	ent2->AddComponent(patrulla);
 	Mision_c* mision = new Mision_c(1, "Pan", 100, ent2);
 	ent2->AddComponent(mision);
@@ -125,15 +124,9 @@ Juego::Juego(EscenasManager* escenasManager)
 	scnMgr->setAmbientLight(Ogre::ColourValue(0.2, 0.2, 0.2));
 
 	// also need to tell where we are
-	/*camNode = scnMgr->getSceneNode("p")->createChildSceneNode();
-	camNode->setPosition(Ogre::Vector3(0, 5, -35));
-	camNode->rotate(Ogre::Quaternion(Ogre::Degree(180), Ogre::Vector3::UNIT_Y));
-	camNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);*/
-
 	camNode->setPosition(Ogre::Vector3(ent1->getPox(), ent1->getPoy() + 10, ent1->getPoz() - 30));
 	camNode->rotate(Ogre::Vector3(0, 0, 1), Ogre::Degree(180));
 	camNode->lookAt(Ogre::Vector3(ent1->getPox(), ent1->getPoy() + 5, ent1->getPoz()), Ogre::Node::TS_WORLD);
-	//camNode->setAutoTracking(true, scnMgr->getSceneNode("p"));
 
 	Entidad* entCamara = new Entidad("camara");
 	CameraMove_c* camMove = new CameraMove_c(entCamara, ent1, camNode, inputcomp_);
@@ -160,7 +153,7 @@ bool callbackfunction(btManifoldPoint& cp, const btCollisionObjectWrapper * colO
 			PlayerController_c* pC = new PlayerController_c();
 			PatrullarNPC* patroll = new PatrullarNPC();
 			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(pC)->chocasCon(1, (Entidad*)colObj1->getCollisionObject()->getUserPointer());
-			((Entidad*)colObj1->getCollisionObject()->getUserPointer())->GetComponent(patroll)->chocasCon(1, (Entidad*)colObj0->getCollisionObject()->getUserPointer());
+			((Entidad*)colObj1->getCollisionObject()->getUserPointer())->GetComponent(patroll)->chocasCon(1);
 		}
 		else if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "ogroEnemy"){
 			PlayerController_c* pC = new PlayerController_c();
@@ -176,7 +169,7 @@ bool callbackfunction(btManifoldPoint& cp, const btCollisionObjectWrapper * colO
 		}
 		else if (((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p2"){
 			PatrullarNPC* patroll = new PatrullarNPC();
-			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(patroll)->chocasCon(0, nullptr);
+			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(patroll)->chocasCon(0);
 		}
 	}
 	return false;
@@ -266,8 +259,6 @@ void Juego::muerteJugador(){
 
 Juego::~Juego()
 {
-	//A ELLA LE GUSTA BORRAR LAS COSAS
-	//DALE MAS BORRADO DE COSAS
 	delete mapa;
 	delete bulletWorld;
 	delete collisionConfiguration;

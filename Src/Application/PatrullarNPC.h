@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PATRULLARNPC_H
+#define PATRULLARNPC_H
 #include "Component.h"
 #include "Entidad.h"
 #include <OgreRenderWindow.h>
@@ -8,22 +9,17 @@
 class PatrullarNPC : public Component
 {
 public:
-	PatrullarNPC(int x, Entidad* ent, Juego* escena);
+	PatrullarNPC(int x, Entidad* ent);
 	PatrullarNPC(){};
 	void Update();
 	~PatrullarNPC();
-	void chocasCon(int i, Entidad* ent);//0 para cuando no es nada, 1 npc
+	void chocasCon(int i);//0 para cuando no es nada, 1 player
 private:
 	Entidad* entidad;
-	bool mas;
 	RigidBody_c* rb;
-	Render_c * rc;
-	Juego* escena;
 	Ogre::SceneNode* node;
-	int contadorProyectiles;
 	int chocoCon;
 	int mov;
 	int contMov;
-	Entidad* entColision;
 };
-
+#endif
