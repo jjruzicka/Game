@@ -8,6 +8,7 @@
 #include "StatsPJ_c.h"
 #include "StatsEntJuego_c.h"
 #include "PatrullarNPC.h"
+#include "CameraMove_c.h"
 using namespace Ogre;
 enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
@@ -25,7 +26,16 @@ Juego::Juego(EscenasManager* escenasManager)
 	initOgre();
 	initBullet();
 
-	
+	camNode = scnMgr->getRootSceneNode()->createChildSceneNode();
+
+	// create the camera
+	cam = scnMgr->createCamera("Cam");
+	cam->setNearClipDistance(0.1); //esto antes era 1
+	cam->setFarClipDistance(10000);
+	cam->setAutoAspectRatio(true);
+	camNode->attachObject(cam);
+	cam->setQueryFlags(MY_QUERY_IGNORE);
+
 	this->escenasManager = escenasManager;
 	inputcomp_ = InputComponent::getSingletonPtr();
 	inputcomp_->initialise(mWindow);
@@ -115,20 +125,21 @@ Juego::Juego(EscenasManager* escenasManager)
 	scnMgr->setAmbientLight(Ogre::ColourValue(0.2, 0.2, 0.2));
 
 	// also need to tell where we are
-	camNode = scnMgr->getSceneNode("p")->createChildSceneNode();
+	/*camNode = scnMgr->getSceneNode("p")->createChildSceneNode();
 	camNode->setPosition(Ogre::Vector3(0, 5, -35));
 	camNode->rotate(Ogre::Quaternion(Ogre::Degree(180), Ogre::Vector3::UNIT_Y));
-	camNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
+	camNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);*/
 
-	// create the camera
-	cam = scnMgr->createCamera("Cam");
-	cam->setNearClipDistance(0.1); //esto antes era 1
-	cam->setFarClipDistance(10000);
-	cam->setAutoAspectRatio(true);
-	camNode->attachObject(cam);
-	cam->setQueryFlags(MY_QUERY_IGNORE);
+	camNode->setPosition(Ogre::Vector3(ent1->getPox(), ent1->getPoy() + 10, ent1->getPoz() - 30));
+	camNode->rotate(Ogre::Vector3(0, 0, 1), Ogre::Degree(180));
+	camNode->lookAt(Ogre::Vector3(ent1->getPox(), ent1->getPoy() + 5, ent1->getPoz()), Ogre::Node::TS_WORLD);
+	//camNode->setAutoTracking(true, scnMgr->getSceneNode("p"));
 
-
+	Entidad* entCamara = new Entidad("camara");
+	CameraMove_c* camMove = new CameraMove_c(entCamara, ent1, camNode, inputcomp_);
+	entCamara->AddComponent(camMove);
+	entidades.reserve(1);
+	entidades.push_back(entCamara);
 
 
 	// and tell it to render into the main window

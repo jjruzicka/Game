@@ -67,6 +67,7 @@
     <ClCompile Include="..\..\Src\Application\Inventario_c.cpp">
       <Filter>code</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="..\..\Src\Application\Proyectil.cpp">
       <Filter>Code</Filter>
     </ClCompile>
@@ -76,6 +77,11 @@
     <ClCompile Include="..\..\Src\Application\PatrullarNPC.cpp">
       <Filter>code</Filter>
     </ClCompile>
+=======
+    <ClCompile Include="..\..\Src\Application\CameraMove_c.cpp">
+      <Filter>Code</Filter>
+    </ClCompile>
+>>>>>>> origin/MergeCamara
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Application\Collider_c.h">
@@ -141,6 +147,7 @@
     <ClInclude Include="..\..\Src\Application\StatsPJ_c.h">
       <Filter>header</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="..\..\Src\Application\Proyectil.h">
       <Filter>header</Filter>
     </ClInclude>
@@ -148,6 +155,9 @@
       <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\PatrullarNPC.h">
+=======
+    <ClInclude Include="..\..\Src\Application\CameraMove_c.h">
+>>>>>>> origin/MergeCamara
       <Filter>header</Filter>
     </ClInclude>
   </ItemGroup>

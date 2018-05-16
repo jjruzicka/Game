@@ -33,7 +33,6 @@ RigidBody_c::~RigidBody_c()
 	delete rb;
 	delete shape;
 	delete motionState;
-	
 }
 
 void RigidBody_c::Update(){
