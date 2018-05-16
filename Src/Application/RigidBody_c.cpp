@@ -1,5 +1,6 @@
 #include "RigidBody_c.h"
 #include <iostream>
+#include "Render_c.h"
 //LA Z ES LA ALTURA CUANDO SE METE A BULLET
 RigidBody_c::RigidBody_c(Entidad* _ent, btDynamicsWorld* _bulletWorld,
 	float _profundo, float _ancho, float _alto, btScalar _masa)
@@ -14,14 +15,14 @@ RigidBody_c::RigidBody_c(Entidad* _ent, btDynamicsWorld* _bulletWorld,
 	pTransform.setIdentity();
 	pTransform.setOrigin(btVector3(ent->getPox(), ent->getPoy(), ent->getPoz()));
 	btDefaultMotionState* motionState = new btDefaultMotionState(pTransform); // damos dimesiones al box
-
+	Render_c* render = new Render_c();
 	btVector3 localInertia(0, 0, 0); // La inercia inicial siempre es 0
 	shape = new btBoxShape(btVector3(ancho, profundo, alto));
 	shape->calculateLocalInertia(masa, localInertia); // inicializamos el cuerpo
-
 	btRigidBody::btRigidBodyConstructionInfo RigidBodyInfo(masa, motionState, shape, localInertia);
 	rb = new btRigidBody(RigidBodyInfo);
 	rb->setLinearFactor(btVector3(1,0,1));
+	rb->setSleepingThresholds(0, 0);//COMO TOQUES ESTO TE ARRANCO EL CUELLO Y TE METO LA POLLA HASTA LLEGAR AL INTESTINO
 	bulletWorld->addRigidBody(rb);
 }
 

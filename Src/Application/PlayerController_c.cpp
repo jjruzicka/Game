@@ -24,7 +24,7 @@ PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input, Ju
 	contAtack = cdAtack;
 	rb = entidad->GetComponent(gt);
 	node = entidad->GetComponent(rc)->getNode();
-	this->cdDisparo = 200;
+	this->cdDisparo = 10;
 	contDisparo = cdDisparo;
 }
 
@@ -114,11 +114,11 @@ bool PlayerController_c::keyReleased(const OIS::KeyEvent& keyP){
 	case OIS::KC_PGDOWN:
 	case OIS::KC_E:
 		if (chocoCon != 0){
-			if (chocoCon == 1){//eres un npc y me das las misiones
+			if (chocoCon == 1 && entColision != nullptr){//eres un npc y me das las misiones
 				escena->activaMision(entColision);
 				std::cout << "ILLO misiones \n";
 			}
-			else if (chocoCon == 2){
+			else if (chocoCon == 2 && entColision != nullptr){
 				if (contAtack >= cdAtack){
 					contAtack = 0;
 					escena->atacar(entColision);
@@ -126,7 +126,7 @@ bool PlayerController_c::keyReleased(const OIS::KeyEvent& keyP){
 					std::cout << "Matar \n";
 				}
 			}
-			else if (chocoCon ==3){
+			else if (chocoCon == 3 && entColision != nullptr){
 				escena->killAdd(entColision);
 				entColision = nullptr;
 				std::cout << "Coger \n";
