@@ -1,0 +1,68 @@
+<scene exported_by="maria" export_time="1526470893.786173" previous_export_time="1526470655.3771534" formatVersion="1.0.1" >
+  <nodes >
+    <node name="wood" >
+      <position z="0.000000" y="0.000000" x="-0.000000" />
+      <rotation qy="0.707107" qw="-0.000000" qx="0.000000" qz="0.707107" />
+      <scale z="1.000000" y="1.000000" x="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity velocity_min="0.0" velocity_max="0.0" friction_z="1.0" friction_y="1.0" lock_trans_z="False" anisotropic_friction="False" physics_type="STATIC" meshFile="Cube.002.mesh" ghost="False" mass="1.0" damping_rot="0.10000000149011612" lock_rot_y="False" actor="False" name="Cube.002" lock_trans_y="False" inertia_tensor="0.4000000059604645" lock_trans_x="False" lock_rot_z="False" mass_radius="1.0" friction_x="1.0" lock_rot_x="False" damping_trans="0.03999999910593033" />
+    </node>
+    <node name="roof" >
+      <position z="0.000000" y="0.000000" x="-0.000000" />
+      <rotation qy="0.707107" qw="-0.000000" qx="0.000000" qz="0.707107" />
+      <scale z="1.000000" y="1.000000" x="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity velocity_min="0.0" velocity_max="0.0" friction_z="1.0" friction_y="1.0" lock_trans_z="False" anisotropic_friction="False" physics_type="STATIC" meshFile="Cube.000_Cube.003.mesh" ghost="False" mass="1.0" damping_rot="0.10000000149011612" lock_rot_y="False" actor="False" name="Cube.000_Cube.003" lock_trans_y="False" inertia_tensor="0.4000000059604645" lock_trans_x="False" lock_rot_z="False" mass_radius="1.0" friction_x="1.0" lock_rot_x="False" damping_trans="0.03999999910593033" />
+    </node>
+    <node name="Camera" >
+      <position z="-37.930893" y="28.823795" x="44.418404" />
+      <rotation qy="-0.372052" qw="0.754495" qx="-0.496282" qz="-0.214522" />
+      <scale z="1.000000" y="1.000000" x="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <camera projectionType="perspective" fov="0.6605947096585073" name="Camera.001" >
+        <clipping nearPlaneDist="0.10000000149011612" farPlaneDist="100.0" near="0.10000000149011612" far="100.0" />
+      </camera>
+    </node>
+    <node name="Cube.031" >
+      <position z="-22.671858" y="1.011096" x="0.478054" />
+      <rotation qy="0.000000" qw="1.000000" qx="-0.000000" qz="0.000000" />
+      <scale z="1.000000" y="1.000000" x="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity velocity_min="0.0" velocity_max="0.0" friction_z="1.0" friction_y="1.0" lock_trans_z="False" anisotropic_friction="False" physics_type="STATIC" meshFile="Cube.031.mesh" ghost="False" mass="1.0" damping_rot="0.18000000715255737" lock_rot_y="False" actor="False" name="Cube.031" lock_trans_y="False" inertia_tensor="0.4000000059604645" lock_trans_x="False" lock_rot_z="False" mass_radius="1.0" friction_x="1.0" lock_rot_x="False" damping_trans="0.02539999969303608" />
+    </node>
+  </nodes>
+  <externals >
+    <item type="material" >
+      <file name="C:\Users\maria\Desktop\holiii\casachachi\None.material" />
+    </item>
+    <item type="material" >
+      <file name="C:\Users\maria\Desktop\holiii\casachachi\None.001.material" />
+    </item>
+    <item type="material" >
+      <file name="C:\Users\maria\Desktop\holiii\casachachi\Material.material" />
+    </item>
+    <item type="material" >
+      <file name="C:\Users\maria\Desktop\holiii\casachachi\Material.001.material" />
+    </item>
+    <item type="material" >
+      <file name="C:\Users\maria\Desktop\holiii\casachachi\Material.002.material" />
+    </item>
+  </externals>
+  <environment >
+    <colourBackground b="0.0" r="0.0" g="0.0" />
+    <colourAmbient b="0.0" r="0.0" g="0.0" />
+    <colourDiffuse b="0.0" r="0.0" g="0.0" />
+  </environment>
+</scene>

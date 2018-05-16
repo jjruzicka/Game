@@ -12,22 +12,27 @@
 class GUI: public InputComponent
 {
 public:
-	GUI(InputComponent* input_, Ogre::Viewport* vp, Ogre::SceneManager * scnMgr, Ogre::Camera * cam, Ogre::SceneNode* camNode, Escenas* menuc);
+	GUI(InputComponent* input_, Ogre::Viewport* vp, Ogre::SceneManager * scnMgr, Ogre::Camera * cam, Ogre::SceneNode* camNode, Escenas* menuc, bool escena);
 	void createPanel();
+	void createPanelInGame();
+	bool menuScreen;
 	~GUI();
 private:
 
 	Escenas* menu;
-
+	bool pant;
 	InputComponent* icomp_;
 	Ogre::SceneManager * scn;
 	Ogre::Viewport* view;
 	bool textChanged(Gui3D::PanelElement* e);
 	bool play_(Gui3D::PanelElement* e);
 	bool exit_(Gui3D::PanelElement* e);
+	bool exitGame(Gui3D::PanelElement* e);
 	bool buttonPressed(Gui3D::PanelElement* e);
 	bool mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id);
 	bool mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id);
+	bool keyPressed(const OIS::KeyEvent& keyP);
+	bool keyReleased(const OIS::KeyEvent& keyP);
 	Ogre::Vector2 getScreenCenterMouseDistance();
 	bool mouseMoved(const OIS::MouseEvent &arg);
 

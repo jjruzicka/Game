@@ -26,7 +26,7 @@ Menu::Menu(EscenasManager* scnM)
 
 	inputcomp_ = InputComponent::getSingletonPtr();
 	inputcomp_->initialise(mWindow);
-
+	
 	exit = false;
 
 	Entidad* ent1 = new Entidad("p");
@@ -73,7 +73,8 @@ Menu::Menu(EscenasManager* scnM)
 	vp = mWindow->addViewport(cam);
 	vp->setBackgroundColour(Ogre::ColourValue::Black);
 
-	gui = new GUI(inputcomp_, vp, scnMgr, cam, camNode, this);
+	gui = new GUI(inputcomp_, vp, scnMgr, cam, camNode, this, true);
+	
 	gui->createPanel();
 
 	

@@ -1,7 +1,8 @@
 #include "GUI.h"
 #include <iostream>
 #include "Menu.h"
-GUI::GUI(InputComponent* input_, Ogre::Viewport* vp, Ogre::SceneManager * scnMgr, Ogre::Camera * cam, Ogre::SceneNode* camNode, Escenas* menuc)
+#include "Juego.h"
+GUI::GUI(InputComponent* input_, Ogre::Viewport* vp, Ogre::SceneManager * scnMgr, Ogre::Camera * cam, Ogre::SceneNode* camNode, Escenas* menuc, bool escena)
 {
 	menu = menuc;
 	scn = scnMgr;
@@ -13,17 +14,18 @@ GUI::GUI(InputComponent* input_, Ogre::Viewport* vp, Ogre::SceneManager * scnMgr
 	mMyPurplePanelColors = new MyPurplePanelColors();
 	mGui3D = new Gui3D::Gui3D(mMyPurplePanelColors);
 	mGui3D->createScreen(vp, "purple", "mainScreen");
-
+	pant = escena;
 	// Create a layer for the mousePointer
-	mNormalizedMousePosition = Ogre::Vector2(0.5, 0.5);
-	mMousePointerLayer = mGui3D->getScreen("mainScreen")->createLayer();
-	mMousePointer = mMousePointerLayer->createRectangle(vp->getActualWidth() / 2,
-	vp->getActualHeight() / 2, 12, 18);
-	mMousePointer->background_image("mousepointer");
+	if (pant){
+		mNormalizedMousePosition = Ogre::Vector2(0.5, 0.5);
+		mMousePointerLayer = mGui3D->getScreen("mainScreen")->createLayer();
+		mMousePointer = mMousePointerLayer->createRectangle(vp->getActualWidth() / 2,
+			vp->getActualHeight() / 2, 12, 18);
+   
+		mMousePointer->background_image("mousepointer");
+	}
 
-	cNode->setPosition(0, 2, -2);
-	cameraDirection = Ogre::Vector3(0, 0, -1);
-	camera->setDirection(cameraDirection);
+  
 
 	view = vp;
 	
@@ -45,6 +47,7 @@ void GUI::createPanel(){
 		"purple",
 		"test_screenPanel2");
 
+
 	
 	mSPanel2->makeButton(0, 0, 400, 100, "PLAY")
 		->setPressedCallback(this, &GUI::play_);
@@ -56,7 +59,33 @@ void GUI::createPanel(){
 	// We don't want any panels to display mouse cursor. It is handled
 	//  by our Simple2DDemo.
 	mSPanel2->hideInternalMousePointer();
+	
 }
+
+void GUI::createPanelInGame(){
+	myScreen = mGui3D->getScreen("mainScreen");
+
+	// 2nd test panel
+	mSPanel2 = new Gui3D::ScreenPanel(
+		mGui3D,
+		myScreen,
+		Ogre::Vector2(800, 700),
+		Ogre::Vector2(0, 0),
+		"purple",
+		"test_screenPanel2");
+
+
+
+	mSPanel2->makeButton(0, 0, 200, 50, "P to EXIT")
+		->setPressedCallback(this, &GUI::exitGame);
+	
+
+	// We don't want any panels to display mouse cursor. It is handled
+	//  by our Simple2DDemo.
+	mSPanel2->hideInternalMousePointer();
+	
+}
+
 
 bool GUI::textChanged(Gui3D::PanelElement* e)
 {
@@ -79,6 +108,35 @@ bool GUI::exit_(Gui3D::PanelElement* e)
 	return true;
 }
 
+bool GUI::exitGame(Gui3D::PanelElement* e){
+	
+	return true;
+}
+
+bool GUI::keyPressed(const OIS::KeyEvent& keyP){
+	switch (keyP.key)
+	{
+	case OIS::KC_P:
+		static_cast<Juego*>(menu)->exit = true;
+		break;
+	default:
+		break;
+	}
+	return true;
+}
+bool GUI::keyReleased(const OIS::KeyEvent& keyP){
+	switch (keyP.key)
+	{
+	case OIS::KC_P:
+		
+		break;
+	default:
+		break;
+	}
+	return true;
+}
+
+
 bool GUI::buttonPressed(Gui3D::PanelElement* e)
 {
 	mClicksOnButton++;
@@ -90,13 +148,17 @@ bool GUI::buttonPressed(Gui3D::PanelElement* e)
 
 bool GUI::mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id)
 {
+	if (pant)
 	mSPanel2->injectMousePressed(evt, id);
+	
 	return true;
 }
 
 bool GUI::mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id)
 {
+	if (pant)
 	mSPanel2->injectMouseReleased(evt, id);
+	
 	return true;
 }
 
@@ -112,29 +174,31 @@ Ogre::Vector2 GUI::getScreenCenterMouseDistance()
 
 bool GUI::mouseMoved(const OIS::MouseEvent &arg)
 {
-	// Set the new camera smooth direction movement
-	Ogre::Vector2 distance(getScreenCenterMouseDistance());
-	camera->setDirection(cameraDirection
-		+ Ogre::Vector3(distance.x, -distance.y, 0) / 30);
+	if (pant){
+		// Set the new camera smooth direction movement
+		Ogre::Vector2 distance(getScreenCenterMouseDistance());
+		camera->setDirection(cameraDirection
+			+ Ogre::Vector3(distance.x, -distance.y, 0) / 30);
 
-	// Raycast for the actual panel
-	Ogre::Real xMove = static_cast<Ogre::Real>(arg.state.X.rel);
-	Ogre::Real yMove = static_cast<Ogre::Real>(arg.state.Y.rel);
+		// Raycast for the actual panel
+		Ogre::Real xMove = static_cast<Ogre::Real>(arg.state.X.rel);
+		Ogre::Real yMove = static_cast<Ogre::Real>(arg.state.Y.rel);
 
-	mNormalizedMousePosition.x += xMove / view->getActualWidth();
-	mNormalizedMousePosition.y += yMove / view->getActualHeight();
+		mNormalizedMousePosition.x += xMove / view->getActualWidth();
+		mNormalizedMousePosition.y += yMove / view->getActualHeight();
 
-	mNormalizedMousePosition.x = std::max<Ogre::Real>(mNormalizedMousePosition.x, 0);
-	mNormalizedMousePosition.y = std::max<Ogre::Real>(mNormalizedMousePosition.y, 0);
-	mNormalizedMousePosition.x = std::min<Ogre::Real>(mNormalizedMousePosition.x, 1);
-	mNormalizedMousePosition.y = std::min<Ogre::Real>(mNormalizedMousePosition.y, 1);
+		mNormalizedMousePosition.x = std::max<Ogre::Real>(mNormalizedMousePosition.x, 0);
+		mNormalizedMousePosition.y = std::max<Ogre::Real>(mNormalizedMousePosition.y, 0);
+		mNormalizedMousePosition.x = std::min<Ogre::Real>(mNormalizedMousePosition.x, 1);
+		mNormalizedMousePosition.y = std::min<Ogre::Real>(mNormalizedMousePosition.y, 1);
 
-	mMousePointer->position(
-		mNormalizedMousePosition.x * view->getActualWidth(),
-		mNormalizedMousePosition.y * view->getActualHeight());
+		mMousePointer->position(
+			mNormalizedMousePosition.x * view->getActualWidth(),
+			mNormalizedMousePosition.y * view->getActualHeight());
 
-	mSPanel2->injectMouseMoved(mNormalizedMousePosition.x * view->getActualWidth(),
-		mNormalizedMousePosition.y * view->getActualHeight());
+		mSPanel2->injectMouseMoved(mNormalizedMousePosition.x * view->getActualWidth(),
+			mNormalizedMousePosition.y * view->getActualHeight());
+	}
 
 	return true;
 }

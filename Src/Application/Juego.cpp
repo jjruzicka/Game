@@ -27,7 +27,7 @@ Juego::Juego(EscenasManager* escenasManager)
 	initBullet();
 
 	camNode = scnMgr->getRootSceneNode()->createChildSceneNode();
-
+	exit = false;
 	// create the camera
 	cam = scnMgr->createCamera("Cam");
 	cam->setNearClipDistance(0.1); 
@@ -140,6 +140,11 @@ Juego::Juego(EscenasManager* escenasManager)
 	vp = mWindow->addViewport(cam);
 	vp->setBackgroundColour(Ogre::ColourValue(150, 150, 150));
 
+
+	//GUI
+	guiGame = new GUI(inputcomp_, vp, scnMgr, cam, camNode, this, false);
+	guiGame->createPanelInGame();
+
 	//Terrain
 	mapa = new Mapa(scnMgr, light, bulletWorld);
 	mapa->createmap();
@@ -198,7 +203,7 @@ bool Juego::run(){
 	clock_t lastTicks = clock();
 	clock_t elapsedTicks = 0;
 	double deltaTime = 0;
-	while (true)
+	while (!exit)
 	{
 		deltaTime = ((double)elapsedTicks) / 1000.f/*CLOCKS_PER_SEC*/;
 		lastTicks = clock();
@@ -219,6 +224,7 @@ bool Juego::run(){
 		if (!root->renderOneFrame())return false;
 		elapsedTicks = clock() - lastTicks;
 	}
+	mWindow->destroy();
 	return true;
 }
 void Juego::activaMision(Entidad* npc){
