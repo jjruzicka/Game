@@ -1,6 +1,6 @@
 #ifndef PROYECTIL_H
 #define PROYECTIL_H
-#include "Entidad.h"
+#include "EntidadRender.h"
 #include "MovimientoProyectil_c.h"
 #include <OgreRenderWindow.h>
 #include "Render_c.h"
@@ -10,10 +10,10 @@
 #include "Juego.h"
 
 class Proyectil :
-	public Entidad
+	public EntidadRender
 {
 public:
-	Proyectil(std::string id, Juego * esc, Ogre::SceneNode* n, btDynamicsWorld * bw, float posGlx, float posGly, float posGlz, Ogre::Quaternion orientacion, float alt, float anch, float larg);
+	Proyectil(std::string id, std::string idRender, Juego * esc, Ogre::SceneNode* n, btDynamicsWorld * bw, float posGlx, float posGly, float posGlz, Ogre::Quaternion orientacion, float alt, float anch, float larg);
 	~Proyectil();
 
 private:

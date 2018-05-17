@@ -15,6 +15,7 @@
     <ClCompile Include="..\..\Src\Application\Collider_c.cpp" />
     <ClCompile Include="..\..\Src\Application\Component.cpp" />
     <ClCompile Include="..\..\Src\Application\Entidad.cpp" />
+    <ClCompile Include="..\..\Src\Application\EntidadRender.cpp" />
     <ClCompile Include="..\..\Src\Application\Escenas.cpp" />
     <ClCompile Include="..\..\Src\Application\EscenasManager.cpp" />
     <ClCompile Include="..\..\Src\Application\GameManager_c.cpp" />
@@ -43,6 +44,7 @@
     <ClInclude Include="..\..\Src\Application\Collider_c.h" />
     <ClInclude Include="..\..\Src\Application\Component.h" />
     <ClInclude Include="..\..\Src\Application\Entidad.h" />
+    <ClInclude Include="..\..\Src\Application\EntidadRender.h" />
     <ClInclude Include="..\..\Src\Application\Escenas.h" />
     <ClInclude Include="..\..\Src\Application\EscenasManager.h" />
     <ClInclude Include="..\..\Src\Application\GameManager_c.h" />

@@ -14,6 +14,8 @@ public:
 	void killAdd(Entidad* obj);
 	void muerteJugador();
 private:
+	void creaPan(int x, int y, int z, std::string idRender);
+	void creaOgreEnemy(int x, int y, int z, std::string idRender);
 	//variables vienen de escenas.h
 	GameManager_c* gm;
 	EscenasManager* escenasManager;
