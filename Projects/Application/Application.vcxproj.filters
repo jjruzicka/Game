@@ -82,6 +82,9 @@
     <ClCompile Include="..\..\Src\Application\Trigger_c.cpp">
       <Filter>code\Component</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Src\Application\MovimientoEnemigo_c.cpp">
+      <Filter>code\Component</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Application\Mapa.h">
@@ -160,6 +163,9 @@
       <Filter>header\Escenas</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\Trigger_c.h">
+      <Filter>header\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\MovimientoEnemigo_c.h">
       <Filter>header\Component</Filter>
     </ClInclude>
   </ItemGroup>

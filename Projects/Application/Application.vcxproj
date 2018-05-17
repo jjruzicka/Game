@@ -25,6 +25,7 @@
     <ClCompile Include="..\..\Src\Application\Mapa.cpp" />
     <ClCompile Include="..\..\Src\Application\Menu.cpp" />
     <ClCompile Include="..\..\Src\Application\Mision_c.cpp" />
+    <ClCompile Include="..\..\Src\Application\MovimientoEnemigo_c.cpp" />
     <ClCompile Include="..\..\Src\Application\MovimientoProyectil_c.cpp" />
     <ClCompile Include="..\..\Src\Application\MyEnvironmentDemoPanelColors.cpp" />
     <ClCompile Include="..\..\Src\Application\MyPurplePanelColors.cpp" />
@@ -54,6 +55,7 @@
     <ClInclude Include="..\..\Src\Application\Mapa.h" />
     <ClInclude Include="..\..\Src\Application\Menu.h" />
     <ClInclude Include="..\..\Src\Application\Mision_c.h" />
+    <ClInclude Include="..\..\Src\Application\MovimientoEnemigo_c.h" />
     <ClInclude Include="..\..\Src\Application\MovimientoProyectil_c.h" />
     <ClInclude Include="..\..\Src\Application\MyEnvironmentDemoPanelColors.h" />
     <ClInclude Include="..\..\Src\Application\MyPurplePanelColors.h" />
