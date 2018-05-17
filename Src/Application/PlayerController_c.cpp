@@ -23,7 +23,7 @@ PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input, Ju
 	contAtack = cdAtack;
 	rb = entidad->GetComponent(gt);
 	node = entidad->GetComponent(rc)->getNode();
-	this->cdDisparo = 10;
+	this->cdDisparo = 80;
 	contDisparo = cdDisparo;
 }
 
