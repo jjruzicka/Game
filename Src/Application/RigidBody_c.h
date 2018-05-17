@@ -2,6 +2,7 @@
 #define RIGIDBODY_C
 #include <btBulletCollisionCommon.h>
 #include <btBulletDynamicsCommon.h>
+#include "BulletCollision\CollisionDispatch\btGhostObject.h"
 #include "Component.h"
 #include "Entidad.h"
 
@@ -9,7 +10,7 @@ class RigidBody_c : public Component
 {
 public:
 	RigidBody_c(Entidad* _ent, btDynamicsWorld* _bulletWorld,
-		float _profundo, float _ancho, float _alto, btScalar _masa);
+		float _profundo, float _ancho, float _alto, btScalar _masa/*bool isTrigger*/);
 	RigidBody_c(){};
 	~RigidBody_c();
 	void Update();
@@ -29,6 +30,7 @@ private:
 	btCollisionShape* shape;
 	btDefaultMotionState* motionState;
 	btRigidBody* rb;
+    //btGhostObject* trigger;
 
 };
 

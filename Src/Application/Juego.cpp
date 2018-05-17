@@ -9,6 +9,7 @@
 #include "StatsEntJuego_c.h"
 #include "PatrullarNPC.h"
 #include "CameraMove_c.h"
+#include "Trigger_c.h"
 using namespace Ogre;
 enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
@@ -59,7 +60,17 @@ Juego::Juego(EscenasManager* escenasManager)
 	entidades.push_back(ent1);
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    Entidad* trigger = new Entidad("trigger");
+    trigger->setPox(1700);// posicion 
+    trigger->setPoy(5);
+    trigger->setPoz(1750);
+    Render_c* renderT = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("trigger"), trigger, "Sinbad", "trigger");
+    Trigger_c* t = new Trigger_c(trigger,bulletWorld, 50, 50, 50);
+    t->actualizarPos(trigger->getPox(), trigger->getPoy(), trigger->getPoz());
+    t->getTrigger()->setUserPointer(trigger);
+    trigger->AddComponent(t);
+    trigger->AddComponent(renderT);
+    entidades.push_back(trigger);
 	//////////////////////////////////////////////////////rb del PJ2////////////////////////////////////////////////////
 	Entidad* ent2 = new Entidad("p2");
 	ent2->setPox(1700);// posicion 
@@ -86,7 +97,7 @@ Juego::Juego(EscenasManager* escenasManager)
 	ent3->AddComponent(gm);
 	entidades.push_back(ent3);
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	Entidad* ent4 = new Entidad("ogroEnemy");
+	/*Entidad* ent4 = new Entidad("ogroEnemy");
 	ent4->setPox(1700);// posicion 
 	ent4->setPoy(5);
 	ent4->setPoz(1750);
@@ -110,7 +121,7 @@ Juego::Juego(EscenasManager* escenasManager)
 	static_rb3->getRigidBody()->setCollisionFlags(static_rb3->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
 	static_rb3->getRigidBody()->setUserPointer(ent5);
 	ent5->AddComponent(static_rb3);
-	entidades.push_back(ent5);
+	entidades.push_back(ent5);*/
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
 	lightdir.normalise();
@@ -159,6 +170,9 @@ bool callbackfunction(btManifoldPoint& cp, const btCollisionObjectWrapper * colO
 			PlayerController_c* pC = new PlayerController_c();
 			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(pC)->chocasCon(2, ((Entidad*)colObj1->getCollisionObject()->getUserPointer()));
 		}
+        else if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "trigger"){
+            std::cout << "aAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+        }
 		else if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "Pan"){
 			PlayerController_c* pC = new PlayerController_c();
 			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(pC)->chocasCon(3, ((Entidad*)colObj1->getCollisionObject()->getUserPointer()));
