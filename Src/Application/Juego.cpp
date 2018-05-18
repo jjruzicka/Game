@@ -72,6 +72,8 @@ Juego::Juego(EscenasManager* escenasManager)
 	ent2->AddComponent(static_rb);
 	MovimientoEnemigo_c* movEnem2 = new MovimientoEnemigo_c(ent2);
 	ent2->AddComponent(movEnem2);
+	StatsEntJuego_c* statsE = new StatsEntJuego_c(2, 3, 2, this, ent2);
+	ent2->AddComponent(statsE);
 	entidades.push_back(ent2);
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     Entidad* trigger = new Entidad("trigger");

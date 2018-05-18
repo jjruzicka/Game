@@ -25,7 +25,12 @@ void MovimientoEnemigo_c::Update(){
 }
 
 void MovimientoEnemigo_c::mueve(Entidad* entidadHeroe){
-	//node->translate(Ogre::Vector3(entidadHeroe->getPox() - entidad->getPox(), 0, entidadHeroe->getPoz() - entidad->getPoz()), Ogre::Node::TS_WORLD);
-	node->translate(Ogre::Vector3(1, 0, 0), Ogre::Node::TS_WORLD);
+	//node->translate(Ogre::Vector3(entidadHeroe->getPox() - entidad->getPox(), 0, entidadHeroe->getPoz() - entidad->getPoz()), Ogre::Node::TS_LOCAL);
+	Ogre::Vector3 angIni(0,0,1);
+	Ogre::Vector3 angFin(entidadHeroe->getPox() - entidad->getPox(), 0, entidadHeroe->getPoz() - entidad->getPoz());
+	// = Ogre::Quaternion(Ogre::Degree(0), Ogre::Vector3(entidadHeroe->getPox() - entidad->getPox(), entidad->getRoy(), entidadHeroe->getPoz() - entidad->getPoz()));
+	node->setOrientation(angIni.getRotationTo(angFin));
+	node->translate(node->getOrientation() * Ogre::Vector3(0, 0, 0.1));
+	//node->translate(Ogre::Vector3(1, 0, 0), Ogre::Node::TS_WORLD);
 	entidad->GetComponent(rb)->actualizarPos(node->getPosition().x, node->getPosition().y, node->getPosition().z);
 }
