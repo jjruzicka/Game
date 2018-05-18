@@ -1,10 +1,11 @@
 #include "Trigger_c.h"
 
 
-Trigger_c::Trigger_c(Entidad* _ent, btDynamicsWorld* _bulletWorld,
+Trigger_c::Trigger_c(Entidad* _ent, Entidad* _entEne, btDynamicsWorld* _bulletWorld,
     float _profundo, float _ancho, float _alto)
 {
     ent = _ent;
+	entPadre = _entEne;
     bulletWorld = _bulletWorld;
     alto = _alto;
     ancho = _ancho;
@@ -25,7 +26,8 @@ Trigger_c::~Trigger_c()
 }
 
 void Trigger_c::Update(){
-   btTransform trans;
+	actualizarPos(entPadre->getPox(), entPadre->getPoy(), entPadre->getPoz());
+    btTransform trans;
     trans = trigger->getWorldTransform();
     float x = trans.getOrigin().getX();
     float y = trans.getOrigin().getY();
