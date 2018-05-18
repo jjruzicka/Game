@@ -15,6 +15,7 @@ public:
 	GUI(InputComponent* input_, Ogre::Viewport* vp, Ogre::SceneManager * scnMgr, Ogre::Camera * cam, Ogre::SceneNode* camNode, Escenas* menuc, bool escena);
 	void createPanel();
 	void createPanelInGame();
+	void _createPanel();
 	bool menuScreen;
 	~GUI();
 private:
@@ -75,6 +76,8 @@ private:
 	Ogre::Vector3 cameraDirection;
 	Ogre::Camera * camera;
 	Ogre::SceneNode* cNode;
+
+	
 
 	MyPurplePanelColors* mMyPurplePanelColors;
 	

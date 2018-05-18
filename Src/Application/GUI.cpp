@@ -2,6 +2,14 @@
 #include <iostream>
 #include "Menu.h"
 #include "Juego.h"
+
+typedef struct PanelAndDirection
+{
+	Gui3D::Panel* panel;
+	Ogre::Vector3 cameraDirection;
+	int yaw;
+} PanelAndDirection;
+
 GUI::GUI(InputComponent* input_, Ogre::Viewport* vp, Ogre::SceneManager * scnMgr, Ogre::Camera * cam, Ogre::SceneNode* camNode, Escenas* menuc, bool escena)
 {
 	menu = menuc;
@@ -11,18 +19,29 @@ GUI::GUI(InputComponent* input_, Ogre::Viewport* vp, Ogre::SceneManager * scnMgr
 	icomp_ = input_;
 	icomp_->addKeyListener(this, "teclado2");
 	icomp_->addMouseListener(this, "raton2");
+	
+	pant = escena;
 	mMyPurplePanelColors = new MyPurplePanelColors();
 	mGui3D = new Gui3D::Gui3D(mMyPurplePanelColors);
 	mGui3D->createScreen(vp, "purple", "mainScreen");
-	pant = escena;
+	
 	// Create a layer for the mousePointer
 	if (pant){
+		
 		mNormalizedMousePosition = Ogre::Vector2(0.5, 0.5);
-		mMousePointerLayer = mGui3D->getScreen("mainScreen")->createLayer();
+		mMousePointerLayer = mGui3D->getScreen("mainScreen")->createLayer(1);
 		mMousePointer = mMousePointerLayer->createRectangle(vp->getActualWidth() / 2,
 			vp->getActualHeight() / 2, 12, 18);
    
 		mMousePointer->background_image("mousepointer");
+	}
+	else{
+		//mGui3D = new Gui3D::Gui3D(&mMyEnvironmentDemoPanelColors);
+		//mGui3D->createScreen(vp, "environmentDemo", "mainScreen");
+		////mPanel = _createPanel(Ogre::Vector3(0, 5.3, -2.5), 180);
+		//camera->setPosition(0, 6.f, -8);
+		//camera->setDirection(Ogre::Vector3(0, 0, 1));
+
 	}
 
   
@@ -34,6 +53,22 @@ GUI::GUI(InputComponent* input_, Ogre::Viewport* vp, Ogre::SceneManager * scnMgr
 	nbFramesSinceStart = 0;
 	mClicksOnButton = 0;
 
+}
+
+void GUI::_createPanel()
+{
+	Gui3D::Panel* panel = new Gui3D::Panel(
+		mGui3D, scn, Ogre::Vector2(400, 400), 15, "environmentDemo", "kikoo");
+
+	panel->mNode->setPosition(0, 5.3, -2.5);
+	panel->mNode->yaw(Ogre::Degree(180));
+
+	panel->makeCaption(10, 10, 380, 30, "Move the TV please...", Gorilla::TextAlign_Centre);
+
+	panel->makeCaption(10, 100, 90, 100, "Left", Gorilla::TextAlign_Centre, Gorilla::VerticalAlign_Middle);
+	panel->makeCaption(310, 100, 90, 100, "Right", Gorilla::TextAlign_Centre, Gorilla::VerticalAlign_Middle);
+
+	mPanel = panel;
 }
 void GUI::createPanel(){
 	myScreen = mGui3D->getScreen("mainScreen");
@@ -114,6 +149,8 @@ bool GUI::exitGame(Gui3D::PanelElement* e){
 }
 
 bool GUI::keyPressed(const OIS::KeyEvent& keyP){
+	
+	//mPanel->injectKeyPressed(keyP);
 	switch (keyP.key)
 	{
 	case OIS::KC_P:
@@ -125,6 +162,7 @@ bool GUI::keyPressed(const OIS::KeyEvent& keyP){
 	return true;
 }
 bool GUI::keyReleased(const OIS::KeyEvent& keyP){
+	//mPanel->injectKeyReleased(keyP);
 	switch (keyP.key)
 	{
 	case OIS::KC_P:
@@ -150,6 +188,8 @@ bool GUI::mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id)
 {
 	if (pant)
 	mSPanel2->injectMousePressed(evt, id);
+	else
+	mPanel->injectMousePressed(evt, id);
 	
 	return true;
 }
@@ -158,6 +198,8 @@ bool GUI::mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id)
 {
 	if (pant)
 	mSPanel2->injectMouseReleased(evt, id);
+	else
+		mPanel->injectMouseReleased(evt, id);
 	
 	return true;
 }
@@ -198,6 +240,13 @@ bool GUI::mouseMoved(const OIS::MouseEvent &arg)
 
 		mSPanel2->injectMouseMoved(mNormalizedMousePosition.x * view->getActualWidth(),
 			mNormalizedMousePosition.y * view->getActualHeight());
+	}
+	else {
+		Ogre::Real pitch = Ogre::Real(arg.state.Y.rel) * -0.005f;
+		Ogre::Real yaw = Ogre::Real(arg.state.X.rel) * -0.005f;
+		camera->pitch(Ogre::Radian(pitch));
+		camera->yaw(Ogre::Radian(yaw));
+		mPanel->injectMouseMoved(camera->getCameraToViewportRay(0.5f, 0.5f));
 	}
 
 	return true;

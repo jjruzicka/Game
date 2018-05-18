@@ -9,6 +9,10 @@
 #include "StatsEntJuego_c.h"
 #include "PatrullarNPC.h"
 #include "CameraMove_c.h"
+#include <string>
+#include <sstream>
+
+using namespace std;
 using namespace Ogre;
 enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
@@ -28,13 +32,9 @@ Juego::Juego(EscenasManager* escenasManager)
 
 	camNode = scnMgr->getRootSceneNode()->createChildSceneNode();
 	exit = false;
-	// create the camera
-	cam = scnMgr->createCamera("Cam");
-	cam->setNearClipDistance(0.1); 
-	cam->setFarClipDistance(10000);
-	cam->setAutoAspectRatio(true);
-	camNode->attachObject(cam);
-	cam->setQueryFlags(MY_QUERY_IGNORE);
+	
+	numArboles = 80;
+	arbolitos.reserve(numArboles);
 
 	this->escenasManager = escenasManager;
 	inputcomp_ = InputComponent::getSingletonPtr();
@@ -113,22 +113,24 @@ Juego::Juego(EscenasManager* escenasManager)
 	entidades.push_back(ent5);
 
 	////////////////////////////////////////////////ARBOL//////////////////////////////////////////////////////////////////
-	Entidad* ent6 = new Entidad("Arbol1");
-	ent6->setPox(1800);// posicion 
-	ent6->setPoy(50);
-	ent6->setPoz(2000);
-	Render_c* render5 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("Arbol1"), ent6, "tree.05", "Arbol1");
-	ent6->AddComponent(render5);
-	RigidBody_c* static_rb4 = new RigidBody_c(ent6, bulletWorld, 40, 40, 40, 1);
-	static_rb4->getRigidBody()->setCollisionFlags(static_rb4->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
-	static_rb4->getRigidBody()->setUserPointer(ent6);
-	ent6->AddComponent(static_rb4);
-	entidades.push_back(ent6);
+
+	createArbolitos();
+	//Entidad* ent6 = new Entidad("Arbol1");
+	//ent6->setPox(1800);// posicion 
+	//ent6->setPoy(50);
+	//ent6->setPoz(2000);
+	//Render_c* render5 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("Arbol1"), ent6, "tree.05", "Arbol1");
+	//ent6->AddComponent(render5);
+	//RigidBody_c* static_rb4 = new RigidBody_c(ent6, bulletWorld, 40, 40, 40, 1);
+	//static_rb4->getRigidBody()->setCollisionFlags(static_rb4->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
+	//static_rb4->getRigidBody()->setUserPointer(ent6);
+	//ent6->AddComponent(static_rb4);
+	//entidades.push_back(ent6);
 
 
 	Entidad* ent7 = new Entidad("Casa");
 	ent7->setPox(1300);// posicion 
-	ent7->setPoy(500);
+	ent7->setPoy(550);
 	ent7->setPoz(3000);
 	Render_c* render6 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("Casa"), ent7, "tudorhouse", "Casa");
 	ent7->AddComponent(render6);
@@ -138,29 +140,29 @@ Juego::Juego(EscenasManager* escenasManager)
 	ent7->AddComponent(static_rb5);
 	entidades.push_back(ent7);
 
-	Entidad* ent8 = new Entidad("tree");
-	ent8->setPox(1950);// posicion 
-	ent8->setPoy(250);
-	ent8->setPoz(2500);
-	Render_c* render7 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("tree"), ent8, "tree.09", "tree");
-	ent8->AddComponent(render7);
-	RigidBody_c* static_rb6 = new RigidBody_c(ent8, bulletWorld, 100, 100, 100, 0);
-	static_rb6->getRigidBody()->setCollisionFlags(static_rb6->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
-	static_rb6->getRigidBody()->setUserPointer(ent8);
-	ent8->AddComponent(static_rb6);
-	entidades.push_back(ent8);
+	//Entidad* ent8 = new Entidad("tree");
+	//ent8->setPox(1950);// posicion 
+	//ent8->setPoy(250);
+	//ent8->setPoz(2500);
+	//Render_c* render7 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("tree"), ent8, "tree.09", "tree");
+	//ent8->AddComponent(render7);
+	//RigidBody_c* static_rb6 = new RigidBody_c(ent8, bulletWorld, 100, 100, 100, 0);
+	//static_rb6->getRigidBody()->setCollisionFlags(static_rb6->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
+	//static_rb6->getRigidBody()->setUserPointer(ent8);
+	//ent8->AddComponent(static_rb6);
+	//entidades.push_back(ent8);
 
-	Entidad* ent9 = new Entidad("tree3");
-	ent9->setPox(1500);// posicion 
-	ent9->setPoy(50);
-	ent9->setPoz(2000);
-	Render_c* render8 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("tree3"), ent9, "tree.07", "tree3");
-	ent9->AddComponent(render8);
-	RigidBody_c* static_rb7 = new RigidBody_c(ent9, bulletWorld, 50, 50, 50, 0);
-	static_rb7->getRigidBody()->setCollisionFlags(static_rb7->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
-	static_rb7->getRigidBody()->setUserPointer(ent9);
-	ent9->AddComponent(static_rb7);
-	entidades.push_back(ent9);
+	//Entidad* ent9 = new Entidad("tree3");
+	//ent9->setPox(1500);// posicion 
+	//ent9->setPoy(50);
+	//ent9->setPoz(2000);
+	//Render_c* render8 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("tree3"), ent9, "tree.07", "tree3");
+	//ent9->AddComponent(render8);
+	//RigidBody_c* static_rb7 = new RigidBody_c(ent9, bulletWorld, 50, 50, 50, 0);
+	//static_rb7->getRigidBody()->setCollisionFlags(static_rb7->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
+	//static_rb7->getRigidBody()->setUserPointer(ent9);
+	//ent9->AddComponent(static_rb7);
+	//entidades.push_back(ent9);
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
 	lightdir.normalise();
@@ -178,12 +180,21 @@ Juego::Juego(EscenasManager* escenasManager)
 	camNode->rotate(Ogre::Vector3(0, 0, 1), Ogre::Degree(180));
 	camNode->lookAt(Ogre::Vector3(ent1->getPox(), ent1->getPoy() + 5, ent1->getPoz()), Ogre::Node::TS_WORLD);
 
+
 	Entidad* entCamara = new Entidad("camara");
 	CameraMove_c* camMove = new CameraMove_c(entCamara, ent1, camNode, inputcomp_);
 	entCamara->AddComponent(camMove);
 	entidades.reserve(1);
 	entidades.push_back(entCamara);
 
+	// create the camera
+	cam = scnMgr->createCamera("Cam");
+	cam->setNearClipDistance(0.1);
+	cam->setFarClipDistance(10000);
+	cam->setAutoAspectRatio(true);
+	camNode->attachObject(cam);
+	cam->setQueryFlags(MY_QUERY_IGNORE);
+	
 
 	// and tell it to render into the main window
 	Viewport* vp;
@@ -193,6 +204,7 @@ Juego::Juego(EscenasManager* escenasManager)
 
 	//GUI
 	guiGame = new GUI(inputcomp_, vp, scnMgr, cam, camNode, this, false);
+	//guiGame->_createPanel();
 	guiGame->createPanelInGame();
 
 	//Terrain
@@ -229,6 +241,28 @@ bool callbackfunction(btManifoldPoint& cp, const btCollisionObjectWrapper * colO
 	}
 	return false;
 }
+
+void Juego::createArbolitos(){
+	for (int i = 0; i < numArboles; i++){
+		std::stringstream ss;
+
+		ss << i;
+		string str = ss.str();
+		arbolitos.push_back(new Entidad(str));
+		arbolitos[i]->setPox(rand() % 12000);// posicion 
+		arbolitos[i]->setPoy(250);
+		arbolitos[i]->setPoz(rand() % 12000);
+
+		Render_c* render8 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode(str), arbolitos[i], "tree.09", str);
+		arbolitos[i]->AddComponent(render8);
+		RigidBody_c* static_rb7 = new RigidBody_c(arbolitos[i], bulletWorld, 45, 50, 50, 0);
+		static_rb7->getRigidBody()->setCollisionFlags(static_rb7->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
+		static_rb7->getRigidBody()->setUserPointer(arbolitos[i]);
+		arbolitos[i]->AddComponent(static_rb7);
+		entidades.push_back(arbolitos[i]);
+	}
+}
+
 bool Juego::initBullet(){
 	gContactAddedCallback = callbackfunction;
 	//build the broadPhase

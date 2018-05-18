@@ -3,7 +3,7 @@
 
 
 
-#include <OGRE/OgreSceneNode.h>
+#include <OgreSceneNode.h>
 
 /*! class. OgreSceneNodeUtils
     desc.

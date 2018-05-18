@@ -10,8 +10,8 @@
 #include <sstream>
 #include <vector>
 
-#include <OGRE/Ogre.h>
-#include <OIS/OIS.h>
+#include <Ogre.h>
+#include <OIS.h>
 
 #include "Gui3D.h"
 #include "Gui3DPanel.h"

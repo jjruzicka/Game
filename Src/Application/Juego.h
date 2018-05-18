@@ -3,6 +3,8 @@
 #include "GameManager_c.h"
 #include "EscenasManager.h"
 #include "GUI.h"
+#include <vector>
+
 class Juego : public Escenas
 {
 public:
@@ -18,6 +20,9 @@ public:
 private:
 	//variables vienen de escenas.h
 	GameManager_c* gm;
+	std::vector<Entidad*> arbolitos;
+	void createArbolitos();
+	int numArboles;
 	GUI* guiGame;
 	EscenasManager* escenasManager;
 };
