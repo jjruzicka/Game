@@ -140,6 +140,30 @@ Juego::Juego(EscenasManager* escenasManager)
 	ent7->AddComponent(static_rb5);
 	entidades.push_back(ent7);
 
+	//////////////////////////////////////WATER////////////////////////////////////////////////////////////////////////////////////////////
+	// Water
+	Entity *pWaterEntity;
+	Plane nWaterPlane;
+
+	// create a water plane/scene node
+	nWaterPlane.normal = Vector3::UNIT_Y;
+	nWaterPlane.d = -1.5;
+	MeshManager::getSingleton().createPlane(
+		"WaterPlane",
+		ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+		nWaterPlane,
+		8000, 8000,
+		20, 20,
+		true, 1,
+		10, 10,
+		Vector3::UNIT_Z);
+	pWaterEntity = scnMgr->createEntity("water", "WaterPlane");
+	pWaterEntity->setMaterialName("Examples/TextureEffect4");
+	SceneNode *waterNode =
+		scnMgr->getRootSceneNode()->createChildSceneNode("WaterNode");
+	waterNode->attachObject(pWaterEntity);
+	waterNode->translate(4000, 50, 4000);
+	
 	//Entidad* ent8 = new Entidad("tree");
 	//ent8->setPox(1950);// posicion 
 	//ent8->setPoy(250);
@@ -280,6 +304,8 @@ bool Juego::initBullet(){
 	bulletWorld->setGravity(btVector3(0, -10, 0));
 	return true;
 }
+#define FLOW_SPEED 0.4
+#define FLOW_HEIGHT 10
 bool Juego::run(){
 	
 
@@ -294,6 +320,26 @@ bool Juego::run(){
 		if (elapsedTicks >= 0.5){
 			inputcomp_->capture();
 			elapsedTicks = 0;
+		}
+
+		float fWaterFlow = FLOW_SPEED * lastTicks;
+		static float fFlowAmount = 0.0f;
+		static bool fFlowUp = true;
+		SceneNode *pWaterNode = static_cast<SceneNode*>(
+			cam->getSceneManager()->getRootSceneNode()->getChild("WaterNode"));
+		if (pWaterNode)
+		{
+			if (fFlowUp)
+				fFlowAmount += fWaterFlow;
+			else
+				fFlowAmount -= fWaterFlow;
+
+			if (fFlowAmount >= FLOW_HEIGHT)
+				fFlowUp = false;
+			else if (fFlowAmount <= 0.0f)
+				fFlowUp = true;
+
+			pWaterNode->translate(0, (fFlowUp ? fWaterFlow : -fWaterFlow), 0);
 		}
 		//Tick de la fisica
 		bulletWorld->stepSimulation(1.f / 60.f, 10);
