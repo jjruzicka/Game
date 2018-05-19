@@ -21,13 +21,17 @@ Enemigo_Torreta::Enemigo_Torreta(std::string id, Juego * esc, Ogre::SceneNode* n
 	ancho = anch;
 	alto = alt;
 
-	// añadmos componente fisico
+	// añadimos componente fisico
 	rb = new RigidBody_c(this, bulletWorld, largo, ancho, alto, MASA);
 	this->AddComponent(rb);
 
 	// añadimos componente render
 	render = new Render_c(node, this, "Sinbad", id);
 	this->AddComponent(render);
+	
+	// añadimos componente disparo
+	dp = new DisparoTorreta_c(this);
+	this->AddComponent(dp);
 }
 
 

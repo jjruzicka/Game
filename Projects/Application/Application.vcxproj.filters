@@ -79,6 +79,15 @@
     <ClCompile Include="..\..\Src\Application\Menu.cpp">
       <Filter>code\Escenas</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Src\Application\Enemigo_Torreta.cpp">
+      <Filter>code\Entidades</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\MovimientoProyectilEnemigo_c.cpp">
+      <Filter>code\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\DisparoTorreta_c.cpp">
+      <Filter>code\Component</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Application\Mapa.h">
@@ -155,6 +164,15 @@
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\Menu.h">
       <Filter>header\Escenas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\Enemigo_Torreta.h">
+      <Filter>header\Entidades</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\MovimientoProyectilEnemigo_c.h">
+      <Filter>header\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\DisparoTorreta_c.h">
+      <Filter>header\Component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -9,6 +9,8 @@
 #include "StatsEntJuego_c.h"
 #include "PatrullarNPC.h"
 #include "CameraMove_c.h"
+#include "Enemigo_Torreta.h"
+
 using namespace Ogre;
 enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
@@ -61,7 +63,7 @@ Juego::Juego(EscenasManager* escenasManager)
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	//////////////////////////////////////////////////////rb del PJ2////////////////////////////////////////////////////
-	Entidad* ent2 = new Entidad("p2");
+	/*Entidad* ent2 = new Entidad("p2");
 	ent2->setPox(1700);// posicion 
 	ent2->setPoy(5);
 	ent2->setPoz(1850);
@@ -78,7 +80,7 @@ Juego::Juego(EscenasManager* escenasManager)
 	ent2->AddComponent(mision);
 	Mision_c* mision2 = new Mision_c(1, "ogroEnemy", 150, ent2);
 	ent2->AddComponent(mision2);
-	entidades.push_back(ent2);
+	entidades.push_back(ent2);*/
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	Entidad* ent3 = new Entidad("GM");
@@ -86,7 +88,7 @@ Juego::Juego(EscenasManager* escenasManager)
 	ent3->AddComponent(gm);
 	entidades.push_back(ent3);
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	Entidad* ent4 = new Entidad("ogroEnemy");
+	/*Entidad* ent4 = new Entidad("ogroEnemy");
 	ent4->setPox(1700);// posicion 
 	ent4->setPoy(5);
 	ent4->setPoz(1750);
@@ -110,7 +112,11 @@ Juego::Juego(EscenasManager* escenasManager)
 	static_rb3->getRigidBody()->setCollisionFlags(static_rb3->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
 	static_rb3->getRigidBody()->setUserPointer(ent5);
 	ent5->AddComponent(static_rb3);
-	entidades.push_back(ent5);
+	entidades.push_back(ent5);*/
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	Enemigo_Torreta* et = new Enemigo_Torreta("EnemigoTorreta", this, scnMgr->getRootSceneNode()->createChildSceneNode("EnemigoTorreta"),
+		bulletWorld, 1700, 5, 1850, 5, 5, 5);
+	entidades.push_back(et);
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
 	lightdir.normalise();

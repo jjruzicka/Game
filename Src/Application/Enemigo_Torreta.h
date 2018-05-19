@@ -4,7 +4,7 @@
 #include <OgreRenderWindow.h>
 #include "Render_c.h"
 #include "RigidBody_c.h"
-
+#include "DisparoTorreta_c.h"
 class Enemigo_Torreta :
 	public Entidad
 {
@@ -18,12 +18,10 @@ private:
 	btDynamicsWorld * bulletWorld;
 	RigidBody_c * rb;
 	Render_c * render;
+	DisparoTorreta_c * dp;
 	float largo;
 	float ancho;
 	float alto;
 	const btScalar MASA = 1;
-
-	std::clock_t start;
-	double cooldown;
 };
 

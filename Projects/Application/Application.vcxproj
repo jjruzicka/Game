@@ -14,6 +14,8 @@
     <ClCompile Include="..\..\Src\Application\CameraMove_c.cpp" />
     <ClCompile Include="..\..\Src\Application\Collider_c.cpp" />
     <ClCompile Include="..\..\Src\Application\Component.cpp" />
+    <ClCompile Include="..\..\Src\Application\DisparoTorreta_c.cpp" />
+    <ClCompile Include="..\..\Src\Application\Enemigo_Torreta.cpp" />
     <ClCompile Include="..\..\Src\Application\Entidad.cpp" />
     <ClCompile Include="..\..\Src\Application\Escenas.cpp" />
     <ClCompile Include="..\..\Src\Application\EscenasManager.cpp" />
@@ -25,6 +27,7 @@
     <ClCompile Include="..\..\Src\Application\Mapa.cpp" />
     <ClCompile Include="..\..\Src\Application\Menu.cpp" />
     <ClCompile Include="..\..\Src\Application\Mision_c.cpp" />
+    <ClCompile Include="..\..\Src\Application\MovimientoProyectilEnemigo_c.cpp" />
     <ClCompile Include="..\..\Src\Application\MovimientoProyectil_c.cpp" />
     <ClCompile Include="..\..\Src\Application\MyEnvironmentDemoPanelColors.cpp" />
     <ClCompile Include="..\..\Src\Application\MyPurplePanelColors.cpp" />
@@ -42,6 +45,8 @@
     <ClInclude Include="..\..\Src\Application\CameraMove_c.h" />
     <ClInclude Include="..\..\Src\Application\Collider_c.h" />
     <ClInclude Include="..\..\Src\Application\Component.h" />
+    <ClInclude Include="..\..\Src\Application\DisparoTorreta_c.h" />
+    <ClInclude Include="..\..\Src\Application\Enemigo_Torreta.h" />
     <ClInclude Include="..\..\Src\Application\Entidad.h" />
     <ClInclude Include="..\..\Src\Application\Escenas.h" />
     <ClInclude Include="..\..\Src\Application\EscenasManager.h" />
@@ -53,6 +58,7 @@
     <ClInclude Include="..\..\Src\Application\Mapa.h" />
     <ClInclude Include="..\..\Src\Application\Menu.h" />
     <ClInclude Include="..\..\Src\Application\Mision_c.h" />
+    <ClInclude Include="..\..\Src\Application\MovimientoProyectilEnemigo_c.h" />
     <ClInclude Include="..\..\Src\Application\MovimientoProyectil_c.h" />
     <ClInclude Include="..\..\Src\Application\MyEnvironmentDemoPanelColors.h" />
     <ClInclude Include="..\..\Src\Application\MyPurplePanelColors.h" />
