@@ -35,6 +35,7 @@
     <ClCompile Include="..\..\Src\Application\PatrullarNPC.cpp" />
     <ClCompile Include="..\..\Src\Application\Proyectil.cpp" />
     <ClCompile Include="..\..\Src\Application\PlayerController_c.cpp" />
+    <ClCompile Include="..\..\Src\Application\Proyectil_Enemigo.cpp" />
     <ClCompile Include="..\..\Src\Application\ProyectoBasico.cpp" />
     <ClCompile Include="..\..\Src\Application\Render_c.cpp" />
     <ClCompile Include="..\..\Src\Application\RigidBody_c.cpp" />
@@ -66,6 +67,7 @@
     <ClInclude Include="..\..\Src\Application\PatrullarNPC.h" />
     <ClInclude Include="..\..\Src\Application\Proyectil.h" />
     <ClInclude Include="..\..\Src\Application\PlayerController_c.h" />
+    <ClInclude Include="..\..\Src\Application\Proyectil_Enemigo.h" />
     <ClInclude Include="..\..\Src\Application\Render_c.h" />
     <ClInclude Include="..\..\Src\Application\RigidBody_c.h" />
     <ClInclude Include="..\..\Src\Application\StatsEntJuego_c.h" />

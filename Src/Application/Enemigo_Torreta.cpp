@@ -30,7 +30,7 @@ Enemigo_Torreta::Enemigo_Torreta(std::string id, Juego * esc, Ogre::SceneNode* n
 	this->AddComponent(render);
 	
 	// añadimos componente disparo
-	dp = new DisparoTorreta_c(this);
+	dp = new DisparoTorreta_c(this, escena);
 	this->AddComponent(dp);
 }
 

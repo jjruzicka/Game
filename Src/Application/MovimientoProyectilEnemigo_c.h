@@ -27,5 +27,6 @@ private:
 
 	std::clock_t start;
 	double duration;
+	Ogre::Quaternion quat;
 };
 

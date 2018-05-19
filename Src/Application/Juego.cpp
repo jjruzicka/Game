@@ -42,7 +42,7 @@ Juego::Juego(EscenasManager* escenasManager)
 	inputcomp_ = InputComponent::getSingletonPtr();
 	inputcomp_->initialise(mWindow);
 	//////////////////////////////////////////////////////rb del pj PRINCIPAL////////////////////////////////////////////////////
-	Entidad* ent1 = new Entidad("p");
+	ent1 = new Entidad("p");
 	//1683, 50, 2116
 	ent1->setPox(1700);
 	ent1->setPoy(5);

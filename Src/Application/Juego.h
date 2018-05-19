@@ -13,8 +13,13 @@ public:
 	void atacar(Entidad* npc);
 	void killAdd(Entidad* obj);
 	void muerteJugador();
+
+	Entidad * getPlayer(){
+		return ent1;
+	}
 private:
 	//variables vienen de escenas.h
+	Entidad* ent1; // Player
 	GameManager_c* gm;
 	EscenasManager* escenasManager;
 };

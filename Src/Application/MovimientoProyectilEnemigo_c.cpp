@@ -15,8 +15,29 @@ MovimientoProyectilEnemigo_c::MovimientoProyectilEnemigo_c(Entidad* ent, Juego *
 
 MovimientoProyectilEnemigo_c::~MovimientoProyectilEnemigo_c()
 {
+	delete rc;
+	delete rb;
 }
 
 void MovimientoProyectilEnemigo_c::Update(){
+	if (first){
+		node = entidad->GetComponent(rc)->getNode();
+		quat = Ogre::Vector3(0, 0, 1).getRotationTo(targetNode->getPosition() - node->getPosition());
+		start = std::clock(); // get current time
+	}
+
 	//setRotation(Vector3(0, 0, 1).getRotationTo(posicionBomba - posSinbadBomba))
+	node->setOrientation(quat);
+
+	cglobal = Ogre::Vector3(entidad->getPox(), entidad->getPoy(), entidad->getPoz());
+	clocal = node->convertWorldToLocalPosition(cglobal);
+	if (first){
+		clocal.z += 20;
+		first = false;
+	}
+	else
+		clocal.z += 3;
+
+	cglobal = node->convertLocalToWorldPosition(clocal);
+	entidad->GetComponent(rb)->actualizarPos(cglobal.x, cglobal.y, cglobal.z);
 }
