@@ -1,7 +1,7 @@
-#include "MovimientoEnemigo_c.h"
+#include "ComportamientoEnem_c.h"
+#include "StatsPJ_c.h"
 
-
-MovimientoEnemigo_c::MovimientoEnemigo_c(Entidad* ent)
+ComportamientoEnem_c::ComportamientoEnem_c(Entidad* ent)
 {
 	chocoCon = 0;
 	entidad = ent;
@@ -12,31 +12,17 @@ MovimientoEnemigo_c::MovimientoEnemigo_c(Entidad* ent)
 	entidad = ent;
 	cooldown = 0;
 	getTime = true;
-	modoAtaque = false;
 }
 
 
-MovimientoEnemigo_c::~MovimientoEnemigo_c()
+ComportamientoEnem_c::~ComportamientoEnem_c()
 {
 }
 
-void MovimientoEnemigo_c::Update(){
-	if (modoAtaque){
-		if (getTime){
-			start = std::clock(); // get current time
-			getTime = false;
-		}
-
-		cooldown = (std::clock() - start) / (double)CLOCKS_PER_SEC;
-
-		if (cooldown > 4){ // Dispara
-			std::cout << "Disparo enemigo" << std::endl;
-			getTime = true;
-		}
-	}
+void ComportamientoEnem_c::Update(){
 }
 
-void MovimientoEnemigo_c::mueve(Entidad* entidadHeroe){
+void ComportamientoEnem_c::actua(Entidad* entidadHeroe){
 	float distancia = calculaDistancia(entidadHeroe);
 	if (distancia > 11){
 		Ogre::Vector3 angIni(0, 0, 1);
@@ -44,13 +30,24 @@ void MovimientoEnemigo_c::mueve(Entidad* entidadHeroe){
 		node->setOrientation(angIni.getRotationTo(angFin));
 		node->translate(node->getOrientation() * Ogre::Vector3(0, 0, 0.1));
 		entidad->GetComponent(rb)->actualizarPos(node->getPosition().x, node->getPosition().y, node->getPosition().z);
-		modoAtaque = false;
 	}
 	else {
-		modoAtaque = true;
+		if (getTime){
+			start = std::clock();
+			getTime = false;
+		}
+
+		cooldown = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+
+		if (cooldown > 4){
+			getTime = true;
+			StatsPJ_c* st = new StatsPJ_c();
+			entidadHeroe->GetComponent(st)->restaVida(1);
+			std::cout << "Te quedan " << entidadHeroe->GetComponent(st)->getVida()<< " de vida" << std::endl;
+		}
 	}
 }
 
-float MovimientoEnemigo_c::calculaDistancia(Entidad* entidadHeroe){
+float ComportamientoEnem_c::calculaDistancia(Entidad* entidadHeroe){
 	return sqrtf(pow(entidadHeroe->getPox() - entidad->getPox(), 2) + pow(entidadHeroe->getPoz() - entidad->getPoz(), 2));
 }

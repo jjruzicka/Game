@@ -10,7 +10,7 @@
 #include "PatrullarNPC.h"
 #include "CameraMove_c.h"
 #include "Trigger_c.h"
-#include "MovimientoEnemigo_c.h"
+#include "ComportamientoEnem_c.h"
 using namespace Ogre;
 enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
@@ -63,15 +63,15 @@ Juego::Juego(EscenasManager* escenasManager)
 	Entidad* ent2 = new Entidad("ogroEnemy");
 	ent2->setPox(1700);// posicion 
 	ent2->setPoy(5);
-	ent2->setPoz(2500);
+	ent2->setPoz(1850);
 	Render_c* render2 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("ogroEnemy"), ent2, "Sinbad", "ogroEnemy");
 	ent2->AddComponent(render2);
 	RigidBody_c* static_rb = new RigidBody_c(ent2, bulletWorld, 5, 5, 5, 1);
 	static_rb->getRigidBody()->setCollisionFlags(static_rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
 	static_rb->getRigidBody()->setUserPointer(ent2);
 	ent2->AddComponent(static_rb);
-	MovimientoEnemigo_c* movEnem2 = new MovimientoEnemigo_c(ent2);
-	ent2->AddComponent(movEnem2);
+	ComportamientoEnem_c* compEnem = new ComportamientoEnem_c(ent2);
+	ent2->AddComponent(compEnem);
 	StatsEntJuego_c* statsE = new StatsEntJuego_c(2, 3, 2, this, ent2);
 	ent2->AddComponent(statsE);
 	entidades.push_back(ent2);
@@ -79,7 +79,7 @@ Juego::Juego(EscenasManager* escenasManager)
     Entidad* trigger = new Entidad("trigger");
     trigger->setPox(1700);// posicion 
     trigger->setPoy(5);
-    trigger->setPoz(2500);
+	trigger->setPoz(1850);
     //Render_c* renderT = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("trigger"), trigger, "Sinbad", "trigger");
     Trigger_c* t = new Trigger_c(trigger,ent2, bulletWorld, 50, 50, 50);
     t->actualizarPos(trigger->getPox(), trigger->getPoy(), trigger->getPoz());
@@ -189,8 +189,8 @@ bool callbackfunction(btManifoldPoint& cp, const btCollisionObjectWrapper * colO
         else if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "trigger"){
             //std::cout << "aAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
 			Trigger_c* trig = new Trigger_c();
-			MovimientoEnemigo_c* mE = new MovimientoEnemigo_c();
-			((Entidad*)colObj1->getCollisionObject()->getUserPointer())->GetComponent(trig)->getFather()->GetComponent(mE)->mueve((Entidad*)colObj0->getCollisionObject()->getUserPointer());
+			ComportamientoEnem_c* mE = new ComportamientoEnem_c();
+			((Entidad*)colObj1->getCollisionObject()->getUserPointer())->GetComponent(trig)->getFather()->GetComponent(mE)->actua((Entidad*)colObj0->getCollisionObject()->getUserPointer());
         }
 		else if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "Pan"){
 			PlayerController_c* pC = new PlayerController_c();

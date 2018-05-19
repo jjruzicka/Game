@@ -9,13 +9,13 @@
 #include <ctime>
 #include <iostream>
 
-class MovimientoEnemigo_c : public Component
+class ComportamientoEnem_c : public Component
 {
 public:
-	MovimientoEnemigo_c(Entidad* ent);
-	MovimientoEnemigo_c(){}
-	~MovimientoEnemigo_c();
-	void mueve(Entidad* entidadHeroe);
+	ComportamientoEnem_c(Entidad* ent);
+	ComportamientoEnem_c(){}
+	~ComportamientoEnem_c();
+	void actua(Entidad* entidadHeroe);
 	void Update();
 private:
 	Entidad* entidad;
@@ -24,7 +24,6 @@ private:
 	RigidBody_c* rb;
 	Ogre::SceneNode* node;
 	float calculaDistancia(Entidad* entidadHeroe);
-	bool modoAtaque;
 
 	//reloj
 	std::clock_t start;
