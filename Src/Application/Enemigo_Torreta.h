@@ -18,7 +18,7 @@ private:
 	btDynamicsWorld * bulletWorld;
 	RigidBody_c * rb;
 	Render_c * render;
-	DisparoTorreta_c * dp;
+	DisparoTorreta_c * dt;
 	float largo;
 	float ancho;
 	float alto;

@@ -26,6 +26,10 @@ void MovimientoProyectilEnemigo_c::Update(){
 		start = std::clock(); // get current time
 	}
 
+	duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+	if (duration > 4){ // Segundos que pasan para que se destruya el proyectil solo
+		escena->killAdd(entidad);
+	}
 	//setRotation(Vector3(0, 0, 1).getRotationTo(posicionBomba - posSinbadBomba))
 	node->setOrientation(quat);
 

@@ -25,7 +25,7 @@ void DisparoTorreta_c::Update()
 
 	cooldown = (std::clock() - start) / (double)CLOCKS_PER_SEC;
 
-	if (cooldown > 4){ // Dispara
+	if (cooldown > 4){ // Segundos que tarda en disparar 
 		std::cout << "Disparo enemigo" << std::endl;
 		//Ogre::SceneNode * node;
 		btDynamicsWorld * bulletWorld = escena->getBulletWorld();
