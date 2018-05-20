@@ -26,6 +26,7 @@
     <ClCompile Include="..\..\Src\Application\Mapa.cpp" />
     <ClCompile Include="..\..\Src\Application\Menu.cpp" />
     <ClCompile Include="..\..\Src\Application\Mision_c.cpp" />
+    <ClCompile Include="..\..\Src\Application\ComportamientoEnem_c.cpp" />
     <ClCompile Include="..\..\Src\Application\MovimientoProyectil_c.cpp" />
     <ClCompile Include="..\..\Src\Application\MyEnvironmentDemoPanelColors.cpp" />
     <ClCompile Include="..\..\Src\Application\MyPurplePanelColors.cpp" />
@@ -38,6 +39,7 @@
     <ClCompile Include="..\..\Src\Application\RigidBody_c.cpp" />
     <ClCompile Include="..\..\Src\Application\StatsEntJuego_c.cpp" />
     <ClCompile Include="..\..\Src\Application\StatsPJ_c.cpp" />
+    <ClCompile Include="..\..\Src\Application\Trigger_c.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Application\CameraMove_c.h" />
@@ -55,6 +57,7 @@
     <ClInclude Include="..\..\Src\Application\Mapa.h" />
     <ClInclude Include="..\..\Src\Application\Menu.h" />
     <ClInclude Include="..\..\Src\Application\Mision_c.h" />
+    <ClInclude Include="..\..\Src\Application\ComportamientoEnem_c.h" />
     <ClInclude Include="..\..\Src\Application\MovimientoProyectil_c.h" />
     <ClInclude Include="..\..\Src\Application\MyEnvironmentDemoPanelColors.h" />
     <ClInclude Include="..\..\Src\Application\MyPurplePanelColors.h" />
@@ -66,6 +69,7 @@
     <ClInclude Include="..\..\Src\Application\RigidBody_c.h" />
     <ClInclude Include="..\..\Src\Application\StatsEntJuego_c.h" />
     <ClInclude Include="..\..\Src\Application\StatsPJ_c.h" />
+    <ClInclude Include="..\..\Src\Application\Trigger_c.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{E2595455-6AE6-4E56-AFDD-820B8F62CAC1}</ProjectGuid>

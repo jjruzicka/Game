@@ -15,7 +15,8 @@ public:
 	void muerteJugador();
 private:
 	void creaPan(int x, int y, int z, std::string idRender);
-	void creaOgreEnemy(int x, int y, int z, std::string idRender);
+	void creaOgreEnemyMele(int x, int y, int z, std::string idRender);
+	void creaNpcMisiones(int x, int y, int z, int misionT1,int expM1, int misionT2,int expM2, std::string idRender);
 	//variables vienen de escenas.h
 	GameManager_c* gm;
 	EscenasManager* escenasManager;

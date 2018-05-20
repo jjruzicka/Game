@@ -3,7 +3,7 @@
 #include "Render_c.h"
 //LA Z ES LA ALTURA CUANDO SE METE A BULLET
 RigidBody_c::RigidBody_c(Entidad* _ent, btDynamicsWorld* _bulletWorld,
-	float _profundo, float _ancho, float _alto, btScalar _masa)
+	float _profundo, float _ancho, float _alto, btScalar _masa/* bool isTrigger*/)
 {
 	ent = _ent;
 	bulletWorld = _bulletWorld;
@@ -18,6 +18,10 @@ RigidBody_c::RigidBody_c(Entidad* _ent, btDynamicsWorld* _bulletWorld,
 	Render_c* render = new Render_c();
 	btVector3 localInertia(0, 0, 0); // La inercia inicial siempre es 0
 	shape = new btBoxShape(btVector3(ancho, profundo, alto));
+    /*if (isTrigger){
+        trigger = new btGhostObject();
+        trigger->setCollisionShape(shape);
+    }*/
 	shape->calculateLocalInertia(masa, localInertia); // inicializamos el cuerpo
 	btRigidBody::btRigidBodyConstructionInfo RigidBodyInfo(masa, motionState, shape, localInertia);
 	rb = new btRigidBody(RigidBodyInfo);
