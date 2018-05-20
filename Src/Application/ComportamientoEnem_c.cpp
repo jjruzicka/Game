@@ -1,5 +1,6 @@
 #include "ComportamientoEnem_c.h"
 #include "StatsPJ_c.h"
+#include "StatsEntJuego_c.h"
 
 ComportamientoEnem_c::ComportamientoEnem_c(Entidad* ent)
 {
@@ -42,7 +43,8 @@ void ComportamientoEnem_c::actua(Entidad* entidadHeroe){
 		if (cooldown > 4){
 			getTime = true;
 			StatsPJ_c* st = new StatsPJ_c();
-			entidadHeroe->GetComponent(st)->restaVida(1);
+			StatsEntJuego_c* sj = new StatsEntJuego_c();
+			entidadHeroe->GetComponent(st)->restaVida(entidad->GetComponent(sj)->getDamage());
 			std::cout << "Te quedan " << entidadHeroe->GetComponent(st)->getVida()<< " de vida" << std::endl;
 		}
 	}

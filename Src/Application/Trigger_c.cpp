@@ -1,5 +1,6 @@
 #include "Trigger_c.h"
-
+#include <iostream>
+#include "StatsEntJuego_c.h"
 
 Trigger_c::Trigger_c(Entidad* _ent, Entidad* _entEne, btDynamicsWorld* _bulletWorld,
     float _profundo, float _ancho, float _alto)
@@ -26,15 +27,24 @@ Trigger_c::~Trigger_c()
 }
 
 void Trigger_c::Update(){
-	actualizarPos(entPadre->getPox(), entPadre->getPoy(), entPadre->getPoz());
-    btTransform trans;
-    trans = trigger->getWorldTransform();
-    float x = trans.getOrigin().getX();
-    float y = trans.getOrigin().getY();
-    float z = trans.getOrigin().getZ();
-    ent->setPox(x);
-    ent->setPoy(y);
-    ent->setPoz(z);
+	StatsEntJuego_c* st = new StatsEntJuego_c();
+	//std::cout << entPadre->GetComponent(st)->getVida() << "\n";
+	if (entPadre->GetComponent(st)->getVida() <= 0){
+		trigger->setCollisionFlags(4);
+		bulletWorld->removeCollisionObject(trigger);
+		ent->DestroyComponent(this);
+	}
+	else {
+		actualizarPos(entPadre->getPox(), entPadre->getPoy(), entPadre->getPoz());
+		btTransform trans;
+		trans = trigger->getWorldTransform();
+		float x = trans.getOrigin().getX();
+		float y = trans.getOrigin().getY();
+		float z = trans.getOrigin().getZ();
+		ent->setPox(x);
+		ent->setPoy(y);
+		ent->setPoz(z);
+	}
 }
 
 void Trigger_c::actualizarPos(float x, float y, float z){
