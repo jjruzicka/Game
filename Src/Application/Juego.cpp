@@ -12,7 +12,6 @@
 #include "EntidadRender.h"
 #include "Trigger_c.h"
 #include "ComportamientoEnem_c.h"
-#include "Enemigo_Torreta.h"
 using namespace Ogre;
 enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
@@ -44,13 +43,13 @@ Juego::Juego(EscenasManager* escenasManager)
 	inputcomp_ = InputComponent::getSingletonPtr();
 	inputcomp_->initialise(mWindow);
 	//////////////////////////////////////////////////////rb del pj PRINCIPAL////////////////////////////////////////////////////
-	ent1 = new Entidad("p");
+	Entidad* ent1 = new Entidad("p");
 	//1683, 50, 2116
 	ent1->setPox(1700);
 	ent1->setPoy(5);
 	ent1->setPoz(1800);
 	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("p"), ent1, "Sinbad", "p");
-	StatsPJ_c* stas = new StatsPJ_c(10, 10, 2, 100,this);
+	StatsPJ_c* stas = new StatsPJ_c(5, 10, 2, 100,this);
 	ent1->AddComponent(stas);
 	ent1->AddComponent(render);
 
@@ -74,7 +73,6 @@ Juego::Juego(EscenasManager* escenasManager)
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	creaPan(1750,5,1750,"pan1");
 	creaPan(1650, 5, 1700, "pan2");
-	creaOgroTorreta(1700, 5, 1850, "EnemigoTorreta1");
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
 	lightdir.normalise();
@@ -109,11 +107,6 @@ Juego::Juego(EscenasManager* escenasManager)
 	mapa->createmap();
 	mapa->setPhysics();
 	mapa->getRigidBody()->setUserPointer(mapa);
-}
-void Juego::creaOgroTorreta(int x, int y, int z, std::string idRender){
-	Enemigo_Torreta* et = new Enemigo_Torreta("EnemigoTorreta", idRender, this, scnMgr,
-		bulletWorld, x, y, z, 5, 5, 5);
-	entidades.push_back(et);
 }
 void Juego::creaNpcMisiones(int x, int y, int z, int misionT1, int expM1, int misionT2, int expM2, std::string idRender){
 	Entidad* ent2 = new EntidadRender("p2", idRender, scnMgr);
@@ -181,9 +174,7 @@ bool callbackfunction(btManifoldPoint& cp, const btCollisionObjectWrapper * colO
 			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(pC)->chocasCon(1, (Entidad*)colObj1->getCollisionObject()->getUserPointer());
 			((Entidad*)colObj1->getCollisionObject()->getUserPointer())->GetComponent(patroll)->chocasCon(1);
 		}
-		else if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") &&
-			(((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "ogroEnemy" || ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "EnemigoTorreta")){
-
+		else if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "ogroEnemy"){
 			PlayerController_c* pC = new PlayerController_c();
 			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(pC)->chocasCon(2, ((Entidad*)colObj1->getCollisionObject()->getUserPointer()));
 		}
@@ -192,13 +183,6 @@ bool callbackfunction(btManifoldPoint& cp, const btCollisionObjectWrapper * colO
 			ComportamientoEnem_c* mE = new ComportamientoEnem_c();
 			((Entidad*)colObj1->getCollisionObject()->getUserPointer())->GetComponent(trig)->getFather()->GetComponent(mE)->actua((Entidad*)colObj0->getCollisionObject()->getUserPointer());
         }
-		else if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "proyectilEnemigo"){
-			StatsPJ_c* stats = new StatsPJ_c();
-			StatsEntJuego_c* st = new StatsEntJuego_c();
-			((Entidad*)colObj1->getCollisionObject()->getUserPointer())->GetComponent(stats)->restaVida(((Entidad*)colObj1->getCollisionObject()->getUserPointer())->GetComponent(st)->getDamage());
-			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(st)->restaVida(1);
-			std::cout << "AAAAA";
-		}
 		else if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "Pan"){
 			PlayerController_c* pC = new PlayerController_c();
 			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(pC)->chocasCon(3, ((Entidad*)colObj1->getCollisionObject()->getUserPointer()));
