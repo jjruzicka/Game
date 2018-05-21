@@ -31,6 +31,7 @@ private:
 	Ogre::Vector2 getScreenCenterMouseDistance();
 	bool mouseMoved(const OIS::MouseEvent &arg);
 
+
 	// Gui3D main object
 	Gui3D::Gui3D* mGui3D;
 
