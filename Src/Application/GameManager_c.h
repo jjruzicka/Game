@@ -9,6 +9,7 @@ public:
 	GameManager_c(Entidad* Personaje);
 	~GameManager_c();
 	void Update();
+	bool complete;
 	bool dameMision(Mision_c* mision);
 	void killADDMision(std::string nombre);
 private:

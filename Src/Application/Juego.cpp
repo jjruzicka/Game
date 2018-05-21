@@ -33,12 +33,14 @@ Juego::Juego(EscenasManager* escenasManager)
 	camNode = scnMgr->getRootSceneNode()->createChildSceneNode();
 	exit = false;
 	
-	numArboles = 80;
+	numArboles = 10;
 	arbolitos.reserve(numArboles);
-
+	cont = 0;
 	this->escenasManager = escenasManager;
 	inputcomp_ = InputComponent::getSingletonPtr();
 	inputcomp_->initialise(mWindow);
+	inputcomp_->addKeyListener(this, "teclado3");
+	inputcomp_->addMouseListener(this, "raton3");
 	//////////////////////////////////////////////////////rb del pj PRINCIPAL////////////////////////////////////////////////////
 	Entidad* ent1 = new Entidad("p");
 	//1683, 50, 2116
@@ -103,10 +105,15 @@ Juego::Juego(EscenasManager* escenasManager)
 	Entidad* ent5 = new Entidad("Pan");
 	ent5->setPox(1700);// posicion 
 	ent5->setPoy(5);
-	ent5->setPoz(1785);
+	ent5->setPoz(1900);
+	ent5->setRoy(1);
+	ent5->setAngRot(180);
 	Render_c* render4 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("Pan"), ent5, "Sinbad", "Pan");
 	ent5->AddComponent(render4);
-	RigidBody_c* static_rb3 = new RigidBody_c(ent5, bulletWorld, 5, 5, 5, 1);
+	render4->Update();
+	ent5->setRoy(0);
+	ent5->setAngRot(0);
+	RigidBody_c* static_rb3 = new RigidBody_c(ent5, bulletWorld, 5, 5, 5, 0);
 	static_rb3->getRigidBody()->setCollisionFlags(static_rb3->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
 	static_rb3->getRigidBody()->setUserPointer(ent5);
 	ent5->AddComponent(static_rb3);
@@ -115,78 +122,35 @@ Juego::Juego(EscenasManager* escenasManager)
 	////////////////////////////////////////////////ARBOL//////////////////////////////////////////////////////////////////
 
 	createArbolitos();
-	//Entidad* ent6 = new Entidad("Arbol1");
-	//ent6->setPox(1800);// posicion 
-	//ent6->setPoy(50);
+	//Entidad* ent6 = new Entidad("pallet");
+	//ent6->setPox(1700);// posicion 
+	//ent6->setPoy(0);
 	//ent6->setPoz(2000);
-	//Render_c* render5 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("Arbol1"), ent6, "tree.05", "Arbol1");
+	//Render_c* render5 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("pallet"), ent6, "WoodPallet", "pallet");
 	//ent6->AddComponent(render5);
-	//RigidBody_c* static_rb4 = new RigidBody_c(ent6, bulletWorld, 40, 40, 40, 1);
+	//RigidBody_c* static_rb4 = new RigidBody_c(ent6, bulletWorld, 5, 5, 5, 1);
 	//static_rb4->getRigidBody()->setCollisionFlags(static_rb4->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
 	//static_rb4->getRigidBody()->setUserPointer(ent6);
 	//ent6->AddComponent(static_rb4);
 	//entidades.push_back(ent6);
 
 
-	Entidad* ent7 = new Entidad("Casa");
-	ent7->setPox(1300);// posicion 
-	ent7->setPoy(550);
-	ent7->setPoz(3000);
-	Render_c* render6 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("Casa"), ent7, "tudorhouse", "Casa");
-	ent7->AddComponent(render6);
-	RigidBody_c* static_rb5 = new RigidBody_c(ent7, bulletWorld, 5, 5, 5, 0);
-	static_rb5->getRigidBody()->setCollisionFlags(static_rb5->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
-	static_rb5->getRigidBody()->setUserPointer(ent7);
-	ent7->AddComponent(static_rb5);
-	entidades.push_back(ent7);
+	//Entidad* ent7 = new Entidad("Casa");
+	//ent7->setPox(1300);// posicion 
+	//ent7->setPoy(550);
+	//ent7->setPoz(3000);
+	//Render_c* render6 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("Casa"), ent7, "tudorhouse", "Casa");
+	//ent7->AddComponent(render6);
+	//RigidBody_c* static_rb5 = new RigidBody_c(ent7, bulletWorld, 5, 5, 5, 0);
+	//static_rb5->getRigidBody()->setCollisionFlags(static_rb5->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
+	//static_rb5->getRigidBody()->setUserPointer(ent7);
+	//ent7->AddComponent(static_rb5);
+	//entidades.push_back(ent7);
 
-	//////////////////////////////////////WATER////////////////////////////////////////////////////////////////////////////////////////////
-	// Water
-	Entity *pWaterEntity;
-	Plane nWaterPlane;
-
-	// create a water plane/scene node
-	nWaterPlane.normal = Vector3::UNIT_Y;
-	nWaterPlane.d = -1.5;
-	MeshManager::getSingleton().createPlane(
-		"WaterPlane",
-		ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
-		nWaterPlane,
-		8000, 8000,
-		20, 20,
-		true, 1,
-		10, 10,
-		Vector3::UNIT_Z);
-	pWaterEntity = scnMgr->createEntity("water", "WaterPlane");
-	pWaterEntity->setMaterialName("Examples/TextureEffect4");
-	SceneNode *waterNode =
-		scnMgr->getRootSceneNode()->createChildSceneNode("WaterNode");
-	waterNode->attachObject(pWaterEntity);
-	waterNode->translate(4000, 50, 4000);
 	
-	//Entidad* ent8 = new Entidad("tree");
-	//ent8->setPox(1950);// posicion 
-	//ent8->setPoy(250);
-	//ent8->setPoz(2500);
-	//Render_c* render7 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("tree"), ent8, "tree.09", "tree");
-	//ent8->AddComponent(render7);
-	//RigidBody_c* static_rb6 = new RigidBody_c(ent8, bulletWorld, 100, 100, 100, 0);
-	//static_rb6->getRigidBody()->setCollisionFlags(static_rb6->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
-	//static_rb6->getRigidBody()->setUserPointer(ent8);
-	//ent8->AddComponent(static_rb6);
-	//entidades.push_back(ent8);
-
-	//Entidad* ent9 = new Entidad("tree3");
-	//ent9->setPox(1500);// posicion 
-	//ent9->setPoy(50);
-	//ent9->setPoz(2000);
-	//Render_c* render8 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("tree3"), ent9, "tree.07", "tree3");
-	//ent9->AddComponent(render8);
-	//RigidBody_c* static_rb7 = new RigidBody_c(ent9, bulletWorld, 50, 50, 50, 0);
-	//static_rb7->getRigidBody()->setCollisionFlags(static_rb7->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
-	//static_rb7->getRigidBody()->setUserPointer(ent9);
-	//ent9->AddComponent(static_rb7);
-	//entidades.push_back(ent9);
+	
+	
+	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
 	lightdir.normalise();
@@ -228,8 +192,8 @@ Juego::Juego(EscenasManager* escenasManager)
 
 	//GUI
 	guiGame = new GUI(inputcomp_, vp, scnMgr, cam, camNode, this, false);
-	//guiGame->_createPanel();
-	guiGame->createPanelInGame();
+	
+	//guiGame->createPanelInGame();
 
 	//Terrain
 	mapa = new Mapa(scnMgr, light, bulletWorld);
@@ -253,6 +217,7 @@ bool callbackfunction(btManifoldPoint& cp, const btCollisionObjectWrapper * colO
 		else if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "Pan"){
 			PlayerController_c* pC = new PlayerController_c();
 			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(pC)->chocasCon(3, ((Entidad*)colObj1->getCollisionObject()->getUserPointer()));
+
 		}
 		else if (((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p"){
 			PlayerController_c* pC = new PlayerController_c();
@@ -264,6 +229,48 @@ bool callbackfunction(btManifoldPoint& cp, const btCollisionObjectWrapper * colO
 		}
 	}
 	return false;
+}
+
+bool Juego::keyPressed(const OIS::KeyEvent& keyP){
+	switch (keyP.key)
+	{
+	case OIS::KC_E:
+		switch (cont){
+		case 0:
+			guiGame->_createPanel();// posicion 
+			guiGame->setPosition(1700, 15, 1900);
+			guiGame->setText("BUENOS DIAS AMIGO", 150);
+			guiGame->setText("NECESITO TU AYUDA", 200);
+			break;
+		case 1:
+			delete guiGame->panel;
+			guiGame->_createPanel();
+			guiGame->setPosition(1700, 15, 1900);
+			guiGame->setText("¿PODRIAS IR AL DESCAMPADO Y RECUPERAR", 150);
+			guiGame->setText("LAS LLAVES DE MI CASA?", 200);
+			guiGame->setText("TE ESTARÉ ETERNAMENTE AGRADECIDO", 250);
+			break;
+		default:
+			break;
+		}
+		break;
+	default:
+		break;
+	}
+	return true;
+}
+bool Juego::keyReleased(const OIS::KeyEvent& keyP){
+	
+	switch (keyP.key)
+	{
+	case OIS::KC_E:
+		
+		cont++;
+		break;
+	default:
+		break;
+	}
+	return true;
 }
 
 void Juego::createArbolitos(){
@@ -279,7 +286,7 @@ void Juego::createArbolitos(){
 
 		Render_c* render8 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode(str), arbolitos[i], "tree.09", str);
 		arbolitos[i]->AddComponent(render8);
-		RigidBody_c* static_rb7 = new RigidBody_c(arbolitos[i], bulletWorld, 45, 50, 50, 0);
+		RigidBody_c* static_rb7 = new RigidBody_c(arbolitos[i], bulletWorld, 50, 50, 50, 0);
 		static_rb7->getRigidBody()->setCollisionFlags(static_rb7->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
 		static_rb7->getRigidBody()->setUserPointer(arbolitos[i]);
 		arbolitos[i]->AddComponent(static_rb7);
@@ -304,8 +311,13 @@ bool Juego::initBullet(){
 	bulletWorld->setGravity(btVector3(0, -10, 0));
 	return true;
 }
-#define FLOW_SPEED 0.4
-#define FLOW_HEIGHT 10
+
+void Juego::updateGUI(){
+	if (gm->complete){
+
+	}
+}
+
 bool Juego::run(){
 	
 
@@ -322,25 +334,8 @@ bool Juego::run(){
 			elapsedTicks = 0;
 		}
 
-		float fWaterFlow = FLOW_SPEED * lastTicks;
-		static float fFlowAmount = 0.0f;
-		static bool fFlowUp = true;
-		SceneNode *pWaterNode = static_cast<SceneNode*>(
-			cam->getSceneManager()->getRootSceneNode()->getChild("WaterNode"));
-		if (pWaterNode)
-		{
-			if (fFlowUp)
-				fFlowAmount += fWaterFlow;
-			else
-				fFlowAmount -= fWaterFlow;
-
-			if (fFlowAmount >= FLOW_HEIGHT)
-				fFlowUp = false;
-			else if (fFlowAmount <= 0.0f)
-				fFlowUp = true;
-
-			pWaterNode->translate(0, (fFlowUp ? fWaterFlow : -fWaterFlow), 0);
-		}
+	
+		
 		//Tick de la fisica
 		bulletWorld->stepSimulation(1.f / 60.f, 10);
 
@@ -401,7 +396,10 @@ Juego::~Juego()
 	delete dispatcher;
 	delete solver;
 	delete broadPhase;
-
+	delete guiGame;
+	for (int i = 0; i < arbolitos.size(); i++){
+		delete arbolitos[i];
+	}
 	scnMgr->getRootSceneNode()->removeAllChildren();
 	root->destroySceneManager(scnMgr);
 	root->destroyRenderTarget("P3");

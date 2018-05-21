@@ -5,7 +5,9 @@ GameManager_c::GameManager_c(Entidad* personaje)
 {
 	this->personaje = personaje;
 	this->misionActiva = nullptr;
+	complete = false;
 }
+
 
 
 GameManager_c::~GameManager_c()
@@ -26,6 +28,7 @@ void GameManager_c::killADDMision(std::string nombre){//bichos llaman a esto
 				misionActiva->getEntidad()->DestroyComponent(misionActiva);
 				misionActiva = nullptr;
 				std::cout << "Mision complete\n";
+				complete = true;
 				//Poner por el GUI MISION COMPLETE
 			}
 		}

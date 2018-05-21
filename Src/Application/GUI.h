@@ -16,6 +16,10 @@ public:
 	void createPanel();
 	void createPanelInGame();
 	void _createPanel();
+	void setPosition(Ogre::Real x, Ogre::Real y, Ogre::Real z);
+	void setText(Ogre::String text, Ogre::Real y);
+	Gui3D::Panel* panel;
+	Gui3D::Panel* mPanel;
 	bool menuScreen;
 	~GUI();
 private:
@@ -41,7 +45,7 @@ private:
 	Gui3D::Gui3D* mGui3D;
 
 	// The main panel (display in 3D)
-	Gui3D::Panel* mPanel;
+	
 
 	// The screen Panel (display in 2D)
 	Gui3D::ScreenPanel* mSPanel;
