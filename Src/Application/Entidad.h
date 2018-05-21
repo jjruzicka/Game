@@ -20,7 +20,7 @@ class Entidad
 {
 public:
 	Entidad(std::string id);
-	~Entidad();
+	virtual ~Entidad();
 	void Update();
 	void AddComponent(Component * component);
 	int numComponent(){

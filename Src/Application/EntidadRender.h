@@ -11,7 +11,7 @@ class EntidadRender : public Entidad
 public:
 	EntidadRender(std::string id, std::string idRender, Ogre::SceneManager* scnMgr);
 	EntidadRender(std::string id) : Entidad(id){}
-	~EntidadRender();
+	virtual ~EntidadRender();
 
 	std::string getIdRender(){
 		return idRender;
