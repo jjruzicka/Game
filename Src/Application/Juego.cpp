@@ -39,18 +39,21 @@ Juego::Juego(EscenasManager* escenasManager)
 	initBullet();
 
 	camNode = scnMgr->getRootSceneNode()->createChildSceneNode();
+	
+	cont = 0;
+	this->escenasManager = escenasManager;
+	inputcomp_ = InputComponent::getSingletonPtr();
+	inputcomp_->initialise(mWindow);
+	inputcomp_->addKeyListener(this, "teclado3");
+	inputcomp_->addMouseListener(this, "raton3");
 
 	// create the camera
 	cam = scnMgr->createCamera("Cam");
-	cam->setNearClipDistance(0.1); 
+	cam->setNearClipDistance(0.1); //esto antes era 1
 	cam->setFarClipDistance(10000);
 	cam->setAutoAspectRatio(true);
 	camNode->attachObject(cam);
 	cam->setQueryFlags(MY_QUERY_IGNORE);
-
-	this->escenasManager = escenasManager;
-	inputcomp_ = InputComponent::getSingletonPtr();
-	inputcomp_->initialise(mWindow);
 	//////////////////////////////////////////////////////rb del pj PRINCIPAL////////////////////////////////////////////////////
 	Entidad* ent1 = new Entidad("p");
 	//1683, 50, 2116
@@ -105,11 +108,33 @@ Juego::Juego(EscenasManager* escenasManager)
 	entidades.reserve(1);
 	entidades.push_back(entCamara);
 
+	//// also need to tell where we are
+	//camNode = scnMgr->getSceneNode("p")->createChildSceneNode();
+	//camNode->setPosition(Ogre::Vector3(0, 5, -35));
+	//camNode->rotate(Ogre::Quaternion(Ogre::Degree(180), Ogre::Vector3::UNIT_Y));
+	//camNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
+
+	//// create the camera
+	//cam = scnMgr->createCamera("Cam");
+	//cam->setNearClipDistance(0.1); //esto antes era 1
+	//cam->setFarClipDistance(10000);
+	//cam->setAutoAspectRatio(true);
+	//camNode->attachObject(cam);
+	//cam->setQueryFlags(MY_QUERY_IGNORE);
+
 
 	// and tell it to render into the main window
 	Viewport* vp;
 	vp = mWindow->addViewport(cam);
 	vp->setBackgroundColour(Ogre::ColourValue(150, 150, 150));
+
+	//GUI
+	guiGame = new GUI(inputcomp_, vp, scnMgr, cam, camNode, this, false);
+	guiGame->_createPanel();
+	
+	guiGame->setPosition(1700, 10, 1900,(Ogre::Degree)180);
+	guiGame->setText("", 150);
+	
 
 	//Terrain
 	mapa = new Mapa(scnMgr, light, bulletWorld);
@@ -182,6 +207,51 @@ void Juego::creaPan(int x, int y, int z, std::string idRender){
 	ent->AddComponent(static_rb3);
 	entidades.push_back(ent);
 }
+
+bool Juego::keyPressed(const OIS::KeyEvent& keyP){
+	switch (keyP.key)
+	{
+	case OIS::KC_M:
+		switch (cont){
+		case 0:
+			// posicion 
+			guiGame->setPosition(1700, 10, 1900, (Ogre::Degree)0);
+			guiGame->setText("BUENOS DIAS AMIGO", 150);
+			guiGame->setText("NECESITO TU AYUDA", 200);
+
+			break;
+		case 1:
+			delete guiGame->panel;
+			guiGame->_createPanel();
+			guiGame->setPosition(1700, 10, 1900, (Ogre::Degree)180);
+			guiGame->setText("¿PODRIAS IR AL DESCAMPADO Y RECUPERAR", 150);
+			guiGame->setText("LAS LLAVES DE MI CASA?", 200);
+			guiGame->setText("TE ESTARÉ ETERNAMENTE AGRADECIDO", 250);
+			break;
+		default:
+			break;
+		}
+		break;
+	default:
+		break;
+	}
+	return true;
+}
+bool Juego::keyReleased(const OIS::KeyEvent& keyP){
+
+	switch (keyP.key)
+	{
+	case OIS::KC_M:
+
+		cont++;
+		break;
+	default:
+		break;
+	}
+	return true;
+}
+
+
 void Juego::creaOgreEnemyMele(int x, int y, int z, std::string idRender){
 	EntidadRender* ent2 = new EntidadRender("ogroEnemy");
 	ent2->setIdRender(idRender);

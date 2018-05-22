@@ -3,6 +3,7 @@
 #include "GameManager_c.h"
 #include "EscenasManager.h"
 #include "InputComponent.h"
+#include "GUI.h"
 class Juego : public Escenas, public InputComponent
 {
 public:
@@ -14,8 +15,14 @@ public:
 	void atacar(Entidad* npc);
 	void killAdd(Entidad* obj);
 	void muerteJugador();
+	
+	bool exit;
 private:
 	void createArbolitos();
+	GUI* guiGame;
+	int cont;
+	virtual bool keyPressed(const OIS::KeyEvent& keyP);
+	virtual bool keyReleased(const OIS::KeyEvent& keyP);
 	void creaPan(int x, int y, int z, std::string idRender);
 	void creaOgreEnemyMele(int x, int y, int z, std::string idRender);
 	void creaNpcMisiones(int x, int y, int z, int misionT1,int expM1, int misionT2,int expM2, std::string idRender);

@@ -12,8 +12,14 @@
 class GUI: public InputComponent
 {
 public:
-	GUI(InputComponent* input_, Ogre::Viewport* vp, Ogre::SceneManager * scnMgr, Ogre::Camera * cam, Ogre::SceneNode* camNode, Escenas* menuc);
+	GUI(InputComponent* input_, Ogre::Viewport* vp, Ogre::SceneManager * scnMgr, Ogre::Camera * cam, Ogre::SceneNode* camNode, Escenas* menuc, bool escena);
 	void createPanel();
+	void createPanelInGame();
+	Gui3D::ScreenPanel* mSPanel2;
+	Gui3D::Panel* panel;
+	void setPosition(Ogre::Real x, Ogre::Real y, Ogre::Real z, Ogre::Degree ang);
+	void setText(Ogre::String text, Ogre::Real y);
+	void _createPanel();
 	~GUI();
 private:
 
@@ -22,14 +28,18 @@ private:
 	InputComponent* icomp_;
 	Ogre::SceneManager * scn;
 	Ogre::Viewport* view;
+	bool exitGame(Gui3D::PanelElement* e);
 	bool textChanged(Gui3D::PanelElement* e);
 	bool play_(Gui3D::PanelElement* e);
 	bool exit_(Gui3D::PanelElement* e);
 	bool buttonPressed(Gui3D::PanelElement* e);
+	bool keyPressed(const OIS::KeyEvent& keyP);
+	bool keyReleased(const OIS::KeyEvent& keyP);
 	bool mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id);
 	bool mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id);
 	Ogre::Vector2 getScreenCenterMouseDistance();
 	bool mouseMoved(const OIS::MouseEvent &arg);
+	bool menuEscena;
 
 
 	// Gui3D main object
@@ -40,7 +50,7 @@ private:
 
 	// The screen Panel (display in 2D)
 	Gui3D::ScreenPanel* mSPanel;
-	Gui3D::ScreenPanel* mSPanel2;
+
 
 	// Keep track of some captions to modify their contents on callbacks
 	Gui3D::Caption* captionButton;
