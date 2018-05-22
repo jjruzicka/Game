@@ -11,7 +11,7 @@
 #include "CameraMove_c.h"
 #include "MovimientoProyectil_c.h"
 #include "Enemigo_Torreta.h"
-
+#include "MovimientoProyectilEnemigo_c.h"
 using namespace Ogre;
 enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
@@ -42,6 +42,48 @@ Juego::Juego(EscenasManager* escenasManager)
 	this->escenasManager = escenasManager;
 	inputcomp_ = InputComponent::getSingletonPtr();
 	inputcomp_->initialise(mWindow);
+
+	entp = new Entidad("proy");
+	entp->setPox(15000);// posicion 
+	entp->setPoy(5);
+	entp->setPoz(15000);
+	Render_c* renderp = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("proy"), entp, "Sinbad", "proy");
+	entp->AddComponent(renderp);
+	RigidBody_c* static_rbp = new RigidBody_c(entp, bulletWorld, 5, 5, 5, 1);
+	static_rbp->getRigidBody()->setCollisionFlags(static_rbp->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
+	static_rbp->getRigidBody()->setUserPointer(entp);
+	entp->AddComponent(static_rbp);
+	MovimientoProyectil_c* mpp = new MovimientoProyectil_c(entp, this, ent1);
+	entp->AddComponent(mpp);
+	entidades.push_back(entp);
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	Entidad* ent4 = new Entidad("ogroEnemy");
+	ent4->setPox(1700);// posicion 
+	ent4->setPoy(5);
+	ent4->setPoz(2000);
+	Render_c* render3 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("ogroEnemy"), ent4, "Sinbad", "ogroEnemy");
+	ent4->AddComponent(render3);
+	RigidBody_c* static_rb2 = new RigidBody_c(ent4, bulletWorld, 5, 5, 5, 1);
+	static_rb2->getRigidBody()->setCollisionFlags(static_rb2->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
+	static_rb2->getRigidBody()->setUserPointer(ent4);
+	ent4->AddComponent(static_rb2);
+	StatsEntJuego_c* statsE = new StatsEntJuego_c(2, 3, 2, this, ent4);
+	ent4->AddComponent(statsE);
+	entidades.push_back(ent4);
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	proent4 = new Entidad("proyE");
+	proent4->setPox(16000);// posicion 
+	proent4->setPoy(5);
+	proent4->setPoz(16000);
+	Render_c* renderpe = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("proyE"), proent4, "Sinbad", "proyE");
+	proent4->AddComponent(renderpe);
+	RigidBody_c* rbproye = new RigidBody_c(proent4, bulletWorld, 5, 5, 5, 1);
+	rbproye->getRigidBody()->setCollisionFlags(rbproye->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
+	rbproye->getRigidBody()->setUserPointer(proent4);
+	proent4->AddComponent(rbproye);
+	MovimientoProyectilEnemigo_c* mpe = new MovimientoProyectilEnemigo_c(proent4, ent4, this);
+	proent4->AddComponent(mpe);
+	entidades.push_back(proent4);
 	//////////////////////////////////////////////////////rb del pj PRINCIPAL////////////////////////////////////////////////////
 	ent1 = new Entidad("p");
 	//1683, 50, 2116
@@ -89,33 +131,7 @@ Juego::Juego(EscenasManager* escenasManager)
 	ent3->AddComponent(gm);
 	entidades.push_back(ent3);
 
-    entp = new Entidad("proy");
-	entp->setPox(15000);// posicion 
-	entp->setPoy(5);
-	entp->setPoz(15000);
-    Render_c* renderp = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("proy"), entp, "Sinbad", "proy");
-    entp->AddComponent(renderp);
-    RigidBody_c* static_rbp = new RigidBody_c(entp, bulletWorld, 5, 5, 5, 1);
-    static_rbp->getRigidBody()->setCollisionFlags(static_rbp->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
-    static_rbp->getRigidBody()->setUserPointer(entp);
-    entp->AddComponent(static_rbp);
-    MovimientoProyectil_c* mpp = new MovimientoProyectil_c(entp, this, ent1);
-    entp->AddComponent(mpp);
-    entidades.push_back(entp);
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	Entidad* ent4 = new Entidad("ogroEnemy");
-	ent4->setPox(1700);// posicion 
-	ent4->setPoy(5);
-	ent4->setPoz(2000);
-	Render_c* render3 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("ogroEnemy"), ent4, "Sinbad", "ogroEnemy");
-	ent4->AddComponent(render3);
-	RigidBody_c* static_rb2 = new RigidBody_c(ent4, bulletWorld, 5, 5, 5, 1);
-	static_rb2->getRigidBody()->setCollisionFlags(static_rb2->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
-	static_rb2->getRigidBody()->setUserPointer(ent4);
-	ent4->AddComponent(static_rb2);
-	StatsEntJuego_c* statsE = new StatsEntJuego_c(2, 3, 2, this, ent4);
-	ent4->AddComponent(statsE);
-	entidades.push_back(ent4);
+
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	/*Entidad* ent5 = new Entidad("Pan");
 	ent5->setPox(1700);// posicion 
@@ -188,7 +204,10 @@ bool callbackfunction(btManifoldPoint& cp, const btCollisionObjectWrapper * colO
         else if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "proy") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "ogroEnemy"){
 			MovimientoProyectil_c* movp = new MovimientoProyectil_c();
 			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(movp)->Reset();
-            std::cout << "choca el proyectil";
+		}
+		else if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "proyE") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "p"){
+			MovimientoProyectilEnemigo_c* movpe = new MovimientoProyectilEnemigo_c();
+			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(movpe)->Reset();
 		}
 		else if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "Pan"){
 			PlayerController_c* pC = new PlayerController_c();

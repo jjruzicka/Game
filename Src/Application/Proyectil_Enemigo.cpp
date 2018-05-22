@@ -30,7 +30,7 @@ Proyectil_Enemigo::Proyectil_Enemigo(std::string id, Juego* esc, Ogre::SceneNode
 	this->AddComponent(render);
 
 	// añadimos componente del moviento
-	movimiento = new MovimientoProyectilEnemigo_c(this, escena, escena->getPlayer()->GetComponent(render)->getNode());
+	//movimiento = new MovimientoProyectilEnemigo_c(this, escena, escena->getPlayer()->GetComponent(render)->getNode());
 	this->AddComponent(movimiento);
 }
 

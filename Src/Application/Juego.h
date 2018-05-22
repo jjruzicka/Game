@@ -29,5 +29,6 @@ private:
 	EscenasManager* escenasManager;
 
 	Entidad* entp;
+	Entidad* proent4;
 };
 #endif
