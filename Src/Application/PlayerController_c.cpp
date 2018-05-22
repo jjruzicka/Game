@@ -160,7 +160,7 @@ bool PlayerController_c::mousePressed(const OIS::MouseEvent& me, OIS::MouseButto
 	{
 	case OIS::MB_Left:
 	{
-		if (contDisparo >= cdDisparo){
+		/*if (contDisparo >= cdDisparo){
 			contDisparo = 0;
 			// pasamos la posicion un poco adelantada para que el proyectil no se cree dentro del personaje
 			Ogre::Vector3 pGlobal(entidad->getPox(), entidad->getPoy(), entidad->getPoz());
@@ -173,7 +173,7 @@ bool PlayerController_c::mousePressed(const OIS::MouseEvent& me, OIS::MouseButto
 				node->getOrientation(), 5, 5, 5);
 			escena->addEntidad(proyectil);
 			contadorProyectiles++;
-		}
+		}*/
 		break;
 	}
 	default:

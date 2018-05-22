@@ -9,6 +9,7 @@
 #include "StatsEntJuego_c.h"
 #include "PatrullarNPC.h"
 #include "CameraMove_c.h"
+#include "MovimientoProyectil_c.h"
 #include "Enemigo_Torreta.h"
 
 using namespace Ogre;
@@ -87,11 +88,25 @@ Juego::Juego(EscenasManager* escenasManager)
 	gm = new GameManager_c(ent1);
 	ent3->AddComponent(gm);
 	entidades.push_back(ent3);
+
+    Entidad* entp = new Entidad("proy");
+    entp->setPox(1700);// posicion 
+    entp->setPoy(5);
+    entp->setPoz(1900);
+    Render_c* renderp = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("proy"), entp, "Sinbad", "proy");
+    entp->AddComponent(renderp);
+    RigidBody_c* static_rbp = new RigidBody_c(entp, bulletWorld, 5, 5, 5, 1);
+    static_rbp->getRigidBody()->setCollisionFlags(static_rbp->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
+    static_rbp->getRigidBody()->setUserPointer(entp);
+    entp->AddComponent(static_rbp);
+    MovimientoProyectil_c* mpp = new MovimientoProyectil_c(entp, this);
+    entp->AddComponent(mpp);
+    entidades.push_back(entp);
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	/*Entidad* ent4 = new Entidad("ogroEnemy");
+	Entidad* ent4 = new Entidad("ogroEnemy");
 	ent4->setPox(1700);// posicion 
 	ent4->setPoy(5);
-	ent4->setPoz(1750);
+	ent4->setPoz(2000);
 	Render_c* render3 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("ogroEnemy"), ent4, "Sinbad", "ogroEnemy");
 	ent4->AddComponent(render3);
 	RigidBody_c* static_rb2 = new RigidBody_c(ent4, bulletWorld, 5, 5, 5, 1);
@@ -102,7 +117,7 @@ Juego::Juego(EscenasManager* escenasManager)
 	ent4->AddComponent(statsE);
 	entidades.push_back(ent4);
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	Entidad* ent5 = new Entidad("Pan");
+	/*Entidad* ent5 = new Entidad("Pan");
 	ent5->setPox(1700);// posicion 
 	ent5->setPoy(5);
 	ent5->setPoz(1785);
@@ -114,9 +129,9 @@ Juego::Juego(EscenasManager* escenasManager)
 	ent5->AddComponent(static_rb3);
 	entidades.push_back(ent5);*/
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	Enemigo_Torreta* et = new Enemigo_Torreta("EnemigoTorreta", this, scnMgr->getRootSceneNode()->createChildSceneNode("EnemigoTorreta"),
+	/*Enemigo_Torreta* et = new Enemigo_Torreta("EnemigoTorreta", this, scnMgr->getRootSceneNode()->createChildSceneNode("EnemigoTorreta"),
 		bulletWorld, 1700, 5, 1850, 5, 5, 5);
-	entidades.push_back(et);
+	entidades.push_back(et);*/
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
 	lightdir.normalise();
@@ -164,6 +179,11 @@ bool callbackfunction(btManifoldPoint& cp, const btCollisionObjectWrapper * colO
 		else if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "ogroEnemy"){
 			PlayerController_c* pC = new PlayerController_c();
 			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(pC)->chocasCon(2, ((Entidad*)colObj1->getCollisionObject()->getUserPointer()));
+		}
+        else if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "proy") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "ogroEnemy"){
+			//MovimientoProyectil* mP = new PlayerController_c();
+			//((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(mP)->chocasCon(2, ((Entidad*)colObj1->getCollisionObject()->getUserPointer()));
+            //std::cout << "saaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 		}
 		else if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "Pan"){
 			PlayerController_c* pC = new PlayerController_c();
