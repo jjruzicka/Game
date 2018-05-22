@@ -117,6 +117,11 @@ Juego::Juego(EscenasManager* escenasManager)
 	mapa->setPhysics();
 	mapa->getRigidBody()->setUserPointer(mapa);
 
+	numArboles = 10;
+	contArboles = 0;
+	arbolitos.reserve(numArboles);
+	createArbolitos();
+
 	pC = new PlayerController_c();
 	patroll = new PatrullarNPC();
 	trig = new Trigger_c();
@@ -126,6 +131,28 @@ Juego::Juego(EscenasManager* escenasManager)
 	statspj = new StatsPJ_c();
 	rb = new RigidBody_c();
 }
+void Juego::createArbolitos(){
+	for (int i = 0; i < numArboles; i++){
+		std::stringstream ss;
+
+		ss << i;
+		std::string str = ss.str();
+		arbolitos.push_back(new Entidad(str));
+		arbolitos[i]->setPox(rand() % 12000);// posicion 
+		arbolitos[i]->setPoy(250);
+		arbolitos[i]->setPoz(rand() % 12000);
+
+		Render_c* render8 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode(str), arbolitos[i], "tree.09", str);
+		arbolitos[i]->AddComponent(render8);
+		RigidBody_c* static_rb7 = new RigidBody_c(arbolitos[i], bulletWorld, 50, 50, 50, 0);
+		static_rb7->getRigidBody()->setCollisionFlags(static_rb7->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
+		static_rb7->getRigidBody()->setUserPointer(arbolitos[i]);
+		arbolitos[i]->AddComponent(static_rb7);
+		entidades.push_back(arbolitos[i]);
+	}
+}
+
+
 void Juego::creaNpcMisiones(int x, int y, int z, int misionT1, int expM1, int misionT2, int expM2, std::string idRender){
 	Entidad* ent2 = new EntidadRender("p2", idRender, scnMgr);
 	ent2->setPox(x);// posicion 
