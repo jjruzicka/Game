@@ -30,6 +30,7 @@ private:
 	int expNivelTotal;
 	int nivel;
 	int vida, defensa, damage;
+	int vidaMax;
 	Juego* escena;
 };
 

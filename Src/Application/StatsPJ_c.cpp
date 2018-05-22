@@ -9,6 +9,7 @@ StatsPJ_c::StatsPJ_c(int vida, int defensa, int damage, int expNivelTotal, Juego
 	this->vida = vida;
 	this->defensa = defensa;
 	this->damage = damage;
+	this->vidaMax = vida;
 }
 
 void StatsPJ_c::restaVida(int valor){
@@ -22,7 +23,6 @@ void StatsPJ_c::restaVida(int valor){
 void StatsPJ_c::muerte(){
 	escena->muerteJugador();
 }
-
 StatsPJ_c::~StatsPJ_c()
 {
 }
@@ -35,7 +35,10 @@ void StatsPJ_c::Update(){
 			exp = 0;
 
 		expNivelTotal += 5 * nivel;
-
+		vidaMax = vidaMax + 0.2 * vidaMax;
+		vida = vidaMax;
+		damage = damage + nivel;
+		defensa = defensa + nivel;
 		std::cout << "Level up" << "\nNivel: " << nivel << "\nExp actual: " << exp << "\nExperiencia a conseguir : " << expNivelTotal << "\n";
 	}
 	if (vida <= 0)
