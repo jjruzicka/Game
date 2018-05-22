@@ -1,9 +1,9 @@
 #include "PlayerController_c.h"
 #include <iostream>
-
-#include "RigidBody_c.h"
-#include "Render_c.h"
 #include "Proyectil.h"
+
+RigidBody_c* gt;
+
 
 PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input, Juego* esc, StatsPJ_c* estadisticas)
 {
@@ -15,8 +15,8 @@ PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input, Ju
 	mas = istimetoStop = false;
 	contadorProyectiles = 1;
 	chocoCon = 0;
-	RigidBody_c* gt = new RigidBody_c();
-	Render_c* rc = new Render_c();
+	gt = new RigidBody_c();
+	rc = new Render_c();
 	this->escena = escena;
 	this->estadisticas = estadisticas;
 	this->cdAtack = 50;

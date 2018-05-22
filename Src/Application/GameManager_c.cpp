@@ -1,10 +1,13 @@
 #include "GameManager_c.h"
 #include "StatsPJ_c.h"
 
+StatsPJ_c* stats;
+
 GameManager_c::GameManager_c(Entidad* personaje)
 {
 	this->personaje = personaje;
 	this->misionActiva = nullptr;
+	stats = new StatsPJ_c();
 }
 
 
@@ -21,7 +24,6 @@ void GameManager_c::killADDMision(std::string nombre){//bichos llaman a esto
 			misionActiva->addCont();
 			std::cout << misionActiva->getCont() <<"/" <<misionActiva->getTotal() << "\n";
 			if (misionActiva->isComplete()){
-				StatsPJ_c* stats = new StatsPJ_c();
 				personaje->GetComponent(stats)->sumaExp(misionActiva->getExp());
 				misionActiva->getEntidad()->DestroyComponent(misionActiva);
 				misionActiva = nullptr;

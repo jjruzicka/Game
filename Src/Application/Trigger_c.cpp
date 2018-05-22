@@ -1,7 +1,7 @@
 #include "Trigger_c.h"
 #include <iostream>
 #include "StatsEntJuego_c.h"
-
+StatsEntJuego_c* st;
 Trigger_c::Trigger_c(Entidad* _ent, Entidad* _entEne, btDynamicsWorld* _bulletWorld,
     float _profundo, float _ancho, float _alto)
 {
@@ -19,6 +19,7 @@ Trigger_c::Trigger_c(Entidad* _ent, Entidad* _entEne, btDynamicsWorld* _bulletWo
 
     trigger->setCollisionFlags(btCollisionObject::CF_NO_CONTACT_RESPONSE);
     bulletWorld->addCollisionObject(trigger);
+	st = new StatsEntJuego_c();
 }
 
 
@@ -27,7 +28,7 @@ Trigger_c::~Trigger_c()
 }
 
 void Trigger_c::Update(){
-	StatsEntJuego_c* st = new StatsEntJuego_c();
+
 	//std::cout << entPadre->GetComponent(st)->getVida() << "\n";
 	if (entPadre->GetComponent(st)->getVida() <= 0){
 		trigger->setCollisionFlags(4);

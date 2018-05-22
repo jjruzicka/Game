@@ -32,7 +32,7 @@ private:
 	int contadorProyectiles;
 	int chocoCon;
 	Entidad* entColision;
-
+	Render_c* rc;
 	int cdAtack;
 	int contAtack;
 

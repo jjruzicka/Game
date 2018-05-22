@@ -1,178 +1,178 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\..\Src\Application\CameraMove_c.cpp">
+    <ClCompile Include="..\..\Src\Application\ProyectoBasico.cpp">
       <Filter>code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\CameraMove_c.cpp">
+      <Filter>code\Componentes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\Application\Collider_c.cpp">
-      <Filter>code</Filter>
+      <Filter>code\Componentes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\Application\Component.cpp">
-      <Filter>code</Filter>
+      <Filter>code\Componentes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\Application\ComportamientoEnem_c.cpp">
-      <Filter>code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Application\Entidad.cpp">
-      <Filter>code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Application\EntidadRender.cpp">
-      <Filter>code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Application\Escenas.cpp">
-      <Filter>code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Application\EscenasManager.cpp">
-      <Filter>code</Filter>
+      <Filter>code\Componentes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\Application\GameManager_c.cpp">
-      <Filter>code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Application\GUI.cpp">
-      <Filter>code</Filter>
+      <Filter>code\Componentes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\Application\InputComponent.cpp">
-      <Filter>code</Filter>
+      <Filter>code\Componentes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\Application\Inventario_c.cpp">
-      <Filter>code</Filter>
+      <Filter>code\Componentes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\Mision_c.cpp">
+      <Filter>code\Componentes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\MovimientoProyectil_c.cpp">
+      <Filter>code\Componentes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\PatrullarNPC.cpp">
+      <Filter>code\Componentes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\PlayerController_c.cpp">
+      <Filter>code\Componentes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\Render_c.cpp">
+      <Filter>code\Componentes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\RigidBody_c.cpp">
+      <Filter>code\Componentes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\StatsEntJuego_c.cpp">
+      <Filter>code\Componentes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\StatsPJ_c.cpp">
+      <Filter>code\Componentes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\Trigger_c.cpp">
+      <Filter>code\Componentes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\Entidad.cpp">
+      <Filter>code\Entidades</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\EntidadRender.cpp">
+      <Filter>code\Entidades</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\Objeto.cpp">
+      <Filter>code\Entidades</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\Proyectil.cpp">
+      <Filter>code\Entidades</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\Escenas.cpp">
+      <Filter>code\Escenas</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\EscenasManager.cpp">
+      <Filter>code\Escenas</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\Application\Juego.cpp">
-      <Filter>code</Filter>
+      <Filter>code\Escenas</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\Menu.cpp">
+      <Filter>code\Escenas</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\Application\Mapa.cpp">
       <Filter>code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Src\Application\Menu.cpp">
-      <Filter>code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Application\Mision_c.cpp">
-      <Filter>code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Application\MovimientoProyectil_c.cpp">
-      <Filter>code</Filter>
+    <ClCompile Include="..\..\Src\Application\GUI.cpp">
+      <Filter>code\GUI</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\Application\MyEnvironmentDemoPanelColors.cpp">
-      <Filter>code</Filter>
+      <Filter>code\GUI</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\Application\MyPurplePanelColors.cpp">
-      <Filter>code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Application\Objeto.cpp">
-      <Filter>code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Application\PatrullarNPC.cpp">
-      <Filter>code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Application\PlayerController_c.cpp">
-      <Filter>code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Application\Proyectil.cpp">
-      <Filter>code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Application\ProyectoBasico.cpp">
-      <Filter>code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Application\Render_c.cpp">
-      <Filter>code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Application\RigidBody_c.cpp">
-      <Filter>code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Application\StatsEntJuego_c.cpp">
-      <Filter>code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Application\StatsPJ_c.cpp">
-      <Filter>code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Application\Trigger_c.cpp">
-      <Filter>code</Filter>
+      <Filter>code\GUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Application\CameraMove_c.h">
-      <Filter>header</Filter>
+      <Filter>header\Componentes</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\Collider_c.h">
-      <Filter>header</Filter>
+      <Filter>header\Componentes</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\Component.h">
-      <Filter>header</Filter>
+      <Filter>header\Componentes</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\ComportamientoEnem_c.h">
-      <Filter>header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Application\Entidad.h">
-      <Filter>header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Application\EntidadRender.h">
-      <Filter>header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Application\Escenas.h">
-      <Filter>header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Application\EscenasManager.h">
-      <Filter>header</Filter>
+      <Filter>header\Componentes</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\GameManager_c.h">
-      <Filter>header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Application\GUI.h">
-      <Filter>header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Application\InputComponent.h">
-      <Filter>header</Filter>
+      <Filter>header\Componentes</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\Inventario_c.h">
-      <Filter>header</Filter>
+      <Filter>header\Componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\InputComponent.h">
+      <Filter>header\Componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\Mision_c.h">
+      <Filter>header\Componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\MovimientoProyectil_c.h">
+      <Filter>header\Componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\PatrullarNPC.h">
+      <Filter>header\Componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\PlayerController_c.h">
+      <Filter>header\Componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\Render_c.h">
+      <Filter>header\Componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\RigidBody_c.h">
+      <Filter>header\Componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\StatsEntJuego_c.h">
+      <Filter>header\Componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\StatsPJ_c.h">
+      <Filter>header\Componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\Trigger_c.h">
+      <Filter>header\Componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\Entidad.h">
+      <Filter>header\Entidades</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\EntidadRender.h">
+      <Filter>header\Entidades</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\Objeto.h">
+      <Filter>header\Entidades</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\Proyectil.h">
+      <Filter>header\Entidades</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\Escenas.h">
+      <Filter>header\Escenas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\EscenasManager.h">
+      <Filter>header\Escenas</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\Juego.h">
-      <Filter>header</Filter>
+      <Filter>header\Escenas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\Menu.h">
+      <Filter>header\Escenas</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\Mapa.h">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Src\Application\Menu.h">
-      <Filter>header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Application\Mision_c.h">
-      <Filter>header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Application\MovimientoProyectil_c.h">
-      <Filter>header</Filter>
+    <ClInclude Include="..\..\Src\Application\GUI.h">
+      <Filter>header\GUI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\MyEnvironmentDemoPanelColors.h">
-      <Filter>header</Filter>
+      <Filter>header\GUI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\MyPurplePanelColors.h">
-      <Filter>header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Application\Objeto.h">
-      <Filter>header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Application\PatrullarNPC.h">
-      <Filter>header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Application\PlayerController_c.h">
-      <Filter>header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Application\Proyectil.h">
-      <Filter>header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Application\Render_c.h">
-      <Filter>header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Application\RigidBody_c.h">
-      <Filter>header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Application\StatsEntJuego_c.h">
-      <Filter>header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Application\StatsPJ_c.h">
-      <Filter>header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Application\Trigger_c.h">
-      <Filter>header</Filter>
+      <Filter>header\GUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +181,30 @@
     </Filter>
     <Filter Include="header">
       <UniqueIdentifier>{000a3418-3827-4550-9b94-f3cde4879f24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="code\Componentes">
+      <UniqueIdentifier>{58a9cfe9-7b3d-4575-933b-2d49d7e13503}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="code\GUI">
+      <UniqueIdentifier>{9fc448c8-50bc-49d7-ac2f-c0905c900199}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="code\Escenas">
+      <UniqueIdentifier>{172cdaa6-dd90-4217-b598-beb3b500d754}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="code\Entidades">
+      <UniqueIdentifier>{0603eebe-a9df-4814-aadc-2c5acf9465fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="header\Componentes">
+      <UniqueIdentifier>{b7eb958e-6bf4-46ad-9f81-3b6979f2ad06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="header\GUI">
+      <UniqueIdentifier>{cd939f79-c9a0-491c-821e-38922466b734}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="header\Escenas">
+      <UniqueIdentifier>{52d4a47d-4c3f-49e9-a094-658f05afc1ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="header\Entidades">
+      <UniqueIdentifier>{427a9105-cf58-45af-a99b-d4fdee40fdd0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

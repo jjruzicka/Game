@@ -18,6 +18,7 @@ private:
 	Entidad* entidad;
 	RigidBody_c* rb;
 	Ogre::SceneNode* node;
+	Render_c* rc;
 	int chocoCon;
 	int mov;
 	int contMov;

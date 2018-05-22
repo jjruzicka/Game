@@ -17,6 +17,15 @@ enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
 	MY_QUERY_INTERACT = 1 << 0
 };
+PlayerController_c* pC;
+PatrullarNPC* patroll;
+Trigger_c* trig;
+ComportamientoEnem_c* mE;
+Mision_c* mision;
+StatsEntJuego_c* stats;
+StatsPJ_c* statspj;
+RigidBody_c* rb;
+
 Juego::Juego(EscenasManager* escenasManager)
 {
 #ifdef _DEBUG
@@ -107,6 +116,15 @@ Juego::Juego(EscenasManager* escenasManager)
 	mapa->createmap();
 	mapa->setPhysics();
 	mapa->getRigidBody()->setUserPointer(mapa);
+
+	pC = new PlayerController_c();
+	patroll = new PatrullarNPC();
+	trig = new Trigger_c();
+	mE = new ComportamientoEnem_c();
+	mision = new Mision_c();
+	stats = new StatsEntJuego_c();
+	statspj = new StatsPJ_c();
+	rb = new RigidBody_c();
 }
 void Juego::creaNpcMisiones(int x, int y, int z, int misionT1, int expM1, int misionT2, int expM2, std::string idRender){
 	Entidad* ent2 = new EntidadRender("p2", idRender, scnMgr);
@@ -169,30 +187,22 @@ void Juego::creaOgreEnemyMele(int x, int y, int z, std::string idRender){
 bool callbackfunction(btManifoldPoint& cp, const btCollisionObjectWrapper * colObj0, int partId0, int index0, const btCollisionObjectWrapper * colObj1, int partId1, int index1){
 	if (((Entidad*)colObj0->getCollisionObject()->getUserPointer()) != nullptr && ((Entidad*)colObj1->getCollisionObject()->getUserPointer()) != nullptr){
 		if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "p2"){
-			PlayerController_c* pC = new PlayerController_c();
-			PatrullarNPC* patroll = new PatrullarNPC();
 			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(pC)->chocasCon(1, (Entidad*)colObj1->getCollisionObject()->getUserPointer());
 			((Entidad*)colObj1->getCollisionObject()->getUserPointer())->GetComponent(patroll)->chocasCon(1);
 		}
 		else if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "ogroEnemy"){
-			PlayerController_c* pC = new PlayerController_c();
 			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(pC)->chocasCon(2, ((Entidad*)colObj1->getCollisionObject()->getUserPointer()));
 		}
         else if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "trigger"){
-			Trigger_c* trig = new Trigger_c();
-			ComportamientoEnem_c* mE = new ComportamientoEnem_c();
 			((Entidad*)colObj1->getCollisionObject()->getUserPointer())->GetComponent(trig)->getFather()->GetComponent(mE)->actua((Entidad*)colObj0->getCollisionObject()->getUserPointer());
         }
 		else if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "Pan"){
-			PlayerController_c* pC = new PlayerController_c();
 			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(pC)->chocasCon(3, ((Entidad*)colObj1->getCollisionObject()->getUserPointer()));
 		}
 		else if (((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p"){
-			PlayerController_c* pC = new PlayerController_c();
 			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(pC)->chocasCon(0, nullptr);
 		}
 		else if (((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p2"){
-			PatrullarNPC* patroll = new PatrullarNPC();
 			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(patroll)->chocasCon(0);
 		}
 	}
@@ -246,14 +256,11 @@ bool Juego::run(){
 	return true;
 }
 void Juego::activaMision(Entidad* npc){
-	Mision_c* mision = new Mision_c();
 	mision = npc->GetComponent(mision);
 	if (mision != nullptr)
 		gm->dameMision(mision);
 }
 void Juego::atacar(Entidad* npc){
-	StatsEntJuego_c* stats = new StatsEntJuego_c();
-	StatsPJ_c* statspj = new StatsPJ_c();
 	npc->GetComponent(stats)->restaVida(entidades[0]->GetComponent(statspj)->getDamage());
 }
 
@@ -270,7 +277,6 @@ void Juego::killAdd(Entidad* obj){
 		Entidad* aux = entidades[i];
 		entidades[i] = entidades[entidades.size() - 1];
 		entidades[entidades.size() - 1] = aux;
-		RigidBody_c* rb = new RigidBody_c();
 		aux->GetComponent(rb)->getRigidBody()->setCollisionFlags(4);
 		bulletWorld->removeRigidBody(aux->GetComponent(rb)->getRigidBody());
 		entidades.pop_back();

@@ -2,17 +2,23 @@
 #include "StatsPJ_c.h"
 #include "StatsEntJuego_c.h"
 
+StatsPJ_c* st;
+StatsEntJuego_c* sj;
+Render_c* rc;
+
 ComportamientoEnem_c::ComportamientoEnem_c(Entidad* ent)
 {
 	chocoCon = 0;
 	entidad = ent;
 	rb = new RigidBody_c();
-	Render_c* rc = new Render_c();
+	rc = new Render_c();
 	node = entidad->GetComponent(rc)->getNode();
 	//reloj
 	entidad = ent;
 	cooldown = 0;
 	getTime = true;
+	st = new StatsPJ_c();
+	sj = new StatsEntJuego_c();
 }
 
 
@@ -42,8 +48,6 @@ void ComportamientoEnem_c::actua(Entidad* entidadHeroe){
 
 		if (cooldown > 4){
 			getTime = true;
-			StatsPJ_c* st = new StatsPJ_c();
-			StatsEntJuego_c* sj = new StatsEntJuego_c();
 			entidadHeroe->GetComponent(st)->restaVida(entidad->GetComponent(sj)->getDamage());
 			std::cout << "Te quedan " << entidadHeroe->GetComponent(st)->getVida()<< " de vida" << std::endl;
 		}

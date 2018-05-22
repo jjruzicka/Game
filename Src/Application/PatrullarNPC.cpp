@@ -2,7 +2,7 @@
 #include <iostream>
 
 #include "RigidBody_c.h"
-#include "Render_c.h"
+
 
 PatrullarNPC::PatrullarNPC(int x, Entidad * ent)
 {
@@ -11,7 +11,7 @@ PatrullarNPC::PatrullarNPC(int x, Entidad * ent)
 	entidad = ent;
 	chocoCon = 0;
 	rb = new RigidBody_c();
-	Render_c* rc = new Render_c();
+	rc = new Render_c();
 	node = entidad->GetComponent(rc)->getNode();
 }
 
