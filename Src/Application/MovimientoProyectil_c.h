@@ -13,13 +13,18 @@ class MovimientoProyectil_c :
 	public Component
 {
 public:
-	MovimientoProyectil_c(Entidad* ent, Juego * esc);
+	MovimientoProyectil_c(Entidad* ent, Juego * esc, Entidad * ori);
+	MovimientoProyectil_c(){};
 	~MovimientoProyectil_c();
 	void Update();
-
+	void activate(bool b){
+		active = b;
+	}
+	void Reset();
 private:
 	Entidad* entidad;
 	Juego * escena;
+	Entidad * origin;
 	Render_c * rc;
 	RigidBody_c * rb;
 	bool first;
@@ -30,6 +35,8 @@ private:
 
 	std::clock_t start;
 	double duration;
+
+	bool active;
 };
 #endif
 

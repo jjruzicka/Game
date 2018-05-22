@@ -89,17 +89,17 @@ Juego::Juego(EscenasManager* escenasManager)
 	ent3->AddComponent(gm);
 	entidades.push_back(ent3);
 
-    Entidad* entp = new Entidad("proy");
-    entp->setPox(1700);// posicion 
-    entp->setPoy(5);
-    entp->setPoz(1900);
+    entp = new Entidad("proy");
+	entp->setPox(15000);// posicion 
+	entp->setPoy(5);
+	entp->setPoz(15000);
     Render_c* renderp = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("proy"), entp, "Sinbad", "proy");
     entp->AddComponent(renderp);
     RigidBody_c* static_rbp = new RigidBody_c(entp, bulletWorld, 5, 5, 5, 1);
     static_rbp->getRigidBody()->setCollisionFlags(static_rbp->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
     static_rbp->getRigidBody()->setUserPointer(entp);
     entp->AddComponent(static_rbp);
-    MovimientoProyectil_c* mpp = new MovimientoProyectil_c(entp, this);
+    MovimientoProyectil_c* mpp = new MovimientoProyectil_c(entp, this, ent1);
     entp->AddComponent(mpp);
     entidades.push_back(entp);
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -168,6 +168,11 @@ Juego::Juego(EscenasManager* escenasManager)
 	mapa->getRigidBody()->setUserPointer(mapa);
 }
 
+void Juego::creaProyectil(){
+	MovimientoProyectil_c* mp = new MovimientoProyectil_c();
+	entp->GetComponent(mp)->activate(true);
+}
+
 bool callbackfunction(btManifoldPoint& cp, const btCollisionObjectWrapper * colObj0, int partId0, int index0, const btCollisionObjectWrapper * colObj1, int partId1, int index1){
 	if (((Entidad*)colObj0->getCollisionObject()->getUserPointer()) != nullptr && ((Entidad*)colObj1->getCollisionObject()->getUserPointer()) != nullptr){
 		if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "p2"){
@@ -181,9 +186,9 @@ bool callbackfunction(btManifoldPoint& cp, const btCollisionObjectWrapper * colO
 			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(pC)->chocasCon(2, ((Entidad*)colObj1->getCollisionObject()->getUserPointer()));
 		}
         else if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "proy") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "ogroEnemy"){
-			//MovimientoProyectil* mP = new PlayerController_c();
-			//((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(mP)->chocasCon(2, ((Entidad*)colObj1->getCollisionObject()->getUserPointer()));
-            //std::cout << "saaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+			MovimientoProyectil_c* movp = new MovimientoProyectil_c();
+			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(movp)->Reset();
+            std::cout << "choca el proyectil";
 		}
 		else if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "Pan"){
 			PlayerController_c* pC = new PlayerController_c();

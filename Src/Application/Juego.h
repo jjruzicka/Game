@@ -17,10 +17,17 @@ public:
 	Entidad * getPlayer(){
 		return ent1;
 	}
+	Entidad * getProyectil(){
+		return entp;
+	}
+
+	void creaProyectil();
 private:
 	//variables vienen de escenas.h
 	Entidad* ent1; // Player
 	GameManager_c* gm;
 	EscenasManager* escenasManager;
+
+	Entidad* entp;
 };
 #endif

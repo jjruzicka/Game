@@ -160,8 +160,8 @@ bool PlayerController_c::mousePressed(const OIS::MouseEvent& me, OIS::MouseButto
 	{
 	case OIS::MB_Left:
 	{
-		/*if (contDisparo >= cdDisparo){
-			contDisparo = 0;
+		//if (contDisparo >= cdDisparo){
+			/*ntDisparo = 0;
 			// pasamos la posicion un poco adelantada para que el proyectil no se cree dentro del personaje
 			Ogre::Vector3 pGlobal(entidad->getPox(), entidad->getPoy(), entidad->getPoz());
 			Ogre::Vector3 pLocal = node->convertWorldToLocalPosition(pGlobal);
@@ -171,10 +171,11 @@ bool PlayerController_c::mousePressed(const OIS::MouseEvent& me, OIS::MouseButto
 				escena->getSceneManger()->getRootSceneNode()->createChildSceneNode("Proyectil" + std::to_string(contadorProyectiles)),
 				escena->getBulletWorld(), pGlobal.x, pGlobal.y, pGlobal.z,
 				node->getOrientation(), 5, 5, 5);
-			escena->addEntidad(proyectil);
+			escena->addEntidad(proyectil);*/
+			escena->creaProyectil();
 			contadorProyectiles++;
-		}*/
-		break;
+		//}
+		//break;
 	}
 	default:
 		break;

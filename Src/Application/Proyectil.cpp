@@ -29,7 +29,7 @@ Proyectil::Proyectil(std::string id, Juego* esc, Ogre::SceneNode* n, btDynamicsW
 	this->AddComponent(rb); 
 
 	// añadimos componente del moviento
-	movimiento = new MovimientoProyectil_c(this, escena);
+	movimiento = new MovimientoProyectil_c(this, escena, this);
 	this->AddComponent(movimiento);
 
 	// añadimos componente render
