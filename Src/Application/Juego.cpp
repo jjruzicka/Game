@@ -12,6 +12,7 @@
 #include "EntidadRender.h"
 #include "Trigger_c.h"
 #include "ComportamientoEnem_c.h"
+#include "AniManager_c.h"
 using namespace Ogre;
 enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
@@ -61,6 +62,8 @@ Juego::Juego(EscenasManager* escenasManager)
 	StatsPJ_c* stas = new StatsPJ_c(5, 10, 2, 100,this);
 	ent1->AddComponent(stas);
 	ent1->AddComponent(render);
+	AniManager_c* anim = new AniManager_c(ent1);
+	ent1->AddComponent(anim);
 
 	RigidBody_c* player_rb = new RigidBody_c(ent1, bulletWorld, 5, 5, 5, 1);
 	player_rb->getRigidBody()->setCollisionFlags(player_rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);

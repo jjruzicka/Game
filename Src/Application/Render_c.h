@@ -14,6 +14,9 @@ public:
 	Ogre::SceneNode* getNode(){
 		return node;
 	}
+	Ogre::Entity* getEntity(){
+		return entOgre;
+	}
 	virtual	void Update();
 private:
 	Ogre::SceneNode* node;

@@ -1,6 +1,7 @@
 #include "PlayerController_c.h"
 #include <iostream>
 #include "Proyectil.h"
+#include "AniManager_c.h"
 
 RigidBody_c* gt;
 
@@ -29,7 +30,7 @@ PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input, Ju
 
 bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 {
-
+	AniManager_c* anim = new AniManager_c();
 	switch (keyP.key)
 	{
 	case OIS::KC_ESCAPE:
@@ -46,6 +47,7 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 	{
 		mas = true;
 		istimetoStop = true;
+		entidad->GetComponent(anim)->playAnim();
 	}
 	break;
 
@@ -87,11 +89,13 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 
 
 bool PlayerController_c::keyReleased(const OIS::KeyEvent& keyP){
+	AniManager_c* anim = new AniManager_c();
 	switch (keyP.key)
 	{
 	case OIS::KC_UP:
 	case OIS::KC_W:
 		istimetoStop = false;
+		entidad->GetComponent(anim)->stopAnim();
 		break;
 	case OIS::KC_DOWN:
 	case OIS::KC_S:
