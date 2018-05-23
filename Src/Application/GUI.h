@@ -16,10 +16,8 @@ public:
 	void createPanel();
 	void createPanelInGame();
 	Gui3D::ScreenPanel* mSPanel2;
+	Gui3D::ScreenPanel* mSPanelExp;
 	Gui3D::Panel* panel;
-	void setPosition(Ogre::Real x, Ogre::Real y, Ogre::Real z, Ogre::Degree ang);
-	void setText(Ogre::String text, Ogre::Real y);
-	void _createPanel();
 	void createUI();
 	~GUI();
 	Gui3D::Caption* getCaptionVida(){
@@ -33,6 +31,15 @@ public:
 	}
 	Gui3D::Caption* getCaptionNivel(){
 		return captionLevel;
+	}
+	Gui3D::Caption* getMisionActiva1(){
+		return captionMision1;
+	}
+	Gui3D::Caption* getMisionActiva2(){
+		return captionMision2;
+	}
+	Gui3D::Caption* getMisionActiva3(){
+		return captionMision3;
 	}
 private:
 
@@ -58,6 +65,9 @@ private:
 	Gui3D::Caption* captionDamage;
 	Gui3D::Caption* captionExperiencia;
 	Gui3D::Caption* captionLevel;
+	Gui3D::Caption* captionMision1;
+	Gui3D::Caption* captionMision2;
+	Gui3D::Caption* captionMision3;
 	// Gui3D main object
 	Gui3D::Gui3D* mGui3D;
 	Gui3D::Gui3D* UI3D;

@@ -11,6 +11,21 @@ public:
 	void Update();
 	bool dameMision(Mision_c* mision);
 	void killADDMision(std::string nombre);
+	bool getMisionIsActive(){
+		return misionActiva != nullptr;
+	}
+	std::string getObjetive(){
+		return misionActiva->getTarget();
+	}
+	int getObjetiveNum(){
+		return misionActiva->getTotal();
+	}
+	int getObjetiveCOnt(){
+		return misionActiva->getCont();
+	}
+	int getObjetiveExp(){
+		return misionActiva->getExp();
+	}
 private:
 	Entidad* personaje;
 	Mision_c* misionActiva;

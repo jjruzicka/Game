@@ -129,14 +129,8 @@ Juego::Juego(EscenasManager* escenasManager)
 	vp->setBackgroundColour(Ogre::ColourValue(150, 150, 150));
 
 	//GUI
-	guiGame = new GUI(inputcomp_, vp, scnMgr, cam, camNode, this, false);
-	guiGame->_createPanel();
-	
-	guiGame->setPosition(1700, 10, 1900,(Ogre::Degree)180);
-	guiGame->setText("", 150);
+	guiGame = new GUI(inputcomp_, vp, scnMgr, cam, camNode, this, false);	
 	guiGame->createUI();
-	
-
 	//Terrain
 	mapa = new Mapa(scnMgr, light, bulletWorld);
 	mapa->createmap();
@@ -215,19 +209,8 @@ bool Juego::keyPressed(const OIS::KeyEvent& keyP){
 	case OIS::KC_M:
 		switch (cont){
 		case 0:
-			// posicion 
-			guiGame->setPosition(1700, 10, 1900, (Ogre::Degree)0);
-			guiGame->setText("BUENOS DIAS AMIGO", 150);
-			guiGame->setText("NECESITO TU AYUDA", 200);
-
 			break;
 		case 1:
-			delete guiGame->panel;
-			guiGame->_createPanel();
-			guiGame->setPosition(1700, 10, 1900, (Ogre::Degree)180);
-			guiGame->setText("¿PODRIAS IR AL DESCAMPADO Y RECUPERAR", 150);
-			guiGame->setText("LAS LLAVES DE MI CASA?", 200);
-			guiGame->setText("TE ESTARÉ ETERNAMENTE AGRADECIDO", 250);
 			break;
 		default:
 			break;
@@ -344,6 +327,30 @@ void Juego::updateGUI(){
 	std::ostringstream c;
 	c << "Nivel: " << std::fixed << entidades[0]->GetComponent(statspj)->getNivel();
 	guiGame->getCaptionNivel()->text(c.str());
+
+	//MISION
+	std::ostringstream x,x2,x3;
+	if (gm->getMisionIsActive()){
+		x << "kill: " << gm->getObjetive();
+		guiGame->getMisionActiva1()->text(x.str());
+
+		x2 << "LLeva: " << gm->getObjetiveCOnt() << " / " << gm->getObjetiveNum();
+		guiGame->getMisionActiva2()->text(x2.str());
+
+		x3 << "Exp dada: " << gm->getObjetiveExp();
+		guiGame->getMisionActiva3()->text(x3.str());
+	}
+	else{
+		x << "No hay misiones activas";
+		guiGame->getMisionActiva1()->text(x.str());
+
+		x2 << "Habla al npc";
+		guiGame->getMisionActiva2()->text(x2.str());
+
+		x3 << " ";
+		guiGame->getMisionActiva3()->text(x3.str());
+	}
+
 }
 bool Juego::run(){
 	

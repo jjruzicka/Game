@@ -46,18 +46,6 @@ GUI::GUI(InputComponent* input_, Ogre::Viewport* vp, Ogre::SceneManager * scnMgr
 
 }
 
-void GUI::_createPanel()
-{
-
-	panel = new Gui3D::Panel(
-		mGui3D, scn, Ogre::Vector2(700, 700), 15, "purple", "kikoo");
-
-	/*panel->makeCaption(10, 100, 90, 100, "Left", Gorilla::TextAlign_Centre, Gorilla::VerticalAlign_Middle);
-	panel->makeCaption(310, 100, 90, 100, "Right", Gorilla::TextAlign_Centre, Gorilla::VerticalAlign_Middle);*/
-
-
-
-}
 
 void GUI::createPanel(){
 	myScreen = mGui3D->getScreen("mainScreen");
@@ -84,15 +72,6 @@ void GUI::createPanel(){
 	mSPanel2->hideInternalMousePointer();
 }
 
-void GUI::setText(Ogre::String text, Ogre::Real y){
-	panel->makeCaption(10, y, 700, 900, text, Gorilla::TextAlign_Centre);
-}
-
-void GUI::setPosition(Ogre::Real x, Ogre::Real y, Ogre::Real z, Ogre::Degree ang){
-	panel->mNode->setPosition(x, y, z);
-	panel->mNode->yaw(Ogre::Degree(ang));
-}
-
 void GUI::createUI(){
 	myScreen = mGui3D->getScreen("mainScreen");
 
@@ -101,22 +80,24 @@ void GUI::createUI(){
 		mGui3D,
 		myScreen,
 		Ogre::Vector2(0, 0),
-		Ogre::Vector2(120, 100),
+		Ogre::Vector2(140, 100),
 		"purple",
 		"test_screenPanel4");
-
+	mSPanelExp = new Gui3D::ScreenPanel(
+		mGui3D,
+		myScreen,
+		Ogre::Vector2(0, 150),
+		Ogre::Vector2(240, 80),
+		"purple",
+		"test_screenPanel4");
 
 	 captionButton = mSPanel2->makeCaption(0, 0, 380, 30, "Vida: 0");
 	 captionDamage = mSPanel2->makeCaption(0, 25, 380, 30, "Damage: 0");
 	 captionExperiencia = mSPanel2->makeCaption(0, 50, 380, 30, "Exp: 0");
 	 captionLevel = mSPanel2->makeCaption(0, 75, 380, 30, "Nivel: 0");
-
-	/*mSPanel2->makeButton(0, 0, 400, 100, "PLAY")
-		->setPressedCallback(this, &GUI::play_);
-	mSPanel2->makeButton(0, 150, 400, 100, "CREDITS")
-		->setPressedCallback(this, &GUI::exit_);
-	mSPanel2->makeButton(0, 300, 400, 100, "EXIT")
-		->setPressedCallback(this, &GUI::exit_);*/
+	 captionMision1 = mSPanelExp->makeCaption(0, 0, 380, 30, " ");
+	 captionMision2 = mSPanelExp->makeCaption(0, 25, 380, 30, " ");
+	 captionMision3 = mSPanelExp->makeCaption(0, 50, 380, 30, " ");
 
 	// We don't want any panels to display mouse cursor. It is handled
 	//  by our Simple2DDemo.
@@ -186,14 +167,18 @@ bool GUI::buttonPressed(Gui3D::PanelElement* e)
 bool GUI::mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id)
 {
 	if (menuEscena)
-	mSPanel2->injectMousePressed(evt, id);
+		mSPanel2->injectMousePressed(evt, id);
+	else
+		mSPanelExp->injectMousePressed(evt,id);
 	return true;
 }
 
 bool GUI::mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id)
 {
 	if (menuEscena)
-	mSPanel2->injectMouseReleased(evt, id);
+		mSPanel2->injectMouseReleased(evt, id);
+	else
+		mSPanelExp->injectMousePressed(evt, id);
 	return true;
 
 }
@@ -268,6 +253,11 @@ bool GUI::mouseMoved(const OIS::MouseEvent &arg)
 		mSPanel2->injectMouseMoved(mNormalizedMousePosition.x * view->getActualWidth(),
 			mNormalizedMousePosition.y * view->getActualHeight());
 	}
+	else{
+		mSPanelExp->injectMouseMoved(mNormalizedMousePosition.x * view->getActualWidth(),
+			mNormalizedMousePosition.y * view->getActualHeight());
+	}
+
 
 	return true;
 }
