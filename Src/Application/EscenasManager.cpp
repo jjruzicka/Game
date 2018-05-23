@@ -10,44 +10,39 @@ EscenasManager::EscenasManager()
 {
 	juegoB = false;
 	menuB = true;
-
-	if (menuB){
-		menu = new Menu(this);
-		juego = nullptr;
-	}
-	else if (juegoB){
-		juego = new Juego(this);
-		menu = nullptr;
-	}
+	menu = nullptr;
+	juego = nullptr;
 }
 
 bool EscenasManager::run(){
-	if (juegoB)
+	if (juegoB){
+		juego = new Juego(this);
 		juego->run();
-	else if (menuB)
+	}
+	else if (menuB){
+		menu = new Menu(this);
 		menu->run();
+	}
 	else
 		exit(0);
 }
 void EscenasManager::Exit(){
 	delete menu;
 	menuB = false;
-	run();
+	this->run();
 }
 
 void EscenasManager::MenuToGame(){
 	menuB = false;
 	juegoB = true;
 	delete menu;
-	juego = new Juego(this);
-	run();
+	this->run();
 }
 void EscenasManager::GameToMenu(){
 	menuB = true;
 	juegoB = false;
 	delete juego;
-	menu = new Menu(this);
-	run();
+	this->run();
 }
 EscenasManager::~EscenasManager()
 {

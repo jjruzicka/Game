@@ -20,15 +20,15 @@ private:
 	void createArbolitos();
 	void updateGUI();
 	GUI* guiGame;
-	int cont;
+	int cont = 0;
 	virtual bool keyPressed(const OIS::KeyEvent& keyP);
 	virtual bool keyReleased(const OIS::KeyEvent& keyP);
 	void creaPan(int x, int y, int z, std::string idRender);
 	void creaOgreEnemyMele(int x, int y, int z,int vida, int damage, int armor, std::string idRender);
 	void creaNpcMisiones(int x, int y, int z, int misionT1, int expM1, int misionT2, int expM2, int misionT3, int expM3, int misionT4, int expM4, int misionT5, int expM5, std::string idRender);
 	//variables vienen de escenas.h
-	int numArboles;
-	int contArboles;
+	int numArboles = 0;
+	int contArboles = 0;
 	std::vector<Entidad*> arbolitos;
 	GameManager_c* gm;
 	EscenasManager* escenasManager;

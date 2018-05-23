@@ -28,14 +28,6 @@ GUI::GUI(InputComponent* input_, Ogre::Viewport* vp, Ogre::SceneManager * scnMgr
 		cameraDirection = Ogre::Vector3(0, 0, -1);
 		camera->setDirection(cameraDirection);
 	}
-	else{
-		
-		//UI3D = new Gui3D::Gui3D(mMyPurplePanelColors);
-		//UI3D->createScreen(vp, "purple", "mainScreen");
-		/*camera->setPosition(0, 6.f, -8);
-		camera->setDirection(Ogre::Vector3(0, 0, 1));*/
-
-	}
 
 	view = vp;
 	

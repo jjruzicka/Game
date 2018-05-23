@@ -27,6 +27,7 @@ RigidBody_c::RigidBody_c(Entidad* _ent, btDynamicsWorld* _bulletWorld,
 	rb = new btRigidBody(RigidBodyInfo);
 	rb->setLinearFactor(btVector3(1,0,1));
 	rb->setSleepingThresholds(0, 0);
+	rb->setUserPointer(ent);
 	bulletWorld->addRigidBody(rb);
 }
 

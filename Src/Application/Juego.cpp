@@ -411,10 +411,10 @@ bool Juego::run(){
 		}
 		//Tick de la fisica
 		bulletWorld->stepSimulation(1.f / 60.f, 10);
-		updateGUI();
+
 		for (int i = 0; i < entidades.size(); i++)
 			entidades[i]->Update();
-
+		updateGUI();
 		// render ogre
 		Ogre::WindowEventUtilities::messagePump();
 		//comprobar si la ventana está abierta
