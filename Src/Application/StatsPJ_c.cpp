@@ -1,7 +1,10 @@
 #include "StatsPJ_c.h"
 #include <iostream>
+#include "PlayerController_c.h"
 
-StatsPJ_c::StatsPJ_c(int vida, int defensa, int damage, int expNivelTotal, Juego* escena){
+PlayerController_c* playerC;
+
+StatsPJ_c::StatsPJ_c(int vida, int defensa, int damage, int expNivelTotal, Juego* escena, Entidad* ent){
 	this->exp = 0;
 	this->nivel = 1;
 	this->expNivelTotal = expNivelTotal;
@@ -10,6 +13,8 @@ StatsPJ_c::StatsPJ_c(int vida, int defensa, int damage, int expNivelTotal, Juego
 	this->defensa = defensa;
 	this->damage = damage;
 	this->vidaMax = vida;
+	this->ent = ent;
+	playerC = new PlayerController_c();
 }
 
 void StatsPJ_c::restaVida(int valor){
@@ -39,6 +44,9 @@ void StatsPJ_c::Update(){
 		vida = vidaMax;
 		damage = damage + nivel;
 		defensa = defensa + nivel;
+		int cdCuracion = ent->GetComponent(playerC)->getCdCuracion();
+		cdCuracion = cdCuracion * 0.9;
+		ent->GetComponent(playerC)->setCdCuracion(cdCuracion);
 		std::cout << "Level up" << "\nNivel: " << nivel << "\nExp actual: " << exp << "\nExperiencia a conseguir : " << expNivelTotal << "\n";
 	}
 	if (vida <= 0)

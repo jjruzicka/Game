@@ -61,7 +61,7 @@ Juego::Juego(EscenasManager* escenasManager)
 	ent1->setPoy(5);
 	ent1->setPoz(1800);
 	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("p"), ent1, "Sinbad", "p");
-	StatsPJ_c* stas = new StatsPJ_c(5, 10, 2, 100,this);
+	StatsPJ_c* stas = new StatsPJ_c(100, 20, 50, 50,this,ent1);
 	ent1->AddComponent(stas);
 	ent1->AddComponent(render);
 
@@ -78,14 +78,23 @@ Juego::Juego(EscenasManager* escenasManager)
 	ent3->AddComponent(gm);
 	entidades.push_back(ent3);
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	creaNpcMisiones(1700,5,1850,2,200,2,500,"p2");
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	creaOgreEnemyMele(1700, 5, 1750, "ogreEnemy1");
-	creaOgreEnemyMele(1700, 5, 1750, "ogreEnemy2");
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	creaPan(1750,5,1750,"pan1");
+	creaNpcMisiones(1700,5,1850,3,125,1,300,3,650,3,1400,1,3200,"p2");
+	/////////////////////////////////////	MISION  1	///////////////////////////////////////////////////////////////
+	creaPan(1750, 5, 1750, "pan1");
 	creaPan(1650, 5, 1700, "pan2");
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	creaPan(1700, 5, 1650, "pan3");
+	/////////////////////////////////////	MISION  2	////////////////////////////////////////////////////////////////////
+	creaOgreEnemyMele(1900, 5, 1800,100,25,0, "ogreEnemy1");
+	/////////////////////////////////////	MISION  3	////////////////////////////////////////////////////////////////////
+	creaOgreEnemyMele(1700, 5, 2100, 200, 45, 50, "ogreEnemy2");
+	creaOgreEnemyMele(1800, 5, 2100, 200, 45, 50, "ogreEnemy3");
+	creaOgreEnemyMele(1650, 5, 2100, 200, 45, 50, "ogreEnemy4");
+	/////////////////////////////////////	MISION  4	////////////////////////////////////////////////////////////////////
+	creaOgreEnemyMele(1400, 5, 1800, 200, 80, 100, "ogreEscolta1");
+	creaOgreEnemyMele(1400, 5, 1800, 200, 80, 100, "ogreEscolta2");
+	creaOgreEnemyMele(1250, 5, 1800, 400, 125, 200, "ogreBoss");
+	/////////////////////////////////////	MISION  5	///////////////////////////////////////////////////////////////
+	creaPan(1200, 5, 1800, "prisionero");
 	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
 	lightdir.normalise();
 
@@ -173,7 +182,7 @@ void Juego::createArbolitos(){
 }
 
 
-void Juego::creaNpcMisiones(int x, int y, int z, int misionT1, int expM1, int misionT2, int expM2, std::string idRender){
+void Juego::creaNpcMisiones(int x, int y, int z, int misionT1, int expM1, int misionT2, int expM2, int misionT3, int expM3, int misionT4, int expM4, int misionT5, int expM5, std::string idRender){
 	Entidad* ent2 = new EntidadRender("p2", idRender, scnMgr);
 	ent2->setPox(x);// posicion 
 	ent2->setPoy(y);
@@ -187,6 +196,12 @@ void Juego::creaNpcMisiones(int x, int y, int z, int misionT1, int expM1, int mi
 	ent2->AddComponent(patrulla);
 	Mision_c* mision = new Mision_c(misionT1, "Pan", expM1, ent2);
 	ent2->AddComponent(mision);
+	Mision_c* mision5 = new Mision_c(misionT5, "Pan", expM5, ent2);
+	ent2->AddComponent(mision5);
+	Mision_c* mision4 = new Mision_c(misionT4, "ogroEnemy", expM4, ent2);
+	ent2->AddComponent(mision4);
+	Mision_c* mision3 = new Mision_c(misionT3, "ogroEnemy", expM3, ent2);
+	ent2->AddComponent(mision3);
 	Mision_c* mision2 = new Mision_c(misionT2, "ogroEnemy", expM2, ent2);
 	ent2->AddComponent(mision2);
 	entidades.push_back(ent2);
@@ -236,7 +251,7 @@ bool Juego::keyReleased(const OIS::KeyEvent& keyP){
 }
 
 
-void Juego::creaOgreEnemyMele(int x, int y, int z, std::string idRender){
+void Juego::creaOgreEnemyMele(int x, int y, int z, int vida, int damage, int armor, std::string idRender){
 	EntidadRender* ent2 = new EntidadRender("ogroEnemy");
 	ent2->setIdRender(idRender);
 	ent2->setPox(x);// posicion 
@@ -250,7 +265,7 @@ void Juego::creaOgreEnemyMele(int x, int y, int z, std::string idRender){
 	ent2->AddComponent(static_rb);
 	ComportamientoEnem_c* compEnem = new ComportamientoEnem_c(ent2);
 	ent2->AddComponent(compEnem);
-	StatsEntJuego_c* statsE = new StatsEntJuego_c(2, 3, 2, this, ent2);
+	StatsEntJuego_c* statsE = new StatsEntJuego_c(vida, armor, damage, this, ent2);
 	ent2->AddComponent(statsE);
 	entidades.push_back(ent2);
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -310,7 +325,7 @@ void Juego::updateGUI(){
 
 	//VIDA
 	std::ostringstream s;
-	s << "Vida: " << std::fixed << entidades[0]->GetComponent(statspj)->getVida();
+	s << "Vida: " << std::fixed << entidades[0]->GetComponent(statspj)->getVida() << " / " << std::fixed << entidades[0]->GetComponent(statspj)->getVidaMax();
 	guiGame->getCaptionVida()->text(s.str());
 
 	//DAMAGE
@@ -328,6 +343,14 @@ void Juego::updateGUI(){
 	c << "Nivel: " << std::fixed << entidades[0]->GetComponent(statspj)->getNivel();
 	guiGame->getCaptionNivel()->text(c.str());
 
+	//Curacion
+	std::ostringstream z;
+	PlayerController_c * playerC = entidades[0]->GetComponent(pC);
+	if (playerC->getCdCuracion() <= playerC->getContCuracion())
+		z << "Curacion disponible pulsa Q";
+	else
+		z << "Curacion en CD";
+	guiGame->getCaptionCura()->text(z.str());
 	//MISION
 	std::ostringstream x,x2,x3;
 	if (gm->getMisionIsActive()){

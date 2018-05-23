@@ -5,7 +5,11 @@
 EntidadRender::EntidadRender(std::string id, std::string idRender, Ogre::SceneManager* scnMgr) : Entidad(id)
 {
 	this->idRender = idRender;
-	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode(idRender), this, "WoodPallet", idRender);
+	Render_c* render;
+	if (id == "p2")
+		render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode(idRender), this, "Sinbad", idRender);
+	else
+		render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode(idRender), this, "WoodPallet", idRender);
 	AddComponent(render);
 }
 

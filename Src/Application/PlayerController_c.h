@@ -16,6 +16,15 @@ public:
 	void Update();
 	~PlayerController_c();
 	void chocasCon(int i, Entidad* ent);//0 para cuando no es nada, 1 npc
+	int getCdCuracion(){
+		return cdCuracion;
+	}
+	int getContCuracion(){
+		return contCura;
+	}
+	void setCdCuracion(int i){
+		cdCuracion = i;
+	}
 private:
 	bool keyPressed(const OIS::KeyEvent& keyP);
 	bool keyReleased(const OIS::KeyEvent& keyP);
@@ -29,14 +38,13 @@ private:
 	StatsPJ_c* estadisticas;
 	Ogre::SceneNode* node;
 	RigidBody_c* rb;
-	int contadorProyectiles;
 	int chocoCon;
 	Entidad* entColision;
 	Render_c* rc;
 	int cdAtack;
 	int contAtack;
 
-	int cdDisparo;
-	int contDisparo;
+	int cdCuracion;
+	int contCura;
 };
 #endif

@@ -8,8 +8,8 @@ enum QueryFlags {
 };
 EscenasManager::EscenasManager()
 {
-	juegoB = false;
-	menuB = true;
+	juegoB = true;
+	menuB = false;
 
 	if (menuB){
 		menu = new Menu(this);

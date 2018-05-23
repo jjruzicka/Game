@@ -80,7 +80,7 @@ void GUI::createUI(){
 		mGui3D,
 		myScreen,
 		Ogre::Vector2(0, 0),
-		Ogre::Vector2(140, 100),
+		Ogre::Vector2(260, 125),
 		"purple",
 		"test_screenPanel4");
 	mSPanelExp = new Gui3D::ScreenPanel(
@@ -95,6 +95,7 @@ void GUI::createUI(){
 	 captionDamage = mSPanel2->makeCaption(0, 25, 380, 30, "Damage: 0");
 	 captionExperiencia = mSPanel2->makeCaption(0, 50, 380, 30, "Exp: 0");
 	 captionLevel = mSPanel2->makeCaption(0, 75, 380, 30, "Nivel: 0");
+	 captionCura = mSPanel2->makeCaption(0, 100, 380, 30, " ");
 	 captionMision1 = mSPanelExp->makeCaption(0, 0, 380, 30, " ");
 	 captionMision2 = mSPanelExp->makeCaption(0, 25, 380, 30, " ");
 	 captionMision3 = mSPanelExp->makeCaption(0, 50, 380, 30, " ");
@@ -248,6 +249,7 @@ GUI::~GUI()
 		delete captionMision1;
 		delete captionMision2;
 		delete captionMision3;
+		delete captionCura;
 		mSPanelExp = nullptr;
 	}
 	mSPanel2 = nullptr;

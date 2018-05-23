@@ -40,6 +40,9 @@ public:
 	Gui3D::Caption* getMisionActiva3(){
 		return captionMision3;
 	}
+	Gui3D::Caption* getCaptionCura(){
+		return captionCura;
+	}
 private:
 
 	Escenas* menu;
@@ -60,6 +63,7 @@ private:
 	bool mouseMoved(const OIS::MouseEvent &arg);
 	bool menuEscena;
 
+	Gui3D::Caption* captionCura;
 	Gui3D::Caption* captionButton;
 	Gui3D::Caption* captionDamage;
 	Gui3D::Caption* captionExperiencia;

@@ -86,7 +86,7 @@
       <Filter>code\GUI</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\Application\GUI.cpp">
-      <Filter>header\Componentes</Filter>
+      <Filter>code\GUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

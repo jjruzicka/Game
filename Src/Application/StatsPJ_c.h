@@ -5,7 +5,7 @@
 class StatsPJ_c : public Component
 {
 public:
-	StatsPJ_c(int vida, int defensa, int damage, int expNivelTotal, Juego* escena);
+	StatsPJ_c(int vida, int defensa, int damage, int expNivelTotal, Juego* escena, Entidad* ent);
 	StatsPJ_c(){};
 	~StatsPJ_c();
 	void Update();
@@ -31,6 +31,14 @@ public:
 	int getExpRestante(){
 		return expNivelTotal - exp;
 	}
+	int getVidaMax(){
+		return vidaMax;
+	}
+	void Curacion(int cura){
+		vida += cura;
+		if (vida > vidaMax)
+			vida = vidaMax;
+	}
 private:
 	int exp;
 	int expNivelTotal;
@@ -38,6 +46,7 @@ private:
 	int vida, defensa, damage;
 	int vidaMax;
 	Juego* escena;
+	Entidad* ent;
 };
 
 #endif

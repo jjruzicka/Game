@@ -37,6 +37,7 @@ public:
 				componentes[componentes.size() - 1] = aux;
 				componentes.pop_back();
 				delete aux;
+				return;
 			}
 			i++;
 		}
