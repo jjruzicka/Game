@@ -323,6 +323,28 @@ bool Juego::initBullet(){
 	bulletWorld->setGravity(btVector3(0, -10, 0));
 	return true;
 }
+void Juego::updateGUI(){
+
+	//VIDA
+	std::ostringstream s;
+	s << "Vida: " << std::fixed << entidades[0]->GetComponent(statspj)->getVida();
+	guiGame->getCaptionVida()->text(s.str());
+
+	//DAMAGE
+	std::ostringstream a;
+	a << "Damage: " << std::fixed << entidades[0]->GetComponent(statspj)->getDamage();
+	guiGame->getCaptionDamage()->text(a.str());
+
+	//EXPERIENCIA
+	std::ostringstream b;
+	b << "Exp: " << std::fixed << entidades[0]->GetComponent(statspj)->getExpRestante();
+	guiGame->getCaptionExp()->text(b.str());
+
+	//NIVEL
+	std::ostringstream c;
+	c << "Nivel: " << std::fixed << entidades[0]->GetComponent(statspj)->getNivel();
+	guiGame->getCaptionNivel()->text(c.str());
+}
 bool Juego::run(){
 	
 
@@ -340,10 +362,7 @@ bool Juego::run(){
 		}
 		//Tick de la fisica
 		bulletWorld->stepSimulation(1.f / 60.f, 10);
-
-		std::ostringstream s;
-		s << "Vida: " << std::fixed << entidades[0]->GetComponent(statspj)->getVida();
-		guiGame->captionButton->text(s.str());
+		updateGUI();
 		for (int i = 0; i < entidades.size(); i++)
 			entidades[i]->Update();
 
@@ -357,9 +376,11 @@ bool Juego::run(){
 	return true;
 }
 void Juego::activaMision(Entidad* npc){
+	mision = new Mision_c();
 	mision = npc->GetComponent(mision);
-	if (mision != nullptr)
+	if (mision != nullptr){
 		gm->dameMision(mision);
+	}
 }
 void Juego::atacar(Entidad* npc){
 	npc->GetComponent(stats)->restaVida(entidades[0]->GetComponent(statspj)->getDamage());

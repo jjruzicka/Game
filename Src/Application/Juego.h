@@ -19,6 +19,7 @@ public:
 	bool exit;
 private:
 	void createArbolitos();
+	void updateGUI();
 	GUI* guiGame;
 	int cont;
 	virtual bool keyPressed(const OIS::KeyEvent& keyP);

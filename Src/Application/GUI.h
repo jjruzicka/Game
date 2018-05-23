@@ -17,12 +17,23 @@ public:
 	void createPanelInGame();
 	Gui3D::ScreenPanel* mSPanel2;
 	Gui3D::Panel* panel;
-	Gui3D::Caption* captionButton;
 	void setPosition(Ogre::Real x, Ogre::Real y, Ogre::Real z, Ogre::Degree ang);
 	void setText(Ogre::String text, Ogre::Real y);
 	void _createPanel();
 	void createUI();
 	~GUI();
+	Gui3D::Caption* getCaptionVida(){
+		return captionButton;
+	}
+	Gui3D::Caption* getCaptionExp(){
+		return captionExperiencia;
+	}
+	Gui3D::Caption* getCaptionDamage(){
+		return captionDamage;
+	}
+	Gui3D::Caption* getCaptionNivel(){
+		return captionLevel;
+	}
 private:
 
 	Escenas* menu;
@@ -43,7 +54,10 @@ private:
 	bool mouseMoved(const OIS::MouseEvent &arg);
 	bool menuEscena;
 
-
+	Gui3D::Caption* captionButton;
+	Gui3D::Caption* captionDamage;
+	Gui3D::Caption* captionExperiencia;
+	Gui3D::Caption* captionLevel;
 	// Gui3D main object
 	Gui3D::Gui3D* mGui3D;
 	Gui3D::Gui3D* UI3D;
@@ -56,7 +70,6 @@ private:
 
 	// Keep track of some captions to modify their contents on callbacks
 	
-	Gui3D::Caption* captionGlobalTime;
 	Gui3D::Caption* captionDisplayTextZone;
 	Gui3D::Caption* captionLocalTime;
 

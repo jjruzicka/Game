@@ -101,13 +101,16 @@ void GUI::createUI(){
 		mGui3D,
 		myScreen,
 		Ogre::Vector2(0, 0),
-		Ogre::Vector2(100, 50),
+		Ogre::Vector2(120, 100),
 		"purple",
 		"test_screenPanel4");
 
 
 	 captionButton = mSPanel2->makeCaption(0, 0, 380, 30, "Vida: 0");
-	
+	 captionDamage = mSPanel2->makeCaption(0, 25, 380, 30, "Damage: 0");
+	 captionExperiencia = mSPanel2->makeCaption(0, 50, 380, 30, "Exp: 0");
+	 captionLevel = mSPanel2->makeCaption(0, 75, 380, 30, "Nivel: 0");
+
 	/*mSPanel2->makeButton(0, 0, 400, 100, "PLAY")
 		->setPressedCallback(this, &GUI::play_);
 	mSPanel2->makeButton(0, 150, 400, 100, "CREDITS")

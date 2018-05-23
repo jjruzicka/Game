@@ -25,6 +25,12 @@ public:
 	int getDamage(){
 		return damage;
 	}
+	int getNivel(){
+		return nivel;
+	}
+	int getExpRestante(){
+		return expNivelTotal - exp;
+	}
 private:
 	int exp;
 	int expNivelTotal;
