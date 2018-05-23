@@ -79,7 +79,7 @@ Juego::Juego(EscenasManager* escenasManager)
 	entidades.push_back(ent3);
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	creaNpcMisiones(1700,5,1850,3,125,1,300,3,650,3,1400,1,3200,"p2");
-	/////////////////////////////////////	MISION  1	///////////////////////////////////////////////////////////////
+	/////////////////////////////////////	MISION  1	////////////////////////////////////////////////////////////////////
 	creaPan(1750, 5, 1750, "pan1");
 	creaPan(1650, 5, 1700, "pan2");
 	creaPan(1700, 5, 1650, "pan3");
@@ -93,8 +93,18 @@ Juego::Juego(EscenasManager* escenasManager)
 	creaOgreEnemyMele(1400, 5, 1800, 200, 80, 100, "ogreEscolta1");
 	creaOgreEnemyMele(1400, 5, 1800, 200, 80, 100, "ogreEscolta2");
 	creaOgreEnemyMele(1250, 5, 1800, 400, 125, 200, "ogreBoss");
-	/////////////////////////////////////	MISION  5	///////////////////////////////////////////////////////////////
+	/////////////////////////////////////	MISION  5	////////////////////////////////////////////////////////////////////
 	creaPan(1200, 5, 1800, "prisionero");
+	/////////////////////////////////////	Extra   1	////////////////////////////////////////////////////////////////////
+	creaOgreEnemyMele(1700, 5, 1450, 700, 250, 200, "muerte1");
+	creaOgreEnemyMele(1250, 5, 1500, 500, 300, 200, "muerte2");
+	creaOgreEnemyMele(1700, 5, 2300, 600, 225, 200, "muerte3");
+	creaOgreEnemyMele(1700, 5, 2300, 1500, 25, 200, "muerte4");
+	creaOgreEnemyMele(1050, 5, 1800, 1000, 420, 200, "muerte5");
+
+
+
+
 	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
 	lightdir.normalise();
 
@@ -146,7 +156,7 @@ Juego::Juego(EscenasManager* escenasManager)
 	mapa->setPhysics();
 	mapa->getRigidBody()->setUserPointer(mapa);
 
-	numArboles = 10;
+	numArboles = 30;
 	contArboles = 0;
 	arbolitos.reserve(numArboles);
 	createArbolitos();
@@ -196,6 +206,14 @@ void Juego::creaNpcMisiones(int x, int y, int z, int misionT1, int expM1, int mi
 	ent2->AddComponent(patrulla);
 	Mision_c* mision = new Mision_c(misionT1, "Pan", expM1, ent2);
 	ent2->AddComponent(mision);
+	Mision_c* mision9 = new Mision_c(1, "ogroEnemy", 4000, ent2);
+	ent2->AddComponent(mision9);
+	Mision_c* mision8 = new Mision_c(2, "ogroEnemy", 4500, ent2);
+	ent2->AddComponent(mision8);
+	Mision_c* mision7 = new Mision_c(1, "ogroEnemy", 1000, ent2);
+	ent2->AddComponent(mision7);
+	Mision_c* mision6 = new Mision_c(1, "ogroEnemy", 2000, ent2);
+	ent2->AddComponent(mision6);
 	Mision_c* mision5 = new Mision_c(misionT5, "Pan", expM5, ent2);
 	ent2->AddComponent(mision5);
 	Mision_c* mision4 = new Mision_c(misionT4, "ogroEnemy", expM4, ent2);
@@ -354,7 +372,10 @@ void Juego::updateGUI(){
 	//MISION
 	std::ostringstream x,x2,x3;
 	if (gm->getMisionIsActive()){
-		x << "kill: " << gm->getObjetive();
+		if (gm->getObjetive() == "Pan")
+			x << "Recolecta: " << gm->getObjetive();
+		else
+			x << "Mata: " << gm->getObjetive();
 		guiGame->getMisionActiva1()->text(x.str());
 
 		x2 << "LLeva: " << gm->getObjetiveCOnt() << " / " << gm->getObjetiveNum();
