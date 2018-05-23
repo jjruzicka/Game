@@ -134,6 +134,7 @@ Juego::Juego(EscenasManager* escenasManager)
 	
 	guiGame->setPosition(1700, 10, 1900,(Ogre::Degree)180);
 	guiGame->setText("", 150);
+	guiGame->createUI();
 	
 
 	//Terrain
@@ -340,6 +341,9 @@ bool Juego::run(){
 		//Tick de la fisica
 		bulletWorld->stepSimulation(1.f / 60.f, 10);
 
+		std::ostringstream s;
+		s << "Vida: " << std::fixed << entidades[0]->GetComponent(statspj)->getVida();
+		guiGame->captionButton->text(s.str());
 		for (int i = 0; i < entidades.size(); i++)
 			entidades[i]->Update();
 

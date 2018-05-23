@@ -11,12 +11,12 @@ GUI::GUI(InputComponent* input_, Ogre::Viewport* vp, Ogre::SceneManager * scnMgr
 	menuEscena = escena;
 	icomp_->addKeyListener(this, "teclado2");
 	icomp_->addMouseListener(this, "raton2");
-	
+	mMyPurplePanelColors = new MyPurplePanelColors();
+	mGui3D = new Gui3D::Gui3D(mMyPurplePanelColors);
+	mGui3D->createScreen(vp, "purple", "mainScreen");
 	
 	if (menuEscena){
-		mMyPurplePanelColors = new MyPurplePanelColors();
-		mGui3D = new Gui3D::Gui3D(mMyPurplePanelColors);
-		mGui3D->createScreen(vp, "purple", "mainScreen");
+		
 		// Create a layer for the mousePointer
 		mNormalizedMousePosition = Ogre::Vector2(0.5, 0.5);
 		mMousePointerLayer = mGui3D->getScreen("mainScreen")->createLayer();
@@ -29,9 +29,9 @@ GUI::GUI(InputComponent* input_, Ogre::Viewport* vp, Ogre::SceneManager * scnMgr
 		camera->setDirection(cameraDirection);
 	}
 	else{
-		mGui3D = new Gui3D::Gui3D(&mMyEnvironmentDemoPanelColors);
-
-		mGui3D->createScreen(vp, "environmentDemo", "mainScreen");
+		
+		//UI3D = new Gui3D::Gui3D(mMyPurplePanelColors);
+		//UI3D->createScreen(vp, "purple", "mainScreen");
 		/*camera->setPosition(0, 6.f, -8);
 		camera->setDirection(Ogre::Vector3(0, 0, 1));*/
 
@@ -50,22 +50,13 @@ void GUI::_createPanel()
 {
 
 	panel = new Gui3D::Panel(
-		mGui3D, scn, Ogre::Vector2(700, 700), 15, "environmentDemo", "kikoo");
+		mGui3D, scn, Ogre::Vector2(700, 700), 15, "purple", "kikoo");
 
 	/*panel->makeCaption(10, 100, 90, 100, "Left", Gorilla::TextAlign_Centre, Gorilla::VerticalAlign_Middle);
 	panel->makeCaption(310, 100, 90, 100, "Right", Gorilla::TextAlign_Centre, Gorilla::VerticalAlign_Middle);*/
 
 
 
-}
-
-void GUI::setText(Ogre::String text, Ogre::Real y){
-	panel->makeCaption(10, y, 700, 900, text, Gorilla::TextAlign_Centre);
-}
-
-void GUI::setPosition(Ogre::Real x, Ogre::Real y, Ogre::Real z, Ogre::Degree ang){
-	panel->mNode->setPosition(x, y, z);
-	panel->mNode->yaw(Ogre::Degree(ang));
 }
 
 void GUI::createPanel(){
@@ -80,13 +71,49 @@ void GUI::createPanel(){
 		"purple",
 		"test_screenPanel2");
 
-	
+
 	mSPanel2->makeButton(0, 0, 400, 100, "PLAY")
 		->setPressedCallback(this, &GUI::play_);
 	mSPanel2->makeButton(0, 150, 400, 100, "CREDITS")
 		->setPressedCallback(this, &GUI::exit_);
 	mSPanel2->makeButton(0, 300, 400, 100, "EXIT")
 		->setPressedCallback(this, &GUI::exit_);
+
+	// We don't want any panels to display mouse cursor. It is handled
+	//  by our Simple2DDemo.
+	mSPanel2->hideInternalMousePointer();
+}
+
+void GUI::setText(Ogre::String text, Ogre::Real y){
+	panel->makeCaption(10, y, 700, 900, text, Gorilla::TextAlign_Centre);
+}
+
+void GUI::setPosition(Ogre::Real x, Ogre::Real y, Ogre::Real z, Ogre::Degree ang){
+	panel->mNode->setPosition(x, y, z);
+	panel->mNode->yaw(Ogre::Degree(ang));
+}
+
+void GUI::createUI(){
+	myScreen = mGui3D->getScreen("mainScreen");
+
+	// 2nd test panel
+	mSPanel2 = new Gui3D::ScreenPanel(
+		mGui3D,
+		myScreen,
+		Ogre::Vector2(0, 0),
+		Ogre::Vector2(100, 50),
+		"purple",
+		"test_screenPanel4");
+
+
+	 captionButton = mSPanel2->makeCaption(0, 0, 380, 30, "Vida: 0");
+	
+	/*mSPanel2->makeButton(0, 0, 400, 100, "PLAY")
+		->setPressedCallback(this, &GUI::play_);
+	mSPanel2->makeButton(0, 150, 400, 100, "CREDITS")
+		->setPressedCallback(this, &GUI::exit_);
+	mSPanel2->makeButton(0, 300, 400, 100, "EXIT")
+		->setPressedCallback(this, &GUI::exit_);*/
 
 	// We don't want any panels to display mouse cursor. It is handled
 	//  by our Simple2DDemo.

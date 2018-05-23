@@ -17,9 +17,11 @@ public:
 	void createPanelInGame();
 	Gui3D::ScreenPanel* mSPanel2;
 	Gui3D::Panel* panel;
+	Gui3D::Caption* captionButton;
 	void setPosition(Ogre::Real x, Ogre::Real y, Ogre::Real z, Ogre::Degree ang);
 	void setText(Ogre::String text, Ogre::Real y);
 	void _createPanel();
+	void createUI();
 	~GUI();
 private:
 
@@ -44,7 +46,7 @@ private:
 
 	// Gui3D main object
 	Gui3D::Gui3D* mGui3D;
-
+	Gui3D::Gui3D* UI3D;
 	// The main panel (display in 3D)
 	Gui3D::Panel* mPanel;
 
@@ -53,7 +55,7 @@ private:
 
 
 	// Keep track of some captions to modify their contents on callbacks
-	Gui3D::Caption* captionButton;
+	
 	Gui3D::Caption* captionGlobalTime;
 	Gui3D::Caption* captionDisplayTextZone;
 	Gui3D::Caption* captionLocalTime;
