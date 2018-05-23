@@ -79,14 +79,14 @@
     <ClCompile Include="..\..\Src\Application\Mapa.cpp">
       <Filter>code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Src\Application\GUI.cpp">
-      <Filter>code\GUI</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Src\Application\MyEnvironmentDemoPanelColors.cpp">
       <Filter>code\GUI</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\Application\MyPurplePanelColors.cpp">
       <Filter>code\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\GUI.cpp">
+      <Filter>header\Componentes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

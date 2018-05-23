@@ -34,7 +34,7 @@ void StatsPJ_c::Update(){
 		else
 			exp = 0;
 
-		expNivelTotal += 5 * nivel;
+		expNivelTotal = expNivelTotal + 0.5 * expNivelTotal;
 		vidaMax = vidaMax + 0.2 * vidaMax;
 		vida = vidaMax;
 		damage = damage + nivel;

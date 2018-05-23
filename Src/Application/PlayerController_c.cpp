@@ -89,6 +89,9 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 bool PlayerController_c::keyReleased(const OIS::KeyEvent& keyP){
 	switch (keyP.key)
 	{
+	case OIS::KC_ESCAPE:
+		escena->muerteJugador();
+		break;
 	case OIS::KC_UP:
 	case OIS::KC_W:
 		istimetoStop = false;

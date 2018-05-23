@@ -10,6 +10,7 @@ public:
 	virtual ~Menu();
 	virtual bool run();
 	void MenuToPlay();
+	void MenuToExit();
 	bool exit;
 private:
 	EscenasManager* scnM;

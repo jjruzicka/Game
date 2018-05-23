@@ -104,30 +104,6 @@ void GUI::createUI(){
 	mSPanel2->hideInternalMousePointer();
 }
 
-void GUI::createPanelInGame(){
-	myScreen = mGui3D->getScreen("mainScreen");
-
-	// 2nd test panel
-	mSPanel2 = new Gui3D::ScreenPanel(
-		mGui3D,
-		myScreen,
-		Ogre::Vector2(600, 700),
-		Ogre::Vector2(0, 0),
-		"purple",
-		"test_screenPanel3");
-
-
-
-	mSPanel2->makeButton(0, 0, 200, 50, "P to EXIT")
-		->setPressedCallback(this, &GUI::exitGame);
-
-
-	// We don't want any panels to display mouse cursor. It is handled
-	//  by our Simple2DDemo.
-	mSPanel2->hideInternalMousePointer();
-
-}
-
 bool GUI::exitGame(Gui3D::PanelElement* e){
 
 	return true;
@@ -151,7 +127,7 @@ bool GUI::play_(Gui3D::PanelElement* e)
 bool GUI::exit_(Gui3D::PanelElement* e)
 {
 	
-	static_cast<Menu*>(menu)->exit = true;
+	static_cast<Menu*>(menu)->MenuToExit();
 	return true;
 }
 
@@ -264,12 +240,29 @@ bool GUI::mouseMoved(const OIS::MouseEvent &arg)
 
 GUI::~GUI()
 {
-	delete mSPanel2;
+	if (!menuEscena){
+		delete captionButton;
+		delete captionDamage;
+		delete captionExperiencia;
+		delete captionLevel;
+		delete captionMision1;
+		delete captionMision2;
+		delete captionMision3;
+		mSPanelExp = nullptr;
+	}
+	mSPanel2 = nullptr;
 	mMousePointer = nullptr;
-	mMousePointerLayer->destroyAllRectangles();
-	mGui3D->getScreen("mainScreen")->destroy(mMousePointerLayer);
-	mGui3D->destroyScreen(myScreen);
-	delete mGui3D;
+	if (menuEscena){
+		mMousePointerLayer->destroyAllCaptions();
+		mMousePointerLayer->destroyAllRectangles();
+		mGui3D->getScreen("mainScreen")->destroy(mMousePointerLayer);
+		mGui3D->destroyScreen(myScreen);
+		delete mGui3D;
+	}
+	else{
+		mGui3D->destroyScreen(myScreen);
+		delete mGui3D;
+	}
 	delete mMyPurplePanelColors;
 	menu = nullptr;
 	scn = nullptr;

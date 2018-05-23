@@ -14,7 +14,6 @@ class GUI: public InputComponent
 public:
 	GUI(InputComponent* input_, Ogre::Viewport* vp, Ogre::SceneManager * scnMgr, Ogre::Camera * cam, Ogre::SceneNode* camNode, Escenas* menuc, bool escena);
 	void createPanel();
-	void createPanelInGame();
 	Gui3D::ScreenPanel* mSPanel2;
 	Gui3D::ScreenPanel* mSPanelExp;
 	Gui3D::Panel* panel;

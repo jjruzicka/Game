@@ -8,8 +8,8 @@ enum QueryFlags {
 };
 EscenasManager::EscenasManager()
 {
-	juegoB = true;
-	menuB = false;
+	juegoB = false;
+	menuB = true;
 
 	if (menuB){
 		menu = new Menu(this);
@@ -26,7 +26,13 @@ bool EscenasManager::run(){
 		juego->run();
 	else if (menuB)
 		menu->run();
-	return true;
+	else
+		exit(0);
+}
+void EscenasManager::Exit(){
+	delete menu;
+	menuB = false;
+	run();
 }
 
 void EscenasManager::MenuToGame(){

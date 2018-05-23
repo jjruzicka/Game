@@ -11,6 +11,7 @@ public:
 	bool run();
 	void MenuToGame();
 	void GameToMenu();
+	void Exit();
 private:
 
 

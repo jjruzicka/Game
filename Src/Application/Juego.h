@@ -16,7 +16,6 @@ public:
 	void killAdd(Entidad* obj);
 	void muerteJugador();
 	
-	bool exit;
 private:
 	void createArbolitos();
 	void updateGUI();

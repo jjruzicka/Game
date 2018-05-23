@@ -79,6 +79,10 @@ Menu::Menu(EscenasManager* scnM)
 	
 
 }
+void Menu::MenuToExit(){
+	scnM->Exit();
+}
+
 void Menu::MenuToPlay(){
 	scnM->MenuToGame();
 }

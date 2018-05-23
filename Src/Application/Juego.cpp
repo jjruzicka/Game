@@ -425,6 +425,8 @@ Juego::~Juego()
 	delete solver;
 	delete broadPhase;
 
+	delete guiGame;
+
 	scnMgr->getRootSceneNode()->removeAllChildren();
 	root->destroySceneManager(scnMgr);
 	root->destroyRenderTarget("P3");
