@@ -2,8 +2,6 @@
 #include "Render_c.h"
 #include "PlayerController_c.h"
 #include "RigidBody_c.h"
-#include "Objeto.h"
-#include "Collider_c.h"
 #include <iostream>
 using namespace Ogre;
 enum QueryFlags {

@@ -12,7 +12,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Src\Application\CameraMove_c.cpp" />
-    <ClCompile Include="..\..\Src\Application\Collider_c.cpp" />
     <ClCompile Include="..\..\Src\Application\Component.cpp" />
     <ClCompile Include="..\..\Src\Application\Entidad.cpp" />
     <ClCompile Include="..\..\Src\Application\EntidadRender.cpp" />
@@ -21,18 +20,14 @@
     <ClCompile Include="..\..\Src\Application\GameManager_c.cpp" />
     <ClCompile Include="..\..\Src\Application\GUI.cpp" />
     <ClCompile Include="..\..\Src\Application\InputComponent.cpp" />
-    <ClCompile Include="..\..\Src\Application\Inventario_c.cpp" />
     <ClCompile Include="..\..\Src\Application\Juego.cpp" />
     <ClCompile Include="..\..\Src\Application\Mapa.cpp" />
     <ClCompile Include="..\..\Src\Application\Menu.cpp" />
     <ClCompile Include="..\..\Src\Application\Mision_c.cpp" />
     <ClCompile Include="..\..\Src\Application\ComportamientoEnem_c.cpp" />
-    <ClCompile Include="..\..\Src\Application\MovimientoProyectil_c.cpp" />
     <ClCompile Include="..\..\Src\Application\MyEnvironmentDemoPanelColors.cpp" />
     <ClCompile Include="..\..\Src\Application\MyPurplePanelColors.cpp" />
-    <ClCompile Include="..\..\Src\Application\Objeto.cpp" />
     <ClCompile Include="..\..\Src\Application\PatrullarNPC.cpp" />
-    <ClCompile Include="..\..\Src\Application\Proyectil.cpp" />
     <ClCompile Include="..\..\Src\Application\PlayerController_c.cpp" />
     <ClCompile Include="..\..\Src\Application\ProyectoBasico.cpp" />
     <ClCompile Include="..\..\Src\Application\Render_c.cpp" />
@@ -43,7 +38,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Application\CameraMove_c.h" />
-    <ClInclude Include="..\..\Src\Application\Collider_c.h" />
     <ClInclude Include="..\..\Src\Application\Component.h" />
     <ClInclude Include="..\..\Src\Application\Entidad.h" />
     <ClInclude Include="..\..\Src\Application\EntidadRender.h" />
@@ -52,18 +46,14 @@
     <ClInclude Include="..\..\Src\Application\GameManager_c.h" />
     <ClInclude Include="..\..\Src\Application\GUI.h" />
     <ClInclude Include="..\..\Src\Application\InputComponent.h" />
-    <ClInclude Include="..\..\Src\Application\Inventario_c.h" />
     <ClInclude Include="..\..\Src\Application\Juego.h" />
     <ClInclude Include="..\..\Src\Application\Mapa.h" />
     <ClInclude Include="..\..\Src\Application\Menu.h" />
     <ClInclude Include="..\..\Src\Application\Mision_c.h" />
     <ClInclude Include="..\..\Src\Application\ComportamientoEnem_c.h" />
-    <ClInclude Include="..\..\Src\Application\MovimientoProyectil_c.h" />
     <ClInclude Include="..\..\Src\Application\MyEnvironmentDemoPanelColors.h" />
     <ClInclude Include="..\..\Src\Application\MyPurplePanelColors.h" />
-    <ClInclude Include="..\..\Src\Application\Objeto.h" />
     <ClInclude Include="..\..\Src\Application\PatrullarNPC.h" />
-    <ClInclude Include="..\..\Src\Application\Proyectil.h" />
     <ClInclude Include="..\..\Src\Application\PlayerController_c.h" />
     <ClInclude Include="..\..\Src\Application\Render_c.h" />
     <ClInclude Include="..\..\Src\Application\RigidBody_c.h" />

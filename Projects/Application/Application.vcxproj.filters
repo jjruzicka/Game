@@ -7,9 +7,6 @@
     <ClCompile Include="..\..\Src\Application\CameraMove_c.cpp">
       <Filter>code\Componentes</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Src\Application\Collider_c.cpp">
-      <Filter>code\Componentes</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Src\Application\Component.cpp">
       <Filter>code\Componentes</Filter>
     </ClCompile>
@@ -22,13 +19,7 @@
     <ClCompile Include="..\..\Src\Application\InputComponent.cpp">
       <Filter>code\Componentes</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Src\Application\Inventario_c.cpp">
-      <Filter>code\Componentes</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Src\Application\Mision_c.cpp">
-      <Filter>code\Componentes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Application\MovimientoProyectil_c.cpp">
       <Filter>code\Componentes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\Application\PatrullarNPC.cpp">
@@ -56,12 +47,6 @@
       <Filter>code\Entidades</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\Application\EntidadRender.cpp">
-      <Filter>code\Entidades</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Application\Objeto.cpp">
-      <Filter>code\Entidades</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Application\Proyectil.cpp">
       <Filter>code\Entidades</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\Application\Escenas.cpp">
@@ -93,9 +78,6 @@
     <ClInclude Include="..\..\Src\Application\CameraMove_c.h">
       <Filter>header\Componentes</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Src\Application\Collider_c.h">
-      <Filter>header\Componentes</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Src\Application\Component.h">
       <Filter>header\Componentes</Filter>
     </ClInclude>
@@ -105,16 +87,10 @@
     <ClInclude Include="..\..\Src\Application\GameManager_c.h">
       <Filter>header\Componentes</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Src\Application\Inventario_c.h">
-      <Filter>header\Componentes</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Src\Application\InputComponent.h">
       <Filter>header\Componentes</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\Mision_c.h">
-      <Filter>header\Componentes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Application\MovimientoProyectil_c.h">
       <Filter>header\Componentes</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\PatrullarNPC.h">
@@ -142,12 +118,6 @@
       <Filter>header\Entidades</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\EntidadRender.h">
-      <Filter>header\Entidades</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Application\Objeto.h">
-      <Filter>header\Entidades</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Application\Proyectil.h">
       <Filter>header\Entidades</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\Escenas.h">
