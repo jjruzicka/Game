@@ -11,22 +11,6 @@ Escenas::Escenas()
 {
 }
 
-bool Escenas::initBullet(){
-	//build the broadPhase
-	broadPhase = new btDbvtBroadphase();
-
-	//Set up the collision configuration and dispacher
-	collisionConfiguration = new btDefaultCollisionConfiguration();
-	dispatcher = new btCollisionDispatcher(collisionConfiguration);
-
-	//the actual physics solver
-	solver = new btSequentialImpulseConstraintSolver();
-
-	//the world
-	bulletWorld = new btDiscreteDynamicsWorld(dispatcher, broadPhase, solver, collisionConfiguration);
-	bulletWorld->setGravity(btVector3(0, -10, 0));
-	return true;
-}
 
 Escenas::~Escenas()
 {

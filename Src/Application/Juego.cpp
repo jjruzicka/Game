@@ -15,10 +15,8 @@ enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
 	MY_QUERY_INTERACT = 1 << 0
 };
+
 PlayerController_c* pC;
-PatrullarNPC* patroll;
-Trigger_c* trig;
-ComportamientoEnem_c* mE;
 Mision_c* mision;
 StatsEntJuego_c* stats;
 StatsPJ_c* statspj;
@@ -26,8 +24,8 @@ RigidBody_c* rb;
 
 Juego::Juego(EscenasManager* escenasManager)
 {
-	initBullet();
-	
+	motorFisico = MotorFisico::getInstancia();
+	motorGrafico = MotorGrafico::getInstancia();
 	camNode = motorGrafico->getSceMgr()->getRootSceneNode()->createChildSceneNode();
 	
 	cont = 0;
@@ -55,7 +53,7 @@ Juego::Juego(EscenasManager* escenasManager)
 	ent1->AddComponent(stas);
 	ent1->AddComponent(render);
 
-	RigidBody_c* player_rb = new RigidBody_c(ent1, bulletWorld, 5, 5, 5, 1);
+	RigidBody_c* player_rb = new RigidBody_c(ent1, motorFisico->getBulletWorld(), 5, 5, 5, 1);
 	player_rb->getRigidBody()->setCollisionFlags(player_rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
 	player_rb->getRigidBody()->setUserPointer(ent1);
 	ent1->AddComponent(player_rb);
@@ -141,7 +139,7 @@ Juego::Juego(EscenasManager* escenasManager)
 	//guiGame = new GUI(inputcomp_, vp, motorGrafico->getSceMgr(), cam, camNode, this, false);
 	//guiGame->createUI();
 	//Terrain
-	mapa = new Mapa(motorGrafico->getSceMgr(), light, bulletWorld);
+	mapa = new Mapa(motorGrafico->getSceMgr(), light, motorFisico->getBulletWorld());
 	mapa->createmap();
 	mapa->setPhysics();
 	mapa->getRigidBody()->setUserPointer(mapa);
@@ -152,9 +150,6 @@ Juego::Juego(EscenasManager* escenasManager)
 	createArbolitos();
 
 	pC = new PlayerController_c();
-	patroll = new PatrullarNPC();
-	trig = new Trigger_c();
-	mE = new ComportamientoEnem_c();
 	mision = new Mision_c();
 	stats = new StatsEntJuego_c();
 	statspj = new StatsPJ_c();
@@ -173,7 +168,7 @@ void Juego::createArbolitos(){
 
 		Render_c* render8 = new Render_c(motorGrafico->getSceMgr()->getRootSceneNode()->createChildSceneNode(str), arbolitos[i], "tree.09", str);
 		arbolitos[i]->AddComponent(render8);
-		RigidBody_c* static_rb7 = new RigidBody_c(arbolitos[i], bulletWorld, 50, 50, 50, 0);
+		RigidBody_c* static_rb7 = new RigidBody_c(arbolitos[i], motorFisico->getBulletWorld(), 50, 50, 50, 0);
 		static_rb7->getRigidBody()->setCollisionFlags(static_rb7->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
 		static_rb7->getRigidBody()->setUserPointer(arbolitos[i]);
 		arbolitos[i]->AddComponent(static_rb7);
@@ -188,7 +183,7 @@ void Juego::creaNpcMisiones(int x, int y, int z, int misionT1, int expM1, int mi
 	ent2->setPoy(y);
 	ent2->setPoz(z);
 
-	RigidBody_c* static_rb = new RigidBody_c(ent2, bulletWorld, 5, 5, 5, 1);
+	RigidBody_c* static_rb = new RigidBody_c(ent2, motorFisico->getBulletWorld(), 5, 5, 5, 1);
 	static_rb->getRigidBody()->setCollisionFlags(static_rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
 	static_rb->getRigidBody()->setUserPointer(ent2);
 	ent2->AddComponent(static_rb);
@@ -219,7 +214,7 @@ void Juego::creaPan(int x, int y, int z, std::string idRender){
 	ent->setPox(x);// posicion 
 	ent->setPoy(y);
 	ent->setPoz(z);
-	RigidBody_c* static_rb3 = new RigidBody_c(ent, bulletWorld, 5, 5, 5, 1);
+	RigidBody_c* static_rb3 = new RigidBody_c(ent, motorFisico->getBulletWorld(), 5, 5, 5, 1);
 	static_rb3->getRigidBody()->setCollisionFlags(static_rb3->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
 	static_rb3->getRigidBody()->setUserPointer(ent);
 	ent->AddComponent(static_rb3);
@@ -267,7 +262,7 @@ void Juego::creaOgreEnemyMele(int x, int y, int z, int vida, int damage, int arm
 	ent2->setPoz(z);
 	Render_c* render2 = new Render_c(motorGrafico->getSceMgr()->getRootSceneNode()->createChildSceneNode(idRender), ent2, "Sinbad", idRender);
 	ent2->AddComponent(render2);
-	RigidBody_c* static_rb = new RigidBody_c(ent2, bulletWorld, 5, 5, 5, 1);
+	RigidBody_c* static_rb = new RigidBody_c(ent2, motorFisico->getBulletWorld(), 5, 5, 5, 1);
 	static_rb->getRigidBody()->setCollisionFlags(static_rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
 	static_rb->getRigidBody()->setUserPointer(ent2);
 	ent2->AddComponent(static_rb);
@@ -281,7 +276,7 @@ void Juego::creaOgreEnemyMele(int x, int y, int z, int vida, int damage, int arm
 	trigger->setPox(x);// posicion 
 	trigger->setPoy(y);
 	trigger->setPoz(z);
-	Trigger_c* t = new Trigger_c(trigger, ent2, bulletWorld, 50, 50, 50);
+	Trigger_c* t = new Trigger_c(trigger, ent2, motorFisico->getBulletWorld(), 50, 50, 50);
 	t->actualizarPos(trigger->getPox(), trigger->getPoy(), trigger->getPoz());
 	t->getTrigger()->setUserPointer(trigger);
 	trigger->AddComponent(t);
@@ -312,7 +307,7 @@ void Juego::creaOgreEnemyMele(int x, int y, int z, int vida, int damage, int arm
 	}
 	return false;
 }*/
-bool Juego::initBullet(){
+/*bool Juego::initBullet(){
 	//gContactAddedCallback = callbackfunction;
 	//build the broadPhase
 	broadPhase = new btDbvtBroadphase();
@@ -328,7 +323,7 @@ bool Juego::initBullet(){
 	bulletWorld = new btDiscreteDynamicsWorld(dispatcher, broadPhase, solver, collisionConfiguration);
 	bulletWorld->setGravity(btVector3(0, -10, 0));
 	return true;
-}
+*/
 void Juego::updateGUI(){
 
 	//VIDA
@@ -389,7 +384,7 @@ void Juego::updateGUI(){
 bool Juego::run(){
 	
 	//Tick de la fisica
-	bulletWorld->stepSimulation(1.f / 60.f, 10);
+	motorFisico->getBulletWorld()->stepSimulation(1.f / 60.f, 10);
 	updateGUI();
 	for (int i = 0; i < entidades.size(); i++)
 		entidades[i]->Update();
@@ -420,7 +415,7 @@ void Juego::killAdd(Entidad* obj){
 		entidades[i] = entidades[entidades.size() - 1];
 		entidades[entidades.size() - 1] = aux;
 		aux->GetComponent(rb)->getRigidBody()->setCollisionFlags(4);
-		bulletWorld->removeRigidBody(aux->GetComponent(rb)->getRigidBody());
+		motorFisico->getBulletWorld()->removeRigidBody(aux->GetComponent(rb)->getRigidBody());
 		entidades.pop_back();
 		motorGrafico->getSceMgr()->destroyEntity(static_cast<EntidadRender*>(obj)->getIdRender());
 	}
@@ -432,11 +427,6 @@ void Juego::muerteJugador(){
 Juego::~Juego()
 {
 	delete mapa;
-	delete bulletWorld;
-	delete collisionConfiguration;
-	delete dispatcher;
-	delete solver;
-	delete broadPhase;
 
 	delete guiGame;
 

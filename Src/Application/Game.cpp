@@ -3,6 +3,7 @@
 
 EstadosManager * EstadosManager::instancia = nullptr;
 MotorGrafico * MotorGrafico::instancia = nullptr;
+MotorFisico * MotorFisico::instancia = nullptr;
 InputManager * InputManager::instancia = nullptr;
 Game::Game()
 {
@@ -11,6 +12,7 @@ Game::Game()
 	estadosManager->pushEstado(estadoInicial);
 
 	motorGrafico = MotorGrafico::getInstancia();
+	motorFisico = MotorFisico::getInstancia();
 
 	inputManager = InputManager::getInstancia();
 

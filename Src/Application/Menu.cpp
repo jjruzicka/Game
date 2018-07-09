@@ -89,11 +89,7 @@ bool Menu::run(){
 
 Menu::~Menu()
 {
-	delete bulletWorld;
-	delete collisionConfiguration;
-	delete dispatcher;
-	delete solver;
-	delete broadPhase;
+
 	//gui->removeAllListeners();
 	//delete gui;
 	//scnMgr->getRootSceneNode()->removeAllChildren();

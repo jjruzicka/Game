@@ -10,7 +10,6 @@ public:
 	Juego(EscenasManager* escenasManager);
 	virtual ~Juego();
 	virtual bool run();
-	virtual bool initBullet();
 	void activaMision(Entidad* npc);
 	void atacar(Entidad* npc);
 	void killAdd(Entidad* obj);

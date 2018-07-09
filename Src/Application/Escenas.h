@@ -20,6 +20,7 @@
 #include "Mapa.h"
 
 #include "MotorGrafico.h"
+#include "MotorFisico.h"
 
 class Escenas
 {
@@ -28,9 +29,6 @@ public:
 	virtual ~Escenas();
 	virtual bool run() = 0;
 	
-	virtual btDynamicsWorld* getBulletWorld(){
-		return bulletWorld;
-	};
 
 	virtual void addEntidad(Entidad * ent){
 		entidades.push_back(ent);
@@ -39,19 +37,10 @@ public:
 protected:
 
 	MotorGrafico * motorGrafico;
-
-	virtual bool initBullet();
+	MotorFisico * motorFisico;
 	std::vector<Entidad*> entidades;
 	Ogre::Viewport* vp = nullptr;
 
-
-	///// FISICA
-	btDynamicsWorld* bulletWorld;
-	btDefaultCollisionConfiguration* collisionConfiguration;
-	btCollisionDispatcher* dispatcher;
-	btSequentialImpulseConstraintSolver* solver;
-	btBroadphaseInterface* broadPhase;	
-	//InputComponent* inputcomp_;
 	////////////////////////////////////
 	Mapa* mapa;
 
