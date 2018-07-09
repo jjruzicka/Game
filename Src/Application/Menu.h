@@ -6,14 +6,13 @@
 class Menu : public Escenas
 {
 public:
-	Menu(EscenasManager* scnM);
+	Menu();
 	virtual ~Menu();
 	virtual bool run();
 	void MenuToPlay();
 	void MenuToExit();
 	bool exit;
 private:
-	EscenasManager* scnM;
 	GUI* gui;
 //variables vienen de escenas.h
 };

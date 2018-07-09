@@ -16,7 +16,8 @@
     <ClCompile Include="..\..\Src\Application\Entidad.cpp" />
     <ClCompile Include="..\..\Src\Application\EntidadRender.cpp" />
     <ClCompile Include="..\..\Src\Application\Escenas.cpp" />
-    <ClCompile Include="..\..\Src\Application\EscenasManager.cpp" />
+    <ClCompile Include="..\..\Src\Application\EstadosManager.cpp" />
+    <ClCompile Include="..\..\Src\Application\Game.cpp" />
     <ClCompile Include="..\..\Src\Application\GameManager_c.cpp" />
     <ClCompile Include="..\..\Src\Application\GUI.cpp" />
     <ClCompile Include="..\..\Src\Application\InputComponent.cpp" />
@@ -25,6 +26,7 @@
     <ClCompile Include="..\..\Src\Application\Menu.cpp" />
     <ClCompile Include="..\..\Src\Application\Mision_c.cpp" />
     <ClCompile Include="..\..\Src\Application\ComportamientoEnem_c.cpp" />
+    <ClCompile Include="..\..\Src\Application\MotorGrafico.cpp" />
     <ClCompile Include="..\..\Src\Application\MyEnvironmentDemoPanelColors.cpp" />
     <ClCompile Include="..\..\Src\Application\MyPurplePanelColors.cpp" />
     <ClCompile Include="..\..\Src\Application\PatrullarNPC.cpp" />
@@ -42,7 +44,8 @@
     <ClInclude Include="..\..\Src\Application\Entidad.h" />
     <ClInclude Include="..\..\Src\Application\EntidadRender.h" />
     <ClInclude Include="..\..\Src\Application\Escenas.h" />
-    <ClInclude Include="..\..\Src\Application\EscenasManager.h" />
+    <ClInclude Include="..\..\Src\Application\EstadosManager.h" />
+    <ClInclude Include="..\..\Src\Application\Game.h" />
     <ClInclude Include="..\..\Src\Application\GameManager_c.h" />
     <ClInclude Include="..\..\Src\Application\GUI.h" />
     <ClInclude Include="..\..\Src\Application\InputComponent.h" />
@@ -51,6 +54,7 @@
     <ClInclude Include="..\..\Src\Application\Menu.h" />
     <ClInclude Include="..\..\Src\Application\Mision_c.h" />
     <ClInclude Include="..\..\Src\Application\ComportamientoEnem_c.h" />
+    <ClInclude Include="..\..\Src\Application\MotorGrafico.h" />
     <ClInclude Include="..\..\Src\Application\MyEnvironmentDemoPanelColors.h" />
     <ClInclude Include="..\..\Src\Application\MyPurplePanelColors.h" />
     <ClInclude Include="..\..\Src\Application\PatrullarNPC.h" />

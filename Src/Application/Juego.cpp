@@ -455,7 +455,7 @@ void Juego::killAdd(Entidad* obj){
 	}
 }
 void Juego::muerteJugador(){
-	escenasManager->GameToMenu();
+	//escenasManager->GameToMenu();
 }
 
 Juego::~Juego()

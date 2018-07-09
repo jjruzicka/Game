@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "EscenasManager.h"
+#include "Game.h"
 
 #ifdef _DEBUG || !_WIN32
 int main() {
@@ -13,8 +13,8 @@ int CALLBACK WinMain(
 	) {
 #endif
 
-	EscenasManager* manager = new EscenasManager();
-	manager->run();
+	Game* game = new Game();
+	game->run();
 
 	return 0;
 }

@@ -52,9 +52,6 @@
     <ClCompile Include="..\..\Src\Application\Escenas.cpp">
       <Filter>code\Escenas</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Src\Application\EscenasManager.cpp">
-      <Filter>code\Escenas</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Src\Application\Juego.cpp">
       <Filter>code\Escenas</Filter>
     </ClCompile>
@@ -73,6 +70,9 @@
     <ClCompile Include="..\..\Src\Application\GUI.cpp">
       <Filter>code\GUI</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Src\Application\EstadosManager.cpp" />
+    <ClCompile Include="..\..\Src\Application\Game.cpp" />
+    <ClCompile Include="..\..\Src\Application\MotorGrafico.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Application\CameraMove_c.h">
@@ -123,9 +123,6 @@
     <ClInclude Include="..\..\Src\Application\Escenas.h">
       <Filter>header\Escenas</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Src\Application\EscenasManager.h">
-      <Filter>header\Escenas</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Src\Application\Juego.h">
       <Filter>header\Escenas</Filter>
     </ClInclude>
@@ -144,6 +141,9 @@
     <ClInclude Include="..\..\Src\Application\MyPurplePanelColors.h">
       <Filter>header\GUI</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Src\Application\EstadosManager.h" />
+    <ClInclude Include="..\..\Src\Application\Game.h" />
+    <ClInclude Include="..\..\Src\Application\MotorGrafico.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="code">
