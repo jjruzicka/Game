@@ -1,16 +1,16 @@
-#include "InputComponent.h"
+#include "InputManager.h"
+#include "MotorGrafico.h"
 
-InputComponent *InputComponent::mInputComponent;
-
-InputComponent::InputComponent() :mMouse(0),
+InputManager::InputManager() :mMouse(0),
 mKeyboard(0),
 mInputSystem(0)
 {
-	
+	MotorGrafico * motorGrafico = MotorGrafico::getInstancia();
+	initialise(motorGrafico->getWindow());
 }
 
 
-InputComponent::~InputComponent()
+InputManager::~InputManager()
 {
 	if (mInputSystem) {
 		if (mMouse) {
@@ -34,7 +34,7 @@ InputComponent::~InputComponent()
 
 }
 
-void InputComponent::initialise(Ogre::RenderWindow *renderWindow) {
+void InputManager::initialise(Ogre::RenderWindow *renderWindow) {
 	if (!mInputSystem) {
 		// Setup basic variables
 		OIS::ParamList paramList;
@@ -77,7 +77,7 @@ void InputComponent::initialise(Ogre::RenderWindow *renderWindow) {
 	}
 }
 
-void InputComponent::capture(void) {
+void InputManager::capture(void) {
 	// Need to capture / update each device every frame
 	if (mMouse) {
 		mMouse->capture();
@@ -88,7 +88,7 @@ void InputComponent::capture(void) {
 	}
 }
 
-void InputComponent::addKeyListener(OIS::KeyListener *keyListener, const std::string& instanceName) {
+void InputManager::addKeyListener(OIS::KeyListener *keyListener, const std::string& instanceName) {
 	if (mKeyboard) {
 		// Check for duplicate items
 		itKeyListener = mKeyListeners.find(instanceName);
@@ -101,7 +101,7 @@ void InputComponent::addKeyListener(OIS::KeyListener *keyListener, const std::st
 	}
 }
 
-void InputComponent::addMouseListener(OIS::MouseListener *mouseListener, const std::string& instanceName) {
+void InputManager::addMouseListener(OIS::MouseListener *mouseListener, const std::string& instanceName) {
 	if (mMouse) {
 		// Check for duplicate items
 		itMouseListener = mMouseListeners.find(instanceName);
@@ -114,7 +114,7 @@ void InputComponent::addMouseListener(OIS::MouseListener *mouseListener, const s
 	}
 }
 
-void InputComponent::removeKeyListener(const std::string& instanceName) {
+void InputManager::removeKeyListener(const std::string& instanceName) {
 	// Check if item exists
 	itKeyListener = mKeyListeners.find(instanceName);
 	if (itKeyListener != mKeyListeners.end()) {
@@ -125,7 +125,7 @@ void InputComponent::removeKeyListener(const std::string& instanceName) {
 	}
 }
 
-void InputComponent::removeMouseListener(const std::string& instanceName) {
+void InputManager::removeMouseListener(const std::string& instanceName) {
 	// Check if item exists
 	itMouseListener = mMouseListeners.find(instanceName);
 	if (itMouseListener != mMouseListeners.end()) {
@@ -138,7 +138,7 @@ void InputComponent::removeMouseListener(const std::string& instanceName) {
 
 
 
-void InputComponent::removeKeyListener(OIS::KeyListener *keyListener) {
+void InputManager::removeKeyListener(OIS::KeyListener *keyListener) {
 	itKeyListener = mKeyListeners.begin();
 	itKeyListenerEnd = mKeyListeners.end();
 	for (; itKeyListener != itKeyListenerEnd; ++itKeyListener) {
@@ -149,7 +149,7 @@ void InputComponent::removeKeyListener(OIS::KeyListener *keyListener) {
 	}
 }
 
-void InputComponent::removeMouseListener(OIS::MouseListener *mouseListener) {
+void InputManager::removeMouseListener(OIS::MouseListener *mouseListener) {
 	itMouseListener = mMouseListeners.begin();
 	itMouseListenerEnd = mMouseListeners.end();
 	for (; itMouseListener != itMouseListenerEnd; ++itMouseListener) {
@@ -161,33 +161,33 @@ void InputComponent::removeMouseListener(OIS::MouseListener *mouseListener) {
 }
 
 
-void InputComponent::removeAllListeners(void) {
+void InputManager::removeAllListeners(void) {
 	mKeyListeners.clear();
 	mMouseListeners.clear();
 	mJoystickListeners.clear();
 }
 
-void InputComponent::removeAllKeyListeners(void) {
+void InputManager::removeAllKeyListeners(void) {
 	mKeyListeners.clear();
 }
 
-void InputComponent::removeAllMouseListeners(void) {
+void InputManager::removeAllMouseListeners(void) {
 	mMouseListeners.clear();
 }
 
 
 
-void InputComponent::setWindowExtents(int width, int height) {
+void InputManager::setWindowExtents(int width, int height) {
 	const OIS::MouseState &mouseState = mMouse->getMouseState();
 	mouseState.width = width;
 	mouseState.height = height;
 }
 
-OIS::Mouse* InputComponent::getMouse(void) {
+OIS::Mouse* InputManager::getMouse(void) {
 	return mMouse;
 }
 
-OIS::Keyboard* InputComponent::getKeyboard(void) {
+OIS::Keyboard* InputManager::getKeyboard(void) {
 	return mKeyboard;
 }
 
@@ -195,7 +195,7 @@ OIS::Keyboard* InputComponent::getKeyboard(void) {
 
 
 
-bool InputComponent::keyPressed(const OIS::KeyEvent &e) {
+bool InputManager::keyPressed(const OIS::KeyEvent &e) {
 	itKeyListener = mKeyListeners.begin();
 	itKeyListenerEnd = mKeyListeners.end();
 	for (; itKeyListener != itKeyListenerEnd; ++itKeyListener) {
@@ -206,7 +206,7 @@ bool InputComponent::keyPressed(const OIS::KeyEvent &e) {
 	return true;
 }
 
-bool InputComponent::keyReleased(const OIS::KeyEvent &e) {
+bool InputManager::keyReleased(const OIS::KeyEvent &e) {
 	itKeyListener = mKeyListeners.begin();
 	itKeyListenerEnd = mKeyListeners.end();
 	for (; itKeyListener != itKeyListenerEnd; ++itKeyListener) {
@@ -217,7 +217,7 @@ bool InputComponent::keyReleased(const OIS::KeyEvent &e) {
 	return true;
 }
 
-bool InputComponent::mouseMoved(const OIS::MouseEvent &e) {
+bool InputManager::mouseMoved(const OIS::MouseEvent &e) {
 	itMouseListener = mMouseListeners.begin();
 	itMouseListenerEnd = mMouseListeners.end();
 	for (; itMouseListener != itMouseListenerEnd; ++itMouseListener) {
@@ -228,7 +228,7 @@ bool InputComponent::mouseMoved(const OIS::MouseEvent &e) {
 	return true;
 }
 
-bool InputComponent::mousePressed(const OIS::MouseEvent &e, OIS::MouseButtonID id) {
+bool InputManager::mousePressed(const OIS::MouseEvent &e, OIS::MouseButtonID id) {
 	itMouseListener = mMouseListeners.begin();
 	itMouseListenerEnd = mMouseListeners.end();
 	for (; itMouseListener != itMouseListenerEnd; ++itMouseListener) {
@@ -239,7 +239,7 @@ bool InputComponent::mousePressed(const OIS::MouseEvent &e, OIS::MouseButtonID i
 	return true;
 }
 
-bool InputComponent::mouseReleased(const OIS::MouseEvent &e, OIS::MouseButtonID id) {
+bool InputManager::mouseReleased(const OIS::MouseEvent &e, OIS::MouseButtonID id) {
 	itMouseListener = mMouseListeners.begin();
 	itMouseListenerEnd = mMouseListeners.end();
 	for (; itMouseListener != itMouseListenerEnd; ++itMouseListener) {
@@ -250,15 +250,3 @@ bool InputComponent::mouseReleased(const OIS::MouseEvent &e, OIS::MouseButtonID 
 	return true;
 }
 
-
-InputComponent* InputComponent::getSingletonPtr(void) {
-	if (!mInputComponent) {
-		mInputComponent = new InputComponent();
-	}
-	else{
-		mInputComponent->removeAllListeners();
-		delete mInputComponent;
-		mInputComponent = new InputComponent();
-	}
-	return mInputComponent;
-}

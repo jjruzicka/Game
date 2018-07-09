@@ -59,8 +59,8 @@ Juego::Juego(EscenasManager* escenasManager)
 	player_rb->getRigidBody()->setCollisionFlags(player_rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
 	player_rb->getRigidBody()->setUserPointer(ent1);
 	ent1->AddComponent(player_rb);
-	PlayerController_c * ois = new PlayerController_c(ent1, inputcomp_, this, stas);
-	ent1->AddComponent(ois);
+	//PlayerController_c * ois = new PlayerController_c(ent1, inputcomp_, this, stas);
+	//ent1->AddComponent(ois);
 	entidades.push_back(ent1);
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	Entidad* ent3 = new Entidad("GM");
@@ -112,8 +112,8 @@ Juego::Juego(EscenasManager* escenasManager)
 	camNode->lookAt(Ogre::Vector3(ent1->getPox(), ent1->getPoy() + 5, ent1->getPoz()), Ogre::Node::TS_WORLD);
 
 	Entidad* entCamara = new Entidad("camara");
-	CameraMove_c* camMove = new CameraMove_c(entCamara, ent1, camNode, inputcomp_);
-	entCamara->AddComponent(camMove);
+	//CameraMove_c* camMove = new CameraMove_c(entCamara, ent1, camNode, inputcomp_);
+	//entCamara->AddComponent(camMove);
 	entidades.reserve(1);
 	entidades.push_back(entCamara);
 
@@ -138,8 +138,8 @@ Juego::Juego(EscenasManager* escenasManager)
 	vp->setBackgroundColour(Ogre::ColourValue(150, 150, 150));
 
 	//GUI
-	guiGame = new GUI(inputcomp_, vp, motorGrafico->getSceMgr(), cam, camNode, this, false);
-	guiGame->createUI();
+	//guiGame = new GUI(inputcomp_, vp, motorGrafico->getSceMgr(), cam, camNode, this, false);
+	//guiGame->createUI();
 	//Terrain
 	mapa = new Mapa(motorGrafico->getSceMgr(), light, bulletWorld);
 	mapa->createmap();

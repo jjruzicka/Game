@@ -4,13 +4,13 @@
 RigidBody_c* gt;
 
 
-PlayerController_c::PlayerController_c(Entidad * ent, InputComponent * input, Juego* esc, StatsPJ_c* estadisticas)
+PlayerController_c::PlayerController_c(Entidad * ent, Juego* esc, StatsPJ_c* estadisticas)
 {
-	inputcomp_ = input;
+	//inputcomp_ = input;
 	entidad = ent;
 	escena = esc;
-	inputcomp_->addKeyListener(this, "teclado");
-	inputcomp_->addMouseListener(this, "raton");
+	//inputcomp_->addKeyListener(this, "teclado");	
+	//inputcomp_->addMouseListener(this, "raton");
 	mas = istimetoStop = false;
 	chocoCon = 0;
 	gt = new RigidBody_c();
@@ -204,8 +204,8 @@ void PlayerController_c::chocasCon(int i, Entidad* ent){//0 para cuando no es na
 
 PlayerController_c::~PlayerController_c()
 {
-	inputcomp_->removeKeyListener(this);
-	inputcomp_->removeMouseListener(this);
+	//inputcomp_->removeKeyListener(this);
+	//inputcomp_->removeMouseListener(this);
 
-	delete rb;
+	//delete rb;
 }

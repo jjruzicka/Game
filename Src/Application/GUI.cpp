@@ -1,16 +1,17 @@
 #include "GUI.h"
 #include <iostream>
 #include "Menu.h"
-GUI::GUI(InputComponent* input_, Ogre::Viewport* vp, Ogre::SceneManager * scnMgr, Ogre::Camera * cam, Ogre::SceneNode* camNode, Escenas* menuc, bool escena)
+#include "InputManager.h"
+GUI::GUI(Ogre::Viewport* vp, Ogre::SceneManager * scnMgr, Ogre::Camera * cam, Ogre::SceneNode* camNode, Escenas* menuc, bool escena)
 {
 	menu = menuc;
 	scn = scnMgr;
 	camera = cam;
 	cNode = camNode;
-	icomp_ = input_;
 	menuEscena = escena;
-	icomp_->addKeyListener(this, "teclado2");
-	icomp_->addMouseListener(this, "raton2");
+	InputManager * inputManager = InputManager::getInstancia();
+	inputManager->addKeyListener(this, "teclado2");
+	inputManager->addMouseListener(this, "raton2");
 	mMyPurplePanelColors = new MyPurplePanelColors();
 	mGui3D = new Gui3D::Gui3D(mMyPurplePanelColors);
 	mGui3D->createScreen(vp, "purple", "mainScreen");
@@ -270,6 +271,5 @@ GUI::~GUI()
 	scn = nullptr;
 	camera = nullptr;
 	cNode = nullptr;
-	icomp_ = nullptr;
 	view = nullptr;
 }

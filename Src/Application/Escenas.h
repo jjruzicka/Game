@@ -16,7 +16,7 @@
 #include <OgreTextureManager.h>
 #include <OgreWindowEventUtilities.h>
 #include <OgreException.h>
-#include "InputComponent.h"
+#include "InputManager.h"
 #include "Mapa.h"
 
 #include "MotorGrafico.h"
@@ -51,7 +51,7 @@ protected:
 	btCollisionDispatcher* dispatcher;
 	btSequentialImpulseConstraintSolver* solver;
 	btBroadphaseInterface* broadPhase;	
-	InputComponent* inputcomp_;
+	//InputComponent* inputcomp_;
 	////////////////////////////////////
 	Mapa* mapa;
 

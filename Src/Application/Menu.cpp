@@ -64,8 +64,8 @@ Menu::Menu()
 	vp = motorGrafico->getWindow()->addViewport(cam);
 	vp->setBackgroundColour(Ogre::ColourValue::Black);
 
-	//gui = new GUI(inputcomp_, vp, motorGrafico->getSceMgr(), cam, camNode, this, true);
-	//gui->createPanel();
+	gui = new GUI(vp, motorGrafico->getSceMgr(), cam, camNode, this, true);
+	gui->createPanel();
 
 	
 
@@ -94,8 +94,8 @@ Menu::~Menu()
 	delete dispatcher;
 	delete solver;
 	delete broadPhase;
-	gui->removeAllListeners();
-	delete gui;
+	//gui->removeAllListeners();
+	//delete gui;
 	//scnMgr->getRootSceneNode()->removeAllChildren();
 	//root->destroySceneManager(scnMgr);
 	//root->destroyRenderTarget("P3");

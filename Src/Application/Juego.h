@@ -2,9 +2,9 @@
 #define JUEGO_H
 #include "GameManager_c.h"
 #include "EscenasManager.h"
-#include "InputComponent.h"
+#include "InputManager.h"
 #include "GUI.h"
-class Juego : public Escenas, public InputComponent
+class Juego : public Escenas
 {
 public:
 	Juego(EscenasManager* escenasManager);

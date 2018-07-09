@@ -1,5 +1,4 @@
 #pragma once
-#include "InputComponent.h"
 #include "OgreViewport.h"
 #include <OgreCamera.h>
 #include "Gui3D.h"
@@ -9,10 +8,10 @@
 #include "MyEnvironmentDemoPanelColors.h"
 #include "Escenas.h"
 
-class GUI: public InputComponent
+class GUI: public OIS::KeyListener , OIS::MouseListener
 {
 public:
-	GUI(InputComponent* input_, Ogre::Viewport* vp, Ogre::SceneManager * scnMgr, Ogre::Camera * cam, Ogre::SceneNode* camNode, Escenas* menuc, bool escena);
+	GUI(Ogre::Viewport* vp, Ogre::SceneManager * scnMgr, Ogre::Camera * cam, Ogre::SceneNode* camNode, Escenas* menuc, bool escena);
 	void createPanel();
 	Gui3D::ScreenPanel* mSPanel2;
 	Gui3D::ScreenPanel* mSPanelExp;
@@ -47,7 +46,6 @@ private:
 
 	Escenas* menu;
 
-	InputComponent* icomp_;
 	Ogre::SceneManager * scn;
 	Ogre::Viewport* view;
 	bool exitGame(Gui3D::PanelElement* e);

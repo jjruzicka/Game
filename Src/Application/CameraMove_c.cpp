@@ -2,10 +2,10 @@
 #include <iostream>
 #include <math.h>
 const float PI = 3.141592653f;
-CameraMove_c::CameraMove_c(Entidad* eCam, Entidad* eJug, Ogre::SceneNode* camNode, InputComponent * input)
-	: entidadCamara(eCam), entidadJugador(eJug), cam_node(camNode), inputcomp_(input){
+CameraMove_c::CameraMove_c(Entidad* eCam, Entidad* eJug, Ogre::SceneNode* camNode/*, InputComponent * input*/)
+	: entidadCamara(eCam), entidadJugador(eJug), cam_node(camNode)/*, inputcomp_(input)*/{
 	spd = 0.2;
-	inputcomp_->addMouseListener(this, "raton2");
+	//inputcomp_->addMouseListener(this, "raton2");
 	entidadCamara->setPox(cam_node->getPosition().x);
 	entidadCamara->setPoy(cam_node->getPosition().y);
 	entidadCamara->setPoz(cam_node->getPosition().z);
@@ -20,8 +20,8 @@ CameraMove_c::CameraMove_c(Entidad* eCam, Entidad* eJug, Ogre::SceneNode* camNod
 }
 CameraMove_c::~CameraMove_c()
 {
-	inputcomp_->removeKeyListener(this);
-	inputcomp_->removeMouseListener(this);
+	//inputcomp_->removeKeyListener(this);
+	//inputcomp_->removeMouseListener(this);
 }
 
 void CameraMove_c::Update(){

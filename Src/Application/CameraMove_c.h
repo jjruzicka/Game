@@ -7,12 +7,12 @@
 #include <OgreRenderTarget.h>
 #include "OgreRenderWindow.h"
 #include "OgreViewport.h"
-#include "InputComponent.h"
+#include "InputManager.h"
 
-class CameraMove_c : public InputComponent
+class CameraMove_c //: public InputComponent
 {
 public:
-	CameraMove_c(Entidad* eCam, Entidad* eJug, Ogre::SceneNode* camNode, InputComponent * input);
+	CameraMove_c(Entidad* eCam, Entidad* eJug, Ogre::SceneNode* camNode/*, InputComponent * input*/);
 	~CameraMove_c();
 
 	void Update();
@@ -26,7 +26,7 @@ private:
 	bool mousePressed(const OIS::MouseEvent& me, OIS::MouseButtonID id);
 	bool mouseReleased(const OIS::MouseEvent& me, OIS::MouseButtonID id);
 	void calculaOffset();
-	InputComponent* inputcomp_;
+	//InputComponent* inputcomp_;
 
 	Ogre::SceneNode* cam_node;
 	float angulo;

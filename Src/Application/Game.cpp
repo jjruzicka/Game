@@ -3,6 +3,7 @@
 
 EstadosManager * EstadosManager::instancia = nullptr;
 MotorGrafico * MotorGrafico::instancia = nullptr;
+InputManager * InputManager::instancia = nullptr;
 Game::Game()
 {
 	estadosManager = EstadosManager::getInstancia();
@@ -11,8 +12,9 @@ Game::Game()
 
 	motorGrafico = MotorGrafico::getInstancia();
 
+	inputManager = InputManager::getInstancia();
+
 	exit = false;
-	cont = 0;
 }
 
 
@@ -27,11 +29,10 @@ void Game::run(){
 	double deltaTime = 0;
 
 	while (!motorGrafico->getWindow()->isClosed() && !exit){
-		std::cout << cont << std::endl;
 		deltaTime = ((double)elapsedTicks) / 1000.f/*CLOCKS_PER_SEC*/;
 		lastTicks = clock();
 		if (elapsedTicks >= 0.5){
-			//inputcomp_->capture();
+			inputManager->capture();
 			elapsedTicks = 0;
 		}
 

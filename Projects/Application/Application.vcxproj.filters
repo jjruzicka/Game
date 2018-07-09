@@ -16,9 +16,6 @@
     <ClCompile Include="..\..\Src\Application\GameManager_c.cpp">
       <Filter>code\Componentes</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Src\Application\InputComponent.cpp">
-      <Filter>code\Componentes</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Src\Application\Mision_c.cpp">
       <Filter>code\Componentes</Filter>
     </ClCompile>
@@ -73,6 +70,9 @@
     <ClCompile Include="..\..\Src\Application\EstadosManager.cpp" />
     <ClCompile Include="..\..\Src\Application\Game.cpp" />
     <ClCompile Include="..\..\Src\Application\MotorGrafico.cpp" />
+    <ClCompile Include="..\..\Src\Application\InputManager.cpp">
+      <Filter>code\Componentes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Application\CameraMove_c.h">
@@ -85,9 +85,6 @@
       <Filter>header\Componentes</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\GameManager_c.h">
-      <Filter>header\Componentes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Application\InputComponent.h">
       <Filter>header\Componentes</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\Mision_c.h">
@@ -144,6 +141,9 @@
     <ClInclude Include="..\..\Src\Application\EstadosManager.h" />
     <ClInclude Include="..\..\Src\Application\Game.h" />
     <ClInclude Include="..\..\Src\Application\MotorGrafico.h" />
+    <ClInclude Include="..\..\Src\Application\InputManager.h">
+      <Filter>header\Componentes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="code">

@@ -20,7 +20,7 @@
     <ClCompile Include="..\..\Src\Application\Game.cpp" />
     <ClCompile Include="..\..\Src\Application\GameManager_c.cpp" />
     <ClCompile Include="..\..\Src\Application\GUI.cpp" />
-    <ClCompile Include="..\..\Src\Application\InputComponent.cpp" />
+    <ClCompile Include="..\..\Src\Application\InputManager.cpp" />
     <ClCompile Include="..\..\Src\Application\Juego.cpp" />
     <ClCompile Include="..\..\Src\Application\Mapa.cpp" />
     <ClCompile Include="..\..\Src\Application\Menu.cpp" />
@@ -48,7 +48,7 @@
     <ClInclude Include="..\..\Src\Application\Game.h" />
     <ClInclude Include="..\..\Src\Application\GameManager_c.h" />
     <ClInclude Include="..\..\Src\Application\GUI.h" />
-    <ClInclude Include="..\..\Src\Application\InputComponent.h" />
+    <ClInclude Include="..\..\Src\Application\InputManager.h" />
     <ClInclude Include="..\..\Src\Application\Juego.h" />
     <ClInclude Include="..\..\Src\Application\Mapa.h" />
     <ClInclude Include="..\..\Src\Application\Menu.h" />

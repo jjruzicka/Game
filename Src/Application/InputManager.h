@@ -9,12 +9,14 @@
 #include <OISInputManager.h>
 #include <OgreRenderWindow.h>
 
-class InputComponent :
-	public Component, public OIS::KeyListener, public OIS::MouseListener
+class InputManager : OIS::KeyListener , OIS::MouseListener
 {
 public:
-	InputComponent();
-	virtual void Update(){};
+	static InputManager * getInstancia(){
+		if (instancia == nullptr)
+			instancia = new InputManager();
+		return instancia;
+	}
 	void initialise(Ogre::RenderWindow *renderWindow);
 	void capture(void);
 
@@ -37,13 +39,11 @@ public:
 	OIS::Mouse*    getMouse(void);
 	OIS::Keyboard* getKeyboard(void);
 
-
-
-	static InputComponent* getSingletonPtr(void);
-	virtual ~InputComponent();
 private:
-	InputComponent(const InputComponent&) { }
-	InputComponent & operator = (const InputComponent& i);
+	InputManager();
+	virtual ~InputManager();
+	InputManager(const InputManager&) { }
+	InputManager & operator = (const InputManager& i);
 
 	bool keyPressed(const OIS::KeyEvent &e);
 	bool keyReleased(const OIS::KeyEvent &e);
@@ -73,7 +73,7 @@ private:
 	std::map<std::string, OIS::MouseListener*>::iterator itMouseListenerEnd;
 	std::map<std::string, OIS::JoyStickListener*>::iterator itJoystickListenerEnd;
 
-	static InputComponent *mInputComponent;
+	static InputManager *instancia;
 };
 #endif
 
