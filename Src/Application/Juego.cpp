@@ -388,32 +388,11 @@ void Juego::updateGUI(){
 }
 bool Juego::run(){
 	
-
-
-	clock_t lastTicks = clock();
-	clock_t elapsedTicks = 0;
-	double deltaTime = 0;
-	while (true)
-	{
-		deltaTime = ((double)elapsedTicks) / 1000.f/*CLOCKS_PER_SEC*/;
-		lastTicks = clock();
-		if (elapsedTicks >= 0.5){
-			inputcomp_->capture();
-			elapsedTicks = 0;
-		}
-		//Tick de la fisica
-		bulletWorld->stepSimulation(1.f / 60.f, 10);
-		updateGUI();
-		for (int i = 0; i < entidades.size(); i++)
-			entidades[i]->Update();
-
-		// render ogre
-		Ogre::WindowEventUtilities::messagePump();
-		//comprobar si la ventana está abierta
-		if (motorGrafico->getWindow()->isClosed())return false;
-		if (!motorGrafico->getRoot()->renderOneFrame())return false;
-		elapsedTicks = clock() - lastTicks;
-	}
+	//Tick de la fisica
+	bulletWorld->stepSimulation(1.f / 60.f, 10);
+	updateGUI();
+	for (int i = 0; i < entidades.size(); i++)
+		entidades[i]->Update();
 	return true;
 }
 void Juego::activaMision(Entidad* npc){

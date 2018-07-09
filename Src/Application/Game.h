@@ -12,5 +12,8 @@ private:
 
 	EstadosManager * estadosManager;
 	MotorGrafico * motorGrafico;
+
+	bool exit;
+	int cont;
 };
 

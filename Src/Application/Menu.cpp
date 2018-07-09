@@ -79,33 +79,11 @@ void Menu::MenuToPlay(){
 }
 
 bool Menu::run(){
-	
 
-	clock_t lastTicks = clock();
-	clock_t elapsedTicks = 0;
-	double deltaTime = 0;
-	
+	// A lo mejor este for no es necesario ya que no hay nada que actualizar
+	for (int i = 0; i<entidades.size(); i++)
+		entidades[i]->Update();
 
-	while (!exit)
-	{
-		deltaTime = ((double)elapsedTicks) / 1000.f/*CLOCKS_PER_SEC*/;
-		lastTicks = clock();
-		//inputcomp_->capture();
-
-		for (int i = 0; i<entidades.size(); i++)
-			entidades[i]->Update();
-
-		
-
-		// render ogre
-		Ogre::WindowEventUtilities::messagePump();
-		//bulletWorld->stepSimulation((float)deltaTime);
-		
-		//comprobar si la ventana está abierta
-		if (motorGrafico->getWindow()->isClosed())return false;
-		if (!motorGrafico->getRoot()->renderOneFrame())return false;
-		elapsedTicks = clock() - lastTicks;
-	}
 	return true;
 }
 
