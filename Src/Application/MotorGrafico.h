@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MOTORGRAFICO
+#define MOTORGRAFICO
 #include <iostream>
 #include <string>
 /*
@@ -57,4 +58,4 @@ private:
 	Ogre::RenderWindow* mWindow;
 	Ogre::SceneManager * scnMgr;
 };
-
+#endif

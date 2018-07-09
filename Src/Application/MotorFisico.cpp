@@ -5,7 +5,7 @@
 #include "PatrullarNPC.h"
 #include "ComportamientoEnem_c.h"
 
-/*bool callbackfunction(btManifoldPoint& cp, const btCollisionObjectWrapper * colObj0, int partId0, int index0, const btCollisionObjectWrapper * colObj1, int partId1, int index1){
+bool callbackfunction(btManifoldPoint& cp, const btCollisionObjectWrapper * colObj0, int partId0, int index0, const btCollisionObjectWrapper * colObj1, int partId1, int index1){
 	if (((Entidad*)colObj0->getCollisionObject()->getUserPointer()) != nullptr && ((Entidad*)colObj1->getCollisionObject()->getUserPointer()) != nullptr){
 		if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "p2"){
 			PlayerController_c * pC = new PlayerController_c();
@@ -38,10 +38,10 @@
 
 
 	return false;
-}*/
+}
 MotorFisico::MotorFisico()
 {
-	//gContactAddedCallback = callbackfunction;
+	gContactAddedCallback = callbackfunction;
 	//build the broadPhase
 	broadPhase = new btDbvtBroadphase();
 

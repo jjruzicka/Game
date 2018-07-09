@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GAME
+#define GAME
 #include "EstadosManager.h"
 #include "MotorGrafico.h"
 #include "MotorFisico.h"
@@ -20,4 +21,5 @@ private:
 	bool exit;
 	int cont;
 };
+#endif
 

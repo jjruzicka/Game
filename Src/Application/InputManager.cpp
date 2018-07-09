@@ -28,7 +28,6 @@ InputManager::~InputManager()
 		// Clear Listeners
 		mKeyListeners.clear();
 		mMouseListeners.clear();
-		mJoystickListeners.clear();
 	}
 
 
@@ -164,7 +163,6 @@ void InputManager::removeMouseListener(OIS::MouseListener *mouseListener) {
 void InputManager::removeAllListeners(void) {
 	mKeyListeners.clear();
 	mMouseListeners.clear();
-	mJoystickListeners.clear();
 }
 
 void InputManager::removeAllKeyListeners(void) {

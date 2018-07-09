@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ESCENASMANAGER
+#define ESCENASMANAGER
 #include "Escenas.h"
 #include <stack>
 
@@ -22,4 +23,5 @@ private:
 
 	std::stack<Escenas*> pila;
 };
+#endif
 
