@@ -288,7 +288,7 @@ void Juego::creaOgreEnemyMele(int x, int y, int z, int vida, int damage, int arm
 	entidades.push_back(trigger);
 }
 
-bool callbackfunction(btManifoldPoint& cp, const btCollisionObjectWrapper * colObj0, int partId0, int index0, const btCollisionObjectWrapper * colObj1, int partId1, int index1){
+/*bool callbackfunction(btManifoldPoint& cp, const btCollisionObjectWrapper * colObj0, int partId0, int index0, const btCollisionObjectWrapper * colObj1, int partId1, int index1){
 	if (((Entidad*)colObj0->getCollisionObject()->getUserPointer()) != nullptr && ((Entidad*)colObj1->getCollisionObject()->getUserPointer()) != nullptr){
 		if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "p2"){
 			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(pC)->chocasCon(1, (Entidad*)colObj1->getCollisionObject()->getUserPointer());
@@ -311,9 +311,9 @@ bool callbackfunction(btManifoldPoint& cp, const btCollisionObjectWrapper * colO
 		}
 	}
 	return false;
-}
+}*/
 bool Juego::initBullet(){
-	gContactAddedCallback = callbackfunction;
+	//gContactAddedCallback = callbackfunction;
 	//build the broadPhase
 	broadPhase = new btDbvtBroadphase();
 

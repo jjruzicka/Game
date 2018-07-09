@@ -26,6 +26,7 @@
     <ClCompile Include="..\..\Src\Application\Menu.cpp" />
     <ClCompile Include="..\..\Src\Application\Mision_c.cpp" />
     <ClCompile Include="..\..\Src\Application\ComportamientoEnem_c.cpp" />
+    <ClCompile Include="..\..\Src\Application\MotorFisico.cpp" />
     <ClCompile Include="..\..\Src\Application\MotorGrafico.cpp" />
     <ClCompile Include="..\..\Src\Application\MyEnvironmentDemoPanelColors.cpp" />
     <ClCompile Include="..\..\Src\Application\MyPurplePanelColors.cpp" />
@@ -54,6 +55,7 @@
     <ClInclude Include="..\..\Src\Application\Menu.h" />
     <ClInclude Include="..\..\Src\Application\Mision_c.h" />
     <ClInclude Include="..\..\Src\Application\ComportamientoEnem_c.h" />
+    <ClInclude Include="..\..\Src\Application\MotorFisico.h" />
     <ClInclude Include="..\..\Src\Application\MotorGrafico.h" />
     <ClInclude Include="..\..\Src\Application\MyEnvironmentDemoPanelColors.h" />
     <ClInclude Include="..\..\Src\Application\MyPurplePanelColors.h" />

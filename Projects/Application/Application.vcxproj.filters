@@ -73,6 +73,7 @@
     <ClCompile Include="..\..\Src\Application\InputManager.cpp">
       <Filter>code\Componentes</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Src\Application\MotorFisico.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Application\CameraMove_c.h">
@@ -144,6 +145,7 @@
     <ClInclude Include="..\..\Src\Application\InputManager.h">
       <Filter>header\Componentes</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Src\Application\MotorFisico.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="code">
