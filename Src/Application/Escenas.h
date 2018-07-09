@@ -19,6 +19,8 @@
 #include "InputComponent.h"
 #include "Mapa.h"
 
+#include "MotorGrafico.h"
+
 class Escenas
 {
 public:
@@ -34,15 +36,11 @@ public:
 		entidades.push_back(ent);
 	};
 
-	virtual Ogre::SceneManager * getSceneManger(){
-		return scnMgr;
-	}
-
 protected:
 
+	MotorGrafico * motorGrafico;
 
 	virtual bool initBullet();
-	virtual bool initOgre();
 	std::vector<Entidad*> entidades;
 	Ogre::Viewport* vp = nullptr;
 
@@ -58,11 +56,6 @@ protected:
 	Mapa* mapa;
 
 	///// OGRE
-	std::string recursos, plugins;
-	Ogre::Root *root;
-	Ogre::ConfigFile cf;
-	Ogre::RenderWindow* mWindow;
-	Ogre::SceneManager * scnMgr;
 	Ogre::Light* light;
 	Ogre::SceneNode* lightNode = nullptr;
 	Ogre::Camera* cam = nullptr;

@@ -1,14 +1,22 @@
 #include "MotorGrafico.h"
-
+/*
 #include <OgreWindowEventUtilities.h>
 #include <OgreViewport.h>
 #include <OgreRenderWindow.h>
 #include <exception>
-#include <OgreTextureManager.h>
+#include <OgreTextureManager.h>*/
 
 
 MotorGrafico::MotorGrafico()
 {
+#ifdef _DEBUG
+	plugins = "OgreD/plugins_d.cfg";
+	recursos = "OgreD/resources_d.cfg";
+#else
+	plugins = "Ogre/plugins.cfg";
+	recursos = "Ogre/resources.cfg";
+#endif
+
 	initOgre();
 }
 

@@ -10,20 +10,13 @@ enum QueryFlags {
 };
 Menu::Menu()
 {
-#ifdef _DEBUG
-	plugins = "OgreD/plugins_d.cfg";
-	recursos = "OgreD/resources_d.cfg";
-#else
-	plugins = "Ogre/plugins.cfg";
-	recursos = "Ogre/resources.cfg";
-#endif
-	initOgre();
-	initBullet();
+	motorGrafico = MotorGrafico::getInstancia();
+	//initBullet();
 
 	//this->scnM = scnM;
 
-	inputcomp_ = InputComponent::getSingletonPtr();
-	inputcomp_->initialise(mWindow);
+	//inputcomp_ = InputComponent::getSingletonPtr();
+	//inputcomp_->initialise(mWindow);
 
 	exit = false;
 
@@ -39,16 +32,16 @@ Menu::Menu()
 	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
 	lightdir.normalise();
 
-	Ogre::Light* light = scnMgr->createLight("tstLight");
+	Ogre::Light* light = motorGrafico->getSceMgr()->createLight("tstLight");
 	light->setType(Ogre::Light::LT_DIRECTIONAL);
 	light->setDirection(lightdir);
 	light->setDiffuseColour(Ogre::ColourValue::White);
 	light->setSpecularColour(Ogre::ColourValue(0.4, 0.4, 0.4));
 
-	scnMgr->setAmbientLight(Ogre::ColourValue(0.2, 0.2, 0.2));
+	motorGrafico->getSceMgr()->setAmbientLight(Ogre::ColourValue(0.2, 0.2, 0.2));
 
 	// also need to tell where we are
-	camNode = scnMgr->getRootSceneNode()->createChildSceneNode();
+	camNode = motorGrafico->getSceMgr()->getRootSceneNode()->createChildSceneNode();
 
 	// para la escena, pruebas
 	camNode->setPosition(Ogre::Vector3(0, 5, -35));
@@ -56,7 +49,7 @@ Menu::Menu()
 	camNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
 
 	// create the camera
-	cam = scnMgr->createCamera("Cam");
+	cam = motorGrafico->getSceMgr()->createCamera("Cam");
 	cam->setNearClipDistance(0.1);
 	cam->setFarClipDistance(10000);
 	cam->setAutoAspectRatio(true);
@@ -68,11 +61,11 @@ Menu::Menu()
 
 	// and tell it to render into the main window
 
-	vp = mWindow->addViewport(cam);
+	vp = motorGrafico->getWindow()->addViewport(cam);
 	vp->setBackgroundColour(Ogre::ColourValue::Black);
 
-	gui = new GUI(inputcomp_, vp, scnMgr, cam, camNode, this, true);
-	gui->createPanel();
+	//gui = new GUI(inputcomp_, vp, motorGrafico->getSceMgr(), cam, camNode, this, true);
+	//gui->createPanel();
 
 	
 
@@ -97,7 +90,7 @@ bool Menu::run(){
 	{
 		deltaTime = ((double)elapsedTicks) / 1000.f/*CLOCKS_PER_SEC*/;
 		lastTicks = clock();
-		inputcomp_->capture();
+		//inputcomp_->capture();
 
 		for (int i = 0; i<entidades.size(); i++)
 			entidades[i]->Update();
@@ -109,8 +102,8 @@ bool Menu::run(){
 		//bulletWorld->stepSimulation((float)deltaTime);
 		
 		//comprobar si la ventana está abierta
-		if (mWindow->isClosed())return false;
-		if (!root->renderOneFrame())return false;
+		if (motorGrafico->getWindow()->isClosed())return false;
+		if (!motorGrafico->getRoot()->renderOneFrame())return false;
 		elapsedTicks = clock() - lastTicks;
 	}
 	return true;
@@ -125,10 +118,10 @@ Menu::~Menu()
 	delete broadPhase;
 	gui->removeAllListeners();
 	delete gui;
-	scnMgr->getRootSceneNode()->removeAllChildren();
-	root->destroySceneManager(scnMgr);
-	root->destroyRenderTarget("P3");
-	delete root;
+	//scnMgr->getRootSceneNode()->removeAllChildren();
+	//root->destroySceneManager(scnMgr);
+	//root->destroyRenderTarget("P3");
+	//delete root;
 
 
 }

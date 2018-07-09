@@ -14,6 +14,7 @@ public:
 	bool exit;
 private:
 	GUI* gui;
+
 //variables vienen de escenas.h
 };
 #endif

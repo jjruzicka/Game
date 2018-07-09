@@ -26,27 +26,19 @@ RigidBody_c* rb;
 
 Juego::Juego(EscenasManager* escenasManager)
 {
-#ifdef _DEBUG
-	plugins = "OgreD/plugins_d.cfg";
-	recursos = "OgreD/resources_d.cfg";
-#else
-	plugins = "Ogre/plugins.cfg";
-	recursos = "Ogre/resources.cfg";
-#endif
-	initOgre();
 	initBullet();
-
-	camNode = scnMgr->getRootSceneNode()->createChildSceneNode();
+	
+	camNode = motorGrafico->getSceMgr()->getRootSceneNode()->createChildSceneNode();
 	
 	cont = 0;
 	this->escenasManager = escenasManager;
-	inputcomp_ = InputComponent::getSingletonPtr();
-	inputcomp_->initialise(mWindow);
+	/*inputcomp_ = InputComponent::getSingletonPtr();
+	inputcomp_->initialise(motorGrafico->getWindow());
 	inputcomp_->addKeyListener(this, "teclado3");
-	inputcomp_->addMouseListener(this, "raton3");
+	inputcomp_->addMouseListener(this, "raton3");*/
 
 	// create the camera
-	cam = scnMgr->createCamera("Cam");
+	cam = motorGrafico->getSceMgr()->createCamera("Cam");
 	cam->setNearClipDistance(0.1); //esto antes era 1
 	cam->setFarClipDistance(10000);
 	cam->setAutoAspectRatio(true);
@@ -58,7 +50,7 @@ Juego::Juego(EscenasManager* escenasManager)
 	ent1->setPox(1700);
 	ent1->setPoy(5);
 	ent1->setPoz(1800);
-	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("p"), ent1, "Sinbad", "p");
+	Render_c* render = new Render_c(motorGrafico->getSceMgr()->getRootSceneNode()->createChildSceneNode("p"), ent1, "Sinbad", "p");
 	StatsPJ_c* stas = new StatsPJ_c(100, 20, 50, 50,this,ent1);
 	ent1->AddComponent(stas);
 	ent1->AddComponent(render);
@@ -106,13 +98,13 @@ Juego::Juego(EscenasManager* escenasManager)
 	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
 	lightdir.normalise();
 
-	Ogre::Light* light = scnMgr->createLight("tstLight");
+	Ogre::Light* light = motorGrafico->getSceMgr()->createLight("tstLight");
 	light->setType(Ogre::Light::LT_DIRECTIONAL);
 	light->setDirection(lightdir);
 	light->setDiffuseColour(Ogre::ColourValue::White);
 	light->setSpecularColour(Ogre::ColourValue(0.4, 0.4, 0.4));
 
-	scnMgr->setAmbientLight(Ogre::ColourValue(0.2, 0.2, 0.2));
+	motorGrafico->getSceMgr()->setAmbientLight(Ogre::ColourValue(0.2, 0.2, 0.2));
 
 	// also need to tell where we are
 	camNode->setPosition(Ogre::Vector3(ent1->getPox(), ent1->getPoy() + 10, ent1->getPoz() - 30));
@@ -142,14 +134,14 @@ Juego::Juego(EscenasManager* escenasManager)
 
 	// and tell it to render into the main window
 	Viewport* vp;
-	vp = mWindow->addViewport(cam);
+	vp = motorGrafico->getWindow()->addViewport(cam);
 	vp->setBackgroundColour(Ogre::ColourValue(150, 150, 150));
 
 	//GUI
-	guiGame = new GUI(inputcomp_, vp, scnMgr, cam, camNode, this, false);	
+	guiGame = new GUI(inputcomp_, vp, motorGrafico->getSceMgr(), cam, camNode, this, false);
 	guiGame->createUI();
 	//Terrain
-	mapa = new Mapa(scnMgr, light, bulletWorld);
+	mapa = new Mapa(motorGrafico->getSceMgr(), light, bulletWorld);
 	mapa->createmap();
 	mapa->setPhysics();
 	mapa->getRigidBody()->setUserPointer(mapa);
@@ -179,7 +171,7 @@ void Juego::createArbolitos(){
 		arbolitos[i]->setPoy(250);
 		arbolitos[i]->setPoz(rand() % 12000);
 
-		Render_c* render8 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode(str), arbolitos[i], "tree.09", str);
+		Render_c* render8 = new Render_c(motorGrafico->getSceMgr()->getRootSceneNode()->createChildSceneNode(str), arbolitos[i], "tree.09", str);
 		arbolitos[i]->AddComponent(render8);
 		RigidBody_c* static_rb7 = new RigidBody_c(arbolitos[i], bulletWorld, 50, 50, 50, 0);
 		static_rb7->getRigidBody()->setCollisionFlags(static_rb7->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
@@ -191,7 +183,7 @@ void Juego::createArbolitos(){
 
 
 void Juego::creaNpcMisiones(int x, int y, int z, int misionT1, int expM1, int misionT2, int expM2, int misionT3, int expM3, int misionT4, int expM4, int misionT5, int expM5, std::string idRender){
-	Entidad* ent2 = new EntidadRender("p2", idRender, scnMgr);
+	Entidad* ent2 = new EntidadRender("p2", idRender, motorGrafico->getSceMgr());
 	ent2->setPox(x);// posicion 
 	ent2->setPoy(y);
 	ent2->setPoz(z);
@@ -223,7 +215,7 @@ void Juego::creaNpcMisiones(int x, int y, int z, int misionT1, int expM1, int mi
 	entidades.push_back(ent2);
 }
 void Juego::creaPan(int x, int y, int z, std::string idRender){
-	Entidad* ent = new EntidadRender("Pan",idRender,scnMgr);
+	Entidad* ent = new EntidadRender("Pan", idRender, motorGrafico->getSceMgr());
 	ent->setPox(x);// posicion 
 	ent->setPoy(y);
 	ent->setPoz(z);
@@ -273,7 +265,7 @@ void Juego::creaOgreEnemyMele(int x, int y, int z, int vida, int damage, int arm
 	ent2->setPox(x);// posicion 
 	ent2->setPoy(y);
 	ent2->setPoz(z);
-	Render_c* render2 = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode(idRender), ent2, "Sinbad", idRender);
+	Render_c* render2 = new Render_c(motorGrafico->getSceMgr()->getRootSceneNode()->createChildSceneNode(idRender), ent2, "Sinbad", idRender);
 	ent2->AddComponent(render2);
 	RigidBody_c* static_rb = new RigidBody_c(ent2, bulletWorld, 5, 5, 5, 1);
 	static_rb->getRigidBody()->setCollisionFlags(static_rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
@@ -418,8 +410,8 @@ bool Juego::run(){
 		// render ogre
 		Ogre::WindowEventUtilities::messagePump();
 		//comprobar si la ventana está abierta
-		if (mWindow->isClosed())return false;
-		if (!root->renderOneFrame())return false;
+		if (motorGrafico->getWindow()->isClosed())return false;
+		if (!motorGrafico->getRoot()->renderOneFrame())return false;
 		elapsedTicks = clock() - lastTicks;
 	}
 	return true;
@@ -451,7 +443,7 @@ void Juego::killAdd(Entidad* obj){
 		aux->GetComponent(rb)->getRigidBody()->setCollisionFlags(4);
 		bulletWorld->removeRigidBody(aux->GetComponent(rb)->getRigidBody());
 		entidades.pop_back();
-		scnMgr->destroyEntity(static_cast<EntidadRender*>(obj)->getIdRender());
+		motorGrafico->getSceMgr()->destroyEntity(static_cast<EntidadRender*>(obj)->getIdRender());
 	}
 }
 void Juego::muerteJugador(){
@@ -469,9 +461,9 @@ Juego::~Juego()
 
 	delete guiGame;
 
-	scnMgr->getRootSceneNode()->removeAllChildren();
-	root->destroySceneManager(scnMgr);
-	root->destroyRenderTarget("P3");
-	delete root;
+	//scnMgr->getRootSceneNode()->removeAllChildren();
+	//root->destroySceneManager(scnMgr);
+	//root->destroyRenderTarget("P3");
+	//delete root;
 }
 
