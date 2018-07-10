@@ -61,11 +61,11 @@ private:
 	std::map<std::string, OIS::KeyListener*> mKeyListeners;
 	std::map<std::string, OIS::MouseListener*> mMouseListeners;
 
-	std::map<std::string, OIS::KeyListener*>::iterator itKeyListener;
-	std::map<std::string, OIS::MouseListener*>::iterator itMouseListener;
+	//std::map<std::string, OIS::KeyListener*>::iterator itKeyListener;
+	//std::map<std::string, OIS::MouseListener*>::iterator itMouseListener;
 
-	std::map<std::string, OIS::KeyListener*>::iterator itKeyListenerEnd;
-	std::map<std::string, OIS::MouseListener*>::iterator itMouseListenerEnd;
+	//std::map<std::string, OIS::KeyListener*>::iterator itKeyListenerEnd;
+	//std::map<std::string, OIS::MouseListener*>::iterator itMouseListenerEnd;
 
 	static InputManager *instancia;
 };
