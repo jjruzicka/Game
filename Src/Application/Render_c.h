@@ -2,13 +2,14 @@
 #define RENDER_C_H
 #include "Component.h"
 #include "Entidad.h"
+#include "MotorGrafico.h"
 #include <string>
 #include <Ogre.h>
 
 class Render_c : public Component
 {
 public:
-	Render_c(Ogre::SceneNode*node, Entidad* ent, std::string nombreMalla, std::string nombreEntidad);
+	Render_c(std::string nombreNodo,Entidad* ent, std::string nombreMalla, std::string nombreEntidad);
 	Render_c(){}
 	~Render_c();
 	Ogre::SceneNode* getNode(){
@@ -16,6 +17,7 @@ public:
 	}
 	virtual	void Update();
 private:
+	MotorGrafico * motorGrafico;
 	Ogre::SceneNode* node;
 	Entidad* ent;
 	Ogre::Entity* entOgre;

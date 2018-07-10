@@ -1,10 +1,11 @@
 #include "Render_c.h"
 #include <iostream>
 
-Render_c::Render_c(Ogre::SceneNode*src, Entidad* ent, std::string nombreMalla, std::string nombreEntidad)
+Render_c::Render_c(std::string nombreNodo, Entidad* ent, std::string nombreMalla, std::string nombreEntidad)
 {
+	motorGrafico = MotorGrafico::getInstancia();
 	this->ent = ent;
-	this->node = src;
+	this->node = motorGrafico->getSceMgr()->getRootSceneNode()->createChildSceneNode(nombreNodo);
 	std::string mesh = nombreMalla + ".mesh";
 	entOgre = node->getCreator()->createEntity(nombreEntidad, mesh);
 	node->setPosition(ent->getPox(), ent->getPoy(), ent->getPoz());

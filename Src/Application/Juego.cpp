@@ -49,7 +49,7 @@ Juego::Juego()
 	ent1->setPox(1700);
 	ent1->setPoy(5);
 	ent1->setPoz(1800);
-	Render_c* render = new Render_c(motorGrafico->getSceMgr()->getRootSceneNode()->createChildSceneNode("p"), ent1, "Sinbad", "p");
+	Render_c* render = new Render_c("p", ent1, "Sinbad", "p");
 	//StatsPJ_c* stas = new StatsPJ_c(100, 20, 50, 50,this,ent1);
 	//ent1->AddComponent(stas);
 	ent1->AddComponent(render);
@@ -167,7 +167,7 @@ void Juego::createArbolitos(){
 		arbolitos[i]->setPoy(250);
 		arbolitos[i]->setPoz(rand() % 12000);
 
-		Render_c* render8 = new Render_c(motorGrafico->getSceMgr()->getRootSceneNode()->createChildSceneNode(str), arbolitos[i], "tree.09", str);
+		Render_c* render8 = new Render_c(str, arbolitos[i], "tree.09", str);
 		arbolitos[i]->AddComponent(render8);
 		RigidBody_c* static_rb7 = new RigidBody_c(arbolitos[i], motorFisico->getBulletWorld(), 50, 50, 50, 0);
 		static_rb7->getRigidBody()->setCollisionFlags(static_rb7->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
@@ -261,7 +261,7 @@ void Juego::creaOgreEnemyMele(int x, int y, int z, int vida, int damage, int arm
 	ent2->setPox(x);// posicion 
 	ent2->setPoy(y);
 	ent2->setPoz(z);
-	Render_c* render2 = new Render_c(motorGrafico->getSceMgr()->getRootSceneNode()->createChildSceneNode(idRender), ent2, "Sinbad", idRender);
+	Render_c* render2 = new Render_c(idRender, ent2, "Sinbad", idRender);
 	ent2->AddComponent(render2);
 	RigidBody_c* static_rb = new RigidBody_c(ent2, motorFisico->getBulletWorld(), 5, 5, 5, 1);
 	static_rb->getRigidBody()->setCollisionFlags(static_rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);

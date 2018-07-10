@@ -7,9 +7,9 @@ EntidadRender::EntidadRender(std::string id, std::string idRender, Ogre::SceneMa
 	this->idRender = idRender;
 	Render_c* render;
 	if (id == "p2")
-		render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode(idRender), this, "Sinbad", idRender);
+		render = new Render_c(idRender, this, "Sinbad", idRender);
 	else
-		render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode(idRender), this, "WoodPallet", idRender);
+		render = new Render_c(idRender, this, "WoodPallet", idRender);
 	AddComponent(render);
 }
 
