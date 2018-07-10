@@ -16,7 +16,6 @@
 #include <OgreTextureManager.h>
 #include <OgreWindowEventUtilities.h>
 #include <OgreException.h>
-#include "InputManager.h"
 #include "Mapa.h"
 
 #include "MotorGrafico.h"
@@ -38,6 +37,7 @@ protected:
 
 	MotorGrafico * motorGrafico;
 	MotorFisico * motorFisico;
+
 	std::vector<Entidad*> entidades;
 	Ogre::Viewport* vp = nullptr;
 
@@ -46,9 +46,9 @@ protected:
 
 	///// OGRE
 	Ogre::Light* light;
-	Ogre::SceneNode* lightNode = nullptr;
-	Ogre::Camera* cam = nullptr;
-	Ogre::SceneNode* camNode = nullptr;
+	Ogre::SceneNode* lightNode; // = nullptr;
+	Ogre::Camera* cam; // = nullptr;
+	Ogre::SceneNode* camNode; // = nullptr;
 	///////////////////////
 };
 #endif

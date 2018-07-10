@@ -1,13 +1,13 @@
 #ifndef JUEGO_H
 #define JUEGO_H
 #include "GameManager_c.h"
-#include "EscenasManager.h"
-#include "InputManager.h"
 #include "GUI.h"
+
+#include "InputManager.h"
 class Juego : public Escenas
 {
 public:
-	Juego(EscenasManager* escenasManager);
+	Juego();
 	virtual ~Juego();
 	virtual bool run();
 	void activaMision(Entidad* npc);
@@ -16,6 +16,9 @@ public:
 	void muerteJugador();
 	
 private:
+
+	InputManager * inputManager;
+
 	void createArbolitos();
 	void updateGUI();
 	GUI* guiGame;
@@ -30,6 +33,5 @@ private:
 	int contArboles;
 	std::vector<Entidad*> arbolitos;
 	GameManager_c* gm;
-	EscenasManager* escenasManager;
 };
 #endif

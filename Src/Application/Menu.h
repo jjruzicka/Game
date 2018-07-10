@@ -1,8 +1,9 @@
 #ifndef MENU_H
 #define MENU_H
 #include "Escenas.h"
-#include "EscenasManager.h"
 #include "GUI.h"
+
+#include "EstadosManager.h"
 class Menu : public Escenas
 {
 public:
@@ -14,6 +15,9 @@ public:
 	bool exit;
 private:
 	GUI* gui;
+
+	EstadosManager * estadosManager;
+
 
 //variables vienen de escenas.h
 };

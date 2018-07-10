@@ -1,5 +1,5 @@
-#ifndef ESCENASMANAGER
-#define ESCENASMANAGER
+#ifndef ESTADOSMANAGER
+#define ESTADOSMANAGER
 #include "Escenas.h"
 #include <stack>
 

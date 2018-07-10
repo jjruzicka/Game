@@ -1,7 +1,7 @@
 #include "GUI.h"
 #include <iostream>
 #include "Menu.h"
-#include "InputManager.h"
+
 GUI::GUI(Ogre::Viewport* vp, Ogre::SceneManager * scnMgr, Ogre::Camera * cam, Ogre::SceneNode* camNode, Escenas* menuc, bool escena)
 {
 	menu = menuc;
@@ -9,7 +9,7 @@ GUI::GUI(Ogre::Viewport* vp, Ogre::SceneManager * scnMgr, Ogre::Camera * cam, Og
 	camera = cam;
 	cNode = camNode;
 	menuEscena = escena;
-	InputManager * inputManager = InputManager::getInstancia();
+	inputManager = InputManager::getInstancia();
 	inputManager->addKeyListener(this, "teclado2");
 	inputManager->addMouseListener(this, "raton2");
 	mMyPurplePanelColors = new MyPurplePanelColors();
@@ -242,6 +242,9 @@ bool GUI::mouseMoved(const OIS::MouseEvent &arg)
 
 GUI::~GUI()
 {
+	inputManager->removeKeyListener(this);
+	inputManager->removeMouseListener(this);
+
 	if (!menuEscena){
 		delete captionButton;
 		delete captionDamage;

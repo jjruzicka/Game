@@ -22,21 +22,22 @@ StatsEntJuego_c* stats;
 StatsPJ_c* statspj;
 RigidBody_c* rb;
 
-Juego::Juego(EscenasManager* escenasManager)
+Juego::Juego()
 {
 	motorFisico = MotorFisico::getInstancia();
 	motorGrafico = MotorGrafico::getInstancia();
+	inputManager = InputManager::getInstancia();
+
 	camNode = motorGrafico->getSceMgr()->getRootSceneNode()->createChildSceneNode();
 	
 	cont = 0;
-	this->escenasManager = escenasManager;
 	/*inputcomp_ = InputComponent::getSingletonPtr();
 	inputcomp_->initialise(motorGrafico->getWindow());
 	inputcomp_->addKeyListener(this, "teclado3");
 	inputcomp_->addMouseListener(this, "raton3");*/
 
 	// create the camera
-	cam = motorGrafico->getSceMgr()->createCamera("Cam");
+	cam = motorGrafico->getSceMgr()->createCamera("CamJuego");
 	cam->setNearClipDistance(0.1); //esto antes era 1
 	cam->setFarClipDistance(10000);
 	cam->setAutoAspectRatio(true);
@@ -49,11 +50,11 @@ Juego::Juego(EscenasManager* escenasManager)
 	ent1->setPoy(5);
 	ent1->setPoz(1800);
 	Render_c* render = new Render_c(motorGrafico->getSceMgr()->getRootSceneNode()->createChildSceneNode("p"), ent1, "Sinbad", "p");
-	StatsPJ_c* stas = new StatsPJ_c(100, 20, 50, 50,this,ent1);
-	ent1->AddComponent(stas);
+	//StatsPJ_c* stas = new StatsPJ_c(100, 20, 50, 50,this,ent1);
+	//ent1->AddComponent(stas);
 	ent1->AddComponent(render);
 
-	RigidBody_c* player_rb = new RigidBody_c(ent1, motorFisico->getBulletWorld(), 5, 5, 5, 1);
+	/*RigidBody_c* player_rb = new RigidBody_c(ent1, motorFisico->getBulletWorld(), 5, 5, 5, 1);
 	player_rb->getRigidBody()->setCollisionFlags(player_rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
 	player_rb->getRigidBody()->setUserPointer(ent1);
 	ent1->AddComponent(player_rb);
@@ -88,7 +89,7 @@ Juego::Juego(EscenasManager* escenasManager)
 	creaOgreEnemyMele(1250, 5, 1500, 500, 300, 200, "muerte2");
 	creaOgreEnemyMele(1700, 5, 2300, 600, 225, 200, "muerte3");
 	creaOgreEnemyMele(1700, 5, 2300, 1500, 25, 200, "muerte4");
-	creaOgreEnemyMele(1050, 5, 1800, 1000, 420, 200, "muerte5");
+	creaOgreEnemyMele(1050, 5, 1800, 1000, 420, 200, "muerte5");*/
 
 
 
@@ -96,7 +97,7 @@ Juego::Juego(EscenasManager* escenasManager)
 	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
 	lightdir.normalise();
 
-	Ogre::Light* light = motorGrafico->getSceMgr()->createLight("tstLight");
+	Ogre::Light* light = motorGrafico->getSceMgr()->createLight("tstLight2");
 	light->setType(Ogre::Light::LT_DIRECTIONAL);
 	light->setDirection(lightdir);
 	light->setDiffuseColour(Ogre::ColourValue::White);
@@ -131,7 +132,7 @@ Juego::Juego(EscenasManager* escenasManager)
 
 
 	// and tell it to render into the main window
-	Viewport* vp;
+	motorGrafico->getWindow()->removeAllViewports();
 	vp = motorGrafico->getWindow()->addViewport(cam);
 	vp->setBackgroundColour(Ogre::ColourValue(150, 150, 150));
 
@@ -144,16 +145,16 @@ Juego::Juego(EscenasManager* escenasManager)
 	mapa->setPhysics();
 	mapa->getRigidBody()->setUserPointer(mapa);
 
-	numArboles = 30;
+	/*numArboles = 30;
 	contArboles = 0;
 	arbolitos.reserve(numArboles);
-	createArbolitos();
+	createArbolitos();*/
 
-	pC = new PlayerController_c();
+	/*pC = new PlayerController_c();
 	mision = new Mision_c();
 	stats = new StatsEntJuego_c();
 	statspj = new StatsPJ_c();
-	rb = new RigidBody_c();
+	rb = new RigidBody_c();*/
 }
 void Juego::createArbolitos(){
 	for (int i = 0; i < numArboles; i++){
@@ -307,23 +308,7 @@ void Juego::creaOgreEnemyMele(int x, int y, int z, int vida, int damage, int arm
 	}
 	return false;
 }*/
-/*bool Juego::initBullet(){
-	//gContactAddedCallback = callbackfunction;
-	//build the broadPhase
-	broadPhase = new btDbvtBroadphase();
 
-	//Set up the collision configuration and dispacher
-	collisionConfiguration = new btDefaultCollisionConfiguration();
-	dispatcher = new btCollisionDispatcher(collisionConfiguration);
-
-	//the actual physics solver
-	solver = new btSequentialImpulseConstraintSolver();
-
-	//the world
-	bulletWorld = new btDiscreteDynamicsWorld(dispatcher, broadPhase, solver, collisionConfiguration);
-	bulletWorld->setGravity(btVector3(0, -10, 0));
-	return true;
-*/
 void Juego::updateGUI(){
 
 	//VIDA
@@ -385,7 +370,7 @@ bool Juego::run(){
 	
 	//Tick de la fisica
 	motorFisico->getBulletWorld()->stepSimulation(1.f / 60.f, 10);
-	updateGUI();
+	//updateGUI();
 	for (int i = 0; i < entidades.size(); i++)
 		entidades[i]->Update();
 	return true;

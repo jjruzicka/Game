@@ -8,7 +8,9 @@
 #include "MyEnvironmentDemoPanelColors.h"
 #include "Escenas.h"
 
-class GUI: public OIS::KeyListener , OIS::MouseListener
+#include "InputManager.h"
+
+class GUI: public OIS::KeyListener , public OIS::MouseListener
 {
 public:
 	GUI(Ogre::Viewport* vp, Ogre::SceneManager * scnMgr, Ogre::Camera * cam, Ogre::SceneNode* camNode, Escenas* menuc, bool escena);
@@ -43,6 +45,8 @@ public:
 		return captionCura;
 	}
 private:
+
+	InputManager * inputManager;
 
 	Escenas* menu;
 

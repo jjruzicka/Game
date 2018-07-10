@@ -1,7 +1,6 @@
 #include "Game.h"
 #include "Menu.h"
 #include "Juego.h"
-
 EstadosManager * EstadosManager::instancia = nullptr;
 MotorGrafico * MotorGrafico::instancia = nullptr;
 MotorFisico * MotorFisico::instancia = nullptr;

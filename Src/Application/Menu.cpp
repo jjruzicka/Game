@@ -3,6 +3,10 @@
 #include "PlayerController_c.h"
 #include "RigidBody_c.h"
 #include <iostream>
+
+#include "Juego.h"
+
+#include "InputManager.h"
 using namespace Ogre;
 enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
@@ -11,6 +15,7 @@ enum QueryFlags {
 Menu::Menu()
 {
 	motorGrafico = MotorGrafico::getInstancia();
+	estadosManager = EstadosManager::getInstancia();
 	//initBullet();
 
 	//this->scnM = scnM;
@@ -75,7 +80,8 @@ void Menu::MenuToExit(){
 }
 
 void Menu::MenuToPlay(){
-	//scnM->MenuToGame();
+	Escenas * juego = new Juego();
+	estadosManager->changeEstado(juego);
 }
 
 bool Menu::run(){
@@ -89,14 +95,9 @@ bool Menu::run(){
 
 Menu::~Menu()
 {
-
-	//gui->removeAllListeners();
-	//delete gui;
-	//scnMgr->getRootSceneNode()->removeAllChildren();
-	//root->destroySceneManager(scnMgr);
-	//root->destroyRenderTarget("P3");
-	//delete root;
-
-
+/*	InputManager * inputManager = InputManager::getInstancia();
+	inputManager->removeKeyListener(gui);
+	inputManager->removeMouseListener(gui);*/
+	delete gui;
 }
 
