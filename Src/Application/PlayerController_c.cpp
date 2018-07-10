@@ -6,6 +6,8 @@ RigidBody_c* gt;
 
 PlayerController_c::PlayerController_c(Entidad * ent, Juego* esc, StatsPJ_c* estadisticas)
 {
+	inputManager = InputManager::getInstancia();
+	inputManager->addKeyListener(this, "tecladoP");
 	//inputcomp_ = input;
 	entidad = ent;
 	escena = esc;
@@ -148,7 +150,7 @@ bool PlayerController_c::keyReleased(const OIS::KeyEvent& keyP){
 
 }
 
-bool PlayerController_c::mouseMoved(const OIS::MouseEvent& me)
+/*bool PlayerController_c::mouseMoved(const OIS::MouseEvent& me)
 {
 	if (me.state.buttonDown(OIS::MB_Right))
 	{
@@ -177,7 +179,7 @@ bool PlayerController_c::mousePressed(const OIS::MouseEvent& me, OIS::MouseButto
 bool PlayerController_c::mouseReleased(const OIS::MouseEvent& me, OIS::MouseButtonID id)
 {
 	return true;
-}
+}*/
 
 
 void PlayerController_c::Update(){

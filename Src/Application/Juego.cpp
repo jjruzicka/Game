@@ -26,7 +26,6 @@ Juego::Juego()
 {
 	motorFisico = MotorFisico::getInstancia();
 	motorGrafico = MotorGrafico::getInstancia();
-	inputManager = InputManager::getInstancia();
 
 	camNode = motorGrafico->getSceMgr()->getRootSceneNode()->createChildSceneNode();
 	
@@ -50,18 +49,18 @@ Juego::Juego()
 	ent1->setPoy(5);
 	ent1->setPoz(1800);
 	Render_c* render = new Render_c("p", ent1, "Sinbad", "p");
-	//StatsPJ_c* stas = new StatsPJ_c(100, 20, 50, 50,this,ent1);
-	//ent1->AddComponent(stas);
+	StatsPJ_c* stas = new StatsPJ_c(100, 20, 50, 50,this,ent1);
+	ent1->AddComponent(stas);
 	ent1->AddComponent(render);
 
-	/*RigidBody_c* player_rb = new RigidBody_c(ent1, motorFisico->getBulletWorld(), 5, 5, 5, 1);
+	RigidBody_c* player_rb = new RigidBody_c(ent1, 5, 5, 5, 1);
 	player_rb->getRigidBody()->setCollisionFlags(player_rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
 	player_rb->getRigidBody()->setUserPointer(ent1);
 	ent1->AddComponent(player_rb);
-	//PlayerController_c * ois = new PlayerController_c(ent1, inputcomp_, this, stas);
-	//ent1->AddComponent(ois);
+	PlayerController_c * ois = new PlayerController_c(ent1, this, stas);
+	ent1->AddComponent(ois);
 	entidades.push_back(ent1);
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	Entidad* ent3 = new Entidad("GM");
 	gm = new GameManager_c(ent1);
 	ent3->AddComponent(gm);
@@ -169,7 +168,7 @@ void Juego::createArbolitos(){
 
 		Render_c* render8 = new Render_c(str, arbolitos[i], "tree.09", str);
 		arbolitos[i]->AddComponent(render8);
-		RigidBody_c* static_rb7 = new RigidBody_c(arbolitos[i], motorFisico->getBulletWorld(), 50, 50, 50, 0);
+		RigidBody_c* static_rb7 = new RigidBody_c(arbolitos[i], 50, 50, 50, 0);
 		static_rb7->getRigidBody()->setCollisionFlags(static_rb7->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
 		static_rb7->getRigidBody()->setUserPointer(arbolitos[i]);
 		arbolitos[i]->AddComponent(static_rb7);
@@ -184,7 +183,7 @@ void Juego::creaNpcMisiones(int x, int y, int z, int misionT1, int expM1, int mi
 	ent2->setPoy(y);
 	ent2->setPoz(z);
 
-	RigidBody_c* static_rb = new RigidBody_c(ent2, motorFisico->getBulletWorld(), 5, 5, 5, 1);
+	RigidBody_c* static_rb = new RigidBody_c(ent2, 5, 5, 5, 1);
 	static_rb->getRigidBody()->setCollisionFlags(static_rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
 	static_rb->getRigidBody()->setUserPointer(ent2);
 	ent2->AddComponent(static_rb);
@@ -215,7 +214,7 @@ void Juego::creaPan(int x, int y, int z, std::string idRender){
 	ent->setPox(x);// posicion 
 	ent->setPoy(y);
 	ent->setPoz(z);
-	RigidBody_c* static_rb3 = new RigidBody_c(ent, motorFisico->getBulletWorld(), 5, 5, 5, 1);
+	RigidBody_c* static_rb3 = new RigidBody_c(ent, 5, 5, 5, 1);
 	static_rb3->getRigidBody()->setCollisionFlags(static_rb3->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
 	static_rb3->getRigidBody()->setUserPointer(ent);
 	ent->AddComponent(static_rb3);
@@ -263,7 +262,7 @@ void Juego::creaOgreEnemyMele(int x, int y, int z, int vida, int damage, int arm
 	ent2->setPoz(z);
 	Render_c* render2 = new Render_c(idRender, ent2, "Sinbad", idRender);
 	ent2->AddComponent(render2);
-	RigidBody_c* static_rb = new RigidBody_c(ent2, motorFisico->getBulletWorld(), 5, 5, 5, 1);
+	RigidBody_c* static_rb = new RigidBody_c(ent2, 5, 5, 5, 1);
 	static_rb->getRigidBody()->setCollisionFlags(static_rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
 	static_rb->getRigidBody()->setUserPointer(ent2);
 	ent2->AddComponent(static_rb);

@@ -6,7 +6,8 @@
 #include "Render_c.h"
 #include "Juego.h"
 #include "StatsPJ_c.h"
-class PlayerController_c
+#include "InputManager.h"
+class PlayerController_c : public Component,  OIS::KeyListener
 {
 public:
 	PlayerController_c(Entidad* ent, Juego* escena, StatsPJ_c* estadisticas);
@@ -26,9 +27,10 @@ public:
 private:
 	bool keyPressed(const OIS::KeyEvent& keyP);
 	bool keyReleased(const OIS::KeyEvent& keyP);
-	bool mouseMoved(const OIS::MouseEvent& me);
+	/*bool mouseMoved(const OIS::MouseEvent& me);
 	bool mousePressed(const OIS::MouseEvent& me, OIS::MouseButtonID id);
-	bool mouseReleased(const OIS::MouseEvent& me, OIS::MouseButtonID id);
+	bool mouseReleased(const OIS::MouseEvent& me, OIS::MouseButtonID id);*/
+	InputManager * inputManager;
 	Entidad* entidad;
 	bool mas, istimetoStop;
 	Juego* escena;

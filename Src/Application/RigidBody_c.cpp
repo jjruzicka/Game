@@ -2,11 +2,12 @@
 #include <iostream>
 #include "Render_c.h"
 //LA Z ES LA ALTURA CUANDO SE METE A BULLET
-RigidBody_c::RigidBody_c(Entidad* _ent, btDynamicsWorld* _bulletWorld,
+RigidBody_c::RigidBody_c(Entidad* _ent, 
 	float _profundo, float _ancho, float _alto, btScalar _masa/* bool isTrigger*/)
 {
 	ent = _ent;
-	bulletWorld = _bulletWorld;
+	motorFisico = MotorFisico::getInstancia();
+	bulletWorld = motorFisico->getBulletWorld();
 	alto = _alto;
 	ancho = _ancho;
 	profundo = _profundo;
