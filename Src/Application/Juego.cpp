@@ -262,9 +262,9 @@ void Juego::entidadFactory(std::string path){
 	}
 	else{
 		while (!file.fail() && !finish){
-			std::string tipo;
+			std::string tipo, target;
 			file >> tipo;
-			float x, y, vida, armor, damage, misionT1, expM1, misionT2, expM2,  misionT3,expM3,misionT4, expM4,misionT5,expM5;
+			float x, y, vida, armor, damage, numMisiones, numTargets, exp;
 			file >> x >> y;
 
 			if (tipo == "Jugador"){
@@ -300,7 +300,7 @@ void Juego::entidadFactory(std::string path){
 				entidades.push_back(ent);
 			}
 			else if (tipo == "Npc"){
-				file >> misionT1 >> expM1 >> misionT2 >> expM2 >> misionT3 >> expM3 >> misionT4 >> expM4 >> misionT5 >> expM5;
+				file >> numMisiones;
 				Entidad* ent2 = new Entidad("p2");
 				ent2->setPox(x);// posicion 
 				ent2->setPoy(5);
@@ -311,24 +311,11 @@ void Juego::entidadFactory(std::string path){
 				ent2->AddComponent(static_rb);
 				PatrullarNPC* patrulla = new PatrullarNPC(10, ent2);
 				ent2->AddComponent(patrulla);
-				Mision_c* mision = new Mision_c(misionT1, "Pan", expM1, ent2);
-				ent2->AddComponent(mision);
-				Mision_c* mision9 = new Mision_c(1, "ogroEnemy", 4000, ent2);
-				ent2->AddComponent(mision9);
-				Mision_c* mision8 = new Mision_c(2, "ogroEnemy", 4500, ent2);
-				ent2->AddComponent(mision8);
-				Mision_c* mision7 = new Mision_c(1, "ogroEnemy", 1000, ent2);
-				ent2->AddComponent(mision7);
-				Mision_c* mision6 = new Mision_c(1, "ogroEnemy", 2000, ent2);
-				ent2->AddComponent(mision6);
-				Mision_c* mision5 = new Mision_c(misionT5, "Pan", expM5, ent2);
-				ent2->AddComponent(mision5);
-				Mision_c* mision4 = new Mision_c(misionT4, "ogroEnemy", expM4, ent2);
-				ent2->AddComponent(mision4);
-				Mision_c* mision3 = new Mision_c(misionT3, "ogroEnemy", expM3, ent2);
-				ent2->AddComponent(mision3);
-				Mision_c* mision2 = new Mision_c(misionT2, "ogroEnemy", expM2, ent2);
-				ent2->AddComponent(mision2);
+				for (int i = 0; i < numMisiones; ++i){
+					file >> numTargets >> target >> exp;
+					Mision_c* mision = new Mision_c(numTargets, target, exp, ent2);
+					ent2->AddComponent(mision);
+				}
 				entidades.push_back(ent2);
 			}
 			else if(tipo == "Enemigo"){
