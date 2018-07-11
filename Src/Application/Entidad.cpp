@@ -1,6 +1,15 @@
 #include "Entidad.h"
 #include <typeinfo>
 #include <string>
+
+Entidad::Entidad()
+{
+	posicion = { 0, 0, 0 }; // coordenadas de un punto
+	rotation = { 0, 0, 0 }; // vector
+	orientacion = { 0, 0, 1 }; // vector
+	angRot = 0;
+}
+
 Entidad::Entidad(std::string id)
 {
 	posicion = { 0, 0, 0 }; // coordenadas de un punto

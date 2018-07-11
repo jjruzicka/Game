@@ -80,8 +80,8 @@ void Menu::MenuToExit(){
 }
 
 void Menu::MenuToPlay(){
-	Escenas * juego = new Juego();
-	estadosManager->changeEstado(juego);
+	//Escenas * juego = new Juego();
+	//estadosManager->changeEstado(juego);
 }
 
 bool Menu::run(){

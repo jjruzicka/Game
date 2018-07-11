@@ -10,6 +10,8 @@
 #include "EntidadRender.h"
 #include "Trigger_c.h"
 #include "ComportamientoEnem_c.h"
+#include <stdio.h>
+#include <fstream>
 using namespace Ogre;
 enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
@@ -22,7 +24,7 @@ StatsEntJuego_c* stats;
 StatsPJ_c* statspj;
 RigidBody_c* rb;
 
-Juego::Juego()
+Juego::Juego(std::string path)
 {
 	motorFisico = MotorFisico::getInstancia();
 	motorGrafico = MotorGrafico::getInstancia();
@@ -43,13 +45,14 @@ Juego::Juego()
 	camNode->attachObject(cam);
 	cam->setQueryFlags(MY_QUERY_IGNORE);
 	//////////////////////////////////////////////////////rb del pj PRINCIPAL////////////////////////////////////////////////////
-	Entidad* ent1 = new Entidad("p");
+	entidadFactory(path);
+	/*Entidad* ent1 = new Entidad("p");
 	//1683, 50, 2116
 	ent1->setPox(1700);
 	ent1->setPoy(5);
-	ent1->setPoz(1800);
-	Render_c* render = new Render_c("p", ent1, "Sinbad", "p");
-	StatsPJ_c* stas = new StatsPJ_c(100, 20, 50, 50,this,ent1);
+	ent1->setPoz(1800);*/
+	//Render_c* render = new Render_c("p", ent1, "Sinbad", "p");
+	/*StatsPJ_c* stas = new StatsPJ_c(100, 20, 50, 50,this,ent1);
 	ent1->AddComponent(stas);
 	ent1->AddComponent(render);
 
@@ -59,7 +62,7 @@ Juego::Juego()
 	ent1->AddComponent(player_rb);
 	PlayerController_c * ois = new PlayerController_c(ent1, this, stas);
 	ent1->AddComponent(ois);
-	entidades.push_back(ent1);
+	entidades.push_back(ent1);*/
 	/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	Entidad* ent3 = new Entidad("GM");
 	gm = new GameManager_c(ent1);
@@ -105,9 +108,9 @@ Juego::Juego()
 	motorGrafico->getSceMgr()->setAmbientLight(Ogre::ColourValue(0.2, 0.2, 0.2));
 
 	// also need to tell where we are
-	camNode->setPosition(Ogre::Vector3(ent1->getPox(), ent1->getPoy() + 10, ent1->getPoz() - 30));
+	camNode->setPosition(Ogre::Vector3(entidades[0]->getPox(), entidades[0]->getPoy() + 10, entidades[0]->getPoz() - 30));
 	camNode->rotate(Ogre::Vector3(0, 0, 1), Ogre::Degree(180));
-	camNode->lookAt(Ogre::Vector3(ent1->getPox(), ent1->getPoy() + 5, ent1->getPoz()), Ogre::Node::TS_WORLD);
+	camNode->lookAt(Ogre::Vector3(entidades[0]->getPox(), entidades[0]->getPoy() + 5, entidades[0]->getPoz()), Ogre::Node::TS_WORLD);
 
 	Entidad* entCamara = new Entidad("camara");
 	//CameraMove_c* camMove = new CameraMove_c(entCamara, ent1, camNode, inputcomp_);
@@ -406,6 +409,57 @@ void Juego::killAdd(Entidad* obj){
 }
 void Juego::muerteJugador(){
 	//escenasManager->GameToMenu();
+}
+
+void Juego::entidadFactory(std::string path){
+	int contPan = 1, contEnemigo = 1, contArbol = 1;
+	bool finish = false;
+	std::ifstream file(path);
+	//If the map couldn`t be loaded
+	if (false)
+	{
+		std::cout << "Unable to load map file!\n";
+	}
+	else{
+		while (!file.fail() && !finish){
+			std::string tipo;
+			file >> tipo;
+			float x, y;
+			file >> x >> y;
+
+			if (tipo == "Jugador"){
+				Entidad* ent = new Entidad("p");
+				ent->setPox(x);
+				ent->setPoy(5);
+				ent->setPoz(y);
+				Render_c* render = new Render_c("p", ent, "Sinbad", "p");
+				ent->AddComponent(render);
+				StatsPJ_c* stas = new StatsPJ_c(100, 20, 50, 50, this, ent);
+				ent->AddComponent(stas);
+				RigidBody_c* player_rb = new RigidBody_c(ent, 5, 5, 5, 1);
+				player_rb->getRigidBody()->setCollisionFlags(player_rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
+				player_rb->getRigidBody()->setUserPointer(ent);
+				ent->AddComponent(player_rb);
+				PlayerController_c * ois = new PlayerController_c(ent, this, stas);
+				ent->AddComponent(ois);
+				entidades.push_back(ent);
+			}
+			else if(tipo == "Pan"){
+			}
+			else if(tipo == "Enemigo"){
+			}
+			else if (tipo == "Arbol"){
+			}
+			else if (tipo == ""){
+				std::cout << "Finished reading the file!\n";
+				finish = true;
+			}
+			else
+				std::cout << "Type of entity doesn`t exist!\n";
+
+
+		}
+	}
 }
 
 Juego::~Juego()

@@ -7,13 +7,14 @@
 class Juego : public Escenas
 {
 public:
-	Juego();
+	Juego(std::string path);
 	virtual ~Juego();
 	virtual bool run();
 	void activaMision(Entidad* npc);
 	void atacar(Entidad* npc);
 	void killAdd(Entidad* obj);
 	void muerteJugador();
+	void entidadFactory(std::string path);
 	
 private:
 

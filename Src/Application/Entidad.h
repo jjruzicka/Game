@@ -19,6 +19,7 @@ struct PosF{
 class Entidad
 {
 public:
+	Entidad();
 	Entidad(std::string id);
 	~Entidad();
 	void Update();
