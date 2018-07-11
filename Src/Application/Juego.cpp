@@ -424,7 +424,7 @@ void Juego::entidadFactory(std::string path){
 		while (!file.fail() && !finish){
 			std::string tipo;
 			file >> tipo;
-			float x, y;
+			float x, y, vida, armor, damage;
 			file >> x >> y;
 
 			if (tipo == "Jugador"){
@@ -445,10 +445,61 @@ void Juego::entidadFactory(std::string path){
 				entidades.push_back(ent);
 			}
 			else if(tipo == "Pan"){
+				Entidad* ent = new Entidad("pan");
+				ent->setPox(x);// posicion 
+				ent->setPoy(5);
+				ent->setPoz(y);
+				Render_c* render = new Render_c("pan" + std::to_string(contPan), ent, "WoodPallet", "pan" + std::to_string(contPan));
+				++contPan;
+				ent->AddComponent(render);
+				RigidBody_c* static_rb = new RigidBody_c(ent, 5, 5, 5, 1);
+				static_rb->getRigidBody()->setCollisionFlags(static_rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
+				static_rb->getRigidBody()->setUserPointer(ent);
+				ent->AddComponent(static_rb);
+				entidades.push_back(ent);
 			}
 			else if(tipo == "Enemigo"){
+				file >> vida >> armor >> damage;
+				Entidad* ent = new Entidad("ogroEnemy");
+				ent->setPox(x);// posicion 
+				ent->setPoy(5);
+				ent->setPoz(y);
+				Render_c* render2 = new Render_c("ogroEnemy" + std::to_string(contEnemigo), ent, "Sinbad", "ogroEnemy" + std::to_string(contEnemigo));
+				++contEnemigo;
+				ent->AddComponent(render2);
+				RigidBody_c* rb = new RigidBody_c(ent, 5, 5, 5, 1);
+				rb->getRigidBody()->setCollisionFlags(rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
+				rb->getRigidBody()->setUserPointer(ent);
+				ent->AddComponent(rb);
+				ComportamientoEnem_c* compEnem = new ComportamientoEnem_c(ent);
+				ent->AddComponent(compEnem);
+				StatsEntJuego_c* statsE = new StatsEntJuego_c(vida, armor, damage, this, ent);
+				ent->AddComponent(statsE);
+				entidades.push_back(ent);
+
+				Entidad* trigger = new Entidad("trigger");
+				trigger->setPox(x);// posicion 
+				trigger->setPoy(5);
+				trigger->setPoz(y);
+				Trigger_c* t = new Trigger_c(trigger, ent, motorFisico->getBulletWorld(), 50, 50, 50);
+				t->actualizarPos(trigger->getPox(), trigger->getPoy(), trigger->getPoz());
+				//t->getTrigger()->setUserPointer(trigger);
+				//trigger->AddComponent(t);
+				entidades.push_back(trigger);
 			}
 			else if (tipo == "Arbol"){
+				Entidad* ent = new Entidad("arbol");
+				ent->setPox(x);// posicion 
+				ent->setPoy(250);
+				ent->setPoz(y);
+				Render_c* render8 = new Render_c("arbol" + std::to_string(contArboles), ent, "tree.09", "arbol" + std::to_string(contArboles));
+				++contArbol;
+				ent->AddComponent(render8);
+				RigidBody_c* static_rb = new RigidBody_c(ent, 100, 100, 10000, 0);
+				static_rb->getRigidBody()->setCollisionFlags(static_rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
+				static_rb->getRigidBody()->setUserPointer(ent);
+				ent->AddComponent(static_rb);
+				entidades.push_back(ent);
 			}
 			else if (tipo == ""){
 				std::cout << "Finished reading the file!\n";

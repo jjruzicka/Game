@@ -20,6 +20,9 @@ Trigger_c::Trigger_c(Entidad* _ent, Entidad* _entEne, btDynamicsWorld* _bulletWo
     trigger->setCollisionFlags(btCollisionObject::CF_NO_CONTACT_RESPONSE);
     bulletWorld->addCollisionObject(trigger);
 	st = new StatsEntJuego_c();
+
+	actualizarPos(ent->getPox(), ent->getPoy(), ent->getPoz());
+	trigger->setUserPointer(ent);
 }
 
 
