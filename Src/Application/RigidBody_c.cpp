@@ -29,6 +29,9 @@ RigidBody_c::RigidBody_c(Entidad* _ent,
 	rb->setLinearFactor(btVector3(1,0,1));
 	rb->setSleepingThresholds(0, 0);
 	bulletWorld->addRigidBody(rb);
+
+	rb->setCollisionFlags(rb->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
+	rb->setUserPointer(ent);
 }
 
 

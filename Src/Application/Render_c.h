@@ -15,11 +15,15 @@ public:
 	Ogre::SceneNode* getNode(){
 		return node;
 	}
+	std::string getIDRender(){
+		return nombreEntidad;
+	}
 	virtual	void Update();
 private:
 	MotorGrafico * motorGrafico;
 	Ogre::SceneNode* node;
 	Entidad* ent;
+	std::string nombreEntidad;
 	Ogre::Entity* entOgre;
 	Ogre::Quaternion anguloRot;
 	float anguloRotent;

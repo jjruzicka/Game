@@ -11,7 +11,7 @@ bool callbackfunction(btManifoldPoint& cp, const btCollisionObjectWrapper * colO
 			PlayerController_c * pC = new PlayerController_c();
 			PatrullarNPC* patroll = new PatrullarNPC();
 			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(pC)->chocasCon(1, (Entidad*)colObj1->getCollisionObject()->getUserPointer());
-			((Entidad*)colObj1->getCollisionObject()->getUserPointer())->GetComponent(patroll)->chocasCon(1);
+			//((Entidad*)colObj1->getCollisionObject()->getUserPointer())->GetComponent(patroll)->chocasCon(1);
 		}
 		else if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "ogroEnemy"){
 			PlayerController_c * pC = new PlayerController_c();
@@ -24,6 +24,12 @@ bool callbackfunction(btManifoldPoint& cp, const btCollisionObjectWrapper * colO
 		}
 		else if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "pan"){
 			PlayerController_c * pC = new PlayerController_c();
+			std::cout << "saaaaaaaa00";
+			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(pC)->chocasCon(3, ((Entidad*)colObj1->getCollisionObject()->getUserPointer()));
+		}
+		else if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "arbol"){
+			PlayerController_c * pC = new PlayerController_c();
+			std::cout << "oooooooooooooooooooooooOOOO";
 			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(pC)->chocasCon(3, ((Entidad*)colObj1->getCollisionObject()->getUserPointer()));
 		}
 		else if (((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p"){

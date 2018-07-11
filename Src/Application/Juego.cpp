@@ -23,6 +23,7 @@ Mision_c* mision;
 StatsEntJuego_c* stats;
 StatsPJ_c* statspj;
 RigidBody_c* rb;
+Render_c * render;
 
 Juego::Juego(std::string path)
 {
@@ -32,10 +33,6 @@ Juego::Juego(std::string path)
 	camNode = motorGrafico->getSceMgr()->getRootSceneNode()->createChildSceneNode();
 	
 	cont = 0;
-	/*inputcomp_ = InputComponent::getSingletonPtr();
-	inputcomp_->initialise(motorGrafico->getWindow());
-	inputcomp_->addKeyListener(this, "teclado3");
-	inputcomp_->addMouseListener(this, "raton3");*/
 
 	// create the camera
 	cam = motorGrafico->getSceMgr()->createCamera("CamJuego");
@@ -46,55 +43,12 @@ Juego::Juego(std::string path)
 	cam->setQueryFlags(MY_QUERY_IGNORE);
 	//////////////////////////////////////////////////////rb del pj PRINCIPAL////////////////////////////////////////////////////
 	entidadFactory(path);
-	/*Entidad* ent1 = new Entidad("p");
-	//1683, 50, 2116
-	ent1->setPox(1700);
-	ent1->setPoy(5);
-	ent1->setPoz(1800);*/
-	//Render_c* render = new Render_c("p", ent1, "Sinbad", "p");
-	/*StatsPJ_c* stas = new StatsPJ_c(100, 20, 50, 50,this,ent1);
-	ent1->AddComponent(stas);
-	ent1->AddComponent(render);
-
-	RigidBody_c* player_rb = new RigidBody_c(ent1, 5, 5, 5, 1);
-	player_rb->getRigidBody()->setCollisionFlags(player_rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
-	player_rb->getRigidBody()->setUserPointer(ent1);
-	ent1->AddComponent(player_rb);
-	PlayerController_c * ois = new PlayerController_c(ent1, this, stas);
-	ent1->AddComponent(ois);
-	entidades.push_back(ent1);*/
-	/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/*
 	Entidad* ent3 = new Entidad("GM");
 	gm = new GameManager_c(ent1);
 	ent3->AddComponent(gm);
 	entidades.push_back(ent3);
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	creaNpcMisiones(1700,5,1850,3,125,1,300,3,650,3,1400,1,3200,"p2");
-	/////////////////////////////////////	MISION  1	////////////////////////////////////////////////////////////////////
-	creaPan(1750, 5, 1750, "pan1");
-	creaPan(1650, 5, 1700, "pan2");
-	creaPan(1700, 5, 1650, "pan3");
-	/////////////////////////////////////	MISION  2	////////////////////////////////////////////////////////////////////
-	creaOgreEnemyMele(1900, 5, 1800,100,25,0, "ogreEnemy1");
-	/////////////////////////////////////	MISION  3	////////////////////////////////////////////////////////////////////
-	creaOgreEnemyMele(1700, 5, 2100, 200, 45, 50, "ogreEnemy2");
-	creaOgreEnemyMele(1800, 5, 2100, 200, 45, 50, "ogreEnemy3");
-	creaOgreEnemyMele(1650, 5, 2100, 200, 45, 50, "ogreEnemy4");
-	/////////////////////////////////////	MISION  4	////////////////////////////////////////////////////////////////////
-	creaOgreEnemyMele(1400, 5, 1800, 200, 80, 100, "ogreEscolta1");
-	creaOgreEnemyMele(1400, 5, 1800, 200, 80, 100, "ogreEscolta2");
-	creaOgreEnemyMele(1250, 5, 1800, 400, 125, 200, "ogreBoss");
-	/////////////////////////////////////	MISION  5	////////////////////////////////////////////////////////////////////
-	creaPan(1200, 5, 1800, "prisionero");
-	/////////////////////////////////////	Extra   1	////////////////////////////////////////////////////////////////////
-	creaOgreEnemyMele(1700, 5, 1450, 700, 250, 200, "muerte1");
-	creaOgreEnemyMele(1250, 5, 1500, 500, 300, 200, "muerte2");
-	creaOgreEnemyMele(1700, 5, 2300, 600, 225, 200, "muerte3");
-	creaOgreEnemyMele(1700, 5, 2300, 1500, 25, 200, "muerte4");
-	creaOgreEnemyMele(1050, 5, 1800, 1000, 420, 200, "muerte5");*/
-
-
-
+*/
 
 	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
 	lightdir.normalise();
@@ -152,77 +106,16 @@ Juego::Juego(std::string path)
 	arbolitos.reserve(numArboles);
 	createArbolitos();*/
 
-	/*pC = new PlayerController_c();
+	stats = new StatsEntJuego_c();
+	statspj = new StatsPJ_c();
+	render = new Render_c();
+	pC = new PlayerController_c();
 	mision = new Mision_c();
 	stats = new StatsEntJuego_c();
 	statspj = new StatsPJ_c();
-	rb = new RigidBody_c();*/
-}
-void Juego::createArbolitos(){
-	for (int i = 0; i < numArboles; i++){
-		std::stringstream ss;
-
-		ss << i;
-		std::string str = ss.str();
-		arbolitos.push_back(new Entidad(str));
-		arbolitos[i]->setPox(rand() % 12000);// posicion 
-		arbolitos[i]->setPoy(250);
-		arbolitos[i]->setPoz(rand() % 12000);
-
-		Render_c* render8 = new Render_c(str, arbolitos[i], "tree.09", str);
-		arbolitos[i]->AddComponent(render8);
-		RigidBody_c* static_rb7 = new RigidBody_c(arbolitos[i], 50, 50, 50, 0);
-		static_rb7->getRigidBody()->setCollisionFlags(static_rb7->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
-		static_rb7->getRigidBody()->setUserPointer(arbolitos[i]);
-		arbolitos[i]->AddComponent(static_rb7);
-		entidades.push_back(arbolitos[i]);
-	}
+	rb = new RigidBody_c();
 }
 
-
-void Juego::creaNpcMisiones(int x, int y, int z, int misionT1, int expM1, int misionT2, int expM2, int misionT3, int expM3, int misionT4, int expM4, int misionT5, int expM5, std::string idRender){
-	Entidad* ent2 = new EntidadRender("p2", idRender, motorGrafico->getSceMgr());
-	ent2->setPox(x);// posicion 
-	ent2->setPoy(y);
-	ent2->setPoz(z);
-
-	RigidBody_c* static_rb = new RigidBody_c(ent2, 5, 5, 5, 1);
-	static_rb->getRigidBody()->setCollisionFlags(static_rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
-	static_rb->getRigidBody()->setUserPointer(ent2);
-	ent2->AddComponent(static_rb);
-	PatrullarNPC* patrulla = new PatrullarNPC(10, ent2);
-	ent2->AddComponent(patrulla);
-	Mision_c* mision = new Mision_c(misionT1, "Pan", expM1, ent2);
-	ent2->AddComponent(mision);
-	Mision_c* mision9 = new Mision_c(1, "ogroEnemy", 4000, ent2);
-	ent2->AddComponent(mision9);
-	Mision_c* mision8 = new Mision_c(2, "ogroEnemy", 4500, ent2);
-	ent2->AddComponent(mision8);
-	Mision_c* mision7 = new Mision_c(1, "ogroEnemy", 1000, ent2);
-	ent2->AddComponent(mision7);
-	Mision_c* mision6 = new Mision_c(1, "ogroEnemy", 2000, ent2);
-	ent2->AddComponent(mision6);
-	Mision_c* mision5 = new Mision_c(misionT5, "Pan", expM5, ent2);
-	ent2->AddComponent(mision5);
-	Mision_c* mision4 = new Mision_c(misionT4, "ogroEnemy", expM4, ent2);
-	ent2->AddComponent(mision4);
-	Mision_c* mision3 = new Mision_c(misionT3, "ogroEnemy", expM3, ent2);
-	ent2->AddComponent(mision3);
-	Mision_c* mision2 = new Mision_c(misionT2, "ogroEnemy", expM2, ent2);
-	ent2->AddComponent(mision2);
-	entidades.push_back(ent2);
-}
-void Juego::creaPan(int x, int y, int z, std::string idRender){
-	Entidad* ent = new EntidadRender("Pan", idRender, motorGrafico->getSceMgr());
-	ent->setPox(x);// posicion 
-	ent->setPoy(y);
-	ent->setPoz(z);
-	RigidBody_c* static_rb3 = new RigidBody_c(ent, 5, 5, 5, 1);
-	static_rb3->getRigidBody()->setCollisionFlags(static_rb3->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
-	static_rb3->getRigidBody()->setUserPointer(ent);
-	ent->AddComponent(static_rb3);
-	entidades.push_back(ent);
-}
 
 bool Juego::keyPressed(const OIS::KeyEvent& keyP){
 	switch (keyP.key)
@@ -257,59 +150,6 @@ bool Juego::keyReleased(const OIS::KeyEvent& keyP){
 }
 
 
-void Juego::creaOgreEnemyMele(int x, int y, int z, int vida, int damage, int armor, std::string idRender){
-	EntidadRender* ent2 = new EntidadRender("ogroEnemy");
-	ent2->setIdRender(idRender);
-	ent2->setPox(x);// posicion 
-	ent2->setPoy(y);
-	ent2->setPoz(z);
-	Render_c* render2 = new Render_c(idRender, ent2, "Sinbad", idRender);
-	ent2->AddComponent(render2);
-	RigidBody_c* static_rb = new RigidBody_c(ent2, 5, 5, 5, 1);
-	static_rb->getRigidBody()->setCollisionFlags(static_rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
-	static_rb->getRigidBody()->setUserPointer(ent2);
-	ent2->AddComponent(static_rb);
-	ComportamientoEnem_c* compEnem = new ComportamientoEnem_c(ent2);
-	ent2->AddComponent(compEnem);
-	StatsEntJuego_c* statsE = new StatsEntJuego_c(vida, armor, damage, this, ent2);
-	ent2->AddComponent(statsE);
-	entidades.push_back(ent2);
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	Entidad* trigger = new Entidad("trigger");
-	trigger->setPox(x);// posicion 
-	trigger->setPoy(y);
-	trigger->setPoz(z);
-	Trigger_c* t = new Trigger_c(trigger, ent2, motorFisico->getBulletWorld(), 50, 50, 50);
-	t->actualizarPos(trigger->getPox(), trigger->getPoy(), trigger->getPoz());
-	t->getTrigger()->setUserPointer(trigger);
-	trigger->AddComponent(t);
-	entidades.push_back(trigger);
-}
-
-/*bool callbackfunction(btManifoldPoint& cp, const btCollisionObjectWrapper * colObj0, int partId0, int index0, const btCollisionObjectWrapper * colObj1, int partId1, int index1){
-	if (((Entidad*)colObj0->getCollisionObject()->getUserPointer()) != nullptr && ((Entidad*)colObj1->getCollisionObject()->getUserPointer()) != nullptr){
-		if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "p2"){
-			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(pC)->chocasCon(1, (Entidad*)colObj1->getCollisionObject()->getUserPointer());
-			((Entidad*)colObj1->getCollisionObject()->getUserPointer())->GetComponent(patroll)->chocasCon(1);
-		}
-		else if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "ogroEnemy"){
-			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(pC)->chocasCon(2, ((Entidad*)colObj1->getCollisionObject()->getUserPointer()));
-		}
-        else if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "trigger"){
-			((Entidad*)colObj1->getCollisionObject()->getUserPointer())->GetComponent(trig)->getFather()->GetComponent(mE)->actua((Entidad*)colObj0->getCollisionObject()->getUserPointer());
-        }
-		else if ((((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p") && ((Entidad*)colObj1->getCollisionObject()->getUserPointer())->getID() == "Pan"){
-			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(pC)->chocasCon(3, ((Entidad*)colObj1->getCollisionObject()->getUserPointer()));
-		}
-		else if (((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p"){
-			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(pC)->chocasCon(0, nullptr);
-		}
-		else if (((Entidad*)colObj0->getCollisionObject()->getUserPointer())->getID() == "p2"){
-			((Entidad*)colObj0->getCollisionObject()->getUserPointer())->GetComponent(patroll)->chocasCon(0);
-		}
-	}
-	return false;
-}*/
 
 void Juego::updateGUI(){
 
@@ -404,7 +244,7 @@ void Juego::killAdd(Entidad* obj){
 		aux->GetComponent(rb)->getRigidBody()->setCollisionFlags(4);
 		motorFisico->getBulletWorld()->removeRigidBody(aux->GetComponent(rb)->getRigidBody());
 		entidades.pop_back();
-		motorGrafico->getSceMgr()->destroyEntity(static_cast<EntidadRender*>(obj)->getIdRender());
+		motorGrafico->getSceMgr()->destroyEntity(obj->GetComponent(render)->getIDRender());
 	}
 }
 void Juego::muerteJugador(){
@@ -424,7 +264,7 @@ void Juego::entidadFactory(std::string path){
 		while (!file.fail() && !finish){
 			std::string tipo;
 			file >> tipo;
-			float x, y, vida, armor, damage;
+			float x, y, vida, armor, damage, misionT1, expM1, misionT2, expM2,  misionT3,expM3,misionT4, expM4,misionT5,expM5;
 			file >> x >> y;
 
 			if (tipo == "Jugador"){
@@ -437,12 +277,15 @@ void Juego::entidadFactory(std::string path){
 				StatsPJ_c* stas = new StatsPJ_c(100, 20, 50, 50, this, ent);
 				ent->AddComponent(stas);
 				RigidBody_c* player_rb = new RigidBody_c(ent, 5, 5, 5, 1);
-				player_rb->getRigidBody()->setCollisionFlags(player_rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
-				player_rb->getRigidBody()->setUserPointer(ent);
 				ent->AddComponent(player_rb);
 				PlayerController_c * ois = new PlayerController_c(ent, this, stas);
 				ent->AddComponent(ois);
 				entidades.push_back(ent);
+
+				Entidad* ent3 = new Entidad("GM");
+				gm = new GameManager_c(ent);
+				ent3->AddComponent(gm);
+				entidades.push_back(ent3);
 			}
 			else if(tipo == "Pan"){
 				Entidad* ent = new Entidad("pan");
@@ -453,10 +296,40 @@ void Juego::entidadFactory(std::string path){
 				++contPan;
 				ent->AddComponent(render);
 				RigidBody_c* static_rb = new RigidBody_c(ent, 5, 5, 5, 1);
-				static_rb->getRigidBody()->setCollisionFlags(static_rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
-				static_rb->getRigidBody()->setUserPointer(ent);
 				ent->AddComponent(static_rb);
 				entidades.push_back(ent);
+			}
+			else if (tipo == "Npc"){
+				file >> misionT1 >> expM1 >> misionT2 >> expM2 >> misionT3 >> expM3 >> misionT4 >> expM4 >> misionT5 >> expM5;
+				Entidad* ent2 = new Entidad("p2");
+				ent2->setPox(x);// posicion 
+				ent2->setPoy(5);
+				ent2->setPoz(y);
+				Render_c * render = new Render_c("p2", ent2, "Sinbad", "p2");
+				ent2->AddComponent(render);
+				RigidBody_c* static_rb = new RigidBody_c(ent2, 5, 5, 5, 1);
+				ent2->AddComponent(static_rb);
+				PatrullarNPC* patrulla = new PatrullarNPC(10, ent2);
+				ent2->AddComponent(patrulla);
+				Mision_c* mision = new Mision_c(misionT1, "Pan", expM1, ent2);
+				ent2->AddComponent(mision);
+				Mision_c* mision9 = new Mision_c(1, "ogroEnemy", 4000, ent2);
+				ent2->AddComponent(mision9);
+				Mision_c* mision8 = new Mision_c(2, "ogroEnemy", 4500, ent2);
+				ent2->AddComponent(mision8);
+				Mision_c* mision7 = new Mision_c(1, "ogroEnemy", 1000, ent2);
+				ent2->AddComponent(mision7);
+				Mision_c* mision6 = new Mision_c(1, "ogroEnemy", 2000, ent2);
+				ent2->AddComponent(mision6);
+				Mision_c* mision5 = new Mision_c(misionT5, "Pan", expM5, ent2);
+				ent2->AddComponent(mision5);
+				Mision_c* mision4 = new Mision_c(misionT4, "ogroEnemy", expM4, ent2);
+				ent2->AddComponent(mision4);
+				Mision_c* mision3 = new Mision_c(misionT3, "ogroEnemy", expM3, ent2);
+				ent2->AddComponent(mision3);
+				Mision_c* mision2 = new Mision_c(misionT2, "ogroEnemy", expM2, ent2);
+				ent2->AddComponent(mision2);
+				entidades.push_back(ent2);
 			}
 			else if(tipo == "Enemigo"){
 				file >> vida >> armor >> damage;
@@ -468,8 +341,6 @@ void Juego::entidadFactory(std::string path){
 				++contEnemigo;
 				ent->AddComponent(render2);
 				RigidBody_c* rb = new RigidBody_c(ent, 5, 5, 5, 1);
-				rb->getRigidBody()->setCollisionFlags(rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
-				rb->getRigidBody()->setUserPointer(ent);
 				ent->AddComponent(rb);
 				ComportamientoEnem_c* compEnem = new ComportamientoEnem_c(ent);
 				ent->AddComponent(compEnem);
@@ -483,8 +354,8 @@ void Juego::entidadFactory(std::string path){
 				trigger->setPoz(y);
 				Trigger_c* t = new Trigger_c(trigger, ent, motorFisico->getBulletWorld(), 50, 50, 50);
 				t->actualizarPos(trigger->getPox(), trigger->getPoy(), trigger->getPoz());
-				//t->getTrigger()->setUserPointer(trigger);
-				//trigger->AddComponent(t);
+				t->getTrigger()->setUserPointer(trigger);
+				trigger->AddComponent(t);
 				entidades.push_back(trigger);
 			}
 			else if (tipo == "Arbol"){
@@ -495,9 +366,7 @@ void Juego::entidadFactory(std::string path){
 				Render_c* render8 = new Render_c("arbol" + std::to_string(contArboles), ent, "tree.09", "arbol" + std::to_string(contArboles));
 				++contArbol;
 				ent->AddComponent(render8);
-				RigidBody_c* static_rb = new RigidBody_c(ent, 100, 100, 10000, 0);
-				static_rb->getRigidBody()->setCollisionFlags(static_rb->getRigidBody()->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
-				static_rb->getRigidBody()->setUserPointer(ent);
+				RigidBody_c* static_rb = new RigidBody_c(ent, 100, 100, 100, 100);
 				ent->AddComponent(static_rb);
 				entidades.push_back(ent);
 			}

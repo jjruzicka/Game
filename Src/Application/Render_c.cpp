@@ -4,6 +4,7 @@
 Render_c::Render_c(std::string nombreNodo, Entidad* ent, std::string nombreMalla, std::string nombreEntidad)
 {
 	motorGrafico = MotorGrafico::getInstancia();
+	this->nombreEntidad = nombreEntidad;
 	this->ent = ent;
 	this->node = motorGrafico->getSceMgr()->getRootSceneNode()->createChildSceneNode(nombreNodo);
 	std::string mesh = nombreMalla + ".mesh";
