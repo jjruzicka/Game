@@ -26,6 +26,10 @@ PlayerController_c::PlayerController_c(Entidad * ent, Juego* esc, StatsPJ_c* est
 
 	cdCuracion = 2000;
 	contCura = 1000;
+
+	// Animacion
+	anim = new Animacion_c();
+	anim = entidad->GetComponent(anim);
 }
 
 bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
@@ -45,6 +49,8 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 	case OIS::KC_UP:
 	case OIS::KC_W:
 	{
+		anim->playAnim("RunTop", "RunBase");
+		anim->setFoward();
 		mas = true;
 		istimetoStop = true;
 	}
@@ -53,6 +59,8 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 	case OIS::KC_DOWN:
 	case OIS::KC_S:
 	{
+		anim->playAnim("RunTop", "RunBase");
+		anim->setBackwards();
 		mas = false;
 		istimetoStop = true;
 	}
@@ -96,10 +104,12 @@ bool PlayerController_c::keyReleased(const OIS::KeyEvent& keyP){
 		break;
 	case OIS::KC_UP:
 	case OIS::KC_W:
+		anim->stopAnim();
 		istimetoStop = false;
 		break;
 	case OIS::KC_DOWN:
 	case OIS::KC_S:
+		anim->stopAnim();
 		istimetoStop = false;
 		break;
 

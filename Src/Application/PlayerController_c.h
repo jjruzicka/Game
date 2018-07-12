@@ -7,6 +7,8 @@
 #include "Juego.h"
 #include "StatsPJ_c.h"
 #include "InputManager.h"
+#include "Animacion_c.h"
+
 class PlayerController_c : public Component,  OIS::KeyListener
 {
 public:
@@ -40,6 +42,8 @@ private:
 	int chocoCon;
 	Entidad* entColision;
 	Render_c* rc;
+	Animacion_c * anim;
+
 	int cdAtack;
 	int contAtack;
 

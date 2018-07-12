@@ -12,6 +12,8 @@
 #include "ComportamientoEnem_c.h"
 #include <stdio.h>
 #include <fstream>
+#include "Animacion_c.h"
+
 using namespace Ogre;
 enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
@@ -278,6 +280,8 @@ void Juego::entidadFactory(std::string path){
 				ent->AddComponent(stas);
 				RigidBody_c* player_rb = new RigidBody_c(ent, 5, 5, 5, 1);
 				ent->AddComponent(player_rb);
+				Animacion_c * anim = new Animacion_c(ent);
+				ent->AddComponent(anim);
 				PlayerController_c * ois = new PlayerController_c(ent, this, stas);
 				ent->AddComponent(ois);
 				entidades.push_back(ent);

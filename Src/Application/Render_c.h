@@ -18,6 +18,9 @@ public:
 	std::string getIDRender(){
 		return nombreEntidad;
 	}
+	Ogre::Entity * getEntity(){
+		return entOgre;
+	}
 	virtual	void Update();
 private:
 	MotorGrafico * motorGrafico;
