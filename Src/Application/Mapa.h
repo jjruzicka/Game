@@ -8,11 +8,13 @@
 #include <btBulletDynamicsCommon.h>
 #include "btHeightfieldTerrainShape.h"
 #include <iostream>
+#include "MotorFisico.h"
+#include "MotorGrafico.h"
 
 class Mapa
 {
 public:
-	Mapa(Ogre::SceneManager * scnMgr, Ogre::Light* light, btDynamicsWorld* World);
+	Mapa(Ogre::Light* light);
 	~Mapa();
 	void createmap();
 	void setPhysics();
@@ -21,13 +23,15 @@ public:
     }
 
 private:
+	MotorFisico * motorFisico;
+	MotorGrafico * motorGrafico;
+
 	void defineTerrain(long x, long y);
 	void initBlendMaps(Ogre::Terrain* terrain);
 	void configureTerrainDefaults(Ogre::Light* light);
 	
-	Ogre::SceneManager * scn;
+
 	Ogre::Light* luz;
-	btDynamicsWorld* bulletWorld;
 	bool mTerrainsImported;
 	Ogre::TerrainGroup* mTerrainGroup;
 	Ogre::TerrainGlobalOptions* mTerrainGlobals;

@@ -8,10 +8,17 @@ class Camera_c :
 public:
 	Camera_c(){}
 	Camera_c(Entidad * ent);
-	virtual ~Camera_c();
+	~Camera_c();
 	void Update(){};
+
+	Ogre::Camera* getCamera(){
+		return cam;
+	}
 	Ogre::SceneNode* getCamNode(){
 		return camNode;
+	}
+	Ogre::Viewport* getViwePort(){
+		return vp;
 	}
 private:
 

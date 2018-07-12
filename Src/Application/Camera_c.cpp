@@ -22,7 +22,6 @@ Camera_c::Camera_c(Entidad * ent)
 	cam->setQueryFlags(MY_QUERY_IGNORE);
 
 	// unimos a la ventana de juego
-	motorGrafico->getWindow()->removeAllViewports();
 	vp = motorGrafico->getWindow()->addViewport(cam);
 	vp->setBackgroundColour(Ogre::ColourValue(150, 150, 150));
 }
@@ -30,5 +29,8 @@ Camera_c::Camera_c(Entidad * ent)
 
 Camera_c::~Camera_c()
 {
+	motorGrafico->getSceMgr()->destroyCamera("CamJuego");
+	delete camNode;
+	motorGrafico->getWindow()->removeAllViewports();
 }
 

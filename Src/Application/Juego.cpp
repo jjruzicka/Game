@@ -30,28 +30,11 @@ Render_c * render;
 
 Juego::Juego(std::string path)
 {
-	motorFisico = MotorFisico::getInstancia();
 	motorGrafico = MotorGrafico::getInstancia();
-
-	//camNode = motorGrafico->getSceMgr()->getRootSceneNode()->createChildSceneNode();
-	
+	motorFisico = MotorFisico::getInstancia();
 	cont = 0;
 
-	// create the camera
-	/*cam = motorGrafico->getSceMgr()->createCamera("CamJuego");
-	cam->setNearClipDistance(0.1); //esto antes era 1
-	cam->setFarClipDistance(10000);
-	cam->setAutoAspectRatio(true);
-	camNode->attachObject(cam);
-	cam->setQueryFlags(MY_QUERY_IGNORE);*/
-	//////////////////////////////////////////////////////rb del pj PRINCIPAL////////////////////////////////////////////////////
 	entidadFactory(path);
-	/*
-	Entidad* ent3 = new Entidad("GM");
-	gm = new GameManager_c(ent1);
-	ent3->AddComponent(gm);
-	entidades.push_back(ent3);
-*/
 
 	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
 	lightdir.normalise();
@@ -64,47 +47,15 @@ Juego::Juego(std::string path)
 
 	motorGrafico->getSceMgr()->setAmbientLight(Ogre::ColourValue(0.2, 0.2, 0.2));
 
-	// also need to tell where we are
-	//camNode->setPosition(Ogre::Vector3(entidades[0]->getPox(), entidades[0]->getPoy() + 10, entidades[0]->getPoz() - 30));
-	//camNode->rotate(Ogre::Vector3(0, 0, 1), Ogre::Degree(180));
-	//camNode->lookAt(Ogre::Vector3(entidades[0]->getPox(), entidades[0]->getPoy() + 5, entidades[0]->getPoz()), Ogre::Node::TS_WORLD);
-
-	Entidad* entCamara = new Entidad("camara");
-	//CameraMove_c* camMove = new CameraMove_c(entCamara, ent1, camNode, inputcomp_);
-	//entCamara->AddComponent(camMove);
-	entidades.reserve(1);
-	entidades.push_back(entCamara);
-
-	//// also need to tell where we are
-	//camNode = scnMgr->getSceneNode("p")->createChildSceneNode();
-	//camNode->setPosition(Ogre::Vector3(0, 5, -35));
-	//camNode->rotate(Ogre::Quaternion(Ogre::Degree(180), Ogre::Vector3::UNIT_Y));
-	//camNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
-
-	//// create the camera
-	//cam = scnMgr->createCamera("Cam");
-	//cam->setNearClipDistance(0.1); //esto antes era 1
-	//cam->setFarClipDistance(10000);
-	//cam->setAutoAspectRatio(true);
-	//camNode->attachObject(cam);
-	//cam->setQueryFlags(MY_QUERY_IGNORE);
-
-
 	// and tell it to render into the main window
 
 	//GUI
 	//guiGame = new GUI(inputcomp_, vp, motorGrafico->getSceMgr(), cam, camNode, this, false);
 	//guiGame->createUI();
-	//Terrain
-	mapa = new Mapa(motorGrafico->getSceMgr(), light, motorFisico->getBulletWorld());
-	mapa->createmap();
-	mapa->setPhysics();
-	mapa->getRigidBody()->setUserPointer(mapa);
 
-	/*numArboles = 30;
-	contArboles = 0;
-	arbolitos.reserve(numArboles);
-	createArbolitos();*/
+	//Terrain
+	mapa = new Mapa(light);
+	
 
 	stats = new StatsEntJuego_c();
 	statspj = new StatsPJ_c();
@@ -359,7 +310,7 @@ void Juego::entidadFactory(std::string path){
 				ent->setPox(x);// posicion 
 				ent->setPoy(250);
 				ent->setPoz(y);
-				Render_c* render8 = new Render_c("arbol" + std::to_string(contArboles), ent, "tree.09", "arbol" + std::to_string(contArboles));
+				Render_c* render8 = new Render_c("arbol" + std::to_string(contArbol), ent, "tree.09", "arbol" + std::to_string(contArbol));
 				++contArbol;
 				ent->AddComponent(render8);
 				RigidBody_c* static_rb = new RigidBody_c(ent, 100, 100, 100, 100);

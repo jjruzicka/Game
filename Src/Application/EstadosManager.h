@@ -12,7 +12,7 @@ public:
 		return instancia;
 	}
 	void pushEstado(Escenas * escena);
-	void changeEstado(Escenas * escena);
+	void changeEstado(std::string tipo, std::string path);
 	Escenas * topEstado();
 private:
 	static EstadosManager * instancia;

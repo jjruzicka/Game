@@ -1,10 +1,14 @@
 #include "Mapa.h"
 
 
-Mapa::Mapa(Ogre::SceneManager * scnMgr, Ogre::Light* light, btDynamicsWorld* World) : mTerrainGroup(0), bulletWorld(World),
-mTerrainGlobals(0), scn(scnMgr), luz(light)
+Mapa::Mapa(Ogre::Light* light) : mTerrainGroup(0),
+mTerrainGlobals(0), luz(light)
 {
-
+	motorFisico = MotorFisico::getInstancia();
+	motorGrafico = MotorGrafico::getInstancia();
+	createmap();
+	setPhysics();
+	getRigidBody()->setUserPointer(this);
 }
 
 void Mapa::createmap(){
@@ -13,7 +17,7 @@ void Mapa::createmap(){
 	mTerrainGlobals = OGRE_NEW Ogre::TerrainGlobalOptions();
 
 	mTerrainGroup = OGRE_NEW Ogre::TerrainGroup(
-		scn,
+		motorGrafico->getSceMgr(),
 		Ogre::Terrain::ALIGN_X_Z,
 		65, 12000.0);
 	mTerrainGroup->setFilenameConvention(Ogre::String("terrain"), Ogre::String("dat"));
@@ -41,7 +45,7 @@ void Mapa::createmap(){
 	
 	mTerrainGroup->freeTemporaryResources();
 	
-	scn->setSkyDome(true, "Examples/CloudySky", 5, 8);
+	motorGrafico->getSceMgr()->setSkyDome(true, "Examples/CloudySky", 5, 8);
 }
 
 void Mapa::setPhysics(){
@@ -95,7 +99,7 @@ void Mapa::setPhysics(){
 		Ogre::Quaternion::IDENTITY.z,
 		Ogre::Quaternion::IDENTITY.w));
 
-	bulletWorld->addRigidBody(pBody);
+	motorFisico->getBulletWorld()->addRigidBody(pBody);
 
 }
 
@@ -176,7 +180,7 @@ void Mapa::configureTerrainDefaults(Ogre::Light* light)
 	mTerrainGlobals->setCompositeMapDistance(3000);
 
 	mTerrainGlobals->setLightMapDirection(light->getDerivedDirection());
-	mTerrainGlobals->setCompositeMapAmbient(scn->getAmbientLight());
+	mTerrainGlobals->setCompositeMapAmbient(motorGrafico->getSceMgr()->getAmbientLight());
 	mTerrainGlobals->setCompositeMapDiffuse(light->getDiffuseColour());
 
 	Ogre::Terrain::ImportData& importData = mTerrainGroup->getDefaultImportSettings();

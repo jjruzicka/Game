@@ -5,8 +5,9 @@
 #include <iostream>
 
 #include "Juego.h"
-
 #include "InputManager.h"
+#include "Camera_c.h"
+
 using namespace Ogre;
 enum QueryFlags {
 	MY_QUERY_IGNORE = 1 << 1,
@@ -16,23 +17,8 @@ Menu::Menu()
 {
 	motorGrafico = MotorGrafico::getInstancia();
 	estadosManager = EstadosManager::getInstancia();
-	//initBullet();
-
-	//this->scnM = scnM;
-
-	//inputcomp_ = InputComponent::getSingletonPtr();
-	//inputcomp_->initialise(mWindow);
 
 	exit = false;
-
-	/*Entidad* ent1 = new Entidad("p");
-	//1683, 50, 2116
-	ent1->setPox(1700);// posicion 
-	ent1->setPoy(50);
-	ent1->setPoz(2000); //cuanto menor sea el numero, mas se aleja de la camara
-	Render_c* render = new Render_c(scnMgr->getRootSceneNode()->createChildSceneNode("p"), ent1, "Sinbad", "p");
-	ent1->AddComponent(render);
-	entidades.push_back(ent1);*/
 
 	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
 	lightdir.normalise();
@@ -63,15 +49,20 @@ Menu::Menu()
 
 	*/
 
+	Entidad * camera = new Entidad();
+	Camera_c * cam = new Camera_c(camera);
+	camera->AddComponent(cam);
+	entidades.push_back(camera);
 
 	// and tell it to render into the main window
 
 	/*vp = motorGrafico->getWindow()->addViewport(cam);
 	vp->setBackgroundColour(Ogre::ColourValue::Black);
-
-	gui = new GUI(vp, motorGrafico->getSceMgr(), cam, camNode, this, true);
-	gui->createPanel();
 	*/
+
+	gui = new GUI(camera, this, true);
+	gui->createPanel();
+	
 	
 
 }
@@ -80,8 +71,7 @@ void Menu::MenuToExit(){
 }
 
 void Menu::MenuToPlay(){
-	//Escenas * juego = new Juego();
-	//estadosManager->changeEstado(juego);
+	estadosManager->changeEstado("Nivel", "..//Media//Levels//Nivel1.txt");
 }
 
 bool Menu::run(){
@@ -93,6 +83,9 @@ bool Menu::run(){
 	return true;
 }
 
+void Menu::initCamera(){
+
+}
 Menu::~Menu()
 {
 /*	InputManager * inputManager = InputManager::getInstancia();

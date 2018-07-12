@@ -12,6 +12,7 @@ public:
 	virtual bool run();
 	void MenuToPlay();
 	void MenuToExit();
+	void initCamera();
 	bool exit;
 private:
 	GUI* gui;

@@ -8,7 +8,8 @@ InputManager * InputManager::instancia = nullptr;
 Game::Game()
 {
 	estadosManager = EstadosManager::getInstancia();
-	Escenas * estadoInicial = new Juego("..//Media//Levels//Nivel1.txt");
+	//Escenas * estadoInicial = new Juego("..//Media//Levels//Nivel1.txt");
+	Escenas * estadoInicial = new Menu();
 	estadosManager->pushEstado(estadoInicial);
 
 	motorGrafico = MotorGrafico::getInstancia();

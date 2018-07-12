@@ -9,11 +9,12 @@
 #include "Escenas.h"
 
 #include "InputManager.h"
+#include "Camera_c.h"
 
 class GUI: public OIS::KeyListener , public OIS::MouseListener
 {
 public:
-	GUI(Ogre::Viewport* vp, Ogre::SceneManager * scnMgr, Ogre::Camera * cam, Ogre::SceneNode* camNode, Escenas* menuc, bool escena);
+	GUI(Entidad * cam, Escenas* menuc, bool escena);
 	void createPanel();
 	Gui3D::ScreenPanel* mSPanel2;
 	Gui3D::ScreenPanel* mSPanelExp;
@@ -50,7 +51,6 @@ private:
 
 	Escenas* menu;
 
-	Ogre::SceneManager * scn;
 	Ogre::Viewport* view;
 	bool exitGame(Gui3D::PanelElement* e);
 	bool textChanged(Gui3D::PanelElement* e);
@@ -111,8 +111,10 @@ private:
 	Ogre::Vector3 cameraDirection;
 	Ogre::Camera * camera;
 	Ogre::SceneNode* cNode;
-
+	Ogre::Viewport * vp;
 	MyPurplePanelColors* mMyPurplePanelColors;
 	
+	// getComponent
+	Camera_c * cameraComp;
 };
 

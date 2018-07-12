@@ -2,12 +2,13 @@
 #include <iostream>
 #include "Menu.h"
 
-GUI::GUI(Ogre::Viewport* vp, Ogre::SceneManager * scnMgr, Ogre::Camera * cam, Ogre::SceneNode* camNode, Escenas* menuc, bool escena)
+GUI::GUI(Entidad * cam, Escenas* menuc, bool escena)
 {
 	menu = menuc;
-	scn = scnMgr;
-	camera = cam;
-	cNode = camNode;
+	cameraComp = new Camera_c();
+	camera = cam->GetComponent(cameraComp)->getCamera();
+	cNode = cam->GetComponent(cameraComp)->getCamNode();
+	vp = cam->GetComponent(cameraComp)->getViwePort();
 	menuEscena = escena;
 	inputManager = InputManager::getInstancia();
 	inputManager->addKeyListener(this, "teclado2");
@@ -271,7 +272,6 @@ GUI::~GUI()
 	}
 	delete mMyPurplePanelColors;
 	menu = nullptr;
-	scn = nullptr;
 	camera = nullptr;
 	cNode = nullptr;
 	view = nullptr;
