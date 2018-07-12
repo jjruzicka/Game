@@ -8,13 +8,13 @@
 #include "OgreRenderWindow.h"
 #include "OgreViewport.h"
 #include "InputManager.h"
+#include "Camera_c.h"
 
-class CameraMove_c //: public InputComponent
+class CameraMove_c : public Component
 {
 public:
-	CameraMove_c(Entidad* eCam, Entidad* eJug, Ogre::SceneNode* camNode/*, InputComponent * input*/);
+	CameraMove_c(Entidad* ent, Entidad* eJug);
 	~CameraMove_c();
-
 	void Update();
 
 private:
@@ -33,6 +33,8 @@ private:
 
 	Entidad* entidadJugador;
 	Entidad* entidadCamara;
-	
+
+	// getComponent
+	Camera_c * camComponent;
 };
 #endif

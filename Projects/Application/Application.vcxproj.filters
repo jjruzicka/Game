@@ -75,6 +75,7 @@
     </ClCompile>
     <ClCompile Include="..\..\Src\Application\MotorFisico.cpp" />
     <ClCompile Include="..\..\Src\Application\Animacion_c.cpp" />
+    <ClCompile Include="..\..\Src\Application\Camera_c.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Application\CameraMove_c.h">
@@ -148,6 +149,7 @@
     </ClInclude>
     <ClInclude Include="..\..\Src\Application\MotorFisico.h" />
     <ClInclude Include="..\..\Src\Application\Animacion_c.h" />
+    <ClInclude Include="..\..\Src\Application\Camera_c.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="code">

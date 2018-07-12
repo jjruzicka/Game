@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\Src\Application\Animacion_c.cpp" />
     <ClCompile Include="..\..\Src\Application\CameraMove_c.cpp" />
+    <ClCompile Include="..\..\Src\Application\Camera_c.cpp" />
     <ClCompile Include="..\..\Src\Application\Component.cpp" />
     <ClCompile Include="..\..\Src\Application\Entidad.cpp" />
     <ClCompile Include="..\..\Src\Application\EntidadRender.cpp" />
@@ -43,6 +44,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\Src\Application\Animacion_c.h" />
     <ClInclude Include="..\..\Src\Application\CameraMove_c.h" />
+    <ClInclude Include="..\..\Src\Application\Camera_c.h" />
     <ClInclude Include="..\..\Src\Application\Component.h" />
     <ClInclude Include="..\..\Src\Application\Entidad.h" />
     <ClInclude Include="..\..\Src\Application\EntidadRender.h" />

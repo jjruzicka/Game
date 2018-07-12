@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include <fstream>
 #include "Animacion_c.h"
+#include "Camera_c.h"
 
 using namespace Ogre;
 enum QueryFlags {
@@ -32,17 +33,17 @@ Juego::Juego(std::string path)
 	motorFisico = MotorFisico::getInstancia();
 	motorGrafico = MotorGrafico::getInstancia();
 
-	camNode = motorGrafico->getSceMgr()->getRootSceneNode()->createChildSceneNode();
+	//camNode = motorGrafico->getSceMgr()->getRootSceneNode()->createChildSceneNode();
 	
 	cont = 0;
 
 	// create the camera
-	cam = motorGrafico->getSceMgr()->createCamera("CamJuego");
+	/*cam = motorGrafico->getSceMgr()->createCamera("CamJuego");
 	cam->setNearClipDistance(0.1); //esto antes era 1
 	cam->setFarClipDistance(10000);
 	cam->setAutoAspectRatio(true);
 	camNode->attachObject(cam);
-	cam->setQueryFlags(MY_QUERY_IGNORE);
+	cam->setQueryFlags(MY_QUERY_IGNORE);*/
 	//////////////////////////////////////////////////////rb del pj PRINCIPAL////////////////////////////////////////////////////
 	entidadFactory(path);
 	/*
@@ -64,9 +65,9 @@ Juego::Juego(std::string path)
 	motorGrafico->getSceMgr()->setAmbientLight(Ogre::ColourValue(0.2, 0.2, 0.2));
 
 	// also need to tell where we are
-	camNode->setPosition(Ogre::Vector3(entidades[0]->getPox(), entidades[0]->getPoy() + 10, entidades[0]->getPoz() - 30));
-	camNode->rotate(Ogre::Vector3(0, 0, 1), Ogre::Degree(180));
-	camNode->lookAt(Ogre::Vector3(entidades[0]->getPox(), entidades[0]->getPoy() + 5, entidades[0]->getPoz()), Ogre::Node::TS_WORLD);
+	//camNode->setPosition(Ogre::Vector3(entidades[0]->getPox(), entidades[0]->getPoy() + 10, entidades[0]->getPoz() - 30));
+	//camNode->rotate(Ogre::Vector3(0, 0, 1), Ogre::Degree(180));
+	//camNode->lookAt(Ogre::Vector3(entidades[0]->getPox(), entidades[0]->getPoy() + 5, entidades[0]->getPoz()), Ogre::Node::TS_WORLD);
 
 	Entidad* entCamara = new Entidad("camara");
 	//CameraMove_c* camMove = new CameraMove_c(entCamara, ent1, camNode, inputcomp_);
@@ -90,9 +91,6 @@ Juego::Juego(std::string path)
 
 
 	// and tell it to render into the main window
-	motorGrafico->getWindow()->removeAllViewports();
-	vp = motorGrafico->getWindow()->addViewport(cam);
-	vp->setBackgroundColour(Ogre::ColourValue(150, 150, 150));
 
 	//GUI
 	//guiGame = new GUI(inputcomp_, vp, motorGrafico->getSceMgr(), cam, camNode, this, false);
@@ -286,7 +284,14 @@ void Juego::entidadFactory(std::string path){
 				ent->AddComponent(ois);
 				entidades.push_back(ent);
 
-				Entidad* ent3 = new Entidad("GM");
+				Entidad * camera = new Entidad();
+				Camera_c * cam = new Camera_c(camera);
+				camera->AddComponent(cam);
+				CameraMove_c * camMove = new CameraMove_c(camera, ent);
+				camera->AddComponent(camMove);
+				entidades.push_back(camera);
+
+				Entidad* ent3 = new Entidad();
 				gm = new GameManager_c(ent);
 				ent3->AddComponent(gm);
 				entidades.push_back(ent3);

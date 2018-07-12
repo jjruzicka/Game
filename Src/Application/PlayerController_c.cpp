@@ -125,6 +125,7 @@ bool PlayerController_c::keyReleased(const OIS::KeyEvent& keyP){
 
 	case OIS::KC_PGDOWN:
 	case OIS::KC_E:
+		anim->stopAnim();
 		if (chocoCon != 0){
 			if (chocoCon == 1 && entColision != nullptr){//eres un npc y me das las misiones
 				escena->activaMision(entColision);
