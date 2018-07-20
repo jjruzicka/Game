@@ -15,6 +15,18 @@ public:
 	void killAdd(Entidad* obj);
 	void muerteJugador();
 	void entidadFactory(std::string path);
+	Entidad * getEntidadbyId(std::string id){
+		int i = 0;
+		int aux;
+		bool found = false;
+		while(i < entidades.size() && !found){
+			if (entidades[i]->getID() == id){
+				aux = i;
+				found = true;
+			}
+		}
+		return entidades[aux];
+	}
 	
 private:
 

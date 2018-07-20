@@ -30,7 +30,8 @@ Camera_c::Camera_c(Entidad * ent)
 Camera_c::~Camera_c()
 {
 	motorGrafico->getSceMgr()->destroyCamera("CamJuego");
-	delete camNode;
+	motorGrafico->getSceMgr()->getRootSceneNode()->removeAndDestroyChild(camNode);
+	//delete camNode;
 	motorGrafico->getWindow()->removeAllViewports();
 }
 

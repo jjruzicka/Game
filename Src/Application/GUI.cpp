@@ -10,9 +10,11 @@ GUI::GUI(Entidad * cam, Escenas* menuc, bool escena)
 	cNode = cam->GetComponent(cameraComp)->getCamNode();
 	vp = cam->GetComponent(cameraComp)->getViwePort();
 	menuEscena = escena;
-	inputManager = InputManager::getInstancia();
-	inputManager->addKeyListener(this, "teclado2");
-	inputManager->addMouseListener(this, "raton2");
+	if (menuEscena){
+		inputManager = InputManager::getInstancia();
+		inputManager->addKeyListener(this, "teclado2");
+		inputManager->addMouseListener(this, "raton2");
+	}
 	mMyPurplePanelColors = new MyPurplePanelColors();
 	mGui3D = new Gui3D::Gui3D(mMyPurplePanelColors);
 	mGui3D->createScreen(vp, "purple", "mainScreen");
@@ -32,10 +34,10 @@ GUI::GUI(Entidad * cam, Escenas* menuc, bool escena)
 	}
 	else{
 		
-		//UI3D = new Gui3D::Gui3D(mMyPurplePanelColors);
-		//UI3D->createScreen(vp, "purple", "mainScreen");
-		/*camera->setPosition(0, 6.f, -8);
-		camera->setDirection(Ogre::Vector3(0, 0, 1));*/
+		/*UI3D = new Gui3D::Gui3D(mMyPurplePanelColors);
+		UI3D->createScreen(vp, "purple", "mainScreen");
+		camera->setPosition(0, 6.f, -8);
+		camera->setDirection(Ogre::Vector3(0, 0, 1*/
 
 	}
 
@@ -243,8 +245,11 @@ bool GUI::mouseMoved(const OIS::MouseEvent &arg)
 
 GUI::~GUI()
 {
-	inputManager->removeKeyListener(this);
-	inputManager->removeMouseListener(this);
+	if (menuEscena){
+		inputManager->removeKeyListener(this);
+		inputManager->removeMouseListener(this);
+	}
+	
 
 	if (!menuEscena){
 		delete captionButton;

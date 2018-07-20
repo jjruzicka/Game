@@ -88,9 +88,6 @@ void Menu::initCamera(){
 }
 Menu::~Menu()
 {
-/*	InputManager * inputManager = InputManager::getInstancia();
-	inputManager->removeKeyListener(gui);
-	inputManager->removeMouseListener(gui);*/
 	delete gui;
 }
 

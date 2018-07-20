@@ -16,7 +16,6 @@ public:
 	bool exit;
 private:
 	GUI* gui;
-
 	EstadosManager * estadosManager;
 
 

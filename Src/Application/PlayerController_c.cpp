@@ -217,8 +217,6 @@ void PlayerController_c::chocasCon(int i, Entidad* ent){//0 para cuando no es na
 
 PlayerController_c::~PlayerController_c()
 {
-	//inputcomp_->removeKeyListener(this);
-	//inputcomp_->removeMouseListener(this);
+	inputManager->removeKeyListener(this);
 
-	//delete rb;
 }

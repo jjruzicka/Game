@@ -7,7 +7,6 @@
 #include "StatsEntJuego_c.h"
 #include "PatrullarNPC.h"
 #include "CameraMove_c.h"
-#include "EntidadRender.h"
 #include "Trigger_c.h"
 #include "ComportamientoEnem_c.h"
 #include <stdio.h>
@@ -36,6 +35,22 @@ Juego::Juego(std::string path)
 
 	entidadFactory(path);
 
+	Entidad * camera = new Entidad();
+	Camera_c * cam = new Camera_c(camera);
+	camera->AddComponent(cam);
+	CameraMove_c * camMove = new CameraMove_c(camera, getEntidadbyId("p"));
+	camera->AddComponent(camMove);
+	entidades.push_back(camera);
+
+	//guiGame = new GUI(camera, this, false);
+	//guiGame->createUI();
+
+
+	Entidad* ent3 = new Entidad();
+	gm = new GameManager_c(getEntidadbyId("p"));
+	ent3->AddComponent(gm);
+	entidades.push_back(ent3);
+
 	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
 	lightdir.normalise();
 
@@ -50,8 +65,8 @@ Juego::Juego(std::string path)
 	// and tell it to render into the main window
 
 	//GUI
-	//guiGame = new GUI(inputcomp_, vp, motorGrafico->getSceMgr(), cam, camNode, this, false);
-	//guiGame->createUI();
+	/*guiGame = new GUI(cam, this, false);
+	guiGame->createUI();*/
 
 	//Terrain
 	mapa = new Mapa(light);
@@ -234,18 +249,6 @@ void Juego::entidadFactory(std::string path){
 				PlayerController_c * ois = new PlayerController_c(ent, this, stas);
 				ent->AddComponent(ois);
 				entidades.push_back(ent);
-
-				Entidad * camera = new Entidad();
-				Camera_c * cam = new Camera_c(camera);
-				camera->AddComponent(cam);
-				CameraMove_c * camMove = new CameraMove_c(camera, ent);
-				camera->AddComponent(camMove);
-				entidades.push_back(camera);
-
-				Entidad* ent3 = new Entidad();
-				gm = new GameManager_c(ent);
-				ent3->AddComponent(gm);
-				entidades.push_back(ent3);
 			}
 			else if(tipo == "Pan"){
 				Entidad* ent = new Entidad("pan");

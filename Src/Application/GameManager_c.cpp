@@ -18,7 +18,7 @@ GameManager_c::~GameManager_c()
 void GameManager_c::Update(){
 
 }
-void GameManager_c::killADDMision(std::string nombre){//bichos llaman a esto
+void GameManager_c::killADDMision(std::string nombre){
 	if (misionActiva != nullptr){
 		if (misionActiva->getTarget() == nombre){
 			misionActiva->addCont();
