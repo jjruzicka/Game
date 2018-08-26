@@ -18,6 +18,7 @@ public:
 	Entidad* getFather(){
 		return entPadre;
 	}
+	void desactivaTrigger();
 	//void activaPadre();
 private:
 	Entidad* ent;

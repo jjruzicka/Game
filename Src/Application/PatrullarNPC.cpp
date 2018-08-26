@@ -13,6 +13,11 @@ PatrullarNPC::PatrullarNPC(int x, Entidad * ent)
 	rb = new RigidBody_c();
 	rc = new Render_c();
 	node = entidad->GetComponent(rc)->getNode();
+	// Animacion
+	anim = new Animacion_c();
+	anim = entidad->GetComponent(anim);
+	anim->setFoward();
+	anim->playAnim("RunTop", "RunBase");
 }
 
 void PatrullarNPC::Update(){

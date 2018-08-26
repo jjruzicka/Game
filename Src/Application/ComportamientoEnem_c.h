@@ -8,6 +8,8 @@
 #include <cstdio>
 #include <ctime>
 #include <iostream>
+#include "Animacion_c.h"
+
 
 class ComportamientoEnem_c : public Component
 {
@@ -24,6 +26,8 @@ private:
 	RigidBody_c* rb;
 	Ogre::SceneNode* node;
 	float calculaDistancia(Entidad* entidadHeroe);
+	Animacion_c * anim;
+	bool actuando;
 
 	//reloj
 	std::clock_t start;

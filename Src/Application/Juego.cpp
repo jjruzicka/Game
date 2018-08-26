@@ -209,8 +209,18 @@ void Juego::killAdd(Entidad* obj){
 		entidades[entidades.size() - 1] = aux;
 		aux->GetComponent(rb)->getRigidBody()->setCollisionFlags(4);
 		motorFisico->getBulletWorld()->removeRigidBody(aux->GetComponent(rb)->getRigidBody());
-		entidades.pop_back();
 		motorGrafico->getSceMgr()->destroyEntity(obj->GetComponent(render)->getIDRender());
+		
+		////si tiene trigger,se elimina. (También debería eliminarse su entidad)
+		/*Trigger_c *triggerDel = new Trigger_c();
+		triggerDel = aux->GetComponent(triggerDel);
+		if (triggerDel != nullptr){
+			aux->GetComponent(triggerDel)->desactivaTrigger();
+		}*/
+		////
+
+		//delete aux;/////////////
+		entidades.pop_back();
 	}
 }
 void Juego::muerteJugador(){
@@ -272,6 +282,8 @@ void Juego::entidadFactory(std::string path){
 				ent2->AddComponent(render);
 				RigidBody_c* static_rb = new RigidBody_c(ent2, 5, 5, 5, 1);
 				ent2->AddComponent(static_rb);
+				Animacion_c * anim = new Animacion_c(ent2);
+				ent2->AddComponent(anim);
 				PatrullarNPC* patrulla = new PatrullarNPC(10, ent2);
 				ent2->AddComponent(patrulla);
 				for (int i = 0; i < numMisiones; ++i){
@@ -292,6 +304,8 @@ void Juego::entidadFactory(std::string path){
 				ent->AddComponent(render2);
 				RigidBody_c* rb = new RigidBody_c(ent, 5, 5, 5, 1);
 				ent->AddComponent(rb);
+				Animacion_c * anim = new Animacion_c(ent);
+				ent->AddComponent(anim);
 				ComportamientoEnem_c* compEnem = new ComportamientoEnem_c(ent);
 				ent->AddComponent(compEnem);
 				StatsEntJuego_c* statsE = new StatsEntJuego_c(vida, armor, damage, this, ent);
@@ -302,7 +316,7 @@ void Juego::entidadFactory(std::string path){
 				trigger->setPox(x);// posicion 
 				trigger->setPoy(5);
 				trigger->setPoz(y);
-				Trigger_c* t = new Trigger_c(trigger, ent, motorFisico->getBulletWorld(), 50, 50, 50);
+				Trigger_c* t = new Trigger_c(trigger, ent, motorFisico->getBulletWorld(), 50, 50, 50);//300, 300, 300);//
 				t->actualizarPos(trigger->getPox(), trigger->getPoy(), trigger->getPoz());
 				t->getTrigger()->setUserPointer(trigger);
 				trigger->AddComponent(t);

@@ -22,19 +22,28 @@ void Animacion_c::Update(){
 	}
 }
 void Animacion_c::playAnim(std::string animTop, std::string animBot){
-	if (!animacionActivada){
-		animacionActivada = true;
-		animState = entidadOgre->getAnimationState(animTop);
-		animState->setLoop(true);
-		animState->setEnabled(true);
+	stopAnim();
+	animacionActivada = true;
+	animState = entidadOgre->getAnimationState(animTop);
+	animState->setLoop(true);
+	animState->setEnabled(true);
 
-		animState2 = entidadOgre->getAnimationState(animBot);
-		animState2->setLoop(true);
-		animState2->setEnabled(true);
-	}
+	animState2 = entidadOgre->getAnimationState(animBot);
+	animState2->setLoop(true);
+	animState2->setEnabled(true);
 }
 void Animacion_c::stopAnim(){
-	animacionActivada = false;
-	animState->setEnabled(false);
-	animState2->setEnabled(false);
+	if (animacionActivada){
+		animacionActivada = false;
+		animState->setEnabled(false);
+		animState2->setEnabled(false);
+	}
+}
+void Animacion_c::playAnimTop1Time(std::string animTop){
+	if (animacionActivada)	animState->setEnabled(false);
+	animState = entidadOgre->getAnimationState(animTop);
+	animState->setLoop(false);
+	animState->setTimePosition(0);
+	animState->setEnabled(true);
+
 }

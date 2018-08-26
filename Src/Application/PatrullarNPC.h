@@ -6,6 +6,8 @@
 #include "RigidBody_c.h"
 #include "Render_c.h"
 #include "Juego.h"
+#include "Animacion_c.h"
+
 class PatrullarNPC : public Component
 {
 public:
@@ -22,5 +24,6 @@ private:
 	int chocoCon;
 	int mov;
 	int contMov;
+	Animacion_c * anim;
 };
 #endif

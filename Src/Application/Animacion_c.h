@@ -13,6 +13,7 @@ public:
 	virtual ~Animacion_c();
 	void Update();
 	void playAnim(std::string animTop, std::string animBot);
+	void playAnimTop1Time(std::string animTop);
 	void stopAnim();
 	void setFoward(){
 		direction = 1;

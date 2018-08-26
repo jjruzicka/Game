@@ -30,6 +30,8 @@ PlayerController_c::PlayerController_c(Entidad * ent, Juego* esc, StatsPJ_c* est
 	// Animacion
 	anim = new Animacion_c();
 	anim = entidad->GetComponent(anim);
+	anim->playAnim("IdleTop", "IdleBase");
+	anim->setFoward();
 }
 
 bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
@@ -80,6 +82,8 @@ bool PlayerController_c::keyPressed(const OIS::KeyEvent& keyP)
 
 	case OIS::KC_PGDOWN:
 	case OIS::KC_E:
+		anim->playAnimTop1Time("SliceHorizontal");
+		anim->setFoward();
 		break;
 
 	case OIS::KC_PGUP:
@@ -104,12 +108,14 @@ bool PlayerController_c::keyReleased(const OIS::KeyEvent& keyP){
 		break;
 	case OIS::KC_UP:
 	case OIS::KC_W:
-		anim->stopAnim();
+		anim->playAnim("IdleTop", "IdleBase");
+		anim->setFoward();
 		istimetoStop = false;
 		break;
 	case OIS::KC_DOWN:
 	case OIS::KC_S:
-		anim->stopAnim();
+		anim->playAnim("IdleTop", "IdleBase");
+		anim->setFoward();
 		istimetoStop = false;
 		break;
 
@@ -125,7 +131,8 @@ bool PlayerController_c::keyReleased(const OIS::KeyEvent& keyP){
 
 	case OIS::KC_PGDOWN:
 	case OIS::KC_E:
-		anim->stopAnim();
+		anim->playAnim("IdleTop", "IdleBase");
+		anim->setFoward();
 		if (chocoCon != 0){
 			if (chocoCon == 1 && entColision != nullptr){//eres un npc y me das las misiones
 				escena->activaMision(entColision);

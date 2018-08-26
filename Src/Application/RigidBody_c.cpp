@@ -40,7 +40,7 @@ RigidBody_c::~RigidBody_c()
 	bulletWorld->removeRigidBody(rb);
 	delete rb;
 	delete shape;
-	delete motionState;
+	//delete motionState;
 }
 
 void RigidBody_c::Update(){

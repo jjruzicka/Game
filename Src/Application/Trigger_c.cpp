@@ -57,3 +57,8 @@ void Trigger_c::actualizarPos(float x, float y, float z){
     trans.setOrigin(btVector3(x, y, z));
     trigger->setWorldTransform(trans);
 }
+void Trigger_c::desactivaTrigger(){
+	trigger->setCollisionFlags(4);
+	bulletWorld->removeCollisionObject(trigger);
+	ent->DestroyComponent(this);
+}

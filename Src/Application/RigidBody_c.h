@@ -30,7 +30,7 @@ private:
 	btTransform pTransform;
 	btScalar masa; 
 	btCollisionShape* shape;
-	btDefaultMotionState* motionState;
+	//btDefaultMotionState* motionState;//////////
 	btRigidBody* rb;
     //btGhostObject* trigger;
 
