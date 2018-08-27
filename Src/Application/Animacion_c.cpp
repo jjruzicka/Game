@@ -3,6 +3,7 @@
 
 Animacion_c::Animacion_c(Entidad* ent)
 {
+	motorGrafico = MotorGrafico::getInstancia();
 	animacionActivada = false;
 	entidad = ent;
 	rnd = new Render_c();
@@ -12,7 +13,8 @@ Animacion_c::Animacion_c(Entidad* ent)
 
 Animacion_c::~Animacion_c()
 {
-	delete rnd;
+	motorGrafico->getSceMgr()->destroyAllAnimationStates();
+	//delete rnd;
 }
 
 void Animacion_c::Update(){

@@ -17,6 +17,7 @@ public:
 private:
 	GUI* gui;
 	EstadosManager * estadosManager;
+	Ogre::Light* light;
 
 
 //variables vienen de escenas.h

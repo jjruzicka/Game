@@ -2,7 +2,7 @@
 #define ANIMACION_C_H
 #include "Component.h"
 #include "Entidad.h"
-#include <Ogre.h>
+//#include <Ogre.h>
 #include "Render_c.h"
 #include <string.h>
 class Animacion_c :	public Component
@@ -29,6 +29,7 @@ private:
 	bool animacionActivada;
 	int direction;
 	Render_c * rnd;
+	MotorGrafico * motorGrafico;
 };
 #endif
 

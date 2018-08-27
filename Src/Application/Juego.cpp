@@ -31,6 +31,7 @@ Juego::Juego(std::string path)
 {
 	motorGrafico = MotorGrafico::getInstancia();
 	motorFisico = MotorFisico::getInstancia();
+	estadosManager = EstadosManager::getInstancia();
 	cont = 0;
 
 	entidadFactory(path);
@@ -54,7 +55,7 @@ Juego::Juego(std::string path)
 	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
 	lightdir.normalise();
 
-	Ogre::Light* light = motorGrafico->getSceMgr()->createLight("tstLight2");
+	light = motorGrafico->getSceMgr()->createLight("tstLight2");
 	light->setType(Ogre::Light::LT_DIRECTIONAL);
 	light->setDirection(lightdir);
 	light->setDiffuseColour(Ogre::ColourValue::White);
@@ -224,7 +225,7 @@ void Juego::killAdd(Entidad* obj){
 	}
 }
 void Juego::muerteJugador(){
-	//escenasManager->GameToMenu();
+	estadosManager->changeEstado("Menu", "");//GameToMenu();
 }
 
 void Juego::entidadFactory(std::string path){
@@ -348,13 +349,21 @@ void Juego::entidadFactory(std::string path){
 
 Juego::~Juego()
 {
-	delete mapa;
+	motorGrafico->getSceMgr()->destroyLight(light);
+	/*delete mapa;
 
-	delete guiGame;
+	//delete guiGame;
+
+	delete stats;
+	delete statspj;
+	//delete render;
+	//delete pC;
+	delete mision;
+	//delete rb;
 
 	//scnMgr->getRootSceneNode()->removeAllChildren();
 	//root->destroySceneManager(scnMgr);
 	//root->destroyRenderTarget("P3");
-	//delete root;
+	//delete root;*/
 }
 

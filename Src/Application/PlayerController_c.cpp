@@ -11,8 +11,6 @@ PlayerController_c::PlayerController_c(Entidad * ent, Juego* esc, StatsPJ_c* est
 	//inputcomp_ = input;
 	entidad = ent;
 	escena = esc;
-	//inputcomp_->addKeyListener(this, "teclado");	
-	//inputcomp_->addMouseListener(this, "raton");
 	mas = istimetoStop = false;
 	chocoCon = 0;
 	gt = new RigidBody_c();

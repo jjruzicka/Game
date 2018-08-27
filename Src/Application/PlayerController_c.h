@@ -29,9 +29,6 @@ public:
 private:
 	bool keyPressed(const OIS::KeyEvent& keyP);
 	bool keyReleased(const OIS::KeyEvent& keyP);
-	/*bool mouseMoved(const OIS::MouseEvent& me);
-	bool mousePressed(const OIS::MouseEvent& me, OIS::MouseButtonID id);
-	bool mouseReleased(const OIS::MouseEvent& me, OIS::MouseButtonID id);*/
 	InputManager * inputManager;
 	Entidad* entidad;
 	bool mas, istimetoStop;

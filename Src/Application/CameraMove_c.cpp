@@ -21,7 +21,7 @@ CameraMove_c::CameraMove_c(Entidad* ent, Entidad* eJug)
 }
 CameraMove_c::~CameraMove_c()
 {
-	delete camComponent;
+	//delete camComponent;
 }
 
 void CameraMove_c::Update(){

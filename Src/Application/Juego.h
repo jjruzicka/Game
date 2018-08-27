@@ -2,7 +2,7 @@
 #define JUEGO_H
 #include "GameManager_c.h"
 #include "GUI.h"
-
+#include "EstadosManager.h"
 #include "InputManager.h"
 class Juego : public Escenas
 {
@@ -31,7 +31,9 @@ public:
 private:
 
 	InputManager * inputManager;
+	EstadosManager * estadosManager;
 
+	Ogre::Light* light;
 	void createArbolitos();
 	void updateGUI();
 	GUI* guiGame;

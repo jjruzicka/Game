@@ -23,7 +23,7 @@ Menu::Menu()
 	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
 	lightdir.normalise();
 
-	Ogre::Light* light = motorGrafico->getSceMgr()->createLight("tstLight");
+	light = motorGrafico->getSceMgr()->createLight("tstLight");
 	light->setType(Ogre::Light::LT_DIRECTIONAL);
 	light->setDirection(lightdir);
 	light->setDiffuseColour(Ogre::ColourValue::White);
@@ -88,6 +88,8 @@ void Menu::initCamera(){
 }
 Menu::~Menu()
 {
+	motorGrafico->getSceMgr()->destroyLight(light);
+	//delete light;
 	delete gui;
 }
 
