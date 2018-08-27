@@ -32,14 +32,14 @@ private:
 
 	InputManager * inputManager;
 	EstadosManager * estadosManager;
-
+	int nMisiones;
 	Ogre::Light* light;
 	void createArbolitos();
 	void updateGUI();
 	GUI* guiGame;
 	int cont;
-	virtual bool keyPressed(const OIS::KeyEvent& keyP);
-	virtual bool keyReleased(const OIS::KeyEvent& keyP);
+	//virtual bool keyPressed(const OIS::KeyEvent& keyP);
+	//virtual bool keyReleased(const OIS::KeyEvent& keyP);
 
 	GameManager_c* gm;
 };

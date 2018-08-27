@@ -8,6 +8,8 @@ GameManager_c::GameManager_c(Entidad* personaje)
 	this->personaje = personaje;
 	this->misionActiva = nullptr;
 	stats = new StatsPJ_c();
+	estadosManager = EstadosManager::getInstancia();
+	misionesCompletadas = misionesTotales = 0;
 }
 
 
@@ -29,6 +31,10 @@ void GameManager_c::killADDMision(std::string nombre){
 				misionActiva = nullptr;
 				std::cout << "Mision complete\n";
 				//Poner por el GUI MISION COMPLETE
+				misionesCompletadas++;
+				if (misionesCompletadas == misionesTotales){
+					estadosManager->changeEstado("Menu", "");
+				}
 			}
 		}
 	}

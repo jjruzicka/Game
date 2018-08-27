@@ -12,7 +12,7 @@ GUI::GUI(Entidad * cam, Escenas* menuc, bool escena)
 	menuEscena = escena;
 	if (menuEscena){
 		inputManager = InputManager::getInstancia();
-		inputManager->addKeyListener(this, "teclado2");
+		//inputManager->addKeyListener(this, "teclado2");
 		inputManager->addMouseListener(this, "raton2");
 	}
 	mMyPurplePanelColors = new MyPurplePanelColors();

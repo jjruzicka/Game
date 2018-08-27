@@ -205,10 +205,11 @@ bool InputManager::keyPressed(const OIS::KeyEvent &e) {
 }
 
 bool InputManager::keyReleased(const OIS::KeyEvent &e) {
+	int tamInicial = mKeyListeners.size();
 	std::map<std::string, OIS::KeyListener*>::iterator itKeyListener = mKeyListeners.begin();
 	std::map<std::string, OIS::KeyListener*>::iterator itKeyListenerEnd = mKeyListeners.end();
 	for (; itKeyListener != itKeyListenerEnd; ++itKeyListener) {
-		if (!itKeyListener->second->keyReleased(e))
+		if (!itKeyListener->second->keyReleased(e) || mKeyListeners.size() != tamInicial)
 			break;
 	}
 

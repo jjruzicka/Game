@@ -33,6 +33,7 @@ Juego::Juego(std::string path)
 	motorFisico = MotorFisico::getInstancia();
 	estadosManager = EstadosManager::getInstancia();
 	cont = 0;
+	nMisiones = 0;
 
 	entidadFactory(path);
 
@@ -49,6 +50,7 @@ Juego::Juego(std::string path)
 
 	Entidad* ent3 = new Entidad();
 	gm = new GameManager_c(getEntidadbyId("p"));
+	gm->setMisionesTotales(nMisiones);
 	ent3->AddComponent(gm);
 	entidades.push_back(ent3);
 
@@ -78,13 +80,13 @@ Juego::Juego(std::string path)
 	render = new Render_c();
 	pC = new PlayerController_c();
 	mision = new Mision_c();
-	stats = new StatsEntJuego_c();
-	statspj = new StatsPJ_c();
+	//stats = new StatsEntJuego_c();
+	//statspj = new StatsPJ_c();
 	rb = new RigidBody_c();
 }
 
 
-bool Juego::keyPressed(const OIS::KeyEvent& keyP){
+/*bool Juego::keyPressed(const OIS::KeyEvent& keyP){
 	switch (keyP.key)
 	{
 	case OIS::KC_M:
@@ -101,8 +103,8 @@ bool Juego::keyPressed(const OIS::KeyEvent& keyP){
 		break;
 	}
 	return true;
-}
-bool Juego::keyReleased(const OIS::KeyEvent& keyP){
+}*/
+/*bool Juego::keyReleased(const OIS::KeyEvent& keyP){
 
 	switch (keyP.key)
 	{
@@ -114,7 +116,7 @@ bool Juego::keyReleased(const OIS::KeyEvent& keyP){
 		break;
 	}
 	return true;
-}
+}*/
 
 
 
@@ -196,7 +198,7 @@ void Juego::atacar(Entidad* npc){
 }
 
 void Juego::killAdd(Entidad* obj){
-	gm->killADDMision(obj->getID());
+	//gm->killADDMision(obj->getID());
 	int i = 0;
 	bool encontrado = false;
 	while (!encontrado && i < entidades.size()){
@@ -223,6 +225,7 @@ void Juego::killAdd(Entidad* obj){
 		//delete aux;/////////////
 		entidades.pop_back();
 	}
+	gm->killADDMision(obj->getID());
 }
 void Juego::muerteJugador(){
 	estadosManager->changeEstado("Menu", "");//GameToMenu();
@@ -275,6 +278,7 @@ void Juego::entidadFactory(std::string path){
 			}
 			else if (tipo == "Npc"){
 				file >> numMisiones;
+				nMisiones += numMisiones;
 				Entidad* ent2 = new Entidad("p2");
 				ent2->setPox(x);// posicion 
 				ent2->setPoy(5);
@@ -350,7 +354,7 @@ void Juego::entidadFactory(std::string path){
 Juego::~Juego()
 {
 	motorGrafico->getSceMgr()->destroyLight(light);
-	/*delete mapa;
+	delete mapa;
 
 	//delete guiGame;
 
@@ -358,12 +362,12 @@ Juego::~Juego()
 	delete statspj;
 	//delete render;
 	//delete pC;
-	delete mision;
+	//delete mision;
 	//delete rb;
 
 	//scnMgr->getRootSceneNode()->removeAllChildren();
 	//root->destroySceneManager(scnMgr);
 	//root->destroyRenderTarget("P3");
-	//delete root;*/
+	//delete root;
 }
 

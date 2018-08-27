@@ -3,6 +3,7 @@
 #include <string>
 #include "Mision_c.h"
 #include "Entidad.h"
+#include "EstadosManager.h"
 class GameManager_c : public Component
 {
 public:
@@ -26,9 +27,14 @@ public:
 	int getObjetiveExp(){
 		return misionActiva->getExp();
 	}
+	void setMisionesTotales(int mt){
+		misionesTotales = mt;
+	}
 private:
 	Entidad* personaje;
 	Mision_c* misionActiva;
+	EstadosManager * estadosManager;
+	int misionesCompletadas, misionesTotales;
 };
 
 #endif

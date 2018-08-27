@@ -43,5 +43,5 @@ void PatrullarNPC::chocasCon(int i){//0 para cuando no es nada, 1 npc
 
 PatrullarNPC::~PatrullarNPC()
 {
-	delete rb;
+	//delete rb;  //No podemos hacer delete porque se ha creado con una constructora vacía 
 }
