@@ -64,12 +64,14 @@ void GUI::createPanel(){
 		"test_screenPanel2");
 
 
-	mSPanel2->makeButton(0, 0, 400, 100, "PLAY")
-		->setPressedCallback(this, &GUI::play_);
-	mSPanel2->makeButton(0, 150, 400, 100, "CREDITS")
-		->setPressedCallback(this, &GUI::exit_);
-	mSPanel2->makeButton(0, 300, 400, 100, "EXIT")
-		->setPressedCallback(this, &GUI::exit_);
+	play = mSPanel2->makeButton(0, 0, 400, 100, "PLAY");
+	play->setPressedCallback(this, &GUI::play_);
+		
+	credits = mSPanel2->makeButton(0, 150, 400, 100, "CREDITS");
+	credits->setPressedCallback(this, &GUI::exit_);
+
+	exit = mSPanel2->makeButton(0, 300, 400, 100, "EXIT");
+	exit->setPressedCallback(this, &GUI::exit_);
 
 	// We don't want any panels to display mouse cursor. It is handled
 	//  by our Simple2DDemo.
@@ -252,19 +254,30 @@ GUI::~GUI()
 	
 
 	if (!menuEscena){
-		delete captionButton;
-		delete captionDamage;
-		delete captionExperiencia;
-		delete captionLevel;
-		delete captionMision1;
-		delete captionMision2;
-		delete captionMision3;
-		delete captionCura;
+		mSPanel2->destroyCaption(captionButton);
+		mSPanel2->destroyCaption(captionDamage);
+		mSPanel2->destroyCaption(captionExperiencia);
+		mSPanel2->destroyCaption(captionLevel);
+		mSPanelExp->destroyCaption(captionMision1);
+		mSPanelExp->destroyCaption(captionMision2);
+		mSPanelExp->destroyCaption(captionMision3);
+		mSPanel2->destroyCaption(captionCura);
+		//delete captionButton;
+		//delete captionDamage;
+		//delete captionExperiencia;
+		//delete captionLevel;
+		//delete captionMision1;
+		//delete captionMision2;
+		//delete captionMision3;
+		//delete captionCura;
 		mSPanelExp = nullptr;
 	}
-	mSPanel2 = nullptr;
+	//mSPanel2 = nullptr;
 	mMousePointer = nullptr;
 	if (menuEscena){
+		mSPanel2->destroyButton(play);
+		mSPanel2->destroyButton(credits);
+		mSPanel2->destroyButton(exit);
 		mMousePointerLayer->destroyAllCaptions();
 		mMousePointerLayer->destroyAllRectangles();
 		mGui3D->getScreen("mainScreen")->destroy(mMousePointerLayer);
@@ -275,9 +288,11 @@ GUI::~GUI()
 		mGui3D->destroyScreen(myScreen);
 		delete mGui3D;
 	}
+//	delete mSPanel2;
+	mSPanel2 = nullptr;
 	delete mMyPurplePanelColors;
 	menu = nullptr;
-	camera = nullptr;
+	/*camera = nullptr;
 	cNode = nullptr;
-	view = nullptr;
+	view = nullptr;*/
 }

@@ -28,6 +28,9 @@ void Render_c::Update(){
 }
 Render_c::~Render_c()
 {
-	//node->detachObject(ent->getID());
 	node->detachObject(nombreEntidad);
+	node->getCreator()->destroyEntity(entOgre);
+	motorGrafico->getSceMgr()->getRootSceneNode()->removeAndDestroyChild(node);
+	//node->detachObject(ent->getID());
+	
 }

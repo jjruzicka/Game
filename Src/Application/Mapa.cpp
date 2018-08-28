@@ -99,7 +99,7 @@ void Mapa::setPhysics(){
 		Ogre::Quaternion::IDENTITY.z,
 		Ogre::Quaternion::IDENTITY.w));
 
-	motorFisico->getBulletWorld()->addRigidBody(pBody);
+	//motorFisico->getBulletWorld()->addRigidBody(pBody);
 
 }
 
@@ -212,6 +212,7 @@ void Mapa::configureTerrainDefaults(Ogre::Light* light)
 
 Mapa::~Mapa()
 {
+	motorGrafico->getSceMgr()->setSkyDome(false, "Examples/CloudySky", 5, 8);
 	OGRE_DELETE mTerrainGroup;
 	OGRE_DELETE mTerrainGlobals;
 }

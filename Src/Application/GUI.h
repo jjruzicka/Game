@@ -73,6 +73,9 @@ private:
 	Gui3D::Caption* captionMision1;
 	Gui3D::Caption* captionMision2;
 	Gui3D::Caption* captionMision3;
+	Gui3D::Button* play;
+	Gui3D::Button* exit;
+	Gui3D::Button* credits;
 	// Gui3D main object
 	Gui3D::Gui3D* mGui3D;
 	Gui3D::Gui3D* UI3D;

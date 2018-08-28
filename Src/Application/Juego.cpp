@@ -44,8 +44,8 @@ Juego::Juego(std::string path)
 	camera->AddComponent(camMove);
 	entidades.push_back(camera);
 
-	//guiGame = new GUI(camera, this, false);
-	//guiGame->createUI();
+	/*guiGame = new GUI(camera, this, false);
+	guiGame->createUI();*/
 
 
 	Entidad* ent3 = new Entidad();
