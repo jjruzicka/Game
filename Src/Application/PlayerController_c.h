@@ -6,6 +6,8 @@
 #include "Render_c.h"
 #include "Juego.h"
 #include "StatsPJ_c.h"
+#include <cstdio>
+#include <ctime>
 #include "InputManager.h"
 #include "Animacion_c.h"
 
@@ -40,6 +42,11 @@ private:
 	Entidad* entColision;
 	Render_c* rc;
 	Animacion_c * anim;
+
+	//reloj
+	std::clock_t start;
+	double cooldown;
+	bool getTime;
 
 	int cdAtack;
 	int contAtack;

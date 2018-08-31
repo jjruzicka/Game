@@ -25,6 +25,9 @@ PlayerController_c::PlayerController_c(Entidad * ent, Juego* esc, StatsPJ_c* est
 	cdCuracion = 2000;
 	contCura = 1000;
 
+	cooldown = 0;
+	getTime = false;
+
 	// Animacion
 	anim = new Animacion_c();
 	anim = entidad->GetComponent(anim);
@@ -211,6 +214,19 @@ void PlayerController_c::Update(){
 		cglobal = node->convertLocalToWorldPosition(clocal);
 		rb->actualizarPos(cglobal.x, cglobal.y, cglobal.z);
 	}
+
+	if (getTime){
+		start = std::clock();
+		getTime = false;
+	}
+
+	cooldown = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+
+	if (cooldown > 1){
+		getTime = true;
+		chocoCon = 0;
+	}
+	
 	contCura++;
 	contAtack++;
 }
@@ -218,6 +234,7 @@ void PlayerController_c::Update(){
 void PlayerController_c::chocasCon(int i, Entidad* ent){//0 para cuando no es nada, 1 npc
 	chocoCon = i;
 	entColision = ent;
+	getTime = true;
 }
 
 PlayerController_c::~PlayerController_c()
