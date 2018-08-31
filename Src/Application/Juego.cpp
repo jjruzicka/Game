@@ -26,6 +26,7 @@ StatsEntJuego_c* stats;
 StatsPJ_c* statspj;
 RigidBody_c* rb;
 Render_c * render;
+ComportamientoEnem_c* ce;
 
 Juego::Juego(std::string path)
 {
@@ -83,6 +84,7 @@ Juego::Juego(std::string path)
 	//stats = new StatsEntJuego_c();
 	//statspj = new StatsPJ_c();
 	rb = new RigidBody_c();
+	ce = new ComportamientoEnem_c();
 }
 
 
@@ -221,10 +223,16 @@ void Juego::killAdd(Entidad* obj){
 			aux->GetComponent(triggerDel)->desactivaTrigger();
 		}*/
 		////
-
+		Entidad* auxTrigger = nullptr;
+		if (obj->getID() == "ogroEnemy"){
+			auxTrigger = aux->GetComponent(ce)->getTrigger();
+		}
 		if (!gm->killADDMision(obj->getID())){
 			entidades.pop_back();
 			delete aux;
+		}
+		if (auxTrigger!= nullptr){
+			killAdd(auxTrigger);
 		}
 	}
 }
@@ -327,6 +335,8 @@ void Juego::entidadFactory(std::string path){
 				t->getTrigger()->setUserPointer(trigger);
 				trigger->AddComponent(t);
 				entidades.push_back(trigger);
+
+				compEnem->setTrigger(trigger);
 			}
 			else if (tipo == "Arbol"){
 				Entidad* ent = new Entidad("arbol");

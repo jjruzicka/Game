@@ -19,8 +19,16 @@ public:
 	~ComportamientoEnem_c();
 	void actua(Entidad* entidadHeroe);
 	void Update();
+	void setTrigger(Entidad* trigger){
+		entTrigger = trigger;
+	}
+	Entidad* getTrigger(){
+		return entTrigger;
+	}
+
 private:
 	Entidad* entidad;
+	Entidad* entTrigger;
 	int chocoCon;
 	Entidad* entColision;
 	RigidBody_c* rb;

@@ -30,7 +30,7 @@ ComportamientoEnem_c::ComportamientoEnem_c(Entidad* ent)
 
 ComportamientoEnem_c::~ComportamientoEnem_c()
 {
-	anim->stopAnim();
+	//anim->stopAnim();
 }
 
 void ComportamientoEnem_c::Update(){

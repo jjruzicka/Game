@@ -28,27 +28,21 @@ Trigger_c::Trigger_c(Entidad* _ent, Entidad* _entEne, btDynamicsWorld* _bulletWo
 
 Trigger_c::~Trigger_c()
 {
+	//trigger->setCollisionFlags(4);
+	bulletWorld->removeCollisionObject(trigger);
+	delete trigger;
 }
 
 void Trigger_c::Update(){
-
-	//std::cout << entPadre->GetComponent(st)->getVida() << "\n";
-	if (entPadre->GetComponent(st)->getVida() <= 0){
-		trigger->setCollisionFlags(4);
-		bulletWorld->removeCollisionObject(trigger);
-		ent->DestroyComponent(this);
-	}
-	else {
-		actualizarPos(entPadre->getPox(), entPadre->getPoy(), entPadre->getPoz());
-		btTransform trans;
-		trans = trigger->getWorldTransform();
-		float x = trans.getOrigin().getX();
-		float y = trans.getOrigin().getY();
-		float z = trans.getOrigin().getZ();
-		ent->setPox(x);
-		ent->setPoy(y);
-		ent->setPoz(z);
-	}
+	actualizarPos(entPadre->getPox(), entPadre->getPoy(), entPadre->getPoz());
+	btTransform trans;
+	trans = trigger->getWorldTransform();
+	float x = trans.getOrigin().getX();
+	float y = trans.getOrigin().getY();
+	float z = trans.getOrigin().getZ();
+	ent->setPox(x);
+	ent->setPoy(y);
+	ent->setPoz(z);
 }
 
 void Trigger_c::actualizarPos(float x, float y, float z){
@@ -57,8 +51,8 @@ void Trigger_c::actualizarPos(float x, float y, float z){
     trans.setOrigin(btVector3(x, y, z));
     trigger->setWorldTransform(trans);
 }
-void Trigger_c::desactivaTrigger(){
+/*void Trigger_c::desactivaTrigger(){
 	trigger->setCollisionFlags(4);
 	bulletWorld->removeCollisionObject(trigger);
 	ent->DestroyComponent(this);
-}
+}*/
