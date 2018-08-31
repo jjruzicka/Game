@@ -11,7 +11,7 @@ public:
 	~GameManager_c();
 	void Update();
 	bool dameMision(Mision_c* mision);
-	void killADDMision(std::string nombre);
+	bool killADDMision(std::string nombre);
 	bool getMisionIsActive(){
 		return misionActiva != nullptr;
 	}

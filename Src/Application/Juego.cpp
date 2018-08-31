@@ -210,9 +210,9 @@ void Juego::killAdd(Entidad* obj){
 		Entidad* aux = entidades[i];
 		entidades[i] = entidades[entidades.size() - 1];
 		entidades[entidades.size() - 1] = aux;
-		aux->GetComponent(rb)->getRigidBody()->setCollisionFlags(4);
-		motorFisico->getBulletWorld()->removeRigidBody(aux->GetComponent(rb)->getRigidBody());
-		motorGrafico->getSceMgr()->destroyEntity(obj->GetComponent(render)->getIDRender());
+		//aux->GetComponent(rb)->getRigidBody()->setCollisionFlags(4);
+		//motorFisico->getBulletWorld()->removeRigidBody(aux->GetComponent(rb)->getRigidBody());
+		//motorGrafico->getSceMgr()->destroyEntity(obj->GetComponent(render)->getIDRender());
 		
 		////si tiene trigger,se elimina. (También debería eliminarse su entidad)
 		/*Trigger_c *triggerDel = new Trigger_c();
@@ -222,10 +222,11 @@ void Juego::killAdd(Entidad* obj){
 		}*/
 		////
 
-		//delete aux;/////////////
-		entidades.pop_back();
+		if (!gm->killADDMision(obj->getID())){
+			entidades.pop_back();
+			delete aux;
+		}
 	}
-	gm->killADDMision(obj->getID());
 }
 void Juego::muerteJugador(){
 	estadosManager->changeEstado("Menu", "");//GameToMenu();

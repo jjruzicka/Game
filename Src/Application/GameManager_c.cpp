@@ -20,7 +20,7 @@ GameManager_c::~GameManager_c()
 void GameManager_c::Update(){
 
 }
-void GameManager_c::killADDMision(std::string nombre){
+bool GameManager_c::killADDMision(std::string nombre){
 	if (misionActiva != nullptr){
 		if (misionActiva->getTarget() == nombre){
 			misionActiva->addCont();
@@ -34,10 +34,12 @@ void GameManager_c::killADDMision(std::string nombre){
 				misionesCompletadas++;
 				if (misionesCompletadas == misionesTotales){
 					estadosManager->changeEstado("Menu", "");
+					return true; // Si se ha terminado el nivel 
 				}
 			}
 		}
 	}
+	return false;
 }
 bool GameManager_c::dameMision(Mision_c* mision){
 	if (misionActiva != nullptr){
