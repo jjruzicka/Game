@@ -29,7 +29,7 @@ public:
 	}
 	
 private:
-
+	bool finPartida;
 	InputManager * inputManager;
 	EstadosManager * estadosManager;
 	int nMisiones;

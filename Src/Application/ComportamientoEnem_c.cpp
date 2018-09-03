@@ -62,7 +62,7 @@ void ComportamientoEnem_c::actua(Entidad* entidadHeroe){
 			if (cooldown > 2){
 				getTime = true;
 				entidadHeroe->GetComponent(st)->restaVida(entidad->GetComponent(sj)->getDamage());
-				std::cout << "Te quedan " << entidadHeroe->GetComponent(st)->getVida() << " de vida" << std::endl;
+				//std::cout << "Te quedan " << entidadHeroe->GetComponent(st)->getVida() << " de vida" << std::endl;
 			}
 		}
 	}

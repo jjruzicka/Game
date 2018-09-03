@@ -35,6 +35,7 @@ Juego::Juego(std::string path)
 	estadosManager = EstadosManager::getInstancia();
 	cont = 0;
 	nMisiones = 0;
+	finPartida = false;
 
 	entidadFactory(path);
 
@@ -186,6 +187,8 @@ bool Juego::run(){
 	//updateGUI();
 	for (int i = 0; i < entidades.size(); i++)
 		entidades[i]->Update();
+	if (finPartida)
+		estadosManager->changeEstado("Menu", "");
 	return true;
 }
 void Juego::activaMision(Entidad* npc){
@@ -237,7 +240,8 @@ void Juego::killAdd(Entidad* obj){
 	}
 }
 void Juego::muerteJugador(){
-	estadosManager->changeEstado("Menu", "");//GameToMenu();
+	finPartida = true;
+	//estadosManager->changeEstado("Menu", "");
 }
 
 void Juego::entidadFactory(std::string path){
