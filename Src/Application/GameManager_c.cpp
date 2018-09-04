@@ -3,12 +3,13 @@
 
 StatsPJ_c* stats;
 
-GameManager_c::GameManager_c(Entidad* personaje)
+GameManager_c::GameManager_c(Entidad* personaje, Juego * game)
 {
 	this->personaje = personaje;
+	this->escena = game;
 	this->misionActiva = nullptr;
 	stats = new StatsPJ_c();
-	estadosManager = EstadosManager::getInstancia();
+	//estadosManager = EstadosManager::getInstancia();
 	misionesCompletadas = misionesTotales = 0;
 }
 
@@ -33,7 +34,8 @@ bool GameManager_c::killADDMision(std::string nombre){
 				//Poner por el GUI MISION COMPLETE
 				misionesCompletadas++;
 				if (misionesCompletadas == misionesTotales){
-					estadosManager->changeEstado("Menu", "");
+					//estadosManager->changeEstado("Menu", "");
+					escena->muerteJugador();
 					return true; // Si se ha terminado el nivel 
 				}
 			}

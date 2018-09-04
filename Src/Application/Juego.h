@@ -1,6 +1,5 @@
 #ifndef JUEGO_H
 #define JUEGO_H
-#include "GameManager_c.h"
 #include "GUI.h"
 #include "EstadosManager.h"
 #include "InputManager.h"
@@ -41,6 +40,5 @@ private:
 	//virtual bool keyPressed(const OIS::KeyEvent& keyP);
 	//virtual bool keyReleased(const OIS::KeyEvent& keyP);
 
-	GameManager_c* gm;
 };
 #endif

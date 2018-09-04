@@ -13,6 +13,8 @@
 #include <fstream>
 #include "Animacion_c.h"
 #include "Camera_c.h"
+#include "GameManager_c.h"
+
 
 using namespace Ogre;
 enum QueryFlags {
@@ -27,6 +29,8 @@ StatsPJ_c* statspj;
 RigidBody_c* rb;
 Render_c * render;
 ComportamientoEnem_c* ce;
+GameManager_c* gm;
+
 
 Juego::Juego(std::string path)
 {
@@ -51,7 +55,7 @@ Juego::Juego(std::string path)
 
 
 	Entidad* ent3 = new Entidad();
-	gm = new GameManager_c(getEntidadbyId("p"));
+	gm = new GameManager_c(getEntidadbyId("p"), this);
 	gm->setMisionesTotales(nMisiones);
 	ent3->AddComponent(gm);
 	entidades.push_back(ent3);

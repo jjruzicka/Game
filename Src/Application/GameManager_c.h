@@ -3,11 +3,12 @@
 #include <string>
 #include "Mision_c.h"
 #include "Entidad.h"
-#include "EstadosManager.h"
+//#include "EstadosManager.h"
+#include "Juego.h"
 class GameManager_c : public Component
 {
 public:
-	GameManager_c(Entidad* Personaje);
+	GameManager_c(Entidad* Personaje, Juego * game);
 	~GameManager_c();
 	void Update();
 	bool dameMision(Mision_c* mision);
@@ -32,8 +33,9 @@ public:
 	}
 private:
 	Entidad* personaje;
+	Juego* escena;
 	Mision_c* misionActiva;
-	EstadosManager * estadosManager;
+	//EstadosManager * estadosManager;
 	int misionesCompletadas, misionesTotales;
 };
 
