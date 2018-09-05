@@ -4,6 +4,7 @@
 
 EstadosManager::EstadosManager()
 {
+	exit = false;
 }
 
 
@@ -33,4 +34,11 @@ void EstadosManager::changeEstado(std::string tipo, std::string path){
 	if (tipo == "Nivel")
 		escena = new Juego(path);
 	pushEstado(escena);
+}
+
+void EstadosManager::exitGame(){
+	exit = true;
+}
+bool EstadosManager::getExit(){
+	return exit;
 }

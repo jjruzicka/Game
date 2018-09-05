@@ -13,13 +13,13 @@ public:
 	void MenuToPlay();
 	void MenuToExit();
 	void initCamera();
-	bool exit;
 private:
 	GUI* gui;
 	EstadosManager * estadosManager;
 	Ogre::Light* light;
 
-
+	bool exit;
+	bool goJuego;
 //variables vienen de escenas.h
 };
 #endif

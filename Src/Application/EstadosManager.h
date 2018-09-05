@@ -13,6 +13,8 @@ public:
 	}
 	void pushEstado(Escenas * escena);
 	void changeEstado(std::string tipo, std::string path);
+	void exitGame();
+	bool getExit();
 	Escenas * topEstado();
 private:
 	static EstadosManager * instancia;
@@ -22,6 +24,8 @@ private:
 	void popEstado();
 
 	std::stack<Escenas*> pila;
+
+	bool exit;
 };
 #endif
 

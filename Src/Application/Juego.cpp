@@ -374,7 +374,7 @@ Juego::~Juego()
 {
 	motorGrafico->getSceMgr()->destroyLight(light);
 	delete mapa;
-
+	//delete gui;
 	//delete guiGame;
 
 	delete stats;

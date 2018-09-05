@@ -31,7 +31,7 @@ void Game::run(){
 	clock_t elapsedTicks = 0;
 	double deltaTime = 0;
 
-	while (!motorGrafico->getWindow()->isClosed() && !exit){
+	while (!motorGrafico->getWindow()->isClosed() && !estadosManager->getExit()){
 		deltaTime = ((double)elapsedTicks) / 1000.f/*CLOCKS_PER_SEC*/;
 		lastTicks = clock();
 		if (elapsedTicks >= 0.5){
@@ -43,7 +43,7 @@ void Game::run(){
 
 		// render ogre
 		Ogre::WindowEventUtilities::messagePump();
-		if (!motorGrafico->getRoot()->renderOneFrame()) exit = true;
+		if (!motorGrafico->getRoot()->renderOneFrame()) estadosManager->exitGame();
 
 		elapsedTicks = clock() - lastTicks;
 	}

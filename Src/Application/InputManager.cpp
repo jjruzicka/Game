@@ -194,8 +194,9 @@ OIS::Keyboard* InputManager::getKeyboard(void) {
 
 
 bool InputManager::keyPressed(const OIS::KeyEvent &e) {
-	std::map<std::string, OIS::KeyListener*>::iterator itKeyListener = mKeyListeners.begin();
-	std::map<std::string, OIS::KeyListener*>::iterator itKeyListenerEnd = mKeyListeners.end();
+	keyAuxiliarList = mKeyListeners;
+	std::map<std::string, OIS::KeyListener*>::iterator itKeyListener = keyAuxiliarList.begin();
+	std::map<std::string, OIS::KeyListener*>::iterator itKeyListenerEnd = keyAuxiliarList.end();
 	for (; itKeyListener != itKeyListenerEnd; ++itKeyListener) {
 		if (!itKeyListener->second->keyPressed(e))
 			break;
@@ -205,11 +206,11 @@ bool InputManager::keyPressed(const OIS::KeyEvent &e) {
 }
 
 bool InputManager::keyReleased(const OIS::KeyEvent &e) {
-	int tamInicial = mKeyListeners.size();
-	std::map<std::string, OIS::KeyListener*>::iterator itKeyListener = mKeyListeners.begin();
-	std::map<std::string, OIS::KeyListener*>::iterator itKeyListenerEnd = mKeyListeners.end();
+	keyAuxiliarList = mKeyListeners;
+	std::map<std::string, OIS::KeyListener*>::iterator itKeyListener = keyAuxiliarList.begin();
+	std::map<std::string, OIS::KeyListener*>::iterator itKeyListenerEnd = keyAuxiliarList.end();
 	for (; itKeyListener != itKeyListenerEnd; ++itKeyListener) {
-		if (!itKeyListener->second->keyReleased(e) || mKeyListeners.size() != tamInicial)
+		if (!itKeyListener->second->keyReleased(e))
 			break;
 	}
 
@@ -217,8 +218,9 @@ bool InputManager::keyReleased(const OIS::KeyEvent &e) {
 }
 
 bool InputManager::mouseMoved(const OIS::MouseEvent &e) {
-	std::map<std::string, OIS::MouseListener*>::iterator itMouseListener = mMouseListeners.begin();
-	std::map<std::string, OIS::MouseListener*>::iterator itMouseListenerEnd = mMouseListeners.end();
+	mouseAuxiliarList = mMouseListeners;
+	std::map<std::string, OIS::MouseListener*>::iterator itMouseListener = mouseAuxiliarList.begin();
+	std::map<std::string, OIS::MouseListener*>::iterator itMouseListenerEnd = mouseAuxiliarList.end();
 	for (; itMouseListener != itMouseListenerEnd; ++itMouseListener) {
 		if (!itMouseListener->second->mouseMoved(e))
 			break;
@@ -228,8 +230,9 @@ bool InputManager::mouseMoved(const OIS::MouseEvent &e) {
 }
 
 bool InputManager::mousePressed(const OIS::MouseEvent &e, OIS::MouseButtonID id) {
-	std::map<std::string, OIS::MouseListener*>::iterator itMouseListener = mMouseListeners.begin();
-	std::map<std::string, OIS::MouseListener*>::iterator itMouseListenerEnd = mMouseListeners.end();
+	mouseAuxiliarList = mMouseListeners;
+	std::map<std::string, OIS::MouseListener*>::iterator itMouseListener = mouseAuxiliarList.begin();
+	std::map<std::string, OIS::MouseListener*>::iterator itMouseListenerEnd = mouseAuxiliarList.end();
 	for (; itMouseListener != itMouseListenerEnd; ++itMouseListener) {
 		if (!itMouseListener->second->mousePressed(e, id))
 			break;
@@ -239,14 +242,13 @@ bool InputManager::mousePressed(const OIS::MouseEvent &e, OIS::MouseButtonID id)
 }
 
 bool InputManager::mouseReleased(const OIS::MouseEvent &e, OIS::MouseButtonID id) {
-	int tamInicial = mMouseListeners.size();
-	std::map<std::string, OIS::MouseListener*>::iterator itMouseListener = mMouseListeners.begin();
-	std::map<std::string, OIS::MouseListener*>::iterator itMouseListenerEnd = mMouseListeners.end();
+	mouseAuxiliarList = mMouseListeners;
+	std::map<std::string, OIS::MouseListener*>::iterator itMouseListener = mouseAuxiliarList.begin();
+	std::map<std::string, OIS::MouseListener*>::iterator itMouseListenerEnd = mouseAuxiliarList.end();
 	for (; itMouseListener != itMouseListenerEnd; ++itMouseListener) {
-		if (!itMouseListener->second->mouseReleased(e, id) || mMouseListeners.size() != tamInicial)
+		if (!itMouseListener->second->mouseReleased(e, id))
 			break;
 	}
-
 	return true;
 }
 

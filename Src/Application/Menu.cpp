@@ -19,7 +19,7 @@ Menu::Menu()
 	estadosManager = EstadosManager::getInstancia();
 
 	exit = false;
-
+	goJuego = false;
 	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
 	lightdir.normalise();
 
@@ -68,10 +68,12 @@ Menu::Menu()
 }
 void Menu::MenuToExit(){
 	//scnM->Exit();
+	exit = true;
 }
 
 void Menu::MenuToPlay(){
-	estadosManager->changeEstado("Nivel", "..//Media//Levels//Nivel1.txt");
+	//estadosManager->changeEstado("Nivel", "..//Media//Levels//Nivel1.txt");
+	goJuego = true;
 }
 
 bool Menu::run(){
@@ -80,6 +82,11 @@ bool Menu::run(){
 	for (int i = 0; i<entidades.size(); i++)
 		entidades[i]->Update();
 
+	if (exit)
+		estadosManager->exitGame();
+	else if (goJuego)
+		estadosManager->changeEstado("Nivel", "..//Media//Levels//Nivel1.txt");
+		//estadosManager->changeEstado("Menu", "");
 	return true;
 }
 

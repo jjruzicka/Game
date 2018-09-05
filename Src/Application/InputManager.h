@@ -61,6 +61,8 @@ private:
 	std::map<std::string, OIS::KeyListener*> mKeyListeners;
 	std::map<std::string, OIS::MouseListener*> mMouseListeners;
 
+	std::map<std::string, OIS::KeyListener*> keyAuxiliarList;
+	std::map<std::string, OIS::MouseListener*> mouseAuxiliarList;
 	//std::map<std::string, OIS::KeyListener*>::iterator itKeyListener;
 	//std::map<std::string, OIS::MouseListener*>::iterator itMouseListener;
 
