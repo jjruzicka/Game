@@ -64,15 +64,27 @@
     <ClCompile Include="..\..\Src\Application\GUI.cpp">
       <Filter>code\GUI</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Src\Application\EstadosManager.cpp" />
-    <ClCompile Include="..\..\Src\Application\Game.cpp" />
-    <ClCompile Include="..\..\Src\Application\MotorGrafico.cpp" />
     <ClCompile Include="..\..\Src\Application\InputManager.cpp">
       <Filter>code\Componentes</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Src\Application\MotorFisico.cpp" />
-    <ClCompile Include="..\..\Src\Application\Animacion_c.cpp" />
-    <ClCompile Include="..\..\Src\Application\Camera_c.cpp" />
+    <ClCompile Include="..\..\Src\Application\Animacion_c.cpp">
+      <Filter>code\Componentes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\Camera_c.cpp">
+      <Filter>code\Componentes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\MotorFisico.cpp">
+      <Filter>code\Motores</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\MotorGrafico.cpp">
+      <Filter>code\Motores</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\Game.cpp">
+      <Filter>code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Application\EstadosManager.cpp">
+      <Filter>header</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Application\CameraMove_c.h">
@@ -135,15 +147,27 @@
     <ClInclude Include="..\..\Src\Application\MyPurplePanelColors.h">
       <Filter>header\GUI</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Src\Application\EstadosManager.h" />
-    <ClInclude Include="..\..\Src\Application\Game.h" />
-    <ClInclude Include="..\..\Src\Application\MotorGrafico.h" />
     <ClInclude Include="..\..\Src\Application\InputManager.h">
       <Filter>header\Componentes</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Src\Application\MotorFisico.h" />
-    <ClInclude Include="..\..\Src\Application\Animacion_c.h" />
-    <ClInclude Include="..\..\Src\Application\Camera_c.h" />
+    <ClInclude Include="..\..\Src\Application\Animacion_c.h">
+      <Filter>header\Componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\Camera_c.h">
+      <Filter>header\Componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\MotorFisico.h">
+      <Filter>header\Motores</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\MotorGrafico.h">
+      <Filter>header\Motores</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\Game.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Application\EstadosManager.h">
+      <Filter>header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="code">
@@ -175,6 +199,12 @@
     </Filter>
     <Filter Include="header\Entidades">
       <UniqueIdentifier>{427a9105-cf58-45af-a99b-d4fdee40fdd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="code\Motores">
+      <UniqueIdentifier>{2b1eedd0-a154-43de-98ce-f83e868fcb3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="header\Motores">
+      <UniqueIdentifier>{1a8b7374-dabb-4abe-b413-873ddfd60f6f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
