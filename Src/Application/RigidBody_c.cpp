@@ -19,10 +19,7 @@ RigidBody_c::RigidBody_c(Entidad* _ent,
 	Render_c* render = new Render_c();
 	btVector3 localInertia(0, 0, 0); // La inercia inicial siempre es 0
 	shape = new btBoxShape(btVector3(ancho, profundo, alto));
-    /*if (isTrigger){
-        trigger = new btGhostObject();
-        trigger->setCollisionShape(shape);
-    }*/
+  
 	shape->calculateLocalInertia(masa, localInertia); // inicializamos el cuerpo
 	btRigidBody::btRigidBodyConstructionInfo RigidBodyInfo(masa, motionState, shape, localInertia);
 	rb = new btRigidBody(RigidBodyInfo);
@@ -40,7 +37,6 @@ RigidBody_c::~RigidBody_c()
 	bulletWorld->removeRigidBody(rb);
 	delete rb;
 	delete shape;
-	//delete motionState;
 }
 
 void RigidBody_c::Update(){

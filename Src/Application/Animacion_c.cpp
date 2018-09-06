@@ -13,8 +13,7 @@ Animacion_c::Animacion_c(Entidad* ent)
 
 Animacion_c::~Animacion_c()
 {
-	//motorGrafico->getSceMgr()->destroyAllAnimationStates();
-	//delete rnd;
+
 }
 
 void Animacion_c::Update(){

@@ -34,7 +34,6 @@ bool GameManager_c::killADDMision(std::string nombre){
 				//Poner por el GUI MISION COMPLETE
 				misionesCompletadas++;
 				if (misionesCompletadas == misionesTotales){
-					//estadosManager->changeEstado("Menu", "");
 					escena->muerteJugador();
 					return true; // Si se ha terminado el nivel 
 				}

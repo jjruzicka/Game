@@ -37,8 +37,5 @@ private:
 	void updateGUI();
 	GUI* guiGame;
 	int cont;
-	//virtual bool keyPressed(const OIS::KeyEvent& keyP);
-	//virtual bool keyReleased(const OIS::KeyEvent& keyP);
-
 };
 #endif

@@ -21,7 +21,6 @@ private:
 	btSequentialImpulseConstraintSolver* solver;
 	btBroadphaseInterface* broadPhase;
 	static MotorFisico * instancia;
-	//InputComponent* inputcomp_;
 
 };
 #endif

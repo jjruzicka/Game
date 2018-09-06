@@ -2,17 +2,7 @@
 #define MOTORGRAFICO
 #include <iostream>
 #include <string>
-/*
-#include <OgreRoot.h>
-#include <OgreConfigFile.h>
 
-#include <OgreRenderSystem.h>
-#include <OgreException.h>
-#include <OgreTextureManager.h>
-#include <OgreWindowEventUtilities.h>*/
-
-//#include <vector>
-//#include "Entidad.h"
 #include <OgreRoot.h>
 #include <OgreRenderSystem.h>
 #include "OgreRenderWindow.h"
@@ -22,13 +12,11 @@
 #include "OgreSceneNode.h"
 #include <OgreConfig.h>
 #include "OgreConfigFile.h"
-//#include <btBulletCollisionCommon.h>
-//#include <btBulletDynamicsCommon.h>
+
 #include <OgreTextureManager.h>
 #include <OgreWindowEventUtilities.h>
 #include <OgreException.h>
-//#include "InputComponent.h"
-//#include "Mapa.h"
+
 
 
 

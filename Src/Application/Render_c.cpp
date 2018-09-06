@@ -17,7 +17,7 @@ Render_c::Render_c(std::string nombreNodo, Entidad* ent, std::string nombreMalla
 void Render_c::Update(){
 
 	if (ent->getRoy() != 0){
-		anguloRotent += ent->getAngRot();//QUIZA SON RAD LO MAS SEGURO
+		anguloRotent += ent->getAngRot();
 		anguloRot = Ogre::Quaternion(Ogre::Degree(ent->getAngRot()), Ogre::Vector3::UNIT_Y);
 		node->rotate(anguloRot);
 		ent->setOrientationX(sin(anguloRotent));

@@ -28,7 +28,6 @@ Trigger_c::Trigger_c(Entidad* _ent, Entidad* _entEne, btDynamicsWorld* _bulletWo
 
 Trigger_c::~Trigger_c()
 {
-	//trigger->setCollisionFlags(4);
 	bulletWorld->removeCollisionObject(trigger);
 	delete trigger;
 }
@@ -51,8 +50,3 @@ void Trigger_c::actualizarPos(float x, float y, float z){
     trans.setOrigin(btVector3(x, y, z));
     trigger->setWorldTransform(trans);
 }
-/*void Trigger_c::desactivaTrigger(){
-	trigger->setCollisionFlags(4);
-	bulletWorld->removeCollisionObject(trigger);
-	ent->DestroyComponent(this);
-}*/

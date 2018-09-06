@@ -73,10 +73,6 @@ Juego::Juego(std::string path)
 
 	// and tell it to render into the main window
 
-	//GUI
-	/*guiGame = new GUI(cam, this, false);
-	guiGame->createUI();*/
-
 	//Terrain
 	mapa = new Mapa(light);
 	
@@ -92,38 +88,6 @@ Juego::Juego(std::string path)
 	ce = new ComportamientoEnem_c();
 }
 
-
-/*bool Juego::keyPressed(const OIS::KeyEvent& keyP){
-	switch (keyP.key)
-	{
-	case OIS::KC_M:
-		switch (cont){
-		case 0:
-			break;
-		case 1:
-			break;
-		default:
-			break;
-		}
-		break;
-	default:
-		break;
-	}
-	return true;
-}*/
-/*bool Juego::keyReleased(const OIS::KeyEvent& keyP){
-
-	switch (keyP.key)
-	{
-	case OIS::KC_M:
-
-		cont++;
-		break;
-	default:
-		break;
-	}
-	return true;
-}*/
 
 
 
@@ -207,7 +171,6 @@ void Juego::atacar(Entidad* npc){
 }
 
 void Juego::killAdd(Entidad* obj){
-	//gm->killADDMision(obj->getID());
 	int i = 0;
 	bool encontrado = false;
 	while (!encontrado && i < entidades.size()){
@@ -219,17 +182,7 @@ void Juego::killAdd(Entidad* obj){
 		Entidad* aux = entidades[i];
 		entidades[i] = entidades[entidades.size() - 1];
 		entidades[entidades.size() - 1] = aux;
-		//aux->GetComponent(rb)->getRigidBody()->setCollisionFlags(4);
-		//motorFisico->getBulletWorld()->removeRigidBody(aux->GetComponent(rb)->getRigidBody());
-		//motorGrafico->getSceMgr()->destroyEntity(obj->GetComponent(render)->getIDRender());
-		
-		////si tiene trigger,se elimina. (También debería eliminarse su entidad)
-		/*Trigger_c *triggerDel = new Trigger_c();
-		triggerDel = aux->GetComponent(triggerDel);
-		if (triggerDel != nullptr){
-			aux->GetComponent(triggerDel)->desactivaTrigger();
-		}*/
-		////
+
 		Entidad* auxTrigger = nullptr;
 		if (obj->getID() == "ogroEnemy"){
 			auxTrigger = aux->GetComponent(ce)->getTrigger();
@@ -245,7 +198,6 @@ void Juego::killAdd(Entidad* obj){
 }
 void Juego::muerteJugador(){
 	finPartida = true;
-	//estadosManager->changeEstado("Menu", "");
 }
 
 void Juego::entidadFactory(std::string path){
@@ -372,21 +324,14 @@ void Juego::entidadFactory(std::string path){
 
 Juego::~Juego()
 {
+	//delete guiGame;
 	motorGrafico->getSceMgr()->destroyLight(light);
 	delete mapa;
 	//delete gui;
-	//delete guiGame;
+	
 
 	delete stats;
 	delete statspj;
-	//delete render;
-	//delete pC;
-	//delete mision;
-	//delete rb;
 
-	//scnMgr->getRootSceneNode()->removeAllChildren();
-	//root->destroySceneManager(scnMgr);
-	//root->destroyRenderTarget("P3");
-	//delete root;
 }
 

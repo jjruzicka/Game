@@ -169,36 +169,6 @@ bool PlayerController_c::keyReleased(const OIS::KeyEvent& keyP){
 
 }
 
-/*bool PlayerController_c::mouseMoved(const OIS::MouseEvent& me)
-{
-	if (me.state.buttonDown(OIS::MB_Right))
-	{
-
-	}
-
-	return true;
-}
-
-bool PlayerController_c::mousePressed(const OIS::MouseEvent& me, OIS::MouseButtonID id)
-{
-
-	switch (id)
-	{
-	case OIS::MB_Left:
-	{
-		break;
-	}
-	default:
-		break;
-	}
-
-	return true;
-}
-
-bool PlayerController_c::mouseReleased(const OIS::MouseEvent& me, OIS::MouseButtonID id)
-{
-	return true;
-}*/
 
 
 void PlayerController_c::Update(){

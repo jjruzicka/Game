@@ -1,10 +1,5 @@
 #include "MotorGrafico.h"
-/*
-#include <OgreWindowEventUtilities.h>
-#include <OgreViewport.h>
-#include <OgreRenderWindow.h>
-#include <exception>
-#include <OgreTextureManager.h>*/
+
 
 
 MotorGrafico::MotorGrafico()

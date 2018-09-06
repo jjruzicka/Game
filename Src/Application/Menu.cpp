@@ -31,34 +31,12 @@ Menu::Menu()
 
 	motorGrafico->getSceMgr()->setAmbientLight(Ogre::ColourValue(0.2, 0.2, 0.2));
 
-	// also need to tell where we are
-	//camNode = motorGrafico->getSceMgr()->getRootSceneNode()->createChildSceneNode();
-
-	// para la escena, pruebas
-	/*camNode->setPosition(Ogre::Vector3(0, 5, -35));
-	camNode->rotate(Ogre::Quaternion(Ogre::Degree(180), Ogre::Vector3::UNIT_Y));
-	camNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
-	*/
-	// create the camera
-	/*cam = motorGrafico->getSceMgr()->createCamera("Cam");
-	cam->setNearClipDistance(0.1);
-	cam->setFarClipDistance(10000);
-	cam->setAutoAspectRatio(true);
-	camNode->attachObject(cam);
-	cam->setQueryFlags(MY_QUERY_IGNORE);
-
-	*/
 
 	Entidad * camera = new Entidad();
 	Camera_c * cam = new Camera_c(camera);
 	camera->AddComponent(cam);
 	entidades.push_back(camera);
 
-	// and tell it to render into the main window
-
-	/*vp = motorGrafico->getWindow()->addViewport(cam);
-	vp->setBackgroundColour(Ogre::ColourValue::Black);
-	*/
 
 	gui = new GUI(camera, this, true);
 	gui->createPanel();
@@ -67,12 +45,10 @@ Menu::Menu()
 
 }
 void Menu::MenuToExit(){
-	//scnM->Exit();
 	exit = true;
 }
 
 void Menu::MenuToPlay(){
-	//estadosManager->changeEstado("Nivel", "..//Media//Levels//Nivel1.txt");
 	goJuego = true;
 }
 
@@ -86,7 +62,6 @@ bool Menu::run(){
 		estadosManager->exitGame();
 	else if (goJuego)
 		estadosManager->changeEstado("Nivel", "..//Media//Levels//Nivel1.txt");
-		//estadosManager->changeEstado("Menu", "");
 	return true;
 }
 
@@ -96,7 +71,6 @@ void Menu::initCamera(){
 Menu::~Menu()
 {
 	motorGrafico->getSceMgr()->destroyLight(light);
-	//delete light;
 	delete gui;
 }
 

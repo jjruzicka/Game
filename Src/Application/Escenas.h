@@ -39,7 +39,6 @@ protected:
 	MotorFisico * motorFisico;
 
 	std::vector<Entidad*> entidades;
-	//Ogre::Viewport* vp = nullptr;
 
 	////////////////////////////////////
 	Mapa* mapa;
@@ -47,8 +46,6 @@ protected:
 	///// OGRE
 	Ogre::Light* light;
 	Ogre::SceneNode* lightNode; // = nullptr;
-	//Ogre::Camera* cam; // = nullptr;
-	//Ogre::SceneNode* camNode; // = nullptr;
-	///////////////////////
+
 };
 #endif

@@ -31,7 +31,6 @@ Camera_c::~Camera_c()
 {
 	motorGrafico->getSceMgr()->destroyCamera("CamJuego");
 	motorGrafico->getSceMgr()->getRootSceneNode()->removeAndDestroyChild(camNode);
-	//delete camNode;
 	motorGrafico->getWindow()->removeAllViewports();
 }
 
