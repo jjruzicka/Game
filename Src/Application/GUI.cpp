@@ -66,9 +66,6 @@ void GUI::createPanel(){
 
 	play = mSPanel2->makeButton(0, 0, 400, 100, "PLAY");
 	play->setPressedCallback(this, &GUI::play_);
-		
-	credits = mSPanel2->makeButton(0, 150, 400, 100, "CREDITS");
-	credits->setPressedCallback(this, &GUI::exit_);
 
 	exit = mSPanel2->makeButton(0, 300, 400, 100, "EXIT");
 	exit->setPressedCallback(this, &GUI::exit_);
@@ -278,7 +275,6 @@ GUI::~GUI()
 	//mMousePointer = nullptr;
 	if (menuEscena){
 		mSPanel2->destroyButton(play);
-		mSPanel2->destroyButton(credits);
 		mSPanel2->destroyButton(exit);
 		mMousePointerLayer->destroyAllCaptions();
 		mMousePointerLayer->destroyAllRectangles();

@@ -82,8 +82,6 @@ Juego::Juego(std::string path)
 	render = new Render_c();
 	pC = new PlayerController_c();
 	mision = new Mision_c();
-	//stats = new StatsEntJuego_c();
-	//statspj = new StatsPJ_c();
 	rb = new RigidBody_c();
 	ce = new ComportamientoEnem_c();
 }

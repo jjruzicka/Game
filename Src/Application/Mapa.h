@@ -8,7 +8,6 @@
 #include <btBulletDynamicsCommon.h>
 #include "btHeightfieldTerrainShape.h"
 #include <iostream>
-#include "MotorFisico.h"
 #include "MotorGrafico.h"
 
 class Mapa
@@ -18,12 +17,8 @@ public:
 	~Mapa();
 	void createmap();
 	void setPhysics();
-    btRigidBody* getRigidBody(){
-        return pBody;
-    }
 
 private:
-	MotorFisico * motorFisico;
 	MotorGrafico * motorGrafico;
 
 	void defineTerrain(long x, long y);
@@ -35,7 +30,6 @@ private:
 	bool mTerrainsImported;
 	Ogre::TerrainGroup* mTerrainGroup;
 	Ogre::TerrainGlobalOptions* mTerrainGlobals;
-    btRigidBody *pBody;
 };
 #endif
 

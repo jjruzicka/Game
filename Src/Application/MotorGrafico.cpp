@@ -18,6 +18,10 @@ MotorGrafico::MotorGrafico()
 
 MotorGrafico::~MotorGrafico()
 {
+	scnMgr->getRootSceneNode()->removeAllChildren();
+	root->destroySceneManager(scnMgr);
+	root->destroyRenderTarget("P3");
+	delete root;
 }
 
 bool MotorGrafico::initOgre(){

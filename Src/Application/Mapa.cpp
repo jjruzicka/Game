@@ -4,11 +4,9 @@
 Mapa::Mapa(Ogre::Light* light) : mTerrainGroup(0),
 mTerrainGlobals(0), luz(light)
 {
-	motorFisico = MotorFisico::getInstancia();
 	motorGrafico = MotorGrafico::getInstancia();
 	createmap();
 	setPhysics();
-	getRigidBody()->setUserPointer(this);
 }
 
 void Mapa::createmap(){
@@ -80,27 +78,6 @@ void Mapa::setPhysics(){
 
 	// Ogre uses DiamonSubdivision for Terrain-mesh, so bullet should use it too
 	pHeightShape->setUseDiamondSubdivision(true);
-
-	// Now we create a btRigidBody
-	pBody = new btRigidBody(0.0 /* mass 0.0 means static */,
-		new btDefaultMotionState(),
-		pHeightShape);
-
-	// 
-    //pBody->setCollisionFlags(4);
-	Ogre::Vector3 terrainPosition = pTerrain->getPosition();
-	pBody->getWorldTransform().setOrigin(btVector3(terrainPosition.x,
-		terrainPosition.y
-		+ (pTerrain->getMaxHeight() - pTerrain->getMinHeight()) / 2, // Bullet's position differs from Ogre's. Ogre's y is at the bottom, bullet needs the middle if the height to be positioned right
-		terrainPosition.z));
-
-	pBody->getWorldTransform().setRotation(btQuaternion(Ogre::Quaternion::IDENTITY.x,
-		Ogre::Quaternion::IDENTITY.y,
-		Ogre::Quaternion::IDENTITY.z,
-		Ogre::Quaternion::IDENTITY.w));
-
-	//motorFisico->getBulletWorld()->addRigidBody(pBody);
-
 }
 
 
